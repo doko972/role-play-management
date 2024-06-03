@@ -1,2 +1,9 @@
-# card-system-php
-card sorting and filing system with associated profiles and images
+# LAMP ENVIRONMENT
+
+## BUILD AND RUN
+
+To build images and run all containers and volumes
+
+```sh
+docker-compose up -d
+```
