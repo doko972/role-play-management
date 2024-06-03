@@ -27,12 +27,12 @@ try {
     <div class="gallery">
         <?php
         foreach ($series as $serie) {
-            echo '<div class="card">';
+            // echo '<div class="card">';
             echo '<a href="details.php?id=' . $serie['id'] . '" target="_blank">';
             echo '<img src="' . $serie['image'] . '" alt="' . $serie['name'] . '">';
             echo '</a>';
             echo '<p>' . $serie['name'] . ' - ' . $serie['constellation'] . '</p>';
-            echo '</div>';
+            // echo '</div>';
         }
         ?>
 
