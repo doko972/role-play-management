@@ -11,20 +11,36 @@
     transition: background-color 0.3s;
     border-radius: 5px;
     margin-top: 10px;
-}
-
-.accordion:hover {
+    position: relative;
+  }
+  
+  .accordion:hover {
     background-color: #0056b3;
-}
-
-.accordion:after {
-    content: '\002B';
+  }
+  
+  .accordion:after {
+    content: "+";
     color: white;
     font-weight: bold;
-    float: right;
-    margin-left: 5px;
-}
-
-.accordion.active:after {
-    content: "\2212";
-}
+    position: absolute;
+    right: 20px;
+  }
+  
+  .accordion.active:after {
+    content: "−";
+  }
+  
+  .panel {
+    // max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    background-color: white;
+    padding: 0 15px;
+    display: none;
+  }
+  
+  .panel.show {
+    display: block;
+    max-height: 500px; /* Adjust this value according to your content */
+    padding: 15px;
+  }

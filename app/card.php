@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chevalier d'Or</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- For icons -->
 </head>
+
 <body>
     <div class="container">
         <div class="card-detail">
@@ -23,6 +26,11 @@
             }
 
             if ($card) {
+                // Bouton de retour à l'index
+                echo '<form action="saint.php" method="get">';
+                echo '<button type="submit" class="btn-return">Retour à l\'index</button>';
+                echo '</form>';
+
                 echo '<img src="' . $card['image'] . '" alt="' . $card['name'] . '">';
                 echo '<div>';
                 echo '<h1>' . $card['name'] . '</h1>';
@@ -30,9 +38,12 @@
                 echo '<p>SSO: ' . $card['sso'] . '</p>';
                 echo '<img src="' . $card['imagesso2'] . '" alt="' . $card['name'] . ' SSO">';
                 echo '<p>Title: ' . $card['title'] . '</p>';
-                if (isset($card['mythology'])) echo '<p class="animate-text">Histoire: ' . $card['mythology'] . '</p>';
-                if (isset($card['mythology1'])) echo '<p class="animate-text">Histoire 1: ' . $card['mythology1'] . '</p>';
-                if (isset($card['mythology2'])) echo '<p class="animate-text">Histoire 2: ' . $card['mythology2'] . '</p>';
+                if (isset($card['mythology']))
+                    echo '<p class="animate-text">Histoire: ' . $card['mythology'] . '</p>';
+                if (isset($card['mythology1']))
+                    echo '<p class="animate-text">Histoire 1: ' . $card['mythology1'] . '</p>';
+                if (isset($card['mythology2']))
+                    echo '<p class="animate-text">Histoire 2: ' . $card['mythology2'] . '</p>';
                 echo '</div>';
 
                 // Formulaire pour créer ou modifier les champs
@@ -67,11 +78,6 @@
                 echo '<button type="submit" name="action" value="update" class="btn-add-event--register">Mettre à jour l\'histoire</button>';
 
                 echo '</form>';
-
-                // Bouton de retour à l'index
-                echo '<form action="index.php" method="get">';
-                echo '<button type="submit" class="btn-return">Retour à l\'index</button>';
-                echo '</form>';
             } else {
                 echo '<p>Card not found.</p>';
             }
@@ -79,5 +85,6 @@
         </div>
     </div>
     <script src="js/scripts.js"></script>
+    <script src="js/accordeon.js"></script>
 </body>
 </html>
