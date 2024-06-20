@@ -1,0 +1,120 @@
+.video-pos {
+  position: relative;
+  top: -200px;
+  left: 0;
+}
+
+iframe {
+  width: 100%;
+  height: auto;
+}
+
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border-radius: 1rem;
+}
+
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+  margin: 1.6rem;
+}
+
+.video-responsive video {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+/*-----------------------------------*\
+  #VIDEO
+\*-----------------------------------*/
+.navbar-container__back-video {
+  left: 0;
+  top: 0;
+  height: auto;
+  width: 100%;
+  position: relative;
+  visibility: hidden;
+}
+.navbar-container__back {
+  position: relative;
+  background-image: url("../img/fond.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.navbar-container__back::before, .navbar-container__back::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+  animation: smoke 5s infinite linear;
+  opacity: 0.7;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.navbar-container__back::after {
+  animation-duration: 8s;
+  opacity: 0.8;
+}
+
+@keyframes smoke {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-container__back {
+    background-position: top center; /* Ajuster la position pour les petits écrans */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar-container__back {
+    background-position: top center; /* Ajuster la position pour les très petits écrans */
+  }
+}
+
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .img-container h3 {
+    font-size: 1.5rem;
+  }
+
+  .img-container .btn {
+    font-size: 0.7rem;
+  }
+}

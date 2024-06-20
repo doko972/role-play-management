@@ -1,0 +1,70 @@
+
+.btn-add-event--register {
+    margin-top: auto; /* Push the button to the bottom if needed */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.btn-add-event--register a {
+    color: white;
+    text-decoration: none;
+}
+
+.btn-add-event--register:hover {
+    background-color: #0056b3;
+}
+
+.btn-return {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-return:hover {
+    background-color: #218838;
+}
+.btn-add-event--register--nav {
+    width: auto;
+    background-color: var(--transparent);
+    border: none;
+    color: var(--white);
+    font-size: 1.875rem;
+    /* margin-bottom: 2rem; */
+    padding: .5rem 0;
+  }
+
+  .button__register {
+    background-color: var(--black-semi);
+    color: var(--white);
+    border-radius: 1rem;
+    border: none;
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+  
+  .button__register:hover,
+  .button__register:focus,
+  .button__register--min:hover,
+  .button__register--min:focus {
+    background-color: var(--purple);
+    border-color: var(--goldenstrong);
+    color: var(--aqua);
+  }
+  
+  .button__register--min {
+    width: 8.75rem;
+    margin-bottom: .5rem;
+    border-radius: 2rem;
+  }
+    

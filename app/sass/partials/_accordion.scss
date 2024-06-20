@@ -1,0 +1,30 @@
+.accordion {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.2em;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.accordion:hover {
+    background-color: #0056b3;
+}
+
+.accordion:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.accordion.active:after {
+    content: "\2212";
+}

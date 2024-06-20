@@ -1,0 +1,62 @@
+body {
+    font-family: var(--font-family);
+    background-color: var(--backgr-blue);
+    background-image: url("../img/body.webp");
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.panel {
+    padding: 10px 15px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    margin-bottom: 10px;
+}
+
+.panel.show {
+    display: block;
+}
+h1 {
+    font-family: var(--font-family);
+    color: var(--white);
+    text-align: center;
+    font-size: 3rem;
+  }
+  
+  .h1__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-end;
+    z-index: 1;
+  }
+  
+  h2 {
+    font-size: 1.2rem;
+    color: var(--white);
+  }
+  
+  h3 {
+    font-size: 1.75rem;
+    color: var(--white);
+  }
+  
+  p {
+    font-size: 1rem;
+    font-family: var(--font-family);
+    color: var(--white);
+    text-align: center;
+  }
+

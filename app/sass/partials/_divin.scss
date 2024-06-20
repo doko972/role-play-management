@@ -1,0 +1,212 @@
+.faction {
+    width: 80vw;
+    aspect-ratio: 1/1.2;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .faction__card {
+    display: flex;
+    justify-content: center;
+    background-color: var(--black-semi);
+  }
+  
+  .faction__ath {
+    height: 30rem;
+    width: 25rem;
+    background-image: url("../img/athena.webp");
+    background-size: 100%;
+    background-position: bottom;
+  }
+  
+  .faction__ath--txt {
+    font-size: 4rem;
+    text-align: inherit;
+  }
+  
+  .athena {
+    background-image: url("../img/athena.webp");
+    background-size: 100%;
+    background-position: bottom;
+  }
+  
+  .athena:hover {
+    color: var(--goldenstrong);
+  }
+  
+  .faction__pos {
+    height: 30rem;
+    width: 25rem;
+    background-image: url("../img/poseidon.webp");
+    background-size: 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+  
+  .poseidon {
+    background-image: url("../img/poseidon.webp");
+    background-size: 110%;
+    background-position: bottom;
+  }
+  
+  .poseidon:hover {
+    color: var(--white);
+  }
+  
+  .faction__had {
+    height: 30rem;
+    width: 25rem;
+    background-image: url("../img/hades.webp");
+    background-size: 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+  
+  .hades {
+    background-image: url("../img/hades.webp");
+    background-size: 100%;
+    background-position: bottom;
+  }
+  
+  .hades:hover {
+    color: var(--white);
+  }
+  
+  /*-----------------------------------*\
+    #SPECIAL CLASS
+  \*-----------------------------------*/
+  .divinite__align {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .armorstyle {
+    font-size: 2rem;
+    color: var(--white);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+    margin-right: 3rem;
+  }
+  
+  .armorstyle__lst {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: url("../img/backathena.webp");
+    border: 4px solid var(--white);
+    height: 10rem;
+    padding-left: 2rem;
+  }
+  
+  .armorstyle__lst--card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--black-semi);
+    border: 4px solid var(--white);
+    width: 10rem;
+  }
+  
+  .armorstyle__lst--card:focus,
+  .armorstyle__lst--card:hover {
+    color: var(--goldenstrong);
+    background-image: url("../img/chooseA.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .armorstyle__lst--pos {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: url("../img/poseidon_royaume.webp");
+    border: 4px solid var(--white);
+    height: 10rem;
+    padding-left: 2rem;
+  }
+  
+  .armorstyle__lst--card--pos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--black-semi);
+    border: 4px solid var(--white);
+    width: 10rem;
+  }
+  
+  .armorstyle__lst--card--pos:focus,
+  .armorstyle__lst--card--pos:hover {
+    color: var(--goldenstrong);
+    background-image: url("../img/poseidon437.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .armorstyle__lst--had {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: url("../img/lesenfers.webp");
+    border: 4px solid var(--white);
+    height: 10rem;
+    padding-left: 2rem;
+  }
+  
+  .armorstyle__lst--card--had {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--black-semi);
+    border: 4px solid var(--white);
+    width: 10rem;
+  }
+  
+  .armorstyle__lst--card--had:focus,
+  .armorstyle__lst--card--had:hover {
+    color: var(--goldenstrong);
+    background-image: url("../img/hadesmin.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  @media screen and (min-width: 769px) {
+    .faction {
+      width: 30vw;
+      aspect-ratio: 1/1.2;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+    }
+  
+    .armorstyle {
+      display: grid;
+      grid-template-columns: 2fr 1fr 2fr 1fr;
+      font-size: 2rem;
+      color: var(--white);
+      margin: 4rem 0;
+      padding-left: 7rem;
+    }
+  
+    .armorstyle__lst {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: var(--black-semi);
+      border: 4px solid var(--white);
+      width: 30vw;
+      padding-left: 2rem;
+    }
+  
+    .armorstyle__lst--card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--black-semi);
+      border: 4px solid var(--white);
+      width: 10rem;
+    }
+}
