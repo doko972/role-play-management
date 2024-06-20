@@ -9,9 +9,8 @@
     <meta name="description"
         content="Jeu de rôle/PVP sur le jeu en ligne (MMO) Saint Seiya Online. Rejoignez nous dans l'aventure et devenez Chevalier d'Athéna, Marinas de Poseidon ou Spectre d'Hades !" />
     <link rel="icon" href="img/url0.ico">
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
-
 <body>
 <header class="sticky">
     <nav class="navbar">

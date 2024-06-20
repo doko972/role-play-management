@@ -36,17 +36,16 @@
             <input type="checkbox" id="athena-toggle">
             <button class="btn-add-event--register--nav"><a href="spectres.php">Hades</a></button>
           </li>
-          <li><button class="btn-add-event--register--nav"><a href="calendrier/calendar.html">Calendrier</a></button>
+          <li><button class="btn-add-event--register--nav"><a href="#">Calendrier</a></button>
           </li>
           <li><button class="btn-add-event--register--nav"><a href="https://discord.gg/3zkTwdDnhc">Discord</a></button>
           </li>
-          <li><button class="btn-add-event--register--nav"><a href="carousel/carousel.html">Le jeu</a></button></li>
+          <li><button class="btn-add-event--register--nav"><a href="#">Le jeu</a></button></li>
           <li><button class="btn-add-event--register--nav"><a href="login.html">Connexion</a></button></li>
         </ul>
       </div>
     </nav>
   </header>
-  <!--end Header-->
   <section>
     <div class="navbar-container__back">
       <!-- <video id="bgvideo" class="pc-e navbar-container__back-video" loop autoplay muted
@@ -55,7 +54,7 @@
   </section>
   <section>
     <article>
-      <!-- <div class="status-server">
+      <div class="status-server">
         <?php
         // include "config.php";
         // $conn = new mysqli($DBHost, $DBUser, $DBPassword, $DBName);
@@ -65,8 +64,8 @@
         //   echo "<p class='status-server' style='color: green;'>Serveur en ligne</p>";
         // }
         // $conn->close();
-        ?> 
-      </div> -->
+        ?>
+      </div>
       </div>
       <div class="texte-position textebackground">
         <h1>Saint Seiya Online <br>Rôle Play</h1>

@@ -1,11 +1,11 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $json = file_get_contents('json/saints.json');
+    $json = file_get_contents('json/spectres.json');
     $cards = json_decode($json, true);
 
     $id = intval($_POST['id']);
     $action = $_POST['action'];
-    $uploadDirectory = 'uploads/'; // Répertoire de téléchargement
+    $uploadDirectory = 'uploads/';
     $uploadedFilePath = '';
 
     // Gérer le téléchargement du fichier
@@ -74,8 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    file_put_contents('json/saints.json', json_encode($cards, JSON_PRETTY_PRINT));
-    header('Location: card.php?id=' . $id);
+    file_put_contents('json/spectres.json', json_encode($cards, JSON_PRETTY_PRINT));
+    header('Location: card3.php?id=' . $id);
     exit();
 }
 ?>

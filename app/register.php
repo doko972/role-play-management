@@ -84,8 +84,6 @@
 				$stmt->close();
 
 				$link->close();
-
-				// echo ("<script type='text/javascript'> alert('Bienvenue sur Saint Seiya Online " . $login . "！');location.href='index.html';</script>");
 				echo "<script type='text/javascript'>window.location.href = 'welcome.php';</script>";
 			}
 		}

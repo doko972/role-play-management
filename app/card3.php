@@ -46,7 +46,7 @@
                 echo '</div>';
 
                 // Formulaire pour créer ou modifier les champs
-                echo '<form method="POST" action="manage_story.php" enctype="multipart/form-data">';
+                echo '<form method="POST" action="manage_story3.php" enctype="multipart/form-data">';
                 echo '<input type="hidden" name="id" value="' . $card['id'] . '">';
 
                 // Accordéon pour les champs histoire

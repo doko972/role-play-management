@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $json = file_get_contents('json/saints.json');
+    $json = file_get_contents('json/marinas.json');
     $cards = json_decode($json, true);
 
     $id = intval($_POST['id']);
@@ -74,8 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    file_put_contents('json/saints.json', json_encode($cards, JSON_PRETTY_PRINT));
-    header('Location: card.php?id=' . $id);
+    file_put_contents('json/marinas.json', json_encode($cards, JSON_PRETTY_PRINT));
+    header('Location: card2.php?id=' . $id);
     exit();
 }
 ?>

@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chevalier d'Or Toutes les Cartes</title>
+    <title>Choix de classe Spectres</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
 <header class="sticky">
     <nav class="navbar">
@@ -31,11 +30,11 @@
             <input type="checkbox" id="athena-toggle">
             <button class="btn-add-event--register--nav"><a href="spectres.php">Hades</a></button>
           </li>
-          <li><button class="btn-add-event--register--nav"><a href="calendrier/calendar.html">Calendrier</a></button>
+          <li><button class="btn-add-event--register--nav"><a href="#">Calendrier</a></button>
           </li>
           <li><button class="btn-add-event--register--nav"><a href="https://discord.gg/3zkTwdDnhc">Discord</a></button>
           </li>
-          <li><button class="btn-add-event--register--nav"><a href="carousel/carousel.html">Le jeu</a></button></li>
+          <li><button class="btn-add-event--register--nav"><a href="#">Le jeu</a></button></li>
           <li><button class="btn-add-event--register--nav"><a href="login.html">Connexion</a></button></li>
         </ul>
       </div>
@@ -60,7 +59,7 @@
                 error_log('Link generated: card3.php?id=' . $card['id']);
             }
         } else {
-            echo '<p>No cards found.</p>';
+            echo '<p>Aucune carte trouvée.</p>';
         }
         ?>
     </div>
