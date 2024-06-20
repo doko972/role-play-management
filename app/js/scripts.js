@@ -1,6 +1,8 @@
+import {accordeon} from '.js/accordeon.js';
 "use strict";
 window.addEventListener("DOMContentLoaded", (event) => {
     animate_text();
+    accordeon();
 });
 
 function animate_text() {
