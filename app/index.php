@@ -30,11 +30,11 @@
           </li>
           <li>
             <input type="checkbox" id="athena-toggle">
-            <button class="btn-add-event--register--nav"><a href="#">Poseidon</a></button>
+            <button class="btn-add-event--register--nav"><a href="marinas.php">Poseidon</a></button>
           </li>
           <li>
             <input type="checkbox" id="athena-toggle">
-            <button class="btn-add-event--register--nav"><a href="#">Hades</a></button>
+            <button class="btn-add-event--register--nav"><a href="spectres.php">Hades</a></button>
           </li>
           <li><button class="btn-add-event--register--nav"><a href="calendrier/calendar.html">Calendrier</a></button>
           </li>

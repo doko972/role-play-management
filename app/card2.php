@@ -12,7 +12,7 @@
     <div class="container">
         <div class="card-detail">
             <?php
-            $json = file_get_contents('json/saints.json');
+            $json = file_get_contents('json/marinas.json');
             $cards = json_decode($json, true);
             $card = null;
 
@@ -26,7 +26,7 @@
 
             if ($card) {
                 // Bouton de retour à l'index
-                echo '<form action="saint.php" method="get">';
+                echo '<form action="marinas.php" method="get">';
                 echo '<button type="submit" class="button__register">Retour à l\'index</button>';
                 echo '</form>';
 
