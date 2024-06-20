@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <header class="sticky">
+  <header class="sticky">
     <nav class="navbar">
       <div class="navbar-container container">
         <input type="checkbox" name="" id="">
@@ -103,45 +103,19 @@
         <ul class="divinite__align">
           <li>
             <div class="faction athena">
-              <ul class="menu__choose">
-                <li class="menu__choose--select">
-                  <button class="button__register button__register--min">
-                    <a href="athenaGold.html">Or</a>
-                  </button>
-                </li>
-                <li class="menu__choose--select">
-                  <button class="button__register button__register--min">
-                    <a href="athenaSilver.html">Argent</a>
-                  </button>
-                </li>
-                <li class="menu__choose--select">
-                  <button class="button__register button__register--min">
-                    <a href="athenaBronze.html">Bronze</a>
-                  </button>
-                </li>
-              </ul>
+              <button class="button__register button__register--min"><a href="saint.php">Chevaliers</a></button>
             </div>
           </li>
           <li>
             <div class="faction poseidon menu__choose--select">
-              <button class="button__register button__register--min">
-                <a href="generauxPoseidon.html">Généraux</a>
+              <button class="button__register button__register--min"><a href="marinas.php">Marinas</a>
               </button>
             </div>
           </li>
           <li>
             <div class="faction hades">
-              <ul class="menu__choose">
-                <li class="menu__choose--select">
-                  <button class="button__register button__register--min">
-                    <a href="hadesJuges.html">Juges</a>
-                  </button>
-                </li>
-                <li class="menu__choose--select">
-                  <button class="button__register button__register--min"><a
-                      href="hadesSpectres.html">Spectres</a></button>
-                </li>
-              </ul>
+              <button class="button__register button__register--min"><a href="spectres.php">Spectres</a>
+              </button>
             </div>
           </li>
         </ul>
