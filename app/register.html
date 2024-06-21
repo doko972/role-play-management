@@ -56,15 +56,15 @@
       <form class="login_cont" action=register.php method=post>
         <div class="input_signup active">
           <input class="input input_form" id="user_name" type="text" name="login"
-            aria-label="Nom d’utilisateur (contient des lettres/chiffres)" placeholder="Nom d’utilisateur/Username">
+            aria-label="Nom d’utilisateur (contient des lettres/chiffres)" placeholder="Nom d’utilisateur/Username" required>
           <div class="hint">Nom d’utilisateur</div>
-          <input class="input input_form" id="user_email" type="text" name=email aria-label="EMail" placeholder="Email">
+          <input class="input input_form" id="user_email" type="text" name=email aria-label="EMail" placeholder="Email" required>
           <div class="hint">Adresse e-mail</div>
           <input class="input input_form" id="password" type="password" aria-label="MdP" name=passwd
-            placeholder="Mdp/Password">
+            placeholder="Mdp/Password" required>
           <div class="hint">Mot de passe （Minimum 6 caracteres）</div>
           <input class="input input_form" id="repassword" type="password" name=repasswd aria-label="Mdp"
-            placeholder="Mdp/Password">
+            placeholder="Mdp/Password" required>
           <div class="hint">Saisir à nouveau votre mot de passe</div>
           <div class="content">
             <input type="submit" id="submit" class="button button__register" name="button"
