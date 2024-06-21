@@ -63,9 +63,7 @@
           $dbCo = new PDO($dsn, $DBUser, $DBPassword);
 
           echo "<p class='status-server' style='color: green;'>Serveur en ligne</p>";
-
-          var_dump($dbCo);
-
+          // var_dump($dbCo);
         } catch (PDOException $e) {
           echo "<p class='status-server' style='color: red;'>Erreur connexion MySQL: " . $e->getMessage() . "</p>";
           die();

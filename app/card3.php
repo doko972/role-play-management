@@ -73,7 +73,7 @@
                 echo '<input type="file" name="new_image" id="new_image">';
 
                 // Deux boutons: un pour créer/modifier
-                echo '<button type="submit" name="action" value="create" class="btn-add-event--register">Créer l\'histoire</button>';
+                // echo '<button type="submit" name="action" value="create" class="btn-add-event--register">Créer l\'histoire</button>';
                 echo '<button type="submit" name="action" value="update" class="btn-add-event--register">Mettre à jour l\'histoire</button>';
 
                 echo '</form>';
