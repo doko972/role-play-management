@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chevalier d'Or Toutes les Cartes</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chevalier d'Or Toutes les Cartes</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-<header class="sticky">
+  <header class="sticky">
     <nav class="navbar">
       <div class="navbar-container container">
         <input type="checkbox" name="" id="">
@@ -41,29 +41,30 @@
       </div>
     </nav>
   </header>
-<div class="head-card">
+  <div class="head-card">
 
-</div>
-    <div class="container">
-        <?php
-        $json = file_get_contents('json/saints.json');
-        $cards = json_decode($json, true);
+  </div>
+  <div class="container">
+    <?php
+    $json = file_get_contents('json/saints.json');
+    $cards = json_decode($json, true);
 
-        if ($cards) {
-            foreach ($cards as $card) {
-                echo '<div class="card">';
-                echo '<a href="card.php?id=' . $card['id'] . '">';
-                echo '<img src="' . $card['image'] . '" alt="' . $card['name'] . '">';
-                echo '<p>' . $card['name'] . '</p>';
-                echo '</a>';
-                echo '</div>';
-                error_log('Link generated: card.php?id=' . $card['id']);
-            }
-        } else {
-            echo '<p>Aucune carte trouvée.</p>';
-        }
-        ?>
-    </div>
+    if ($cards) {
+      foreach ($cards as $card) {
+        echo '<div class="card">';
+        echo '<a href="card.php?id=' . $card['id'] . '">';
+        echo '<img src="' . $card['image'] . '" alt="' . $card['name'] . '">';
+        echo '<p>' . $card['name'] . '</p>';
+        echo '</a>';
+        echo '</div>';
+        error_log('Link generated: card.php?id=' . $card['id']);
+      }
+    } else {
+      echo '<p>Aucune carte trouvée.</p>';
+    }
+    ?>
+  </div>
+  <?php include 'footer.php'; ?>
 </body>
 
 </html>

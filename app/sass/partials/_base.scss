@@ -100,3 +100,25 @@ a:hover::after {
     height: 3rem;
   }
 }
+.texte-position {
+  text-align: center;
+  margin: 1rem;
+  padding: 1rem;
+  line-height: 3rem;
+}
+
+.texte-position__center {
+  display: flex;
+  flex-direction: column;
+}
+
+.texte-position__heigth {
+  min-height: 600px;
+  margin: 0 1rem 1rem 1rem;
+}
+
+.textebackground {
+  background-color: var(--black-semi);
+  margin-top: 2rem;
+  border-radius: 1rem;
+}

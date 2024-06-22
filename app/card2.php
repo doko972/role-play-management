@@ -85,6 +85,7 @@
     </div>
     <script src="js/scripts.js"></script>
     <script src="js/accordeon.js"></script>
+    <?php include 'footer.php'; ?>
 </body>
 
 </html>

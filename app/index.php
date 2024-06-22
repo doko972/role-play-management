@@ -56,7 +56,7 @@
     <article>
       <div class="status-server">
         <?php
-
+        $serverStatus = "";
         try {
           include "config.php";
           $dsn = 'mysql:host=' . $DBHost . ';dbname=' . $DBName . ';charset=utf8';
@@ -70,6 +70,14 @@
         }
         $dbCo = null;
         ?>
+      </div>
+      <div>
+        <img src="img/server-icon.png" alt="Server Icon">
+        <div>
+          <?php echo $serverStatus; ?>
+          <br>
+          <span>Server time: <span id="server-time"data-start-time="<?php echo time(); ?>"><?php echo date('H:i:s'); ?></span></span>
+        </div>
       </div>
       </div>
       <div class="texte-position textebackground">
@@ -127,12 +135,8 @@
     </article>
   </section>
   <script src="js/animate.js"></script>
-  <footer>
-    <div class="footer-bottom">
-      <p class="copyright">&copy; 2024 © Copyright 2024 - Saint Seiya Online RP/PVP
-      </p>
-    </div>
-  </footer>
+  <script src="servertime.js"></script>
+  <?php include 'footer.php'; ?>
 </body>
 
 </html>
