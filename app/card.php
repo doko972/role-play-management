@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chevalier d'Athena</title>
     <meta name="keywords"
-        content="Page de choix de personnage parmis les chevaliers d'Athena" />
+        content="Page de choix de personnage parmis les chevaliers" />
     <meta name="description"
         content="Jeu de rôle/PVP sur le jeu en ligne (MMO) Saint Seiya Online. Rejoignez nous dans l'aventure et devenez Chevalier d'Athéna, Marinas de Poseidon ou Spectre d'Hades !" />
     <link rel="icon" href="img/logo.ico">
