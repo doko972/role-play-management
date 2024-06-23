@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chevalier d'Or</title>
+    <title>Spectres</title>
+    <meta name="keywords"
+        content="Page de choix de personnage parmis les Spectres d'Hades" />
+    <meta name="description"
+        content="Jeu de rôle/PVP sur le jeu en ligne (MMO) Saint Seiya Online. Rejoignez nous dans l'aventure et devenez Chevalier d'Athéna, Marinas de Poseidon ou Spectre d'Hades !" />
+    <link rel="icon" href="img/logo.ico">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
+<?php include 'header.php'; ?>
     <div class="container">
         <div class="card-detail">
             <?php

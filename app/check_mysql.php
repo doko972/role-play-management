@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vérification du statut MySQL</title>
+    <link rel="icon" href="img/logo.ico">
 </head>
 
 <body>

@@ -4,11 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chevalier d'Or</title>
+    <title>Marinas</title>
+    <meta name="keywords" content="Page de choix de personnage parmis les marinas de Poseidon" />
+    <meta name="description"
+        content="Jeu de rôle/PVP sur le jeu en ligne (MMO) Saint Seiya Online. Rejoignez nous dans l'aventure et devenez Chevalier d'Athéna, Marinas de Poseidon ou Spectre d'Hades !" />
+    <link rel="icon" href="img/logo.ico">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
+    <?php include 'header.php'; ?>
     <div class="container">
         <div class="card-detail">
             <?php
@@ -25,7 +30,6 @@
             }
 
             if ($card) {
-                // Bouton de retour à l'index
                 echo '<form action="marinas.php" method="get">';
                 echo '<button type="submit" class="button__register">Retour à l\'index</button>';
                 echo '</form>';
@@ -45,11 +49,9 @@
                     echo '<p class="animate-text">Histoire 2: ' . $card['mythology2'] . '</p>';
                 echo '</div>';
 
-                // Formulaire pour créer ou modifier les champs
                 echo '<form method="POST" action="manage_story2.php" enctype="multipart/form-data">';
                 echo '<input type="hidden" name="id" value="' . $card['id'] . '">';
 
-                // Accordéon pour les champs histoire
                 echo '<button type="button" class="accordion">Histoire</button>';
                 echo '<div class="panel">';
                 echo '<label for="mythology">Histoire:</label>';
@@ -68,12 +70,9 @@
                 echo '<textarea name="mythology2" id="mythology2">' . (isset($card['mythology2']) ? $card['mythology2'] : '') . '</textarea>';
                 echo '</div>';
 
-                // Champ de fichier pour télécharger une nouvelle image
                 echo '<label for="new_image">Nouvelle image:</label>';
                 echo '<input type="file" name="new_image" id="new_image">';
 
-                // Deux boutons: un pour créer/modifier
-                // echo '<button type="submit" name="action" value="create" class="btn-add-event--register">Créer l\'histoire</button>';
                 echo '<button type="submit" name="action" value="update" class="btn-add-event--register">Mettre à jour l\'histoire</button>';
 
                 echo '</form>';

@@ -4,7 +4,8 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Connexion de compte</title>
+	<title>Creation de compte</title>
+	<link rel="icon" href="img/logo.ico">
 	<?php
 	include "config.php";
 
