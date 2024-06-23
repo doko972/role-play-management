@@ -74,12 +74,9 @@
                 echo '<textarea name="mythology2" id="mythology2">' . (isset($card['mythology2']) ? $card['mythology2'] : '') . '</textarea>';
                 echo '</div>';
 
-                // Champ de fichier pour télécharger une nouvelle image
                 echo '<label for="new_image">Nouvelle image:</label>';
                 echo '<input type="file" name="new_image" id="new_image">';
 
-                // Deux boutons: un pour créer/modifier
-                // echo '<button type="submit" name="action" value="create" class="btn-add-event--register">Créer l\'histoire</button>';
                 echo '<button type="submit" name="action" value="update" class="btn-add-event--register">Mettre à jour l\'histoire</button>';
 
                 echo '</form>';

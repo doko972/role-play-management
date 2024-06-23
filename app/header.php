@@ -25,7 +25,7 @@
           <li><button class="btn-add-event--register--nav"><a href="https://discord.gg/3zkTwdDnhc">Discord</a></button>
           </li>
           <li><button class="btn-add-event--register--nav"><a href="#">Le jeu</a></button></li>
-          <li><button class="btn-add-event--register--nav"><a href="login.html">Connexion</a></button></li>
+          <li><button class="btn-add-event--register--nav"><a href="login.php">Connexion</a></button></li>
         </ul>
       </div>
     </nav>
