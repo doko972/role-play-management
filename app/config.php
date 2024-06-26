@@ -4,5 +4,5 @@
 	$DBPassword = "tekmate";
 	$DBName = "zx";
 	
-?>	
-	
+	define('SECURE_PAGE', true);
+
