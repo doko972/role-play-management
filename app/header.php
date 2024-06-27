@@ -1,9 +1,3 @@
-<?php
-if (!defined('SECURE_PAGE')) {
-    header('HTTP/1.0 403 Forbidden');
-    exit;
-}
-?>
 <header class="sticky">
     <nav class="navbar">
         <div class="navbar-container container">
@@ -26,12 +20,12 @@ if (!defined('SECURE_PAGE')) {
                     <input type="checkbox" id="athena-toggle">
                     <button class="btn-add-event--register--nav"><a href="spectres.php">Hades</a></button>
                 </li>
-                <li><button class="btn-add-event--register--nav"><a href="#">Calendrier</a></button>
-                </li>
+                <!-- <li><button class="btn-add-event--register--nav"><a href="#">Calendrier</a></button>
+                </li> -->
                 <li><button class="btn-add-event--register--nav"><a href="https://discord.gg/3zkTwdDnhc">Discord</a></button>
                 </li>
-                <li><button class="btn-add-event--register--nav"><a href="#">Le jeu</a></button></li>
-                <li><button class="btn-add-event--register--nav"><a href="login.php">Connexion</a></button></li>
+                <li><button class="btn-add-event--register--nav"><a href="create/index.php">Compte en jeu</a></button></li>
+                <li><button class="btn-add-event--register--nav"><a href="#">Connexion RP</a></button></li>
             </ul>
         </div>
     </nav>

@@ -1,9 +1,3 @@
-<?php
-if (!defined('SECURE_PAGE')) {
-    header('HTTP/1.0 403 Forbidden');
-    exit;
-}
-?>
 <footer class="footer-reseaux">
     <div>
         <a class="footer-reseaux__link"  href="https://discord.gg/3zkTwdDnhc" target="_blank">

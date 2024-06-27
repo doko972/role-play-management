@@ -1,18 +1,3 @@
-<?php
-// Inclure le fichier de configuration
-include 'config.php';
-
-// Empêcher l'accès direct au fichier
-if (!defined('SECURE_PAGE')) {
-    header('HTTP/1.0 403 Forbidden');
-    exit;
-}
-
-// Démarrer la session si ce n'est pas déjà fait
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -30,33 +15,14 @@ if (session_status() == PHP_SESSION_NONE) {
 </head>
 
 <body>
-<?php include 'header.php'; ?>
+  <?php include 'header.php'; ?>
   <section>
     <div class="navbar-container__back">
     </div>
   </section>
   <section>
     <article>
-      <div class="status-server">
-        <?php
-        try {
-          $dsn = 'mysql:host=' . $DBHost . ';dbname=' . $DBName . ';charset=utf8';
-          $dbCo = new PDO($dsn, $DBUser, $DBPassword);
-          $dbCo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-          echo "<p class='status-server' style='color: green;'>Serveur en ligne</p>";
-        } catch (PDOException $e) {
-          echo "<p class='status-server' style='color: red;'>Erreur connexion MySQL: " . htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8') . "</p>";
-          die();
-        }
-        $dbCo = null;
-        ?>
-      </div>
       <div>
-        <img src="img/server-icon.png" alt="Server Icon">
-        <div>
-          <br>
-          <span>Server time: <span id="server-time" data-start-time="<?php echo time(); ?>"><?php echo date('H:i:s'); ?></span></span>
-        </div>
       </div>
       <div class="texte-position textebackground">
         <h1>Saint Seiya Online <br>Rôle Play</h1>
