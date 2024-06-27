@@ -1,5 +1,5 @@
 
-input, textarea {
+/* input, textarea {
   border: 1px solid #ddeafb; }
 
 input[type=submit],
@@ -44,7 +44,7 @@ input[type=submit],
   border: 0; }
 
 .lable {
-  display: inline-block; }
+  display: inline-block; } */
 /* 
 .nav {
   width: 400px;
@@ -72,7 +72,7 @@ input[type=submit],
 .nav_right {
   padding-right: 20px;
   text-align: right; } */
-
+/* 
 .number,
 .time {
   display: inline-block;
@@ -83,4 +83,4 @@ input[type=submit],
   text-align: right; }
 
 .msge a {
-  color: #fb752d; }
+  color: #fb752d; } */

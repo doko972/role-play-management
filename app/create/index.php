@@ -6,11 +6,10 @@
 	<meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1">
 	<title>Les Chevaliers du Zodiaque OL</title>
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/common.css"> -->
 </head>
 
 <body>
-	<?php include 'header.php'; ?>
 	<div class="login_cont">
 		<div class="login_nav">
 

@@ -192,13 +192,14 @@ a:hover::after {
   background-color: #218838;
 }
 
+
 .btn-add-event--register--nav {
   width: auto;
   background-color: var(--transparent);
   border: none;
   color: var(--white);
   font-size: 1.875rem;
-  /* margin-bottom: 2rem; */
+  margin-bottom: 2rem;
   padding: 0.5rem 0;
 }
 
@@ -525,7 +526,9 @@ form button:hover {
   list-style: none;
   margin: 0;
   padding: 0;
+  z-index: 100;
 }
+
 
 .menu-items li {
   list-style: none;
@@ -1538,15 +1541,6 @@ iframe {
   color: var(--white);
 }
 
-.btn-add-event--register--nav {
-  width: auto;
-  background-color: var(--transparent);
-  border: none;
-  color: var(--white);
-  font-size: 1.875rem;
-  /* margin-bottom: 2rem; */
-  padding: 0.5rem 0;
-}
 
 @media screen and (max-width: 1000px) {
   .calendar-body {
@@ -2101,4 +2095,63 @@ iframe {
 
 .server-status span {
   margin-right: 5px;
-}/*# sourceMappingURL=styles.css.map */
+}
+
+input, textarea {
+  border: 1px solid #ddeafb; }
+
+input[type=submit],
+input[type=button] {
+  cursor: pointer; }
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 5px;
+  border-radius: 5px; }
+
+.hint {
+  font-size: 12px;
+  text-align: right;
+  padding-right: 10px;
+  margin-bottom: 15px;
+  visibility: hidden; }
+
+.right {
+  border-color: #1dc091; }
+
+.hint_right {
+  color: #1dc091; }
+
+.wrong {
+  border-color: #EA5A70; }
+
+.hint_wrong {
+  color: #EA5A70; }
+
+input[type=submit],
+.button {
+  display: block;
+  margin: 0 auto;
+  line-height: 20px;
+  font-size: 20px;
+  color: #fff;
+  background: #0f88eb;
+  border: 0; }
+
+.lable {
+  display: inline-block; }
+
+.number,
+.time {
+  display: inline-block;
+  width: 50%; }
+
+.time,
+.msge {
+  text-align: right; }
+
+.msge a {
+  color: #fb752d; }
