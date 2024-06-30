@@ -64,27 +64,12 @@
   margin-top: .5rem;
 }
 
-// .navbar-container__back {
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   background-position: 50% 50%;
-// //   height: 100%;
-//   width: 100%;
-//   margin: 0;
-//   z-index: 0;
-// }
-
-// .navbar-container__back-video {
-//   left: 0;
-//   top: 0;
-//   height: auto;
-//   position: relative;
-// }
 
 .menu-items {
   display: flex;
   gap: 2rem;
   list-style: none;
+  right: 0;
   margin: 0;
   padding: 0;
 }

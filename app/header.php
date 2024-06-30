@@ -24,7 +24,7 @@
                 </li> -->
                 <li><button class="btn-add-event--register--nav"><a href="https://discord.gg/3zkTwdDnhc">Discord</a></button>
                 </li>
-                <li><button class="btn-add-event--register--nav"><a href="create/index.php">Compte en jeu</a></button></li>
+                <li><button class="btn-add-event--register--nav"><a href="account.php">Compte en jeu</a></button></li>
                 <li><button class="btn-add-event--register--nav"><a href="#">Connexion RP</a></button></li>
             </ul>
         </div>
