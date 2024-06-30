@@ -33,6 +33,7 @@ body {
   background-image: url("../img/body.webp");
   margin: 0;
   padding: 0;
+  min-height: 600px;
 }
 
 .container {
@@ -41,6 +42,15 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   padding: 20px;
+}
+
+.container-wce {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  min-height: 600px;
 }
 
 .panel {
@@ -2100,4 +2110,13 @@ iframe {
 
 .server-status span {
   margin-right: 5px;
+}
+
+.download-img {
+  width: 25rem;
+  aspect-ratio: 1/1;
+  background-image: url("../img/saint.webp");
+  background-size: 100%;
+  background-position: bottom;
+  background-repeat: no-repeat;
 }/*# sourceMappingURL=styles.css.map */

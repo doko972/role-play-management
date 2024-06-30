@@ -17,7 +17,7 @@
   <article>
 <br>
     <div class="title__margin--register">
-      <h1>Saint Seiya Online <br>Rôle Play</h1>
+      <h1>Créer compte pour<br>le Jeu en ligne</h1>
     </div>
     <div class="item-register">
       <p>Minimum 8 lettres en minuscule et/ou chiffres, <br>sans caractères spéciaux</p>
@@ -40,6 +40,7 @@
               <input type="submit" id="submit" class="button button__register" name="button"
                 value="Cliquez sur S’inscrire">
             </div>
+
             <div class="content">
               <!-- <span><a class="Password-forget" href="forgot_password.php">Mot de passe oublié ?</a></span> -->
             </div>

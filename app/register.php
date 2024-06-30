@@ -110,7 +110,7 @@
 			  mysql_query($sql);	
 			mysql_close();
 			
-			echo ("<script type='text/javascript'> alert('Bienvenue sur Saint Seiya Online" . " " .$Login." ！');location.href='index.html';</script>");
+			echo ("<script type='text/javascript'> alert('Bienvenue sur Saint Seiya Online" . " " .$Login." ！');location.href='welcome.php';</script>");
 			}		
 		}	
 	}
