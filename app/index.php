@@ -16,68 +16,106 @@
 
 <body>
   <?php include 'header.php'; ?>
-  <section>
-    <div class="navbar-container__back">
-    </div>
-  </section>
-  <section>
-    <article>
-      <div>
+  <main>
+    <section>
+      <div class="navbar-container__back">
       </div>
-      <div class="texte-position textebackground">
-        <h1>Saint Seiya Online <br>Rôle Play</h1>
-        <p>Nouveaux Chevaliers !</p>
-        <p>Nous sommes ravis de vous accueillir dans cet univers passionnant où l'aventure et l'épopée des
-          Chevaliers du Zodiaque prennent vie.</p>
-        <br>
-        <p>Vous devrez choisir un rôle qui correspond à votre personnage et vous devrez rejoindre la faction
-          qui
-          résonne le plus avec vos aspirations Rôle Play/PVP.</p>
-        <br>
-        <p>Que vous soyez un fier Chevalier d'Athéna, un intrépide Spectre d'Hadès ou un
-          Général marinas de Poseidon, votre destin vous attend!</p>
-        <br>
-        <p>N'hésitez pas à interagir avec vos compagnons de faction et commencer à tisser des liens au sein
-          de
-          cet univers. Nous sommes impatients de partager cette aventure épique avec vous, et nous
-          espérons
-          que votre aventure parmi nous sur Saint Seiya Online sera empli de moments mémorables.</p>
-        <br>
-        <p>Bon jeu à tous jeunes Guerriers, enflammez votre cosmos!!!</p>
-        <br>
-        <p>Que votre histoire dans le monde de Saint Seiya Online Rôle Play commence
-          maintenant!</p>
-      </div>
-    </article>
-  </section>
-  <section>
-    <article>
-      <div>
-        <h3 class="p-max">Choisisez votre camps!</h3>
-      </div>
-      <div>
-        <ul class="divinite__align">
+    </section>
+    <section>
+      <article>
+        <div class="texte-position textebackground">
+          <h1>Saint Seiya Online <br>Rôle Play</h1>
+          <p>Nouveaux Chevaliers !</p>
+          <p>Nous sommes ravis de vous accueillir dans cet univers passionnant où l'aventure et l'épopée des Chevaliers
+            du Zodiaque prennent vie.</p>
+          <br>
+          <p>Vous devrez choisir un rôle qui correspond à votre personnage et vous devrez rejoindre la faction qui
+            résonne le plus avec vos aspirations Rôle Play/PVP.</p>
+          <br>
+          <p>Que vous soyez un fier Chevalier d'Athéna, un intrépide Spectre d'Hadès ou un Général marinas de Poseidon,
+            votre destin vous attend!</p>
+          <br>
+          <p>N'hésitez pas à interagir avec vos compagnons de faction et commencer à tisser des liens au sein de cet
+            univers. Nous sommes impatients de partager cette aventure épique avec vous, et nous espérons que votre
+            aventure parmi nous sur Saint Seiya Online sera empli de moments mémorables.</p>
+          <br>
+          <p>Bon jeu à tous jeunes Guerriers, enflammez votre cosmos!!!</p>
+          <br>
+          <p>Que votre histoire dans le monde de Saint Seiya Online Rôle Play commence maintenant!</p>
+        </div>
+      </article>
+    </section>
+    <section>
+      <article>
+        <div>
+          <h2 class="texte-position">Choisisez votre camp!</h2>
+        </div>
+        <div>
+          <ul class="divinite__align">
+            <li>
+              <div class="faction athena">
+                <button class="button__register button__register--min">
+                  <a href="saint.php">Chevaliers</a></button>
+              </div>
+            </li>
+            <li>
+              <div class="faction poseidon menu__choose--select">
+                <button class="button__register button__register--min">
+                  <a href="marinas.php">Marinas</a></button>
+              </div>
+            </li>
+            <li>
+              <div class="faction hades">
+                <button class="button__register button__register--min">
+                  <a href="spectres.php">Spectres</a></button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </section>
+    <section>
+      <article class="table-containers">
+        <div class="textebackground__wce">
+        <h3 class="table-ttl">Configuration minimum</h3>
+        <ul class="table-operating">
           <li>
-            <div class="faction athena">
-              <button class="button__register button__register--min"><a href="saint.php">Chevaliers</a></button>
-            </div>
+            <table class="table-array">
+              <tr>
+                <td class="table-array__border">Operating System</td>
+                <td class="table-array__border">Windows 7, 8 or 10.</td>
+              </tr>
+              <tr>
+                <td class="table-array__border">CPU</td>
+                <td class="table-array__border">Core 2 Duo or AMD PHENOM II X2 / Intel I5 or AMD PHENOM II X6
+                  (recommended) </td>
+              </tr>
+              <tr>
+                <td class="table-array__border">RAM Memory</td>
+                <td class="table-array__border">4GB RAM / 6GB RAM (recommended) </td>
+              </tr>
+              <tr>
+                <td class="table-array__border">Hard Disk</td>
+                <td class="table-array__border">15GB Free HD Space </td>
+              </tr>
+              <tr>
+                <td class="table-array__border">GPU</td>
+                <td class="table-array__border">GeForce 8800 GT / ATI Radeon 4770 / GeForce 9800 GT / ATI Radeon HD 6670
+                  (recommended) </td>
+              </tr>
+            </table>
           </li>
-          <li>
-            <div class="faction poseidon menu__choose--select">
-              <button class="button__register button__register--min"><a href="marinas.php">Marinas</a>
-              </button>
-            </div>
-          </li>
-          <li>
-            <div class="faction hades">
-              <button class="button__register button__register--min"><a href="spectres.php">Spectres</a>
-              </button>
-            </div>
+          <li class="discord-container">
+            <h3 class="table-ttl">Membres</h3>
+            <iframe class="discord-container-widget" src="https://discord.com/widget?id=1147228974590730324&theme=dark"
+              width="350" height="500" allowtransparency="true" frameborder="0"
+              sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
           </li>
         </ul>
-      </div>
-    </article>
-  </section>
+        </div>
+      </article>
+    </section>
+  </main>
   <script src="js/animate.js"></script>
   <script src="servertime.js"></script>
   <?php include 'footer.php'; ?>

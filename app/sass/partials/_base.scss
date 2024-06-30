@@ -61,6 +61,9 @@ h1 {
     font-size: 1.75rem;
     color: var(--white);
   }
+  h4{
+    color: var(--white);
+  }
   
   p {
     font-size: 1rem;
@@ -130,4 +133,11 @@ a:hover::after {
   background-color: var(--black-semi);
   margin-top: 2rem;
   border-radius: 1rem;
+}
+.textebackground__wce {
+  background-color: var(--black-semi);
+  margin-top: 2rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
 }

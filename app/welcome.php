@@ -30,24 +30,25 @@ include 'config.php';
       <article class="container-wce">
         <div class="download-img"></div>
         <div class="">
-            <h3 class="texte-position__center">
-              <?php
-              if (isset($Login) && !empty($Login)) {
-                echo htmlspecialchars($Login, ENT_QUOTES, 'UTF-8');
-              } else {
-                echo 'Téléchargement : ';
+          <h3 class="texte-position__center">
+            <?php
+            if (isset($Login) && !empty($Login)) {
+              echo htmlspecialchars($Login, ENT_QUOTES, 'UTF-8');
+            } else {
+              echo 'Téléchargement : ';
 
-              }
-              ?>
-            </h3>
-            <!-- <script>
+            }
+            ?>
+          </h3>
+          <!-- <script>
               setTimeout(function () {
                 window.location.href = 'https://drive.google.com/file/d/1Q0oGWF24WcgOGbs9YEOrlT_fMuWY4znX/view?usp=sharing';
               }, 3000);
             </script> -->
-            <div class="content">
-              <button onclick="openDownload()" class="button button__register"><a href="saint.php">Télécharger</a></button>
-            </div>
+          <div class="content">
+            <button onclick="openDownload()" class="button button__register"><a
+                href="saint.php">Télécharger</a></button>
+          </div>
         </div>
       </article>
     </section>

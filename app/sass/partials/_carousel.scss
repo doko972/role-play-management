@@ -151,6 +151,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    // margin-left: 2rem;
   }
   
   .table-operating {
@@ -188,7 +189,7 @@
     height: 23rem;
     overflow: hidden;
     font-size: 1rem;
-  
+  margin-bottom: 2rem;
   }
   
   @media screen and (max-width: 1440px) {
