@@ -42,13 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $card['mythology'] = $_POST['mythology'];
                 }
 
-                if (!isset($card['mythology1']) && !empty($_POST['mythology1'])) {
-                    $card['mythology1'] = $_POST['mythology1'];
-                }
+                // if (!isset($card['mythology1']) && !empty($_POST['mythology1'])) {
+                //     $card['mythology1'] = $_POST['mythology1'];
+                // }
 
-                if (!isset($card['mythology2']) && !empty($_POST['mythology2'])) {
-                    $card['mythology2'] = $_POST['mythology2'];
-                }
+                // if (!isset($card['mythology2']) && !empty($_POST['mythology2'])) {
+                //     $card['mythology2'] = $_POST['mythology2'];
+                // }
 
                 if ($uploadedFilePath) {
                     $card['image'] = $uploadedFilePath;
@@ -58,13 +58,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $card['mythology'] = $_POST['mythology'];
                 }
 
-                if (isset($_POST['mythology1'])) {
-                    $card['mythology1'] = $_POST['mythology1'];
-                }
+                // if (isset($_POST['mythology1'])) {
+                //     $card['mythology1'] = $_POST['mythology1'];
+                // }
 
-                if (isset($_POST['mythology2'])) {
-                    $card['mythology2'] = $_POST['mythology2'];
-                }
+                // if (isset($_POST['mythology2'])) {
+                //     $card['mythology2'] = $_POST['mythology2'];
+                // }
 
                 if ($uploadedFilePath) {
                     $card['image'] = $uploadedFilePath;

@@ -5,28 +5,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $id = intval($_POST['id']);
     $action = $_POST['action'];
-    $uploadDirectory = 'uploads/'; // Répertoire de téléchargement
+    $uploadDirectory = 'uploads/';
     $uploadedFilePath = '';
 
-    // Gérer le téléchargement du fichier
     if (isset($_FILES['new_image']) && $_FILES['new_image']['error'] != UPLOAD_ERR_NO_FILE) {
         if ($_FILES['new_image']['error'] == UPLOAD_ERR_OK) {
             $uploadedFileName = basename($_FILES['new_image']['name']);
             $uploadedFilePath = $uploadDirectory . $uploadedFileName;
             $fileType = mime_content_type($_FILES['new_image']['tmp_name']);
 
-            // Vérifier si le type de fichier est accepté
             $allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
             if (!in_array($fileType, $allowedTypes)) {
                 die('Type de fichier non autorisé. Seules les images JPEG, PNG et WebP sont autorisées.');
             }
 
-            // Vérifier que le répertoire de destination existe
             if (!is_dir($uploadDirectory)) {
                 mkdir($uploadDirectory, 0755, true);
             }
 
-            // Déplacer le fichier téléchargé dans le répertoire de destination
             if (!move_uploaded_file($_FILES['new_image']['tmp_name'], $uploadedFilePath)) {
                 die('Erreur lors du téléchargement du fichier. Vérifiez les permissions du répertoire de destination.');
             }
@@ -42,13 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $card['mythology'] = $_POST['mythology'];
                 }
 
-                if (!isset($card['mythology1']) && !empty($_POST['mythology1'])) {
-                    $card['mythology1'] = $_POST['mythology1'];
-                }
+                // if (!isset($card['mythology1']) && !empty($_POST['mythology1'])) {
+                //     $card['mythology1'] = $_POST['mythology1'];
+                // }
 
-                if (!isset($card['mythology2']) && !empty($_POST['mythology2'])) {
-                    $card['mythology2'] = $_POST['mythology2'];
-                }
+                // if (!isset($card['mythology2']) && !empty($_POST['mythology2'])) {
+                //     $card['mythology2'] = $_POST['mythology2'];
+                // }
 
                 if ($uploadedFilePath) {
                     $card['image'] = $uploadedFilePath;
@@ -58,13 +54,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $card['mythology'] = $_POST['mythology'];
                 }
 
-                if (isset($_POST['mythology1'])) {
-                    $card['mythology1'] = $_POST['mythology1'];
-                }
+                // if (isset($_POST['mythology1'])) {
+                //     $card['mythology1'] = $_POST['mythology1'];
+                // }
 
-                if (isset($_POST['mythology2'])) {
-                    $card['mythology2'] = $_POST['mythology2'];
-                }
+                // if (isset($_POST['mythology2'])) {
+                //     $card['mythology2'] = $_POST['mythology2'];
+                // }
 
                 if ($uploadedFilePath) {
                     $card['image'] = $uploadedFilePath;

@@ -10,30 +10,32 @@
 </head>
 
 <body>
-<?php include 'header.php'; ?>
-  <div class="head-card">
+  <?php include 'header.php'; ?>
+  <main>
+    <div class="head-card" role="img" aria-label="Image de tête de carte">
 
-  </div>
-  <div class="container">
-    <?php
-    $json = file_get_contents('json/saints.json');
-    $cards = json_decode($json, true);
+    </div>
+    <div class="container">
+      <?php
+      $json = file_get_contents('json/saints.json');
+      $cards = json_decode($json, true);
 
-    if ($cards) {
-      foreach ($cards as $card) {
-        echo '<div class="card">';
-        echo '<a href="card.php?id=' . $card['id'] . '">';
-        echo '<img src="' . $card['image'] . '" alt="' . $card['name'] . '">';
-        echo '<p>' . $card['name'] . '</p>';
-        echo '</a>';
-        echo '</div>';
-        error_log('Link generated: card.php?id=' . $card['id']);
+      if ($cards) {
+        foreach ($cards as $card) {
+          echo '<div class="card">';
+          echo '<a href="card.php?id=' . htmlspecialchars($card['id'], ENT_QUOTES, 'UTF-8') . '">';
+          echo '<img src="' . htmlspecialchars($card['image'], ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['name'], ENT_QUOTES, 'UTF-8') . '">';
+          echo '<p>' . htmlspecialchars($card['name'], ENT_QUOTES, 'UTF-8') . '</p>';
+          echo '</a>';
+          echo '</div>';
+          error_log('Link generated: card.php?id=' . htmlspecialchars($card['id'], ENT_QUOTES, 'UTF-8'));
+        }
+      } else {
+        echo '<p>Aucune carte trouvée.</p>';
       }
-    } else {
-      echo '<p>Aucune carte trouvée.</p>';
-    }
-    ?>
-  </div>
+      ?>
+    </div>
+  </main>
   <?php include 'footer.php'; ?>
 </body>
 

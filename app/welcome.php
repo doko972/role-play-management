@@ -22,32 +22,25 @@ include 'config.php';
 </head>
 
 <body>
-  <?php
-  include 'header.php';
-  ?>
+  <?php include 'header.php'; ?>
   <main>
     <section>
       <article class="container-wce">
-        <div class="download-img"></div>
-        <div class="">
+        <div class="download-img" role="img" aria-label="Image de téléchargement"></div>
+        <div>
           <h3 class="texte-position__center">
             <?php
             if (isset($Login) && !empty($Login)) {
               echo htmlspecialchars($Login, ENT_QUOTES, 'UTF-8');
             } else {
               echo 'Téléchargement : ';
-
             }
             ?>
           </h3>
-          <!-- <script>
-              setTimeout(function () {
-                window.location.href = 'https://drive.google.com/file/d/1Q0oGWF24WcgOGbs9YEOrlT_fMuWY4znX/view?usp=sharing';
-              }, 3000);
-            </script> -->
           <div class="content">
-            <button onclick="openDownload()" class="button button__register"><a
-                href="saint.php">Télécharger</a></button>
+            <button onclick="openDownload()" class="button button__register" aria-label="Télécharger">
+              Télécharger
+            </button>
           </div>
         </div>
       </article>

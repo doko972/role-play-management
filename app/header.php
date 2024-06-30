@@ -1,31 +1,21 @@
 <header class="sticky">
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Menu principal">
         <div class="navbar-container container">
-            <input type="checkbox" name="" id="">
-            <div class="hamburger-lines">
+            <input type="checkbox" name="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu">
+            <div class="hamburger-lines" aria-hidden="true">
                 <span class="line line1"></span>
                 <span class="line line2"></span>
                 <span class="line line3"></span>
             </div>
             <ul class="menu-items">
-                <li><button class="btn-add-event--register--nav "><a href="index.php">Accueil</a></button></li>
-                <li><input type="checkbox" id="athena-toggle">
-                    <button class="btn-add-event--register--nav "><a href="saint.php">Athena</a></button>
-                </li>
-                <li>
-                    <input type="checkbox" id="athena-toggle">
-                    <button class="btn-add-event--register--nav"><a href="marinas.php">Poseidon</a></button>
-                </li>
-                <li>
-                    <input type="checkbox" id="athena-toggle">
-                    <button class="btn-add-event--register--nav"><a href="spectres.php">Hades</a></button>
-                </li>
-                <!-- <li><button class="btn-add-event--register--nav"><a href="#">Calendrier</a></button>
-                </li> -->
-                <li><button class="btn-add-event--register--nav"><a href="https://discord.gg/3zkTwdDnhc">Discord</a></button>
-                </li>
-                <li><button class="btn-add-event--register--nav"><a href="#">Connexion</a></button></li>
-                <li><button class="btn-add-event--register--nav"><a href="account.php">Accès au jeu</a></button></li>
+                <li><a class="btn-add-event--register--nav" href="index.php">Accueil</a></li>
+                <li><a class="btn-add-event--register--nav" href="saint.php">Athena</a></li>
+                <li><a class="btn-add-event--register--nav" href="marinas.php">Poseidon</a></li>
+                <li><a class="btn-add-event--register--nav" href="spectres.php">Hades</a></li>
+                <!-- <li><a class="btn-add-event--register--nav" href="#">Calendrier</a></li> -->
+                <li><a class="btn-add-event--register--nav" href="https://discord.gg/3zkTwdDnhc">Discord</a></li>
+                <li><a class="btn-add-event--register--nav" href="#">Connexion</a></li>
+                <li><a class="btn-add-event--register--nav" href="account.php">Accès au jeu</a></li>
             </ul>
         </div>
     </nav>
