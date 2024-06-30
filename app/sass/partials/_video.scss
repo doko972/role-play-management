@@ -64,6 +64,18 @@ iframe {
   z-index: 0;
   overflow: hidden;
 }
+.navbar-container__news {
+  position: relative;
+  background-image: url("../img/backathena.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 5%;
+  height: 25rem;
+  width: 100vw;
+  margin: 0;
+  z-index: 0;
+  overflow: hidden;
+}
 
 .navbar-container__back::before, .navbar-container__back::after {
   content: '';

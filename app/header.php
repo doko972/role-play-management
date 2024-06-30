@@ -9,6 +9,7 @@
             </div>
             <ul class="menu-items">
                 <li><a class="btn-add-event--register--nav" href="index.php">Accueil</a></li>
+                <li><a class="btn-add-event--register--nav" href="index.php">News</a></li>
                 <li><a class="btn-add-event--register--nav" href="saint.php">Athena</a></li>
                 <li><a class="btn-add-event--register--nav" href="marinas.php">Poseidon</a></li>
                 <li><a class="btn-add-event--register--nav" href="spectres.php">Hades</a></li>
