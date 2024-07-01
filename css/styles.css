@@ -624,7 +624,6 @@ form button:hover {
     position: relative;
     height: 4rem;
     width: 100%;
-    margin: 1rem;
   }
   .navbar-container input[type=checkbox] {
     position: absolute;

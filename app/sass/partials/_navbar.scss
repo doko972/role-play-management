@@ -4,7 +4,7 @@
 }
 
 .navbar {
-  background-color: var(--black-semi); // Semitransparent black
+  background-color: var(--black-semi);
   height: 4rem;
   margin: 0;
   display: flex;
@@ -140,6 +140,7 @@
     display: block;
     position: relative;
     height: 4rem;
+    width: 100%;
   }
 
   .navbar-container input[type="checkbox"] {
