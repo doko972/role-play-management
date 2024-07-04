@@ -110,13 +110,15 @@ iframe {
 
 @media screen and (max-width: 768px) {
   .navbar-container__back {
-    background-position: top center; /* Ajuster la position pour les petits écrans */
+    background-position: top center;
+    height: 10vh;
   }
 }
 
 @media screen and (max-width: 480px) {
   .navbar-container__back {
-    background-position: top center; /* Ajuster la position pour les très petits écrans */
+    background-position: top center;
+    height: 10vh;
   }
 }
 

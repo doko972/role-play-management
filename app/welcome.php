@@ -20,7 +20,6 @@ include 'config.php';
     }
   </script>
 </head>
-
 <body>
   <?php include 'header.php'; ?>
   <main>
@@ -38,8 +37,8 @@ include 'config.php';
             ?>
           </h3>
           <div class="content">
-            <button onclick="openDownload()" class="button button__register" aria-label="Télécharger">
-              Télécharger
+            <button onclick="openDownload()" class="button button__register" aria-label="Télécharger le jeu">
+              Télécharger le jeu
             </button>
           </div>
         </div>

@@ -624,7 +624,6 @@ form button:hover {
     position: relative;
     height: 4rem;
     width: 100%;
-    margin: 1rem;
   }
   .navbar-container input[type=checkbox] {
     position: absolute;
@@ -642,7 +641,7 @@ form button:hover {
     width: 35px;
     position: absolute;
     top: 2.3rem;
-    right: 0;
+    right: 1rem;
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -1031,12 +1030,14 @@ iframe {
 }
 @media screen and (max-width: 768px) {
   .navbar-container__back {
-    background-position: top center; /* Ajuster la position pour les petits écrans */
+    background-position: top center;
+    height: 10vh;
   }
 }
 @media screen and (max-width: 480px) {
   .navbar-container__back {
-    background-position: top center; /* Ajuster la position pour les très petits écrans */
+    background-position: top center;
+    height: 10vh;
   }
 }
 @media (min-width: 769px) and (max-width: 1200px) {
