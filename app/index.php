@@ -73,15 +73,15 @@
           <p>Date : 15 juillet 2024</p>
           <p>Description : Rejoignez-nous pour sauver Athéna des griffes des Spectres !</p>
         </li> -->
-          <li class="event-item">
-            <div class="">
+           <a href="news.php"><li class="event-card">
+          <div class="">
               <p>Tournois Galactique pour la reprise du serveur !</p>
               <p> Ne le manquez pas !</p>
             </div>
             <h3 class="texte-position">Tournoi RP/PvP</h3>
             <p>Date : Samedi 31 août 2024 de 20h00 à 22h00</p>
             <p>Description : Montrez vos compétences de combat et gagnez des récompenses.</p>
-          </li>
+          </li></a> 
         </ul>
       </article>
     </section>

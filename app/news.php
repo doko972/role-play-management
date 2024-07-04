@@ -24,15 +24,15 @@
                 <div class="events-container">
                 <a href="#"><div class="event-card">
                         <h3>Tournoi des Chevaliers</h3>
-                        <p>Date : 15 juillet 2024</p>
+                        <p>Date : 15 Juin 2024</p>
                         <p>Description : Rejoignez le Tournoi des Chevaliers et montrez votre bravoure.</p>
                     </div></a>
                     <a href="#"><div class="event-card">
                         <h3>Quête spéciale : Sauvetage d'Athéna</h3>
-                        <p>Date : 22 juillet 2024</p>
+                        <p>Date : 22 Juin 2024</p>
                         <p>Description : Rejoignez-nous pour sauver Athéna des griffes des Spectres !</p>
                     </div></a>
-                    <a href="#"><div class="event-card">
+                    <a href="event/event_1.php"><div class="event-card">
                         <h3>Tournois Galactique</h3>
                         <p>Date : Samedi 31 août 2024</p>
                         <p>Description : Participez au prestigieux Championnat Galactique et prouvez votre valeur en tant que Chevalier.</p>

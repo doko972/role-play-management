@@ -37,29 +37,24 @@
                 <div class="rewards-section">
                     <h2>Récompenses</h2>
                     <div class="rewards-container">
-                        <div class="reward-item">
-                            <img src="../img/reward/2024-06-18 21-26-20.webp" alt="Monture Gorille du Taureau"
-                                class="reward-image">
+                        <div class="reward-item" tabindex="0" role="button" aria-label="Monture Gorille du Taureau">
+                            <img src="../img/reward/2024-06-18 21-26-20.webp" alt="Monture Gorille du Taureau" class="reward-image">
                             <div class="reward-text">Monture Gorille du Taureau</div>
                         </div>
-                        <div class="reward-item">
-                            <img src="../img/reward/2024-07-04 12-33-40.webp" alt="Monture de l'Hydre"
-                                class="reward-image">
+                        <div class="reward-item" tabindex="0" role="button" aria-label="Monture de l'Hydre">
+                            <img src="../img/reward/2024-07-04 12-33-40.webp" alt="Monture de l'Hydre" class="reward-image">
                             <div class="reward-text">Monture de l'Hydre</div>
                         </div>
-                        <div class="reward-item">
-                            <img src="../img/reward/2024-07-04 12-33-58.webp" alt="Monture du Tyranosaure"
-                                class="reward-image">
+                        <div class="reward-item" tabindex="0" role="button" aria-label="Monture du Tyranosaure">
+                            <img src="../img/reward/2024-07-04 12-33-58.webp" alt="Monture du Tyranosaure" class="reward-image">
                             <div class="reward-text">Monture du Tyranosaure</div>
                         </div>
-                        <div class="reward-item">
-                            <img src="../img/reward/2024-07-04 12-41-52.webp" alt="L'armure d'Arès"
-                                class="reward-image">
+                        <div class="reward-item" tabindex="0" role="button" aria-label="L'armure d'Arès">
+                            <img src="../img/reward/2024-07-04 12-41-52.webp" alt="L'armure d'Arès" class="reward-image">
                             <div class="reward-text">Armure du Dieu de la Guerre Arès</div>
                         </div>
-                        <div class="reward-item">
-                            <img src="../img/reward/2024-07-04 12-43-34.webp" alt="Armure divine de Pégase Max"
-                                class="reward-image">
+                        <div class="reward-item" tabindex="0" role="button" aria-label="Armure divine de Pégase Max">
+                            <img src="../img/reward/2024-07-04 12-43-34.webp" alt="Armure divine de Pégase Max" class="reward-image">
                             <div class="reward-text">Armure divine de Pégase Max</div>
                         </div>
                     </div>

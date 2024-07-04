@@ -1,32 +1,34 @@
 .events {
-    background-color: var(--black-semi);
-    padding: 2rem;
-    border-radius: 1rem;
-    margin: 2rem 1rem;
-  }
-  
-  .event-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .event-item {
-    background-color: var(--backgr-blue);
-    border: 1px solid var(--white);
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin: 1rem;
-    color: var(--white);
-  }
-  .notification-bar {
-    // background-color: var(--white);
-    color: var(--black);
-    padding: 1rem;
-    text-align: center;
-    font-weight: bold;
-    border-bottom: 2px solid var(--black);
-    width: 100%;
-  }
+  background-color: var(--black-semi);
+  padding: 2rem;
+  border-radius: 1rem;
+  margin: 2rem 1rem;
+}
+
+.event-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.event-item {
+  background-color: var(--backgr-blue);
+  border: 1px solid var(--white);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem;
+  color: var(--white);
+}
+
+.notification-bar {
+  // background-color: var(--white);
+  color: var(--black);
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 2px solid var(--black);
+  width: 100%;
+}
+
 /* Section des événements */
 .events-section {
   background-color: var(--black-semi);
@@ -48,6 +50,7 @@
   padding: 1rem;
   color: var(--white);
   transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 1rem;
 }
 
 .event-card:hover {
@@ -86,7 +89,7 @@
 
   .event-card {
     padding: 1rem;
-    margin: 0.5rem 0;
+    // margin: 0.5rem 0;
   }
 
   .events-section {
@@ -127,6 +130,7 @@
     padding: 0.75rem;
   }
 }
+
 /* Section de l'article d'événement */
 .event-article-section {
   background-color: var(--black-semi);
@@ -144,32 +148,21 @@
   transition: background-color 0.3s ease;
 }
 
-.event-article:hover {
-  // background-color: var(--purple);
-  background-image: url("../img/backathena.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 5%;
-}
-
 .event-title {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: var(--goldenstrong);
 }
-
 .event-date {
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
-
 .event-image {
   width: 100%;
   height: auto;
   border-radius: 0.5rem;
   margin-bottom: 1.5rem;
 }
-
 .event-content p {
   font-size: 1rem;
   margin-bottom: 1rem;

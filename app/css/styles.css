@@ -676,7 +676,7 @@ form button:hover {
     transition: transform 0.4s ease-in-out;
   }
   .navbar .menu-items {
-    padding-top: 2rem;
+    padding: 2rem 0;
     background: var(--backgr-blue);
     transform: translate(-150%);
     display: flex;
@@ -1589,7 +1589,7 @@ iframe {
   display: block;
   position: relative;
   padding: 56px 36px 52px 186px;
-  border-bottom: 1px solid #737788;
+  border-bottom: 1px solid #fff;
 }
 
 .news-point a {
@@ -1680,6 +1680,7 @@ iframe {
   padding: 1rem;
   color: var(--white);
   transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 1rem;
 }
 
 .event-card:hover {
@@ -1716,7 +1717,6 @@ iframe {
   }
   .event-card {
     padding: 1rem;
-    margin: 0.5rem 0;
   }
   .events-section {
     padding: 1rem;
@@ -1738,7 +1738,6 @@ iframe {
     margin: 1rem 0.5rem;
   }
 }
-/* Ensuring full width and proper spacing on small screens */
 @media (max-width: 480px) {
   .events-section {
     padding: 0.5rem;
@@ -1765,13 +1764,6 @@ iframe {
   padding: 2rem;
   color: var(--white);
   transition: background-color 0.3s ease;
-}
-
-.event-article:hover {
-  background-image: url("../img/backathena.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 5%;
 }
 
 .event-title {
