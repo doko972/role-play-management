@@ -64,6 +64,18 @@ iframe {
   z-index: 0;
   overflow: hidden;
 }
+.navbar-container__event{
+  position: relative;
+  background-image: url("../img/header_img.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  height: 50vh;
+  width: 100vw;
+  margin: 0;
+  z-index: 0;
+  overflow: hidden;
+}
 .navbar-container__news {
   position: relative;
   background-image: url("../img/backathena.webp");
@@ -109,14 +121,17 @@ iframe {
 }
 
 @media screen and (max-width: 768px) {
-  .navbar-container__back {
+  .navbar-container__back,
+  .navbar-container__event {
     background-position: top center;
     height: 10vh;
   }
+  
 }
 
 @media screen and (max-width: 480px) {
-  .navbar-container__back {
+  .navbar-container__back,
+  .navbar-container__event {
     background-position: top center;
     height: 10vh;
   }
