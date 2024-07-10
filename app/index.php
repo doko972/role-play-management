@@ -39,22 +39,6 @@
         </div>
       </article>
     </section>
-    <!-- Statistics -->
-    <!-- <section class="statistics">
-      <h2 class="texte-position">Statistiques</h2>
-      <div class="stats-container">
-        <div class="stat-card">
-          <h3>RP</h3>
-          <p>Nombre de personnages : 150</p>
-          <p>Quêtes complétées : 1200</p>
-        </div>
-        <div class="stat-card">
-          <h3>PvP</h3>
-          <p>Combats gagnés : 300</p>
-          <p>Combats perdus : 100</p>
-        </div>
-      </div>
-    </section> -->
     <section>
       <article>
         <h2 class="texte-position">Événements à venir</h2>

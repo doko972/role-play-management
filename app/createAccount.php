@@ -30,7 +30,7 @@ generateToken();
     <article class="article-form">
       <br>
       <div class="title__margin--register">
-        <h1>Créer un compte</h1>
+        <h1>Créer compte <br>pour<br>le Jeu en ligne</h1>
       </div>
       <div class="item-register">
         <div class="content">
