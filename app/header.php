@@ -14,8 +14,8 @@
                 <li><a class="btn-add-event--register--nav" href="marinas.php">Poseidon</a></li>
                 <li><a class="btn-add-event--register--nav" href="spectres.php">Hades</a></li>
                 <li><a class="btn-add-event--register--nav" href="https://discord.gg/3zkTwdDnhc">Discord</a></li>
-                <li><a class="btn-add-event--register--nav" href="#">Connexion</a></li>
-                <li><a class="btn-add-event--register--nav" href="account.php">Accès au jeu</a></li>
+                <li><a class="btn-add-event--register--nav" href="createAccount.php">Mon compte</a></li>
+                <!-- <li><a class="btn-add-event--register--nav" href="account.php">Accès au jeu</a></li> -->
             </ul>
         </div>
     </nav>

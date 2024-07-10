@@ -39,9 +39,6 @@
         </div>
       </article>
     </section>
-
-
-
     <!-- Statistics -->
     <!-- <section class="statistics">
       <h2 class="texte-position">Statistiques</h2>
@@ -58,21 +55,10 @@
         </div>
       </div>
     </section> -->
-
-    <!-- Upcoming Events -->
     <section>
-      <article>
-        <!-- Notifications -->
-
-      </article>
       <article>
         <h2 class="texte-position">Événements à venir</h2>
         <ul class="event-list">
-          <!-- <li class="event-item">
-          <h3>Quête spéciale : Sauvetage d'Athéna</h3>
-          <p>Date : 15 juillet 2024</p>
-          <p>Description : Rejoignez-nous pour sauver Athéna des griffes des Spectres !</p>
-        </li> -->
            <a href="news.php"><li class="event-card">
           <div class="">
               <p>Tournois Galactique pour la reprise du serveur !</p>
@@ -85,7 +71,6 @@
         </ul>
       </article>
     </section>
-
     <section>
       <article>
         <div>

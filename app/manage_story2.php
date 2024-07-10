@@ -8,20 +8,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $uploadDirectory = 'uploads/'; // Répertoire de téléchargement
     $uploadedFilePath = '';
 
-    // Gérer le téléchargement du fichier
+    // Téléchargement du fichier
     if (isset($_FILES['new_image']) && $_FILES['new_image']['error'] != UPLOAD_ERR_NO_FILE) {
         if ($_FILES['new_image']['error'] == UPLOAD_ERR_OK) {
             $uploadedFileName = basename($_FILES['new_image']['name']);
             $uploadedFilePath = $uploadDirectory . $uploadedFileName;
             $fileType = mime_content_type($_FILES['new_image']['tmp_name']);
 
-            // Vérifier si le type de fichier est accepté
+            // Si le type de fichier est accepté
             $allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
             if (!in_array($fileType, $allowedTypes)) {
                 die('Type de fichier non autorisé. Seules les images JPEG, PNG et WebP sont autorisées.');
             }
 
-            // Vérifier que le répertoire de destination existe
+            // répertoire de destination existe ?
             if (!is_dir($uploadDirectory)) {
                 mkdir($uploadDirectory, 0755, true);
             }
@@ -42,14 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $card['mythology'] = $_POST['mythology'];
                 }
 
-                // if (!isset($card['mythology1']) && !empty($_POST['mythology1'])) {
-                //     $card['mythology1'] = $_POST['mythology1'];
-                // }
-
-                // if (!isset($card['mythology2']) && !empty($_POST['mythology2'])) {
-                //     $card['mythology2'] = $_POST['mythology2'];
-                // }
-
                 if ($uploadedFilePath) {
                     $card['image'] = $uploadedFilePath;
                 }
@@ -57,14 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (isset($_POST['mythology'])) {
                     $card['mythology'] = $_POST['mythology'];
                 }
-
-                // if (isset($_POST['mythology1'])) {
-                //     $card['mythology1'] = $_POST['mythology1'];
-                // }
-
-                // if (isset($_POST['mythology2'])) {
-                //     $card['mythology2'] = $_POST['mythology2'];
-                // }
 
                 if ($uploadedFilePath) {
                     $card['image'] = $uploadedFilePath;

@@ -46,7 +46,6 @@
                 <input type="submit" id="submit" class="button button__register" name="button" value="Cliquez sur S’inscrire">
               </div>
               <div class="content">
-                <!-- <span><a class="Password-forget" href="forgot_password.php">Mot de passe oublié ?</a></span> -->
               </div>
             </div>
           </form>
