@@ -29,8 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
     $id_faction = 1;
 
     // Personnage existe déjà ?
-    $stmt = $dbCo->prepare("SELECT COUNT(*) FROM characters 
-    WHERE id_characters = :card_id AND id_user = :user_id");
+    $stmt = $dbCo->prepare("SELECT COUNT(*) FROM characters WHERE id_characters = :card_id AND id_user = :user_id");
     $stmt->bindParam(':card_id', $card_id);
     $stmt->bindParam(':user_id', $user_id);
     $stmt->execute();
@@ -38,17 +37,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
 
     try {
         if ($count > 0) {
-            // Maj histoire existante
-            $stmt = $dbCo->prepare("UPDATE characters SET story = :story, story_date = :story_date 
-            WHERE id_characters = :card_id AND id_user = :user_id");
+            // Mise à jour de l'histoire existante
+            $stmt = $dbCo->prepare("UPDATE characters SET story = :story, story_date = :story_date WHERE id_characters = :card_id AND id_user = :user_id");
             $stmt->bindParam(':story', $story);
             $stmt->bindParam(':story_date', $story_date);
             $stmt->bindParam(':card_id', $card_id);
             $stmt->bindParam(':user_id', $user_id);
         } else {
             // Nouvelle histoire
-            $stmt = $dbCo->prepare("INSERT INTO characters (name, story, story_date, main_charc, id_faction, id_user) 
-            VALUES (:name, :story, :story_date, 1, :id_faction, :user_id)");
+            $stmt = $dbCo->prepare("INSERT INTO characters (id_characters, name, story, story_date, main_charc, id_faction, id_user) 
+            VALUES (:card_id, :name, :story, :story_date, 1, :id_faction, :user_id)");
+            $stmt->bindParam(':card_id', $card_id);
             $stmt->bindParam(':name', $card_name);
             $stmt->bindParam(':story', $story);
             $stmt->bindParam(':story_date', $story_date);
@@ -72,5 +71,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
     header('Location: card.php?id=' . intval($_POST['card_id']));
     exit();
 }
-
 ?>
