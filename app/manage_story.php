@@ -1,12 +1,18 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $json = file_get_contents('json/saints.json');
-    $cards = json_decode($json, true);
+session_start();
+include 'includes/_database.php';
+include 'includes/_functions.php';
 
+ob_start();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = intval($_POST['id']);
     $action = $_POST['action'];
     $uploadDirectory = 'uploads/';
     $uploadedFilePath = '';
+
+    echo "ID: $id <br>";
+    echo "Action: $action <br>";
 
     if (isset($_FILES['new_image']) && $_FILES['new_image']['error'] != UPLOAD_ERR_NO_FILE) {
         if ($_FILES['new_image']['error'] == UPLOAD_ERR_OK) {
@@ -31,31 +37,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    foreach ($cards as &$card) {
-        if ($card['id'] == $id) {
-            if ($action == 'create') {
-                if (!isset($card['mythology']) && !empty($_POST['mythology'])) {
-                    $card['mythology'] = $_POST['mythology'];
-                }
+    if ($action == 'create' || $action == 'update') {
+        if ($uploadedFilePath) {
+            $json = file_get_contents('json/saints.json');
+            $cards = json_decode($json, true);
 
-                if ($uploadedFilePath) {
+            foreach ($cards as &$card) {
+                if ($card['id'] == $id) {
                     $card['image'] = $uploadedFilePath;
-                }
-            } elseif ($action == 'update') {
-                if (isset($_POST['mythology'])) {
-                    $card['mythology'] = $_POST['mythology'];
-                }
-
-                if ($uploadedFilePath) {
-                    $card['image'] = $uploadedFilePath;
+                    break;
                 }
             }
-            break;
+
+            file_put_contents('json/saints.json', json_encode($cards, JSON_PRETTY_PRINT));
+        }
+
+        if (isset($_POST['mythology'])) {
+            $mythology = $_POST['mythology'];
+            echo "Mythology: $mythology <br>";
+
+            $stmt = $dbCo->prepare("UPDATE characters SET story = :story, story_date = NOW() WHERE id_characters = :id");
+            $stmt->bindParam(':story', $mythology);
+            $stmt->bindParam(':id', $id);
+            if ($stmt->execute()) {
+                echo "Story updated successfully.";
+            } else {
+                echo "Error updating story.";
+            }
         }
     }
 
-    file_put_contents('json/saints.json', json_encode($cards, JSON_PRETTY_PRINT));
     header('Location: card.php?id=' . $id);
     exit();
 }
+
+ob_end_flush();
 ?>

@@ -2,8 +2,8 @@
 session_start();
 include 'includes/_database.php';
 include 'includes/_functions.php';
-// eviter l'envoi prématuré des headers
-ob_start();  
+
+ob_start();  // Ajouté pour éviter l'envoi prématuré des headers
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = sanitizeInput($_POST['login']);
@@ -25,7 +25,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $updateStmt->bindParam(':id_user', $user['id_user']);
             $updateStmt->execute();
 
-            header("Location: welcome.php");
+            // Fetch selected card name from JSON
+            $selected_card_id = $user['selected_card'];
+            $json = file_get_contents('json/saints.json');
+            $cards = json_decode($json, true);
+            $selected_card_name = 'inconnu';
+
+            foreach ($cards as $card) {
+                if ($card['id'] == $selected_card_id) {
+                    $selected_card_name = $card['class'];
+                    break;
+                }
+            }
+
+            // Utiliser htmlspecialchars avec UTF-8 pour afficher correctement les caractères spéciaux
+            $_SESSION['welcome_message'] = 'Bienvenue ' . htmlspecialchars_decode($selected_card_name, ENT_QUOTES);
+
+            header("Location: welcome.php");  // Redirige vers le tableau de bord
             exit();
         } else {
             echo "Nom d'utilisateur ou mot de passe incorrect !";
@@ -36,6 +52,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Méthode de requête non autorisée !";
 }
-// sortie tamponnée au navigateur
-ob_end_flush();  
+
+ob_end_flush();  // Ajouté pour envoyer la sortie tamponnée au navigateur
 ?>
