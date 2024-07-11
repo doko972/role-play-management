@@ -1,7 +1,7 @@
 <?php
 session_start();
-include 'includes/_database.php'; // Assurez-vous que ce fichier contient la connexion à votre base de données
-include 'includes/_functions.php'; // Assurez-vous que ce fichier contient les fonctions nécessaires
+include 'includes/_database.php';
+include 'includes/_functions.php';
 
 ?>
 <!DOCTYPE html>

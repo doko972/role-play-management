@@ -1,18 +1,19 @@
 <?php
 ob_start(); // Démarre la mise en tampon de sortie
 session_start();
-include 'includes/_database.php'; // Assurez-vous que ce fichier contient la connexion à votre base de données
 
-// Vérifiez si l'utilisateur est connecté
+include 'includes/_database.php';
+
+// Utilisateur est connecté?
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 1;
-$user_id = $_SESSION['user_id']; // Assurez-vous que l'utilisateur est connecté
+$user_id = $_SESSION['user_id']; 
 
-// Récupérer l'ID de la carte choisie par l'utilisateur
+// ID de la carte choisie par l'utilisateur
 $stmt = $dbCo->prepare("SELECT selected_card FROM users WHERE id_user = :user_id");
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
@@ -36,11 +37,11 @@ $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
 $character = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Récupérer le message d'erreur de session
+// Message d'erreur de session
 $error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : '';
-unset($_SESSION['error_message']); // Supprimer le message d'erreur après l'affichage
+unset($_SESSION['error_message']);
 
-// Récupérer le nom de la carte
+// Nom de la carte
 $card_name = $card['name'];
 ?>
 <!DOCTYPE html>
@@ -74,21 +75,21 @@ $card_name = $card['name'];
         echo '<img src="' . htmlspecialchars($card['imagesso2'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . ' SSO">';
         echo '<p>Title: ' . htmlspecialchars($card['title'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
         if (isset($character['story'])) {
-          echo '<p class="animate-text">Histoire: ' . htmlspecialchars($character['story'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
+          echo '<p class="animate-text">Histoire: ' . htmlspecialchars_decode($character['story']) . '</p>'; //htmlspecialchars_decode pour les Caracteres speciaux! c'est magique
           echo '<p>Date de création de l\'histoire: ' . htmlspecialchars($character['story_date'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
         }
         echo '</div>';
 
         if ($selected_card_id == $id) {
             echo '<p>Cette carte a été choisie : ' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
-            // Form to submit the story
+
             echo '<form method="POST" action="submit_story.php">';
             echo '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">';
             echo '<textarea name="story" placeholder="Raconter votre histoire..." required></textarea>';
             echo '<button type="submit" class="btn-add-event--register">Soumettre votre histoire</button>';
             echo '</form>';
         } else {
-            // Form to select this card
+
             echo '<form method="POST" action="select_card.php">';
             echo '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">';
             echo '<button type="submit" class="btn-add-event--register">Choisir cette carte</button>';
@@ -106,5 +107,5 @@ $card_name = $card['name'];
 </body>
 </html>
 <?php
-ob_end_flush(); // Envoie la sortie tamponnée et désactive la mise en tampon de sortie
+ob_end_flush();
 ?>

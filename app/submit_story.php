@@ -73,5 +73,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
     exit();
 }
 
-ob_end_flush();
 ?>
