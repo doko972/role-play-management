@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(':birthday', $birthday);
 
             if ($stmt->execute()) {
-                header("Location: login.php");
+                header("Location: registration_success.php");
                 exit();
             } else {
                 echo "Erreur lors de l'enregistrement!";
