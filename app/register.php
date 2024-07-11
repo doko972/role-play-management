@@ -99,6 +99,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </section>
   </main>
   <?php include 'footer.php'; ?>
-  <script src="js/script.js"></script>
+  <!-- <script src="js/script.js"></script> -->
 </body>
 </html>

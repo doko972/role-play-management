@@ -2,8 +2,8 @@
 session_start();
 include 'includes/_database.php';
 include 'includes/_functions.php';
-
-ob_start();  // Ajouté pour éviter l'envoi prématuré des headers
+// eviter l'envoi prématuré des headers
+ob_start();  
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = sanitizeInput($_POST['login']);
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $updateStmt->bindParam(':id_user', $user['id_user']);
             $updateStmt->execute();
 
-            header("Location: welcome.php");  // Redirige vers la page de bienvenue
+            header("Location: welcome.php");
             exit();
         } else {
             echo "Nom d'utilisateur ou mot de passe incorrect !";
@@ -36,6 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Méthode de requête non autorisée !";
 }
-
-ob_end_flush();  // Ajouté pour envoyer la sortie tamponnée au navigateur
+// sortie tamponnée au navigateur
+ob_end_flush();  
 ?>

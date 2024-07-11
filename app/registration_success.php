@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+if (isset($_SESSION['user_id'])) {
+    header("Location: index.php");
     exit();
 }
 ?>
@@ -38,6 +38,6 @@ if (!isset($_SESSION['user_id'])) {
     </section>
   </main>
   <?php include 'footer.php'; ?>
-  <script src="js/script.js"></script>
+  <!-- <script src="js/script.js"></script> -->
 </body>
 </html>
