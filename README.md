@@ -8,3 +8,6 @@ To build images and run all containers and volumes
 docker-compose up -d
 ```
 Card system with sorting in php.
+
+-------------
+Create a roleplay database and import "roleplay.sql" (show in app folder).
