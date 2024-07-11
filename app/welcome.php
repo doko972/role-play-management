@@ -21,6 +21,8 @@ if (!isset($_SESSION['user_id'])) {
 <body>
   <?php include 'header.php'; ?>
   <main>
+  <div class="head-card" role="empty" aria-label="Champs vide">
+  </div>
     <section>
       <article>
         <div class="title__margin--register"></div>

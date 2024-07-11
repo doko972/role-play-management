@@ -2,8 +2,8 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-    header("Location: index.php");
-    exit();
+  header("Location: index.php");
+  exit();
 }
 
 include 'includes/_database.php';
@@ -13,6 +13,7 @@ generateToken();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,9 +22,12 @@ generateToken();
   <link rel="icon" href="img/logo.ico">
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
   <?php include 'header.php'; ?>
   <main>
+    <div class="head-card" role="empty" aria-label="Champs vide">
+    </div>
     <section>
       <article class="article-form">
         <h1>Connexion</h1>
@@ -31,11 +35,13 @@ generateToken();
           <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
           <div class="input_signup active">
             <label for="user_name" class="sr-only">Nom d’utilisateur</label>
-            <input class="input input_form" id="user_name" type="text" name="login" aria-label="Nom d’utilisateur" placeholder="Nom d’utilisateur/Username">
+            <input class="input input_form" id="user_name" type="text" name="login" aria-label="Nom d’utilisateur"
+              placeholder="Nom d’utilisateur/Username">
             <div class="hint">Nom d’utilisateur</div>
 
             <label for="password" class="sr-only">Mot de passe</label>
-            <input class="input input_form" id="password" type="password" name="passwd" aria-label="Mot de passe" placeholder="Mdp/Password">
+            <input class="input input_form" id="password" type="password" name="passwd" aria-label="Mot de passe"
+              placeholder="Mdp/Password">
             <div class="hint">Mot de passe</div>
 
             <div class="content">
@@ -52,4 +58,5 @@ generateToken();
   <?php include 'footer.php'; ?>
   <script src="js/script.js"></script>
 </body>
+
 </html>
