@@ -14,8 +14,15 @@
                 <li><a class="btn-add-event--register--nav" href="marinas.php">Poseidon</a></li>
                 <li><a class="btn-add-event--register--nav" href="spectres.php">Hades</a></li>
                 <li><a class="btn-add-event--register--nav" href="https://discord.gg/3zkTwdDnhc">Discord</a></li>
-                <li><a class="btn-add-event--register--nav" href="createAccount.php">Mon compte</a></li>
-                <!-- <li><a class="btn-add-event--register--nav" href="account.php">Accès au jeu</a></li> -->
+                <!-- <li><a class="btn-add-event--register--nav" href="login.php">Se connecter</a></li>
+                <li><a class="btn-add-event--register--nav" href="register.php">S'inscrire</a></li> -->
+                <?php if (!isset($_SESSION['user_id'])): ?>
+                    <!-- <li><a class="btn-add-event--register--nav" href="login.php">Se connecter</a></li> -->
+                    <li><a class="btn-add-event--register--nav" href="register.php">S'inscrire</a></li>
+                <?php else: ?>
+                    <!-- <li><a href="profile.php">Mon Profil</a></li> -->
+                    <li><a class="btn-add-event--register--nav" href="logout.php">Se déconnecter</a></li>
+                <?php endif; ?>
             </ul>
         </div>
     </nav>

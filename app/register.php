@@ -10,6 +10,42 @@ include 'includes/_database.php';
 include 'includes/_functions.php';
 
 generateToken();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $login = sanitizeInput($_POST['login']);
+    $truename = sanitizeInput($_POST['truename']);
+    $email = sanitizeInput($_POST['email']);
+    $birthday = sanitizeInput($_POST['birthday']);
+    $passwd = sanitizeInput($_POST['passwd']);
+    $repasswd = sanitizeInput($_POST['repasswd']);
+    $token = sanitizeInput($_POST['token']);
+
+    if (validateToken($token)) {
+        if ($passwd === $repasswd) {
+            $hashedPassword = password_hash($passwd, PASSWORD_BCRYPT);
+
+            $stmt = $dbCo->prepare("INSERT INTO users (login, passwd, truename, email, birthday, creatime, is_online) VALUES (:login, :passwd, :truename, :email, :birthday, NOW(), 0)");
+            $stmt->bindParam(':login', $login);
+            $stmt->bindParam(':passwd', $hashedPassword);
+            $stmt->bindParam(':truename', $truename);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':birthday', $birthday);
+
+            if ($stmt->execute()) {
+                header("Location: login.php");
+                exit();
+            } else {
+                echo "Erreur lors de l'enregistrement!";
+            }
+        } else {
+            echo "Les mots de passe ne correspondent pas!";
+        }
+    } else {
+        echo "Token CSRF invalide!";
+    }
+} else {
+    echo "Méthode de requête non autorisée!";
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -27,7 +63,7 @@ generateToken();
     <section>
       <article class="article-form">
         <h1>Inscription</h1>
-        <form class="login_cont" action="register_process.php" method="post">
+        <form class="login_cont" action="register.php" method="post">
           <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
           <div class="input_signup active">
             <label for="user_name" class="sr-only">Nom d’utilisateur</label>
