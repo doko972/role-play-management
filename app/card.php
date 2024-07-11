@@ -30,14 +30,18 @@ foreach ($cards as $c) {
     }
 }
 
-$stmt = $dbCo->prepare("SELECT story, story_date FROM characters WHERE id_characters = :id");
+$stmt = $dbCo->prepare("SELECT story, story_date FROM characters WHERE id_characters = :id AND id_user = :user_id");
 $stmt->bindParam(':id', $id);
+$stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
 $character = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Récupérer le message d'erreur de session
 $error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : '';
 unset($_SESSION['error_message']); // Supprimer le message d'erreur après l'affichage
+
+// Récupérer le nom de la carte
+$card_name = $card['name'];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -77,6 +81,12 @@ unset($_SESSION['error_message']); // Supprimer le message d'erreur après l'aff
 
         if ($selected_card_id == $id) {
             echo '<p>Cette carte a été choisie : ' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
+            // Form to submit the story
+            echo '<form method="POST" action="submit_story.php">';
+            echo '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">';
+            echo '<textarea name="story" placeholder="Raconter votre histoire..." required></textarea>';
+            echo '<button type="submit" class="btn-add-event--register">Soumettre votre histoire</button>';
+            echo '</form>';
         } else {
             // Form to select this card
             echo '<form method="POST" action="select_card.php">';

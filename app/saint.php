@@ -34,7 +34,7 @@ include 'includes/_functions.php'; // Assurez-vous que ce fichier contient les f
           echo '<a href="card.php?id=' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">';
           echo '<img src="' . htmlspecialchars($card['image'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '">';
           echo '<p>' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
-          echo '<p>' . htmlspecialchars($character['story'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
+          // echo '<p>' . htmlspecialchars($character['story'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
           echo '</a>';
           echo '</div>';
           error_log('Link generated: card.php?id=' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8'));
