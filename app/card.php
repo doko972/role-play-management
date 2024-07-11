@@ -31,16 +31,12 @@ foreach ($cards as $c) {
   }
 }
 
-// Débogage : affichez les valeurs de $id et $user_id
-// var_dump($id, $user_id);
-
-$stmt = $dbCo->prepare("SELECT story, story_date FROM characters WHERE id_characters = :id AND id_user = :user_id");
+// Récupérer toutes les histoires pour la carte spécifique
+$stmt = $dbCo->prepare("SELECT story, story_date, id_user FROM characters WHERE id_characters = :id");
 $stmt->bindParam(':id', $id);
-$stmt->bindParam(':user_id', $user_id);
 
 if ($stmt->execute()) {
-    $character = $stmt->fetch(PDO::FETCH_ASSOC);
-
+    $stories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } else {
     $errorInfo = $stmt->errorInfo();
     var_dump($errorInfo);
@@ -50,7 +46,6 @@ if ($stmt->execute()) {
 $error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : '';
 unset($_SESSION['error_message']);
 
-// Nom de la carte
 $card_name = $card['name'];
 ?>
 <!DOCTYPE html>
@@ -78,35 +73,42 @@ $card_name = $card['name'];
           echo '<p class="error-message">' . htmlspecialchars($error_message, ENT_QUOTES, 'UTF-8') . '</p>';
         }
 
-        echo '<img src="' . htmlspecialchars($card['image'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '">';
-        echo '<div>';
-        echo '<h1>' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</h1>';
-        echo '<p>Class: ' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
-        echo '<p>SSO: ' . htmlspecialchars($card['sso'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
-        echo '<img src="' . htmlspecialchars($card['imagesso2'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . ' SSO">';
-        echo '<p>Titre: ' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
-        if (isset($character['story']) && !empty($character['story'])) {
-          echo '<p class="animate-text">Votre histoire: </p>' 
-          . '<p>' . htmlspecialchars_decode($character['story']) . '</p>';
-          echo '<p>Date de création de l\'histoire: ' . htmlspecialchars($character['story_date'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
+        echo '<img src="' . htmlspecialchars($card['image'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
+        . '<div>'
+        . '<h1>' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</h1>'
+        . '<p>Class: ' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
+        . '<p>SSO: ' . htmlspecialchars($card['sso'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
+        . '<img src="' . htmlspecialchars($card['imagesso2'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . ' SSO">'
+        . '<p>Titre: ' . htmlspecialchars($card['title'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
+
+        if (!empty($stories)) {
+          foreach ($stories as $story) {
+            echo '<div class="story">'
+            . '<p class="animate-text">Histoire:</p><p>' . htmlspecialchars_decode($story['story']) . '</p>'
+            . '<p>Date de création de l\'histoire: ' . htmlspecialchars($story['story_date'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
+            // echo '<p>Utilisateur: ' . htmlspecialchars($story['id_user'], ENT_QUOTES, 'UTF-8') . '</p>';
+            . '</div>';
+          }
+        } else {
+          echo '<p>Aucune histoire trouvée pour cette carte.</p>';
         }
+
         echo '</div>';
 
         if ($selected_card_id == $id) {
           echo '<p>Vous avez choisi : </p>' . 
           '<p>' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
 
-          echo '<form method="POST" action="submit_story.php">';
-          echo '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">';
-          echo '<textarea name="story" placeholder="Raconter votre histoire..." required></textarea>';
-          echo '<button type="submit" class="btn-add-event--register">Soumettre votre histoire</button>';
-          echo '</form>';
+          echo '<form method="POST" action="submit_story.php">'
+          . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
+          . '<textarea name="story" placeholder="Raconter votre histoire..." required></textarea>'
+          . '<button type="submit" class="btn-add-event--register">Soumettre votre histoire</button>'
+          . '</form>';
         } else {
-
-          echo '<form method="POST" action="select_card.php">';
-          echo '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">';
-          echo '<button type="submit" class="btn-add-event--register">Choisir cette carte</button>';
-          echo '</form>';
+          echo '<form method="POST" action="select_card.php">'
+          . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
+          . '<button type="submit" class="btn-add-event--register">Choisir cette carte</button>'
+          . '</form>';
         }
       } else {
         echo '<p>Carte non trouvée.</p>';

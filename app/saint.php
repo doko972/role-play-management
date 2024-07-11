@@ -30,12 +30,12 @@ include 'includes/_functions.php';
           $stmt->execute();
           $character = $stmt->fetch(PDO::FETCH_ASSOC);
 
-          echo '<div class="card">';
-          echo '<a href="card.php?id=' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">';
-          echo '<img src="' . htmlspecialchars($card['image'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '">';
-          echo '<p>' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
-          echo '</a>';
-          echo '</div>';
+          echo '<div class="card">'
+          . '<a href="card.php?id=' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
+          . '<img src="' . htmlspecialchars($card['image'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
+          . '<p>' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
+          . '</a>'
+          . '</div>';
           error_log('Link generated: card.php?id=' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8'));
         }
       } else {
