@@ -5,8 +5,6 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
-
-// Contenu de la page d'accueil pour les utilisateurs connectés
 ?>
 <!DOCTYPE html>
 <html lang="fr">
