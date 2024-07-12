@@ -84,9 +84,8 @@ $card_name = $card['name'];
         if (!empty($stories)) {
           foreach ($stories as $story) {
             echo '<div class="story">'
-            . '<p class="animate-text">Histoire:</p><p>' . htmlspecialchars_decode($story['story']) . '</p>'
-            . '<p>Date de création de l\'histoire: ' . htmlspecialchars($story['story_date'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
-            // echo '<p>Utilisateur: ' . htmlspecialchars($story['id_user'], ENT_QUOTES, 'UTF-8') . '</p>';
+            . '<p class="animate-text">Histoire:</p><p>' . $story['story'] . '</p>'
+            . '<p>Date de création de l\'histoire: ' . date('d-m-Y', strtotime($story['story_date'])) . '</p>'
             . '</div>';
           }
         } else {
