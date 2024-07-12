@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 include 'includes/_database.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset($_POST['card_id'])) {
@@ -35,4 +36,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
 } else {
     echo "Données POST non reçues correctement.";
 }
+ob_end_flush();
 ?>

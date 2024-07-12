@@ -57,7 +57,7 @@ if (!isset($_SESSION['user_id'])) {
     <section>
       <article>
         <div>
-          <h2 class="texte-position">Choisissez votre camp!</h2>
+          <h2 class="texte-position">Choisissez votre Faction!</h2>
         </div>
         <div>
           <ul class="divinite__align">

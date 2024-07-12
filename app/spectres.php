@@ -26,6 +26,7 @@ include 'includes/_functions.php';
   <?php include 'header.php'; ?>
   <main>
     <div class="head-card" role="img" aria-label="Image de tête de carte"></div>
+    <h1 class="texte-position">Choissisez:</h1>
     <div class="container">
       <?php
       $json = file_get_contents('json/spectres.json');

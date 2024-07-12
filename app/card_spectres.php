@@ -77,10 +77,10 @@ $card_name = $card['class'];
         echo '<img src="' . htmlspecialchars($card['image'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
         . '<div>'
         . '<p>Faction: ' . htmlspecialchars($card['faction'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
-        . '<p>' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
-        . '<p>' . htmlspecialchars($card['sso'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
-        . '<img src="' . htmlspecialchars($card['imagesso2'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' 
-        . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '">';
+        . '<p>' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
+        // . '<img src="' . htmlspecialchars($card['imagesso2'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="'
+        . '<p>'. htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
+        . '<p>' . htmlspecialchars($card['sso'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
 
         if (!empty($stories)) {
           foreach ($stories as $story) {
@@ -98,7 +98,7 @@ $card_name = $card['class'];
 
         if ($selected_card_id == $id) {
           echo '<p>Vous avez choisi : </p>' . 
-          '<p>' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
+          '<p>' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
 
           echo '<form method="POST" action="story_spectres.php">'
           . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">'

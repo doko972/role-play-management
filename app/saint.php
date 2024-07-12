@@ -12,6 +12,7 @@ include 'includes/_functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,14 +23,23 @@ include 'includes/_functions.php';
   <script type="module" src="http://localhost:5173/@vite/client"></script>
   <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
+
 <body>
   <?php include 'header.php'; ?>
   <main>
-    <div class="head-card" role="img" aria-label="Image de tête de carte"></div>
+    <div class="head-card" role="empty" aria-label="Champs vide">
+    </div>
+    <h1 class="texte-position">Choissisez:</h1>
     <div class="container">
       <?php
-      $json = file_get_contents('json/saints.json');
-      $cards = json_decode($json, true);
+
+      //INSERT INTO `img`(`id_img`, `file`, `name`, `class`, `alternatif_txt`) 
+      // VALUES (3,'img/gold/cancer.jpg','Cancer','Chevalier d\'Or du Cancer','Image du chevalier d\or du Cancer'),
+      // $json = file_get_contents('json/saints.json');
+      // $cards = json_decode($json, true);
+      $cards = $dbCo->prepare("SELECT file FROM img WHERE id_img = :id");
+      $cards->bindParam(':id', $card['id']);
+      $cards->execute();
 
       if ($cards) {
         foreach ($cards as $card) {
@@ -39,11 +49,11 @@ include 'includes/_functions.php';
           $character = $stmt->fetch(PDO::FETCH_ASSOC);
 
           echo '<div class="card">'
-          . '<a href="card.php?id=' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
-          . '<img src="' . htmlspecialchars($card['image'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
-          . '<p>' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
-          . '</a>'
-          . '</div>';
+            . '<a href="card.php?id=' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
+            . '<img src="' . htmlspecialchars($card['file'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
+            . '<p>' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
+            . '</a>'
+            . '</div>';
           error_log('Link generated: card.php?id=' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8'));
         }
       } else {
@@ -54,4 +64,5 @@ include 'includes/_functions.php';
   </main>
   <?php include 'footer.php'; ?>
 </body>
+
 </html>

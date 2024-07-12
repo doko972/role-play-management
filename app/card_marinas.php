@@ -76,14 +76,13 @@ $card_name = $card['class'];
           echo '<p class="error-message">' . htmlspecialchars($error_message, ENT_QUOTES, 'UTF-8') . '</p>';
         }
 
-        echo '<img src="' . htmlspecialchars($card['image'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' 
-        . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
+        echo '<img src="' . htmlspecialchars($card['image'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
         . '<div>'
         . '<p>Faction: ' . htmlspecialchars($card['faction'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
-        . '<p>' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
-        . '<p>' . htmlspecialchars($card['sso'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
-        . '<img src="' . htmlspecialchars($card['imagesso2'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' 
-        . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '">';
+        . '<p>' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
+        // . '<img src="' . htmlspecialchars($card['imagesso2'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="'
+        . '<p>'. htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
+        . '<p>' . htmlspecialchars($card['sso'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
 
         if (!empty($stories)) {
           foreach ($stories as $story) {
