@@ -114,49 +114,55 @@
     }
 }
 
-    .accordion {
-        background-color: var(--backgr-blue);
-        color: var(--white);
-        cursor: pointer;
-        padding: 0.95rem;
-        width: 100%;
-        border: none;
-        text-align: left;
-        outline: none;
-        font-size: 1.2rem;
-        transition: background-color 0.3s;
-        border-radius: 5px;
-        margin-top: 0.9rem;
-        position: relative;
-    }
+.accordion {
+    background-color: var(--backgr-blue);
+    color: var(--white);
+    cursor: pointer;
+    padding: 0.95rem;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.2rem;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+    margin-top: 0.9rem;
+    position: relative;
+}
 
-    .accordion:hover {
-        background-color: var(--backgr-blue);
-    }
+.accordion:hover {
+    background-color: var(--backgr-blue);
+}
 
-    .accordion:after {
-        content: "+";
-        color: var(--white);
-        font-weight: bold;
-        position: absolute;
-        right: 1.25rem;
-    }
+.accordion:after {
+    content: "+";
+    color: var(--white);
+    font-weight: bold;
+    position: absolute;
+    right: 1.25rem;
+}
 
-    .accordion.active:after {
-        content: "−";
-    }
+.accordion.active:after {
+    content: "−";
+}
 
-    .panel {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-        background-color: white;
-        padding: 0 0.9rem;
-        display: none;
-    }
+.panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    background-color: white;
+    padding: 0 0.9rem;
+    display: none;
+}
 
-    .panel.show {
-        display: block;
-        max-height: 500px;
-        padding: 0.9rem;
-    }
+.panel.show {
+    display: block;
+    max-height: 500px;
+    padding: 0.9rem;
+}
+
+.story {
+    text-align : justify;
+    line-height: 2rem;
+    margin: .5rem;
+}

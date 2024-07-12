@@ -1,5 +1,4 @@
 <?php
-ob_start(); // Démarre la mise en tampon de sortie
 session_start();
 
 include 'includes/_database.php';
@@ -46,7 +45,7 @@ if ($stmt->execute()) {
 $error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : '';
 unset($_SESSION['error_message']);
 
-$card_name = $card['name'];
+$card_name = $card['class'];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -73,19 +72,20 @@ $card_name = $card['name'];
           echo '<p class="error-message">' . htmlspecialchars($error_message, ENT_QUOTES, 'UTF-8') . '</p>';
         }
 
-        echo '<img src="' . htmlspecialchars($card['image'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
+        echo '<img src="' . htmlspecialchars($card['image'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
         . '<div>'
-        . '<h1>' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</h1>'
-        . '<p>Class: ' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
-        . '<p>SSO: ' . htmlspecialchars($card['sso'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
-        . '<img src="' . htmlspecialchars($card['imagesso2'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . ' SSO">'
-        . '<p>Titre: ' . htmlspecialchars($card['title'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
+        . '<p>Faction: ' . htmlspecialchars($card['faction'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
+        . '<p>' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
+        . '<p>' . htmlspecialchars($card['sso'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
+        . '<img src="' . htmlspecialchars($card['imagesso2'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' 
+        . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '">';
 
         if (!empty($stories)) {
           foreach ($stories as $story) {
             echo '<div class="story">'
-            . '<p class="animate-text">Histoire:</p><p>' . $story['story'] . '</p>'
             . '<p>Date de création de l\'histoire: ' . date('d-m-Y', strtotime($story['story_date'])) . '</p>'
+            . '<p>Histoire:</p>'
+            . '<p class="animate-text">' . $story['story'] . '</p>'
             . '</div>';
           }
         } else {
@@ -100,8 +100,8 @@ $card_name = $card['name'];
 
           echo '<form method="POST" action="submit_story.php">'
           . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
-          . '<textarea name="story" placeholder="Raconter votre histoire..." required></textarea>'
-          . '<button type="submit" class="btn-add-event--register">Soumettre votre histoire</button>'
+          . '<textarea name="story" placeholder="Raconter, ou corrigez votre histoire..." required></textarea>'
+          . '<button type="submit" class="btn-add-event--register">Valider</button>'
           . '</form>';
         } else {
           echo '<form method="POST" action="select_card.php">'
@@ -122,5 +122,4 @@ $card_name = $card['name'];
 
 </html>
 <?php
-ob_end_flush();
 ?>

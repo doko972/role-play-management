@@ -1,231 +1,232 @@
 [
     {
         "id": 1,
-        "name": "Mu",
+        "name": "Belier",
         "image": "uploads\/belier.webp",
         "link": "card.php?id=1",
         "class": "Chevalier d'Or du Belier",
         "sso": "Saint Seiya Online :",
-        "imagesso2": "img\/gold\/belier\/armorbelier3.png"
+        "imagesso2": "img\/gold\/belier\/armorbelier3.png",
+        "faction": "Athéna"
      },
     {
         "id": 2,
-        "name": "Doko",
+        "name": "Balance",
         "image": "img\/gold\/balance.jpg",
         "link": "card.php?id=2",
         "class": "Chevalier d'Or de la Balance",
         "sso": "Saint Seiya Online :",
         "imagesso2": "img\/gold\/balance\/balancem.jpg",
-        "title": "I - Constellation"
+        "faction": "Athéna"
     },
     {
         "id": 3,
-        "name": "DeathMask",
+        "name": "Cancer",
         "image": "uploads\/cancer.webp",
         "link": "card.php?id=3",
         "class": "Chevalier d'Or du Cancer",
         "sso": "Saint Seiya Online :",
-        "imagesso2": "img\/gold\/balance\/cancerm.jpg",
-        "title": "I - Constellation"
+        "imagesso2": "img\/gold\/cancer\/cancerm.jpg",
+        "faction": "Athéna"
  },
     {
         "id": 4,
-        "name": "Shura",
+        "name": "Capricorne",
         "image": "img\/gold\/capricorne.jpg",
         "link": "card.php?id=4",
         "class": "Chevalier d'Or du Capricorne",
         "sso": "Saint Seiya Online :",
-        "imagesso2": "img\/gold\/balance\/capricornem.jpg",
-        "title": "I - Constellation"
+        "imagesso2": "img\/gold\/capricorne\/capricornem.jpg",
+        "faction": "Athéna"
     },
     {
         "id": 5,
-        "name": "saga",
+        "name": "Gemeaux",
         "image": "img\/gold\/gemeaux.jpg",
         "link": "card.php?id=5",
         "class": "Chevalier d'Or des gemeaux",
         "sso": "Saint Seiya Online :",
-        "imagesso2": "img\/gold\/balance\/gemeaux.jpg",
-        "title": "I - Constellation"
+        "imagesso2": "img\/gold\/gemeaux\/gemeauxm.jpg",
+        "faction": "Athéna"
     },
     {
         "id": 6,
-        "name": "Aiolia",
+        "name": "Lion",
         "image": "img\/gold\/lion.jpg",
         "link": "card.php?id=6",
         "class": "Chevalier d'Or du Lion",
         "sso": "Saint Seiya Online :",
-        "imagesso2": "img\/gold\/balance\/lionm.jpg",
-        "title": "I - Constellation"
+        "imagesso2": "img\/gold\/lion\/lionm.jpg",
+        "faction": "Athéna"
     },
     {
         "id": 7,
-        "name": "Aphrodite",
+        "name": "Poissons",
         "image": "img\/gold\/poissons.jpg",
         "link": "card.php?id=7",
         "class": "Chevalier d'Or du Poissons",
         "sso": "Saint Seiya Online :",
-        "imagesso2": "img\/gold\/balance\/poissonsm.jpg",
-        "title": "I - Constellation"
+        "imagesso2": "img\/gold\/poissons\/poissonsm.jpg",
+        "faction": "Athéna"
     },
     {
         "id": 8,
-        "name": "Aiolos",
+        "name": "Sagittaire",
         "image": "img\/gold\/sagittaire.jpg",
         "link": "card.php?id=8",
         "class": "Chevalier d'Or du Sagittaire",
         "sso": "Saint Seiya Online :",
-        "imagesso2": "img\/gold\/balance\/sagittairem.jpg",
-        "title": "I - Constellation"
+        "imagesso2": "img\/gold\/sagittaire\/sagittairem.jpg",
+        "faction": "Athéna"
     },
     {
         "id": 9,
-        "name": "Milo",
+        "name": "Scorpion",
         "image": "img\/gold\/scorpion.jpg",
         "link": "card.php?id=9",
         "class": "Chevalier d'Or du Scorpion",
         "sso": "Saint Seiya Online :",
-        "imagesso2": "img\/gold\/balance\/scorpionm.jpg",
-        "title": "I - Constellation"
+        "imagesso2": "img\/gold\/scorpion\/scorpionm.jpg",
+        "faction": "Athéna"
     },
     {
         "id": 10,
-        "name": "Aldebaran",
+        "name": "Taureau",
         "image": "img\/gold\/taureau.jpg",
         "link": "card.php?id=10",
         "class": "Chevalier d'Or du Taureau",
         "sso": "Saint Seiya Online :",
-        "imagesso2": "img\/gold\/balance\/taureaum.jpg",
-        "title": "I - Constellation"
+        "imagesso2": "img\/gold\/taureau\/taureaum.jpg",
+        "faction": "Athéna"
     },
     {
         "id": 11,
-        "name": "Camus",
+        "name": "Verseau",
         "image": "img\/gold\/verseau.jpg",
         "link": "card.php?id=11",
         "class": "Chevalier d'Or du Verseau",
         "sso": "Saint Seiya Online :",
-        "imagesso2": "img\/gold\/balance\/verseaum.jpg",
-        "title": "I - Constellation"
+        "imagesso2": "img\/gold\/verseau\/verseaum.jpg",
+        "faction": "Athéna"
     },
     {
         "id": 12,
-        "name": "Shaka",
+        "name": "Vierge",
         "image": "img\/gold\/vierge.jpg",
         "link": "card.php?id=12",
         "class": "Chevalier d'Or du Vierge",
         "sso": "Saint Seiya Online :",
-        "imagesso2": "img\/gold\/balance\/viergem.jpg",
-        "title": "I - Constellation"
+        "imagesso2": "img\/gold\/vierge\/viergem.jpg",
+        "faction": "Athéna"
     },
     {
         "id": 13,
-        "name": "Marine",
+        "name": "Aigle",
         "image": "img\/argent\/aigle.webp",
         "link": "card.php?id=13",
         "class": "Chevalier d'Argent de l'Aigle",
         "sso": "Saint Seiya Online :",
         "imagesso2": "img\/gold\/balance\/viergem.jpg",
-        "title": "I - Constellation"
+        "faction": "Athéna"
     },
     {
         "id": 14,
-        "name": "Babel",
+        "name": "Centaure",
         "image": "img\/argent\/centaure.webp",
         "link": "card.php?id=14",
         "class": "Chevalier d'Argent du Centaure",
         "sso": "Saint Seiya Online :",
         "imagesso2": "img\/argent\/balance\/viergem.jpg",
-        "title": "I - Constellation"
+        "faction": "Athéna"
     },
     {
         "id": 15,
-        "name": "Jamian",
+        "name": "Corbeau",
         "image": "img\/argent\/corbeau.webp",
         "link": "card.php?id=15",
         "class": "Chevalier d'Argent du Corbeau",
         "sso": "Saint Seiya Online :",
         "imagesso2": "img\/argent\/balance\/viergem.jpg",
-        "title": "I - Constellation"
+        "faction": "Athéna"
     },
     {
         "id": 16,
-        "name": "Ptolemy",
+        "name": "Fleche",
         "image": "img\/argent\/fleche.webp",
         "link": "card.php?id=16",
         "class": "Chevalier d'Argent de la Fleche",
         "sso": "Saint Seiya Online :",
         "imagesso2": "img\/argent\/balance\/viergem.jpg",
-        "title": "I - Constellation"
+        "faction": "Athéna"
     },
     {
         "id": 17,
-        "name": "Orph\u00e9e",
+        "name": "Lyre",
         "image": "img\/argent\/lyre.webp",
         "link": "card.php?id=17",
         "class": "Chevalier d'Argent de la Lyre",
         "sso": "Saint Seiya Online :",
         "imagesso2": "img\/argent\/balance\/viergem.jpg",
-        "title": "I - Constellation"
+        "faction": "Athéna"
     },
     {
         "id": 18,
-        "name": "Algol",
+        "name": "Persee",
         "image": "img\/argent\/persee.webp",
         "link": "card.php?id=18",
         "class": "Chevalier d'Argent de Pers\u00e9e",
         "sso": "Saint Seiya Online :",
         "imagesso2": "img\/argent\/balance\/viergem.jpg",
-        "title": "I - Constellation"
+        "faction": "Athéna"
     },
     {
         "id": 19,
-        "name": "Seiya",
+        "name": "Pegase",
         "image": "img\/bronze\/pegase.webp",
         "link": "card.php?id=19",
         "class": "Chevalier de Bronze de P\u00e9gase",
         "sso": "Saint Seiya Online :",
         "imagesso2": "img\/argent\/balance\/viergem.jpg",
-        "title": "I - Constellation"
+        "faction": "Athéna"
     },
     {
         "id": 20,
-        "name": "Shiryu",
+        "name": "Dragon",
         "image": "img\/bronze\/dragon.webp",
         "link": "card.php?id=20",
         "class": "Chevalier de Bronze du Dragon",
         "sso": "Saint Seiya Online :",
         "imagesso2": "img\/argent\/balance\/viergem.jpg",
-        "title": "I - Constellation"
+        "faction": "Athéna"
     },
     {
         "id": 21,
-        "name": "Hyoga",
+        "name": "Cygne",
         "image": "img\/bronze\/cygne.webp",
         "link": "card.php?id=21",
         "class": "Chevalier de Bronze du Cygne",
         "sso": "Saint Seiya Online :",
         "imagesso2": "img\/argent\/balance\/viergem.jpg",
-        "title": "I - Constellation"
+        "faction": "Athéna"
     },
     {
         "id": 22,
-        "name": "Shun",
+        "name": "Andromede",
         "image": "img\/bronze\/andromede.webp",
         "link": "card.php?id=22",
         "class": "Chevalier de Bronze d'Andromede",
         "sso": "Saint Seiya Online :",
         "imagesso2": "img\/argent\/balance\/viergem.jpg",
-        "title": "I - Constellation"
+        "faction": "Athéna"
     },
     {
         "id": 23,
-        "name": "Ikky",
+        "name": "Phoenix",
         "image": "img\/bronze\/phoenix.webp",
         "link": "card.php?id=23",
         "class": "Chevalier de Bronze du Phoenix",
         "sso": "Saint Seiya Online :",
         "imagesso2": "img\/argent\/balance\/viergem.jpg",
-        "title": "I - Constellation"
+        "faction": "Athéna"
     }
 ]
