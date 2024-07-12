@@ -2,25 +2,30 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
+  header("Location: login.php");
+  exit();
 }
+
+include 'includes/_database.php';
+include 'includes/_functions.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Choix de classe Spectres</title>
+  <title>Spectres d'Hadès</title>
   <link rel="icon" href="img/logo.ico">
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- <link rel="stylesheet" href="css/styles.css"> -->
+  <script type="module" src="http://localhost:5173/@vite/client"></script>
+  <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
-
 <body>
   <?php include 'header.php'; ?>
   <main>
-    <div class="head-card" role="img" aria-label="Image du Guerrier"> </div>
+    <div class="head-card" role="img" aria-label="Image de tête de carte"></div>
     <div class="container">
       <?php
       $json = file_get_contents('json/spectres.json');
@@ -28,13 +33,18 @@ if (!isset($_SESSION['user_id'])) {
 
       if ($cards) {
         foreach ($cards as $card) {
-          echo '<div class="card">';
-          echo '<a href="card3.php?id=' . htmlspecialchars($card['id'], ENT_QUOTES, 'UTF-8') . '">';
-          echo '<img src="' . htmlspecialchars($card['image'], ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['name'], ENT_QUOTES, 'UTF-8') . '">';
-          echo '<p>' . htmlspecialchars($card['name'], ENT_QUOTES, 'UTF-8') . '</p>';
-          echo '</a>';
-          echo '</div>';
-          error_log('Link generated: card3.php?id=' . htmlspecialchars($card['id'], ENT_QUOTES, 'UTF-8'));
+          $stmt = $dbCo->prepare("SELECT story FROM characters WHERE id_characters = :id");
+          $stmt->bindParam(':id', $card['id']);
+          $stmt->execute();
+          $character = $stmt->fetch(PDO::FETCH_ASSOC);
+
+          echo '<div class="card">'
+          . '<a href="card_spectres.php?id=' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
+          . '<img src="' . htmlspecialchars($card['image'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
+          . '<p>' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
+          . '</a>'
+          . '</div>';
+          error_log('Link generated: card_spectres.php?id=' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8'));
         }
       } else {
         echo '<p>Aucune carte trouvée.</p>';
@@ -44,5 +54,4 @@ if (!isset($_SESSION['user_id'])) {
   </main>
   <?php include 'footer.php'; ?>
 </body>
-
 </html>

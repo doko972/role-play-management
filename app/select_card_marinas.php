@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
     if ($existing_user) {
 
         $_SESSION['error_message'] = 'Ce rôle a déjà été choisi par un autre utilisateur.';
-        header('Location: card.php?id=' . $card_id);
+        header('Location: card_marinas.php?id=' . $card_id);
         exit();
     } else {
 
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
             echo "Erreur lors de la sélection de la carte.";
         }
 
-        header('Location: card.php?id=' . $card_id);
+        header('Location: card_marinas.php?id=' . $card_id);
         exit();
     }
 } else {

@@ -1,62 +1,62 @@
 [
     {
-        "id": 1,
-        "name": "Kanon",
+        "id": 50,
+        "name": "Dragon des Mers",
         "image": "img\/marinas\/ddm.jpg",
-        "link": "card.php?id=1",
-        "class": "G\u00e9n\u00e9ral du Dragon des Mers",
+        "link": "card_marinas.php?id=50",
+        "class": "General du Dragon des Mers",
         "sso": "Saint Seiya Online :",
         "imagesso2": "",
-        "title": "I - Constellation"
+        "faction": "Poseïdon"
     },
     {
-        "id": 2,
-        "name": "Krishna",
+        "id": 51,
+        "name": "Chrysaor",
         "image": "uploads\/chrysaor.jpg",
-        "link": "card.php?id=2",
-        "class": "G\u00e9n\u00e9ral de Chrysaor",
+        "link": "card_marinas.php?id=51",
+        "class": "General de Chrysaor",
         "sso": "Saint Seiya Online :",
         "imagesso2": "",
-        "title": "I - Constellation"
+        "faction": "Poseïdon"
     },
     {
-        "id": 3,
-        "name": "Baian",
+        "id": 52,
+        "name": "Hipocampe",
         "image": "img\/marinas\/hipocampe.jpg",
-        "link": "card.php?id=3",
-        "class": "G\u00e9n\u00e9ral du Cheval des Mers",
+        "link": "card_marinas.php?id=52",
+        "class": "General du Cheval des Mers",
         "sso": "Saint Seiya Online :",
         "imagesso2": "",
-        "title": "I - Constellation"
+        "faction": "Poseïdon"
     },
     {
-        "id": 4,
-        "name": "Isaak",
+        "id": 53,
+        "name": "Kraken",
         "image": "img\/marinas\/kraken.jpg",
-        "link": "card.php?id=4",
-        "class": "G\u00e9n\u00e9ral de Kraken",
+        "link": "card_marinas.php?id=53",
+        "class": "General de Kraken",
         "sso": "Saint Seiya Online :",
         "imagesso2": "",
-        "title": "I - Constellation"
+        "faction": "Poseïdon"
     },
     {
-        "id": 5,
-        "name": "Io",
+        "id": 54,
+        "name": "Scylla",
         "image": "img\/marinas\/scylla.jpg",
-        "link": "card.php?id=5",
-        "class": "G\u00e9n\u00e9ral de Scylla",
+        "link": "card_marinas.php?id=54",
+        "class": "General de Scylla",
         "sso": "Saint Seiya Online :",
         "imagesso2": "",
-        "title": "I - Constellation"
+        "faction": "Poseïdon"
     },
     {
-        "id": 6,
-        "name": "Sorrento",
+        "id": 55,
+        "name": "Sirene",
         "image": "img\/marinas\/sorrento.jpg",
-        "link": "card.php?id=6",
-        "class": "G\u00e9n\u00e9ral de la Sir\u00e8ne",
+        "link": "card_marinas.php?id=55",
+        "class": "General de la Sir\u00e8ne",
         "sso": "Saint Seiya Online :",
         "imagesso2": "",
-        "title": "I - Constellation"
+        "faction": "Poseïdon"
     }
 ]

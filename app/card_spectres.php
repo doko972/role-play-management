@@ -19,7 +19,7 @@ $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 $selected_card_id = $user['selected_card'];
 
-$json = file_get_contents('json/saints.json');
+$json = file_get_contents('json/spectres.json');
 $cards = json_decode($json, true);
 $card = null;
 
@@ -53,7 +53,7 @@ $card_name = $card['class'];
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chevalier d'Athena</title>
+  <title>Spectres d'Hadès</title>
   <link rel="icon" href="img/logo.ico">
   <!-- <link rel="stylesheet" href="css/styles.css"> -->
   <script type="module" src="http://localhost:5173/@vite/client"></script>
@@ -66,7 +66,7 @@ $card_name = $card['class'];
     <div class="card-detail">
       <?php
       if ($card) {
-        echo '<form action="saint.php" method="get">';
+        echo '<form action="spectres.php" method="get">';
         echo '<button type="submit" class="button__register" aria-label="Retour à l\'index">Retour à l\'index</button>';
         echo '</form>';
 
@@ -100,13 +100,13 @@ $card_name = $card['class'];
           echo '<p>Vous avez choisi : </p>' . 
           '<p>' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
 
-          echo '<form method="POST" action="submit_story.php">'
+          echo '<form method="POST" action="story_spectres.php">'
           . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
           . '<textarea name="story" placeholder="Raconter, ou corrigez votre histoire..." required></textarea>'
           . '<button type="submit" class="btn-add-event--register">Valider</button>'
           . '</form>';
         } else {
-          echo '<form method="POST" action="select_card.php">'
+          echo '<form method="POST" action="select_card_spectres.php">'
           . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
           . '<button type="submit" class="btn-add-event--register">Choisir cette carte</button>'
           . '</form>';

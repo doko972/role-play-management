@@ -1,6 +1,5 @@
 <?php
 session_start();
-// ob_start();
 include 'includes/_database.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset($_POST['card_id'])) {
@@ -17,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
     if ($existing_user) {
 
         $_SESSION['error_message'] = 'Ce rôle a déjà été choisi par un autre utilisateur.';
-        header('Location: card.php?id=' . $card_id);
+        header('Location: card_spectres.php?id=' . $card_id);
         exit();
     } else {
 
@@ -30,12 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
             echo "Erreur lors de la sélection de la carte.";
         }
 
-        header('Location: card.php?id=' . $card_id);
+        header('Location: card_spectres.php?id=' . $card_id);
         exit();
     }
 } else {
     echo "Données POST non reçues correctement.";
 }
-
-// ob_end_flush();
 ?>

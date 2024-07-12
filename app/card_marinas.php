@@ -13,13 +13,14 @@ $id = isset($_GET['id']) ? intval($_GET['id']) : 1;
 $user_id = $_SESSION['user_id'];
 
 // ID de la carte choisie par l'utilisateur
-$stmt = $dbCo->prepare("SELECT selected_card FROM users WHERE id_user = :user_id");
+$stmt = $dbCo->prepare("SELECT selected_card FROM users 
+WHERE id_user = :user_id");
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 $selected_card_id = $user['selected_card'];
 
-$json = file_get_contents('json/saints.json');
+$json = file_get_contents('json/marinas.json');
 $cards = json_decode($json, true);
 $card = null;
 
@@ -31,7 +32,8 @@ foreach ($cards as $c) {
 }
 
 // Récupérer toutes les histoires pour la carte spécifique
-$stmt = $dbCo->prepare("SELECT story, story_date, id_user FROM characters WHERE id_characters = :id");
+$stmt = $dbCo->prepare("SELECT story, story_date, id_user FROM characters 
+WHERE id_characters = :id");
 $stmt->bindParam(':id', $id);
 
 if ($stmt->execute()) {
@@ -53,7 +55,7 @@ $card_name = $card['class'];
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chevalier d'Athena</title>
+  <title>Marinas de Poséïdon</title>
   <link rel="icon" href="img/logo.ico">
   <!-- <link rel="stylesheet" href="css/styles.css"> -->
   <script type="module" src="http://localhost:5173/@vite/client"></script>
@@ -66,7 +68,7 @@ $card_name = $card['class'];
     <div class="card-detail">
       <?php
       if ($card) {
-        echo '<form action="saint.php" method="get">';
+        echo '<form action="marinas.php" method="get">';
         echo '<button type="submit" class="button__register" aria-label="Retour à l\'index">Retour à l\'index</button>';
         echo '</form>';
 
@@ -74,7 +76,8 @@ $card_name = $card['class'];
           echo '<p class="error-message">' . htmlspecialchars($error_message, ENT_QUOTES, 'UTF-8') . '</p>';
         }
 
-        echo '<img src="' . htmlspecialchars($card['image'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
+        echo '<img src="' . htmlspecialchars($card['image'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' 
+        . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
         . '<div>'
         . '<p>Faction: ' . htmlspecialchars($card['faction'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
         . '<p>' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
@@ -100,13 +103,13 @@ $card_name = $card['class'];
           echo '<p>Vous avez choisi : </p>' . 
           '<p>' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
 
-          echo '<form method="POST" action="submit_story.php">'
+          echo '<form method="POST" action="story_marinas.php">'
           . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
           . '<textarea name="story" placeholder="Raconter, ou corrigez votre histoire..." required></textarea>'
           . '<button type="submit" class="btn-add-event--register">Valider</button>'
           . '</form>';
         } else {
-          echo '<form method="POST" action="select_card.php">'
+          echo '<form method="POST" action="select_card_marinas.php">'
           . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
           . '<button type="submit" class="btn-add-event--register">Choisir cette carte</button>'
           . '</form>';

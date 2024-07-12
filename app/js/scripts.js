@@ -1,3 +1,4 @@
+import './../sass/styles.scss';
 "use strict";
 
 window.addEventListener("DOMContentLoaded", (event) => {
