@@ -28,27 +28,32 @@ include 'includes/_functions.php';
     <div class="head-card" role="img" aria-label="Image de tête de carte"></div>
     <h1 class="texte-position">Choissisez:</h1>
     <div class="container">
-      <?php
-      $json = file_get_contents('json/marinas.json');
-      $cards = json_decode($json, true);
+    <?php
+      try {
+        $stmt = $dbCo->prepare("SELECT * FROM img WHERE id_img BETWEEN 30 AND 40");
+        $stmt->execute();
+        $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-      if ($cards) {
-        foreach ($cards as $card) {
-          $stmt = $dbCo->prepare("SELECT story FROM characters WHERE id_characters = :id");
-          $stmt->bindParam(':id', $card['id']);
-          $stmt->execute();
-          $character = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($cards) {
+          foreach ($cards as $card) {
+            $stmt2 = $dbCo->prepare("SELECT story FROM characters WHERE id_characters = :id");
+            $stmt2->bindParam(':id', $card['id_img']);
+            $stmt2->execute();
+            $character = $stmt2->fetch(PDO::FETCH_ASSOC);
 
-          echo '<div class="card">'
-          . '<a href="card_marinas.php?id=' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
-          . '<img src="' . htmlspecialchars($card['image'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
-          . '<p>' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
-          . '</a>'
-          . '</div>';
-          error_log('Link generated: card_marinas.php?id=' . htmlspecialchars($card['id'] ?? '', ENT_QUOTES, 'UTF-8'));
+            echo '<div class="card">'
+              . '<a href="card_marinas.php?id=' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8') . '">'
+              . '<img src="' . htmlspecialchars($card['file'], ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['alternatif_txt'], ENT_QUOTES, 'UTF-8') . '">'
+              . '<p>' . htmlspecialchars($card['name'], ENT_QUOTES, 'UTF-8') . '</p>'
+              . '</a>'
+              . '</div>';
+            error_log('Link generated: card_marinas.php?id=' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8'));
+          }
+        } else {
+          echo '<p>Aucune carte trouvée.</p>';
         }
-      } else {
-        echo '<p>Aucune carte trouvée.</p>';
+      } catch (PDOException $e) {
+        echo 'Erreur : ' . $e->getMessage();
       }
       ?>
     </div>

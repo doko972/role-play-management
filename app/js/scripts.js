@@ -3,7 +3,9 @@ import './../sass/styles.scss';
 
 window.addEventListener("DOMContentLoaded", (event) => {
     animate_text();
+
 });
+
 
 function animate_text() {
     let delay = 10,
@@ -24,4 +26,6 @@ function animate_text() {
         });
         delay_start += delay * letters.length;
     });
+
+
 }

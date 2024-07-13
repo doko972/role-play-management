@@ -8,34 +8,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
     $card_id = intval($_POST['card_id']);
     $story = htmlspecialchars($_POST['story'], ENT_QUOTES, 'UTF-8');
     $story_date = date('Y-m-d');
-
-    $json = file_get_contents('json/saints.json');
-    $cards = json_decode($json, true);
     $card_name = null;
-
-    foreach ($cards as $card) {
-        if ($card['id'] == $card_id) {
-            $card_name = $card['name'];
-            break;
-        }
-    }
-
-    if ($card_name === null) {
-        $_SESSION['error_message'] = 'Nom de la carte introuvable.';
-        header('Location: card.php?id=' . $card_id);
-        exit();
-    }
-
     $id_faction = 1;
 
-    // Personnage existe déjà ?
-    $stmt = $dbCo->prepare("SELECT COUNT(*) FROM characters WHERE id_characters = :card_id AND id_user = :user_id");
-    $stmt->bindParam(':card_id', $card_id);
-    $stmt->bindParam(':user_id', $user_id);
-    $stmt->execute();
-    $count = $stmt->fetchColumn();
-
     try {
+        // Récupérer le nom de la carte depuis la base de données
+        $stmt = $dbCo->prepare("SELECT name FROM img WHERE id_img = :card_id");
+        $stmt->bindParam(':card_id', $card_id);
+        $stmt->execute();
+        $card = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($card) {
+            $card_name = $card['name'];
+        } else {
+            $_SESSION['error_message'] = 'Nom de la carte introuvable.';
+            header('Location: card.php?id=' . $card_id);
+            exit();
+        }
+
+        // Personnage existe déjà ?
+        $stmt = $dbCo->prepare("SELECT COUNT(*) FROM characters WHERE id_characters = :card_id AND id_user = :user_id");
+        $stmt->bindParam(':card_id', $card_id);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+
         if ($count > 0) {
             // Mise à jour de l'histoire existante
             $stmt = $dbCo->prepare("UPDATE characters SET story = :story, story_date = :story_date WHERE id_characters = :card_id AND id_user = :user_id");
@@ -46,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
         } else {
             // Nouvelle histoire
             $stmt = $dbCo->prepare("INSERT INTO characters (id_characters, name, story, story_date, main_charc, id_faction, id_user) 
-            VALUES (:card_id, :name, :story, :story_date, 1, :id_faction, :user_id)");
+                                    VALUES (:card_id, :name, :story, :story_date, 1, :id_faction, :user_id)");
             $stmt->bindParam(':card_id', $card_id);
             $stmt->bindParam(':name', $card_name);
             $stmt->bindParam(':story', $story);
