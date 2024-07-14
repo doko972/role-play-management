@@ -90,7 +90,6 @@
 @media (max-width: 480px) {
     .card {
         flex: 1 1 calc(50% - 2rem);
-        min-height: 1000px;
     }
 
     .card-detail h1 {
@@ -104,7 +103,6 @@
     @media (max-width: 361px) {
         .card {
             flex: 1 1 calc(50% - 2rem);
-            min-height: 1000px;
         }
 
         .card-detail h1 {
