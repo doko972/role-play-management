@@ -1,11 +1,11 @@
 import './../sass/styles.scss';
+import '/js/toggleEdit.js';
 "use strict";
 
 window.addEventListener("DOMContentLoaded", (event) => {
     animate_text();
-
+    
 });
-
 
 function animate_text() {
     let delay = 10,

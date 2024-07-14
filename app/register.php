@@ -44,7 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $hashedPassword = password_hash($passwd, PASSWORD_BCRYPT);
 
       try {
-        $stmt = $dbCo->prepare("INSERT INTO users (login, passwd, truename, email, birthday, creatime, is_online, faction_id) VALUES (:login, :passwd, :truename, :email, :birthday, NOW(), 0, :faction)");
+        $stmt = $dbCo->prepare("INSERT INTO users (login, passwd, truename, email, birthday, creatime, is_online, faction_id) 
+        VALUES (:login, :passwd, :truename, :email, :birthday, NOW(), 0, :faction)");
         $stmt->bindParam(':login', $login);
         $stmt->bindParam(':passwd', $hashedPassword);
         $stmt->bindParam(':truename', $truename);
@@ -65,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $error_message = "Les mots de passe ne correspondent pas!";
     }
   } else {
-    $error_message = "Token CSRF invalide!";
+    $error_message = "Mauvaise saisie";
   }
 }
 ?>
@@ -78,7 +79,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inscription</title>
   <link rel="icon" href="img/logo.ico">
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- <link rel="stylesheet" href="css/styles.css"> -->
+  <script type="module" src="http://localhost:5173/@vite/client"></script>
+  <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
 
 <body>
@@ -113,6 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <?php endforeach; ?>
             </select>
             <div class="hint">Sélectionner une faction</div>
+
             <label for="user_email" class="sr-only">Adresse e-mail</label>
             <input class="input input_form" id="user_email" type="email" name="email" aria-label="Adresse e-mail" placeholder="Email" required>
             <div class="hint">Adresse e-mail</div>

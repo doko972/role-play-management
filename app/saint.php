@@ -39,18 +39,19 @@ include 'includes/_functions.php';
 
                 if ($cards) {
                     foreach ($cards as $card) {
-                        $stmt2 = $dbCo->prepare("SELECT story FROM characters WHERE id_characters = :id");
+                        $stmt2 = $dbCo->prepare("SELECT story FROM characters 
+                        WHERE id_characters = :id");
                         $stmt2->bindParam(':id', $card['id_img']);
                         $stmt2->execute();
                         $character = $stmt2->fetch(PDO::FETCH_ASSOC);
 
                         echo '<div class="card">'
-                            . '<a href="card.php?id=' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8') . '">'
-                            . '<img src="' . htmlspecialchars($card['file'], ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['alternatif_txt'], ENT_QUOTES, 'UTF-8') . '">'
-                            . '<p>' . htmlspecialchars($card['name'], ENT_QUOTES, 'UTF-8') . '</p>'
+                            . '<a href="card.php?id=' . $card['id_img'] . '">'
+                            . '<img src="' . $card['file'] . '" alt="' . $card['alternatif_txt'] . '">'
+                            . '<p>' . $card['name'] . '</p>'
                             . '</a>'
                             . '</div>';
-                        error_log('Link generated: card.php?id=' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8'));
+                        error_log('Link generated: card.php?id=' . $card['id_img']);
                     }
                 } else {
                     echo '<p>Aucune carte trouvée.</p>';

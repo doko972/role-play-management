@@ -19,7 +19,9 @@ generateToken();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inscription</title>
   <link rel="icon" href="img/logo.ico">
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- <link rel="stylesheet" href="css/styles.css"> -->
+  <script type="module" src="http://localhost:5173/@vite/client"></script>
+  <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
 <body>
   <?php include 'header.php'; ?>

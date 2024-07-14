@@ -33,6 +33,12 @@ generateToken();
     <section>
       <article class="article-form">
         <h1>Connexion</h1>
+        <?php
+          if (isset($_SESSION['error_message'])) {
+              echo '<p class="error-message">' . htmlspecialchars($_SESSION['error_message'], ENT_QUOTES, 'UTF-8') . '</p>';
+              unset($_SESSION['error_message']);
+          }
+        ?>
         <form class="login_cont" action="authenticate.php" method="post">
           <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
           <div class="input_signup active">

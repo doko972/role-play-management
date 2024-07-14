@@ -30,24 +30,26 @@ include 'includes/_functions.php';
     <div class="container">
     <?php
       try {
-        $stmt = $dbCo->prepare("SELECT * FROM img WHERE id_img BETWEEN 30 AND 40");
+        $stmt = $dbCo->prepare("SELECT * FROM img 
+        WHERE id_img BETWEEN 30 AND 40");
         $stmt->execute();
         $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if ($cards) {
           foreach ($cards as $card) {
-            $stmt2 = $dbCo->prepare("SELECT story FROM characters WHERE id_characters = :id");
+            $stmt2 = $dbCo->prepare("SELECT story FROM characters 
+            WHERE id_characters = :id");
             $stmt2->bindParam(':id', $card['id_img']);
             $stmt2->execute();
             $character = $stmt2->fetch(PDO::FETCH_ASSOC);
 
             echo '<div class="card">'
-              . '<a href="card_marinas.php?id=' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8') . '">'
-              . '<img src="' . htmlspecialchars($card['file'], ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['alternatif_txt'], ENT_QUOTES, 'UTF-8') . '">'
-              . '<p>' . htmlspecialchars($card['name'], ENT_QUOTES, 'UTF-8') . '</p>'
+              . '<a href="card_marinas.php?id=' . $card['id_img'] . '">'
+              . '<img src="' . $card['file'] . '" alt="' . $card['alternatif_txt'] . '">'
+              . '<p>' . $card['name'] . '</p>'
               . '</a>'
               . '</div>';
-            error_log('Link generated: card_marinas.php?id=' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8'));
+            error_log('Link generated: card_marinas.php?id=' . $card['id_img']);
           }
         } else {
           echo '<p>Aucune carte trouvée.</p>';

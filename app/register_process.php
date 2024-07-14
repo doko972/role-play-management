@@ -31,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($stmt->execute()) {
                 echo "User created successfully...<br>";
-                // sorties tamponnées sont envoyées au navigateur ,
                 ob_flush();
                 header("Location: registration_success.php");
                 exit();
@@ -47,6 +46,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Méthode de requête non autorisée!<br>";
 }
-// envoyer la sortie tamponnée au navigateur
 ob_end_flush();
 ?>

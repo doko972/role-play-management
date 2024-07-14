@@ -42,14 +42,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: welcome.php");
             exit();
         } else {
-            echo "Nom d'utilisateur ou mot de passe incorrect !";
+            $_SESSION['error_message'] = "Nom d'utilisateur ou mot de passe incorrect !";
+            header("Location: login.php");
+            exit();
         }
     } else {
-        echo "Token CSRF invalide !";
+        $_SESSION['error_message'] = "Token CSRF invalide !";
+        header("Location: login.php");
+        exit();
     }
 } else {
-    echo "Méthode de requête non autorisée !";
+    $_SESSION['error_message'] = "Méthode de requête non autorisée !";
+    header("Location: login.php");
+    exit();
 }
-
-ob_end_flush();
-?>

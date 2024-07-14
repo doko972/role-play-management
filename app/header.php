@@ -18,7 +18,7 @@
                 <li><a class="btn-add-event--register--nav" href="register.php">S'inscrire</a></li> -->
                 <?php if (!isset($_SESSION['user_id'])): ?>
                     <!-- <li><a class="btn-add-event--register--nav" href="login.php">Se connecter</a></li> -->
-                    <li><a class="btn-add-event--register--nav" href="register.php">S'inscrire</a></li>
+                    <li><a class="btn-add-event--register--nav" href="login.php">Connexion</a></li>
                 <?php else: ?>
                     <!-- <li><a href="profile.php">Mon Profil</a></li> -->
                     <li><a class="btn-add-event--register--nav" href="logout.php">Se déconnecter</a></li>

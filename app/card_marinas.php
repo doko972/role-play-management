@@ -3,52 +3,76 @@ session_start();
 
 include 'includes/_database.php';
 
-define('MIN_ID', 30);
-define('MAX_ID', 40);
-
-// Utilisateur est connecté?
+// connecté ?
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
+  header("Location: login.php");
+  exit();
 }
 
-$id = isset($_GET['id']) ? intval($_GET['id']) : 1;
+$id = isset($_GET['id']) ? intval($_GET['id']) : 30;
 $user_id = $_SESSION['user_id'];
+$selected_card_id = null;
+$story = null;
+
+$min_id = 30;
+$max_id = 40;
 
 try {
-    // ID de la carte choisie par l'utilisateur
-    $stmt = $dbCo->prepare("SELECT selected_card FROM users WHERE id_user = :user_id");
-    $stmt->bindParam(':user_id', $user_id);
-    $stmt->execute();
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+  // carte sélectionnée par l'utilisateur
+  $stmt = $dbCo->prepare("SELECT selected_card FROM users 
+  WHERE id_user = :user_id");
+  $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+  $stmt->execute();
+  $user = $stmt->fetch(PDO::FETCH_ASSOC);
+  if ($user) {
     $selected_card_id = $user['selected_card'];
+  }
 
-    // Variables pour les constantes
-    $min_id = MIN_ID;
-    $max_id = MAX_ID;
+  // informations de la carte
+  $stmt = $dbCo->prepare("SELECT * FROM img 
+  WHERE id_img = :id AND id_img BETWEEN :min_id AND :max_id");
+  $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+  $stmt->bindParam(':min_id', $min_id, PDO::PARAM_INT);
+  $stmt->bindParam(':max_id', $max_id, PDO::PARAM_INT);
+  $stmt->execute();
+  $card = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Récupérer les informations de la carte depuis la base de données avec filtre BETWEEN
-    $stmt = $dbCo->prepare("SELECT * FROM img WHERE id_img = :id AND id_img BETWEEN :min_id AND :max_id");
-    $stmt->bindParam(':id', $id);
-    $stmt->bindParam(':min_id', $min_id);
-    $stmt->bindParam(':max_id', $max_id);
+  // histoires pour la carte
+  $stmt = $dbCo->prepare("SELECT story, story_date, id_user, name, image FROM characters 
+  WHERE id_characters = :id");
+  $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+  $stmt->execute();
+  $stories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  // nom de la carte sélectionnée
+  $selected_card_name = '';
+  if ($selected_card_id !== null) {
+    $stmt = $dbCo->prepare("SELECT name FROM img 
+    WHERE id_img = :selected_card_id");
+    $stmt->bindParam(':selected_card_id', $selected_card_id, PDO::PARAM_INT);
     $stmt->execute();
-    $card = $stmt->fetch(PDO::FETCH_ASSOC);
+    $selected_card = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($selected_card) {
+      $selected_card_name = $selected_card['name'];
+    }
+  }
 
-    // Récupérer toutes les histoires pour la carte spécifique
-    $stmt = $dbCo->prepare("SELECT story, story_date, id_user FROM characters WHERE id_characters = :id");
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-    $stories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  // une histoire existe pour cette carte et l'user?
+  foreach ($stories as $s) {
+    if ($s['id_user'] == $user_id) {
+      $story = $s;
+      break;
+    }
+  }
 
 } catch (PDOException $e) {
-    $error_message = 'Erreur : ' . $e->getMessage();
-    $card = null;
-    $stories = [];
+  $error_message = 'Erreur : ' . $e->getMessage();
+  $card = null;
+  $stories = [];
 }
 
-// Message d'erreur de session
-$error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : '';
+// erreur de session
+$error_message = $_SESSION['error_message'] ?? '';
 unset($_SESSION['error_message']);
 ?>
 <!DOCTYPE html>
@@ -57,7 +81,7 @@ unset($_SESSION['error_message']);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chevalier d'Athena</title>
+  <title>Chevalier de Poseidon</title>
   <link rel="icon" href="img/logo.ico">
   <!-- <link rel="stylesheet" href="css/styles.css"> -->
   <script type="module" src="http://localhost:5173/@vite/client"></script>
@@ -75,21 +99,24 @@ unset($_SESSION['error_message']);
         echo '</form>';
 
         if ($error_message) {
-          echo '<p class="error-message">' . htmlspecialchars($error_message, ENT_QUOTES, 'UTF-8') . '</p>';
+          echo '<p class="error-message">' . $error_message . '</p>';
         }
 
-        echo '<img src="' . htmlspecialchars($card['file'] ?? '', ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($card['alternatif_txt'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
-        . '<div>'
-        . '<p>Faction: ' . htmlspecialchars($card['class'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>'
-        . '<p>' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
+        echo '<img src="' . $card['file'] . '" alt="' . $card['alternatif_txt'] . '">'
+          . '<div>'
+          . '<p>Faction: ' . $card['class'] . '</p>'
+          . '<p>' . $card['name'] . '</p>';
 
         if (!empty($stories)) {
-          foreach ($stories as $story) {
-            echo '<div class="story">'
-            . '<p>Date de création de l\'histoire: ' . date('d-m-Y', strtotime($story['story_date'])) . '</p>'
-            . '<p>Histoire:</p>'
-            . '<p class="animate-text">' . htmlspecialchars($story['story'], ENT_QUOTES, 'UTF-8') . '</p>'
-            . '</div>';
+          foreach ($stories as $s) {
+            echo '<div class="story" id="displayArea">'
+              . '<p>Date de création de l\'histoire: ' . date('d-m-Y', strtotime($s['story_date'])) . '</p>'
+              . '<p>Histoire:</p>'
+              . '<p class="animate-text">' . $s['story'] . '</p>';
+            if (!empty($s['image'])) {
+              echo '<img src="' . $s['image'] . '" alt="Image de personnage">';
+            }
+            echo '</div>';
           }
         } else {
           echo '<p>Aucune histoire trouvée pour cette carte.</p>';
@@ -98,19 +125,27 @@ unset($_SESSION['error_message']);
         echo '</div>';
 
         if ($selected_card_id == $id) {
-          echo '<p>Vous avez choisi : </p>' . 
-          '<p>' . htmlspecialchars($card['name'] ?? '', ENT_QUOTES, 'UTF-8') . '</p>';
+          echo '<p>Vous avez choisi : </p>' .
+            '<p>' . $card['name'] . '</p>';
 
-          echo '<form method="POST" action="story_marinas.php">'
-          . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id_img'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
-          . '<textarea name="story" placeholder="Raconter, ou corrigez votre histoire..." required></textarea>'
-          . '<button type="submit" class="btn-add-event--register">Valider</button>'
-          . '</form>';
+          echo '<button id="editButton" onclick="toggleEdit()">Modifier</button>';
+
+          echo '<form id="editForm" method="POST" action="story_marinas.php" enctype="multipart/form-data" style="display:none;">'
+            . '<input type="hidden" name="card_id" value="' . $card['id_img'] . '">'
+            . '<textarea name="story" placeholder="Raconter, ou corrigez votre histoire..." required>' . $story['story'] . '</textarea>'
+            . '<br>'
+            . '<label for="image">Téléchargez une image:</label>'
+            . '<input type="file" id="image" name="image">'
+            . '<br>'
+            . '<button type="submit" class="btn-add-event--register">Valider</button>'
+            . '</form>';
+        } elseif ($selected_card_id !== null) { // nom de la carte déjà sélectionnée par l'user
+          echo '<p>Vous avez déjà choisi la carte : ' . $selected_card_name . '</p>';
         } else {
           echo '<form method="POST" action="select_card_marinas.php">'
-          . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id_img'] ?? '', ENT_QUOTES, 'UTF-8') . '">'
-          . '<button type="submit" class="btn-add-event--register">Choisir cette carte</button>'
-          . '</form>';
+            . '<input type="hidden" name="card_id" value="' . $card['id_img'] . '">'
+            . '<button type="submit" class="btn-add-event--register">Choisir cette carte</button>'
+            . '</form>';
         }
       } else {
         echo '<p>Carte non trouvée.</p>';
@@ -119,8 +154,8 @@ unset($_SESSION['error_message']);
     </div>
   </main>
   <script src="js/scripts.js"></script>
+  <script src="js/toggleEdit.js"></script>
   <?php include 'footer.php'; ?>
 </body>
+
 </html>
-<?php
-?>
