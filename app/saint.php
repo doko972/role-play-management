@@ -33,7 +33,7 @@ include 'includes/_functions.php';
         <div class="container">
             <?php
             try {
-                $stmt = $dbCo->prepare("SELECT * FROM img");
+                $stmt = $dbCo->prepare("SELECT * FROM img WHERE id_img BETWEEN 1 AND 29");
                 $stmt->execute();
                 $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
