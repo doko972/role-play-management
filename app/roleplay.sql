@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Jul 14, 2024 at 05:15 PM
+-- Generation Time: Jul 15, 2024 at 07:11 PM
 -- Server version: 8.0.37
 -- PHP Version: 8.2.8
 
@@ -31,6 +31,29 @@ CREATE TABLE `add_` (
   `id_characters` int NOT NULL,
   `id_img` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`) VALUES
+(1, 'Support et rapport de Bug'),
+(2, 'Suggestions'),
+(3, 'Discussions générales'),
+(4, 'Sanctuaire d\'Athéna'),
+(5, 'Sanctuaire sous-marin de Poséidon'),
+(6, 'Les Enfers d\'Hadès');
 
 -- --------------------------------------------------------
 
@@ -144,6 +167,52 @@ INSERT INTO `img` (`id_img`, `file`, `name`, `class`, `alternatif_txt`, `id_fact
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int NOT NULL,
+  `content` text NOT NULL,
+  `topic_id` int DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `content`, `topic_id`, `created_at`) VALUES
+(1, 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l&#039;imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n&#039;a pas fait que survivre cinq siècles, mais s&#039;est aussi adapté à la bureautique informatique, sans que son contenu n&#039;en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.', 1, '2024-07-15 17:30:18'),
+(2, 'Pourquoi l&#039;utiliser?\r\n\r\nOn sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L&#039;avantage du Lorem Ipsum sur un texte générique comme &#039;Du texte. Du texte. Du texte.&#039; est qu&#039;il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour &#039;Lorem Ipsum&#039; vous conduira vers de nombreux sites qui n&#039;en sont encore qu&#039;à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d&#039;y rajouter de petits clins d&#039;oeil, voire des phrases embarassantes).', 1, '2024-07-15 17:30:30'),
+(3, 'D&#039;où vient-il?\r\n\r\nContrairement à une opinion répandue, le Lorem Ipsum n&#039;est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s&#039;est intéressé à un des mots latins les plus obscurs, consectetur, extrait d&#039;un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du &quot;De Finibus Bonorum et Malorum&quot; (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l&#039;éthique. Les premières lignes du Lorem Ipsum, &quot;Lorem ipsum dolor sit amet...&quot;, proviennent de la section 1.10.32.', 1, '2024-07-15 17:30:42'),
+(4, 'Lorsque se termine Le sanctuaire de Hadès, l’habitué des CHEVALIERS DU ZODIAQUE est un peu dans le même état que le gamin qui assistait au drama de L’EMPIRE CONTRE ATTAQUE : La princesse Saori ? Elle est égorgée comme un mouton !\r\nShaka, le chevalier le plus proche de Bouddha ? Il se suicide ! Les chevaliers de bronze qui accomplissent des miracles depuis notre adolescence ? Ils ne se servent à rien et sont complètement dépassés par les événements. Quant aux chevaliers d’or, leurs glorieux aînés en qui le spectateur pouvait rechercher réassurance, ils se font balayer les uns après les autres et finissent en enfer où Rhadamante, l’un des trois Juges les humilient en les exterminant les uns après les autres.\r\n\r\nAussi insécurisés que son public, les chevaliers de Bronze vont devoir se lancer dans une bataille où leur rôle est crucial : retrouver Athéna au royaume des morts pour lui donner son armure qui lui permettra d’affronter leur ennemi ultime : Hadès.\r\nAlors que chaque arc de DRAGON BALL Z se distingueront les uns des autres, ceux des ST SEIYA forment une énorme continuité où, comme chez Marvel, tout événement est rattaché au précédent : Kanon et Saga des gémeaux manipulés par Hadès manipulent à leur tour le grand pope, Hilda de Polaris et Poseïdon donnant lieu aux saga du Sanctuaire, d’Asgard et de Poseïdon. Les pièces s’emboîtent patiemment et force est de constater que ST SEIYA n’est pas qu’un enchaînement de combats sans queue ni tête mais bel et bien d’une histoire au long cours qui trouve avec Hadès une conclusion à sa hauteur.', 3, '2024-07-15 18:55:42'),
+(5, 'on fait des suggestion ou non?', 4, '2024-07-15 19:09:30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `topics`
+--
+
+CREATE TABLE `topics` (
+  `id` int NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `category_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `topics`
+--
+
+INSERT INTO `topics` (`id`, `title`, `category_id`) VALUES
+(1, 'Premier nouveau sujet', 1),
+(2, 'Encore un nouveau sujet', 1),
+(3, 'Bienvenue chez vous mes Spectres', 6),
+(4, 'Petite suggestion ou pas', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `to_ban`
 --
 
@@ -213,6 +282,12 @@ ALTER TABLE `add_`
   ADD KEY `id_img` (`id_img`);
 
 --
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `characters`
 --
 ALTER TABLE `characters`
@@ -232,6 +307,20 @@ ALTER TABLE `faction`
 ALTER TABLE `img`
   ADD PRIMARY KEY (`id_img`),
   ADD KEY `fk_faction` (`id_faction`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `topic_id` (`topic_id`);
+
+--
+-- Indexes for table `topics`
+--
+ALTER TABLE `topics`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Indexes for table `to_ban`
@@ -258,6 +347,12 @@ ALTER TABLE `user_posts`
 --
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `characters`
 --
 ALTER TABLE `characters`
@@ -274,6 +369,18 @@ ALTER TABLE `faction`
 --
 ALTER TABLE `img`
   MODIFY `id_img` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `topics`
+--
+ALTER TABLE `topics`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -310,6 +417,18 @@ ALTER TABLE `characters`
 --
 ALTER TABLE `img`
   ADD CONSTRAINT `fk_faction` FOREIGN KEY (`id_faction`) REFERENCES `faction` (`id_faction`);
+
+--
+-- Constraints for table `posts`
+--
+ALTER TABLE `posts`
+  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`);
+
+--
+-- Constraints for table `topics`
+--
+ALTER TABLE `topics`
+  ADD CONSTRAINT `topics_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
 
 --
 -- Constraints for table `to_ban`
