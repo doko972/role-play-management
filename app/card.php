@@ -139,7 +139,7 @@ unset($_SESSION['error_message']);
             . '<button type="submit" class="btn-add-event--register">Valider</button>'
             . '</form>';
         } elseif ($selected_card_id !== null) { // nom de la carte déjà sélectionnée par l'user
-          echo '<p>Vous avez déjà choisi la carte : ' . htmlspecialchars($selected_card_name, ENT_QUOTES, 'UTF-8') . '</p>';
+          echo '<p>Vous avez déjà choisi le rôle de : ' . htmlspecialchars($selected_card_name, ENT_QUOTES, 'UTF-8') . '</p>';
         } else {
           echo '<form method="POST" action="select_card.php">'
             . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8') . '">'
