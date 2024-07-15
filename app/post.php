@@ -36,7 +36,6 @@ $posts = $stmt->fetchAll();
 <body>
     <?php include 'headerForum.php'; ?>
     <main>
-
         <section>
             <div class="navbar-container__back" role="img" aria-label="Image de fond de la barre de navigation"></div>
         </section>
@@ -44,22 +43,21 @@ $posts = $stmt->fetchAll();
             <h1>Forum Saint Seiya Online</h1>
             <h2 class="title-post"><?php echo htmlspecialchars($topic['title']); ?></h2>
         </section>
-
-        <div class="forum-container">
-            <?php foreach ($posts as $post): ?>
-                <div class="post">
-                    <p><?php echo htmlspecialchars($post['content']); ?></p>
-                    <p class="post-time"><?php echo $post['created_at']; ?></p>
+        <section class="forum-container">
+                <?php foreach ($posts as $post): ?>
+                    <div class="post">
+                        <p><?php echo htmlspecialchars($post['content']); ?></p>
+                        <p class="post-time"><?php echo $post['created_at']; ?></p>
+                    </div>
+                <?php endforeach; ?>
+                <div class="new-post">
+                    <form action="create_post.php" method="post">
+                        <textarea name="content" rows="4" required></textarea>
+                        <input type="hidden" name="topic_id" value="<?php echo $topic['id']; ?>">
+                        <button type="submit">Ajouter un post</button>
+                    </form>
                 </div>
-            <?php endforeach; ?>
-            <div class="new-post">
-                <form action="create_post.php" method="post">
-                    <textarea name="content" rows="4" required></textarea>
-                    <input type="hidden" name="topic_id" value="<?php echo $topic['id']; ?>">
-                    <button type="submit">Ajouter un post</button>
-                </form>
-            </div>
-        </div>
+        </section>
     </main>
     <?php include 'footer.php'; ?>
 </body>
