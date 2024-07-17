@@ -1,4 +1,4 @@
-<?php include 'includes/_registerScript.php'; ?>
+<?php include '../includes/_registerScript.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 

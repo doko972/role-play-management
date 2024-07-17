@@ -39,7 +39,7 @@ generateToken();
               unset($_SESSION['error_message']);
           }
         ?>
-        <form class="login_cont" action="authenticate.php" method="post">
+        <form class="login_cont" action="register/authenticate.php" method="post">
           <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
           <div class="input_signup active">
             <label for="user_name" class="sr-only">Nom d’utilisateur</label>
@@ -56,7 +56,7 @@ generateToken();
               <input type="submit" id="submit" class="button button__register" name="button" value="Se Connecter">
             </div>
             <div class="content">
-              <a href="register.php">Pas encore de compte ? Créez-en un ici</a>
+              <a href="register/register.php">Pas encore de compte ? Créez-en un ici</a>
             </div>
           </div>
         </form>

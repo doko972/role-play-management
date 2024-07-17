@@ -1,7 +1,7 @@
 <?php
 session_start();
-include 'includes/_database.php';
-include 'includes/_functions.php';
+include '../includes/_database.php';
+include '../includes/_functions.php';
 // eviter l'envoi prématuré des headers
 ob_start();  
 
@@ -16,9 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $token = sanitizeInput($_POST['token']);
 
     if (validateToken($token)) {
-        echo "Token validated...<br>";
+        echo "Token validaté...<br>";
         if ($passwd === $repasswd) {
-            echo "Passwords match...<br>";
+            echo "Passwords Correspondent...<br>";
             $hashedPassword = password_hash($passwd, PASSWORD_BCRYPT);
 
             $stmt = $dbCo->prepare("INSERT INTO users (login, passwd, truename, email, birthday, creatime, is_online) 
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(':birthday', $birthday);
 
             if ($stmt->execute()) {
-                echo "User created successfully...<br>";
+                echo "Création du compte avec succès...<br>";
                 ob_flush();
                 header("Location: registration_success.php");
                 exit();

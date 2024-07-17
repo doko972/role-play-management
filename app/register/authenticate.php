@@ -1,7 +1,7 @@
 <?php
 session_start();
-include 'includes/_database.php';
-include 'includes/_functions.php';
+include '../includes/_database.php';
+include '../includes/_functions.php';
 
 ob_start();
 
@@ -48,11 +48,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         $_SESSION['error_message'] = "Token CSRF invalide !";
-        header("Location: login.php");
+        header("Location: ../login.php");
         exit();
     }
 } else {
     $_SESSION['error_message'] = "Méthode de requête non autorisée !";
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }

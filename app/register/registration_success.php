@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>
@@ -19,7 +19,7 @@ if (isset($_SESSION['user_id'])) {
   <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
 <body>
-  <?php include 'header.php'; ?>
+  <?php include '../header.php'; ?>
   <main>
     <section>
       <article>
@@ -31,7 +31,7 @@ if (isset($_SESSION['user_id'])) {
             <p>Vous allez être redirigé vers la page de connexion...</p>
             <script>
               setTimeout(function() {
-                window.location.href = 'login.php';
+                window.location.href = '../login.php';
               }, 3000);
             </script>
           </div>
@@ -39,6 +39,6 @@ if (isset($_SESSION['user_id'])) {
       </article>
     </section>
   </main>
-  <?php include 'footer.php'; ?>
+  <?php include '../footer.php'; ?>
 </body>
 </html>

@@ -2,12 +2,12 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-  header("Location: index.php");
+  header("Location: ../index.php");
   exit();
 }
 
-include 'includes/_database.php';
-include 'includes/_functions.php';
+include '../includes/_database.php';
+include '../includes/_functions.php';
 
 generateToken();
 
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':faction', $faction);
 
         if ($stmt->execute()) {
-          header("Location: login.php");
+          header("Location: ../login.php");
           exit();
         } else {
           $error_message = "Erreur lors de l'enregistrement!";

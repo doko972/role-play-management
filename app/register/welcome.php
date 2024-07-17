@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 
@@ -26,7 +26,7 @@ $welcome_message = $_SESSION['welcome_message'] ?? 'Bienvenue sur le serveur Rô
   <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
 <body>
-  <?php include 'header.php'; ?>
+  <?php include '../header.php'; ?>
   <main>
   <div class="head-card" role="empty" aria-label="Champs vide">
   </div>
@@ -41,7 +41,7 @@ $welcome_message = $_SESSION['welcome_message'] ?? 'Bienvenue sur le serveur Rô
             <p>Si vous n'avez pas de rôle pensez à en choisir un ! </p>
             <script>
               setTimeout(function () {
-                window.location.href = 'index.php';
+                window.location.href = '../index.php';
               }, 6000);
             </script>
           </div>
@@ -49,7 +49,7 @@ $welcome_message = $_SESSION['welcome_message'] ?? 'Bienvenue sur le serveur Rô
       </article>
     </section>
   </main>
-  <?php include 'footer.php'; ?>
+  <?php include '../footer.php'; ?>
   <script src="js/script.js"></script>
 </body>
 </html>
