@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-include 'includes/_database.php';
+include '../includes/_database.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset($_POST['card_id']) && isset($_POST['story'])) {
     $user_id = $_SESSION['user_id'];
@@ -9,11 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
     $story = htmlspecialchars($_POST['story'], ENT_QUOTES, 'UTF-8');
     $story_date = date('Y-m-d');
     $card_name = null;
-    $id_faction = 2;
+    $id_faction = 1;
 
     try {
-        $min_id = 30;
-        $max_id = 40;
+        $min_id = 1;
+        $max_id = 29;
 
         // nom de la carte
         $stmt = $dbCo->prepare("SELECT name FROM img 
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
             $card_name = $card['name'];
         } else {
             $_SESSION['error_message'] = 'Nom de la carte introuvable.';
-            header('Location: card_marinas.php?id=' . $card_id);
+            header('Location: ../card.php?id=' . $card_id);
             exit();
         }
 
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
         // téléchargement d'image
         $image_path = null;
         if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-            $target_dir = "uploads/";
+            $target_dir = "../uploads/";
             $target_file = $target_dir . basename($_FILES["image"]["name"]);
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             $allowed_extensions = array("jpg", "jpeg", "png", "gif");
@@ -55,12 +55,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
                     $image_path = $target_file;
                 } else {
                     $_SESSION['error_message'] = "Erreur lors du téléchargement de l'image.";
-                    header('Location: card_marinas.php?id=' . $card_id);
+                    header('Location: ../card.php?id=' . $card_id);
                     exit();
                 }
             } else {
                 $_SESSION['error_message'] = "Fichier non valide. Seuls les fichiers JPG, JPEG, PNG & GIF sont autorisés.";
-                header('Location: card_marinas.php?id=' . $card_id);
+                header('Location: ../card.php?id=' . $card_id);
                 exit();
             }
         }
@@ -101,11 +101,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
         $_SESSION['error_message'] = 'Erreur SQL: ' . $e->getMessage();
     }
 
-    header('Location: card_marinas.php?id=' . $card_id);
+    header('Location: ../card.php?id=' . $card_id);
     exit();
 } else {
     $_SESSION['error_message'] = 'Données POST non reçues correctement.';
-    header('Location: card_marinas.php?id=' . intval($_POST['card_id']));
+    header('Location: ../card.php?id=' . intval($_POST['card_id']));
     exit();
 }
-?>
+// ob_end_flush();
