@@ -1,5 +1,13 @@
 <?php
+session_start();
 include '../includes/_functions.php';
+include '../includes/_database.php';
+
+// Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../index.php");
+    exit();
+}
 
 // Récupérer l'ID de la catégorie depuis l'URL
 $category_id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
@@ -22,7 +30,7 @@ $topics = $stmt->fetchAll();
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?php echo htmlspecialchars($category['name']); ?> - Forum Saint Seiya Online</title>
+    <title><?php echo htmlspecialchars($category['name'], ENT_QUOTES, 'UTF-8'); ?> - Forum Saint Seiya Online</title>
     <meta name="keywords"
         content="Page d'accueil avec presentation du site web Saint Seiya Online rôle play ou pvp et choix de factions" />
     <meta name="description"
@@ -32,22 +40,22 @@ $topics = $stmt->fetchAll();
     <script type="module" src="http://localhost:5173/@vite/client"></script>
     <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
-</head>
 
 <body>
     <?php include 'headerForum.php'; ?>
-    <section>
-        <div class="navbar-container__back" role="img" aria-label="Image de fond de la barre de navigation"></div>
-    </section>
     <header>
-        <h1><?php echo htmlspecialchars($category['name']); ?> - Forum Saint Seiya Online</h1>
+        <div class="navbar-container__back" role="img" aria-label="Image de fond de la barre de navigation"></div>
+        <h1><?php echo htmlspecialchars($category['name'], ENT_QUOTES, 'UTF-8'); ?> - Forum Saint Seiya Online</h1>
     </header>
     <div class="forum-container">
         <div class="forum-category">
             <?php foreach ($topics as $topic): ?>
-                <a href="post.php?id=<?php echo $topic['id']; ?>"><?php echo htmlspecialchars($topic['title']); ?></a>
+                <a
+                    href="post.php?id=<?php echo htmlspecialchars($topic['id'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($topic['title'], ENT_QUOTES, 'UTF-8'); ?></a>
             <?php endforeach; ?>
-            <a href="create_topic.php?category_id=<?php echo $category['id']; ?>">Créer un nouveau sujet</a>
+            <a
+                href="create_topic.php?category_id=<?php echo htmlspecialchars($category['id'], ENT_QUOTES, 'UTF-8'); ?>">Créer
+                un nouveau sujet</a>
         </div>
     </div>
     <?php include 'footer.php'; ?>

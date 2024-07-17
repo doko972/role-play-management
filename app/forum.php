@@ -1,5 +1,17 @@
 <?php
+session_start();
 include 'includes/_functions.php';
+include 'includes/_database.php';
+
+// Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit();
+}
+
+// Generate CSRF token
+generateToken();
+
 
 // Récupérer les catégories
 $stmt = $dbCo->query('SELECT * FROM categories');
@@ -56,6 +68,7 @@ $factionCategories = array_slice($categories, 3, 3); // Salon par faction
     </div>
   </main>
   <?php include 'footer.php'; ?>
+  <script src="js/script.js"></script>
 </body>
 
 </html>
