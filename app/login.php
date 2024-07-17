@@ -62,6 +62,7 @@ generateToken();
         </form>
       </article>
     </section>
+
   </main>
   <?php include 'footer.php'; ?>
   <script src="js/script.js"></script>

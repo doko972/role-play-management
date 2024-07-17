@@ -1,5 +1,6 @@
 <?php
 // session_start();
+include '_database.php';
 
 function generateToken() {
     if (!isset($_SESSION['token']) || !isset($_SESSION['tokenExpire']) || $_SESSION['tokenExpire'] < time()) {

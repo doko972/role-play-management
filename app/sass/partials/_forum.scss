@@ -1,0 +1,114 @@
+.forum-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #282846;
+    border-radius: 8px;
+  }
+
+  .forum-section-title {
+    display: flex;
+    align-items: center;
+    background-image: url("../img/baniere.webp");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+    padding: 10px;
+    font-size: 18px;
+    margin: 20px 0;
+    border-radius: 8px;
+    height: 100px;
+    color: var(--white);
+  }
+
+  .forum-category a {
+    display: block;
+    padding: 10px;
+    background-color: #444;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .forum-category a:hover {
+    background-color: #555;
+  }
+
+  .online-users {
+    background-color: #0066cc;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 8px;
+  }
+
+  .post {
+    padding: 10px;
+    background-color: #333;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+
+  .post-time {
+    font-size: 0.8em;
+    color: #aaa;
+  }
+
+  .new-post {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 8px;
+  }
+
+  .new-post textarea {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .new-post button {
+    padding: 10px;
+    background-color: #0066cc;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+  }
+
+  .form-group button {
+    padding: 10px;
+    background-color: #0066cc;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+  }
+  .title-color{
+    color: var(--white);
+  }
+  .title-post{
+    margin: 0 .5rem;
+    text-align: center;
+  }
