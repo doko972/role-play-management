@@ -1,5 +1,5 @@
 <?php
-include 'includes/_functions.php';
+include '../includes/_functions.php';
 
 // Récupérer l'ID de la catégorie depuis l'URL
 $category_id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
@@ -27,7 +27,7 @@ $topics = $stmt->fetchAll();
         content="Page d'accueil avec presentation du site web Saint Seiya Online rôle play ou pvp et choix de factions" />
     <meta name="description"
         content="Jeu de rôle/PVP sur le jeu en ligne (MMO) Saint Seiya Online. Rejoignez nous dans l'aventure et devenez Chevalier d'Athéna, Marinas de Poseidon ou Spectre d'Hades !" />
-    <link rel="icon" href="img/logo.ico">
+    <link rel="icon" href="../img/logo.ico">
     <!-- <link rel="stylesheet" href="css/styles.css"> -->
     <script type="module" src="http://localhost:5173/@vite/client"></script>
     <script type="module" src="http://localhost:5173/js/scripts.js"></script>

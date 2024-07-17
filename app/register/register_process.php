@@ -6,7 +6,7 @@ include '../includes/_functions.php';
 ob_start();  
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    echo "Processing form...<br>";
+    echo "Formulaire...<br>";
     $login = sanitizeInput($_POST['login']);
     $truename = sanitizeInput($_POST['truename']);
     $email = sanitizeInput($_POST['email']);

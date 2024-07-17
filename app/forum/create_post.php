@@ -1,5 +1,5 @@
 <?php
-include 'includes/_functions.php';
+include '../includes/_functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $content = sanitizeInput($_POST['content']);

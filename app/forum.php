@@ -29,7 +29,7 @@ $factionCategories = array_slice($categories, 3, 3); // Salon par faction
 </head>
 
 <body>
-  <?php include 'headerForum.php'; ?>
+  <?php include 'forum/headerForum.php'; ?>
   <main>
     <section>
       <div class="navbar-container__back" role="img" aria-label="Image de fond de la barre de navigation"></div>
@@ -38,14 +38,14 @@ $factionCategories = array_slice($categories, 3, 3); // Salon par faction
       <div class="forum-section-title">Support et discussions générales</div>
       <div class="forum-category">
         <?php foreach ($supportCategories as $category): ?>
-          <a href="category.php?id=<?php echo $category['id']; ?>"><?php echo htmlspecialchars($category['name']); ?></a>
+          <a href="forum/category.php?id=<?php echo $category['id']; ?>"><?php echo htmlspecialchars($category['name']); ?></a>
         <?php endforeach; ?>
       </div>
 
       <div class="forum-section-title">Salon par faction</div>
       <div class="forum-category">
         <?php foreach ($factionCategories as $category): ?>
-          <a href="category.php?id=<?php echo $category['id']; ?>"><?php echo htmlspecialchars($category['name']); ?></a>
+          <a href="forum/category.php?id=<?php echo $category['id']; ?>"><?php echo htmlspecialchars($category['name']); ?></a>
         <?php endforeach; ?>
       </div>
 

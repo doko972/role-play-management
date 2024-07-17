@@ -1,5 +1,5 @@
 <?php
-include 'includes/_functions.php';
+include '../includes/_functions.php';
 
 // Récupérer l'ID de la catégorie depuis l'URL
 $category_id = isset($_GET['category_id']) ? (int)$_GET['category_id'] : 0;
