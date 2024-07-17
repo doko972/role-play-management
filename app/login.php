@@ -56,7 +56,7 @@ generateToken();
               <input type="submit" id="submit" class="button button__register" name="button" value="Se Connecter">
             </div>
             <div class="content">
-              <a href="register/register.php">Pas encore de compte ? Créez-en un ici</a>
+              <a href="register.php">Pas encore de compte ? Créez-en un ici</a>
             </div>
           </div>
         </form>

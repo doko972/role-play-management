@@ -141,3 +141,8 @@ a:hover::after {
   padding: 1rem;
   margin: 1rem;
 }
+.active {
+  font-weight: bold;
+  color: #fff;
+  // background-color: #007bff;
+}

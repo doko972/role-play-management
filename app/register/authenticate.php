@@ -26,20 +26,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $updateStmt->execute();
 
             $selected_card_id = $user['selected_card'];
-            $json = file_get_contents('json/saints.json');
-            $cards = json_decode($json, true);
-            $selected_card_name = 'inconnu';
+            $cardStmt = $dbCo->prepare("SELECT name FROM img 
+            WHERE id_img = :selected_card_id");
+            $cardStmt->bindParam(':selected_card_id', $selected_card_id);
+            $cardStmt->execute();
+            $card = $cardStmt->fetch();
 
-            foreach ($cards as $card) {
-                if ($card['id'] == $selected_card_id) {
-                    $selected_card_name = $card['class'];
-                    break;
-                }
-            }
+            $selected_card_name = $card ? $card['name'] : 'inconnu';
 
             $_SESSION['welcome_message'] = 'Bienvenue ' . htmlspecialchars_decode($selected_card_name, ENT_QUOTES);
 
-            header("Location: welcome.php");
+            header("Location: ../welcome.php");
             exit();
         } else {
             $_SESSION['error_message'] = "Nom d'utilisateur ou mot de passe incorrect !";
@@ -56,3 +53,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: ../login.php");
     exit();
 }
+?>
