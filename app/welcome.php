@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$welcome_message = $_SESSION['welcome_message'] ?? 'Bienvenue sur le serveur Rôle Play de Saint Seiya Online!';
+$welcome_message = isset($_SESSION['welcome_message']) ? $_SESSION['welcome_message'] : 'Bienvenue sur le serveur Rôle Play de Saint Seiya Online!';
 
 ?>
 <!DOCTYPE html>

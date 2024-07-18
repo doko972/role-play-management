@@ -21,7 +21,6 @@ if (!isset($_SESSION['user_id'])) {
   <script type="module" src="http://localhost:5173/@vite/client"></script>
   <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
-
 <body>
     <?php include 'header.php'; ?>
     <main>

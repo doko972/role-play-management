@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inscription</title>
   <link rel="icon" href="../img/logo.ico">
-  <!-- <link rel="stylesheet" href="css/styles.css"> -->
+  <!-- <link rel="stylesheet" href="../css/styles.css"> -->
   <script type="module" src="http://localhost:5173/@vite/client"></script>
   <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
@@ -25,7 +25,7 @@
         <?php if (isset($error_message)): ?>
           <p class="error-message"><?php echo $error_message; ?></p>
         <?php endif; ?>
-        <form class="login_cont" action="_registerScript.php" method="post">
+        <form class="login_cont" action="registerScript.php" method="post">
           <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
           <div class="input_signup active">
             <label for="user_name" class="sr-only">Nom d’utilisateur</label>

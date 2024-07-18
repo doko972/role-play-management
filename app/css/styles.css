@@ -177,6 +177,11 @@ a:hover::after {
   margin: 1rem;
 }
 
+.active {
+  font-weight: bold;
+  color: #fff;
+}
+
 .btn-add-event--register {
   margin-top: auto; /* Push the button to the bottom if needed */
   padding: 10px 20px;
@@ -288,7 +293,7 @@ a:hover::after {
   width: 100%;
   margin-top: 10rem;
   color: var(--black);
-  min-height: 1500px;
+  min-height: 1450px;
 }
 
 .card-detail img {
@@ -322,23 +327,16 @@ a:hover::after {
 }
 
 .card {
-  flex: 1 1 calc(16.66% - 20px);
   box-sizing: border-box;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .card {
-    flex: 1 1 calc(33.33% - 2rem);
-  }
   .card-detail {
     margin-top: 2rem;
   }
 }
 @media (max-width: 480px) {
-  .card {
-    flex: 1 1 calc(50% - 2rem);
-  }
   .card-detail h1 {
     font-size: 1.5rem;
   }
@@ -528,6 +526,7 @@ form button:hover {
 }
 
 .sticky {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -994,8 +993,8 @@ iframe {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
-  height: 50vh;
-  width: 100vw;
+  height: 20rem;
+  width: 100%;
   margin: 0;
   z-index: 0;
   overflow: hidden;
@@ -1060,15 +1059,15 @@ iframe {
 @media screen and (max-width: 768px) {
   .navbar-container__back,
   .navbar-container__event {
-    background-position: top center;
-    height: 10vh;
+    background-position: center;
+    height: 10rem;
   }
 }
 @media screen and (max-width: 480px) {
   .navbar-container__back,
   .navbar-container__event {
-    background-position: top center;
-    height: 10vh;
+    background-position: center;
+    height: 7rem;
   }
 }
 @media (min-width: 769px) and (max-width: 1200px) {
@@ -1359,10 +1358,8 @@ iframe {
 .carousel-container .carousel .item img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 .carousel-container .carousel .item .caption {
   width: 100%;
@@ -1625,7 +1622,6 @@ iframe {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 
@@ -1901,4 +1897,129 @@ iframe {
     bottom: 5px;
     left: 5px;
   }
+}
+.forum-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #282846;
+  border-radius: 8px;
+}
+
+.forum-section-title {
+  display: flex;
+  align-items: center;
+  background-image: url("../img/baniere.webp");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: bottom;
+  padding: 10px;
+  font-size: 18px;
+  margin: 20px 0;
+  border-radius: 8px;
+  height: 100px;
+  color: var(--white);
+}
+
+@media screen and (max-width: 768px) {
+  .forum-container {
+    min-height: 300px;
+  }
+}
+.forum-category a {
+  display: block;
+  padding: 10px;
+  background-color: #444;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  height: 2rem;
+}
+
+.forum-category a:hover {
+  background-color: #555;
+}
+
+.online-users {
+  background-color: #0066cc;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.post {
+  padding: 10px;
+  background-color: #333;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.post-time {
+  font-size: 0.8em;
+  color: #aaa;
+}
+
+.new-post {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #333;
+  border-radius: 8px;
+  color: var(--white);
+}
+
+.new-post textarea {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.new-post button {
+  padding: 10px;
+  background-color: #0066cc;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  color: var(--white);
+}
+
+.form-group button {
+  padding: 10px;
+  background-color: #0066cc;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.title-color {
+  color: var(--white);
+}
+
+.title-post {
+  margin: 0 0.5rem;
+  text-align: center;
 }/*# sourceMappingURL=styles.css.map */

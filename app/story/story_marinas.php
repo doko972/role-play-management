@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
         $min_id = 30;
         $max_id = 40;
 
-        // nom de la carte
+        // Nom de la carte
         $stmt = $dbCo->prepare("SELECT name FROM img 
         WHERE id_img = :card_id AND id_img BETWEEN :min_id AND :max_id");
         $stmt->bindParam(':card_id', $card_id, PDO::PARAM_INT);
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
             exit();
         }
 
-        // Personnage existe déjà ?
+        // Vérification de l'existence du personnage
         $stmt = $dbCo->prepare("SELECT COUNT(*) FROM characters 
         WHERE id_characters = :card_id AND id_user = :user_id");
         $stmt->bindParam(':card_id', $card_id, PDO::PARAM_INT);
@@ -40,21 +40,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
         $stmt->execute();
         $count = $stmt->fetchColumn();
 
-        // téléchargement d'image
+        // Téléchargement de l'image
         $image_path = null;
-        if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+        if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
             $target_dir = "../uploads/";
-            $target_file = $target_dir . basename($_FILES["image"]["name"]);
+            if (!file_exists($target_dir)) {
+                mkdir($target_dir, 0777, true); // Création du répertoire s'il n'existe pas
+            }
+            $file_name = uniqid() . '_' . basename($_FILES["image"]["name"]); // Utilisation d'un nom de fichier unique
+            $target_file = $target_dir . $file_name;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             $allowed_extensions = array("jpg", "jpeg", "png", "gif");
 
-            // image est valide ?
+            // Vérification de l'image
             $check = getimagesize($_FILES["image"]["tmp_name"]);
             if ($check !== false && in_array($imageFileType, $allowed_extensions)) {
                 if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
                     $image_path = $target_file;
                 } else {
-                    $_SESSION['error_message'] = "Erreur lors du téléchargement de l'image.";
+                    $_SESSION['error_message'] = "Erreur lors du déplacement du fichier. Chemin cible: " . $target_file;
                     header('Location: ../card_marinas.php?id=' . $card_id);
                     exit();
                 }
@@ -63,10 +67,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
                 header('Location: ../card_marinas.php?id=' . $card_id);
                 exit();
             }
+        } elseif (isset($_FILES['image']) && $_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
+            // Gestion des autres erreurs de téléchargement
+            $_SESSION['error_message'] = "Erreur lors du téléchargement de l'image. Code d'erreur : " . $_FILES['image']['error'];
+            header('Location: ../card_marinas.php?id=' . $card_id);
+            exit();
         }
 
+        // Mise à jour ou insertion des données
         if ($count > 0) {
-            // Maj de l'histoire existante
+            // Mise à jour de l'histoire existante
             if ($image_path) {
                 $stmt = $dbCo->prepare("UPDATE characters SET story = :story, story_date = :story_date, image = :image 
                 WHERE id_characters = :card_id AND id_user = :user_id");
@@ -80,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
             $stmt->bindParam(':card_id', $card_id, PDO::PARAM_INT);
             $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         } else {
-            // Nouvelle histoire
+            // Insertion d'une nouvelle histoire
             $stmt = $dbCo->prepare("INSERT INTO characters (id_characters, name, story, story_date, main_charc, id_faction, id_user, image) 
                                     VALUES (:card_id, :name, :story, :story_date, 1, :id_faction, :user_id, :image)");
             $stmt->bindParam(':card_id', $card_id, PDO::PARAM_INT);

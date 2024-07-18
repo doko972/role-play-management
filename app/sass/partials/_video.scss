@@ -58,8 +58,8 @@ iframe {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
-  height: 50vh;
-  width: 100vw;
+  height: 20rem;
+  width: 100%;
   margin: 0;
   z-index: 0;
   overflow: hidden;
@@ -123,17 +123,16 @@ iframe {
 @media screen and (max-width: 768px) {
   .navbar-container__back,
   .navbar-container__event {
-    background-position: top center;
-    height: 10vh;
+    background-position: center;
+    height: 10rem;
   }
-  
 }
 
 @media screen and (max-width: 480px) {
   .navbar-container__back,
   .navbar-container__event {
-    background-position: top center;
-    height: 10vh;
+    background-position: center;
+    height: 7rem;
   }
 }
 

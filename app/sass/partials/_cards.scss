@@ -72,25 +72,18 @@
 }
 
 .card {
-    flex: 1 1 calc(16.66% - 20px);
+    // flex: 1 1 calc(16.66% - 20px);
     box-sizing: border-box;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .card {
-        flex: 1 1 calc(33.33% - 2rem);
-    }
-
     .card-detail {
         margin-top: 2rem;
     }
 }
 
 @media (max-width: 480px) {
-    .card {
-        flex: 1 1 calc(50% - 2rem);
-    }
 
     .card-detail h1 {
         font-size: 1.5rem;

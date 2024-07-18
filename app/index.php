@@ -66,18 +66,22 @@ $categories = $stmt->fetchAll();
       <article>
         <div class="texte-position textebackground">
           <h1>Saint Seiya Online <br>Rôle Play</h1>
-          <p>Nouveaux Chevaliers !</p>
-          <p>Nous sommes ravis de vous accueillir dans cet univers passionnant où l'aventure et l'épopée des Chevaliers
-            du Zodiaque prennent vie.</p>
-          <p>Vous devrez choisir un rôle qui correspond à votre personnage et vous devrez rejoindre la faction qui
-            résonne le plus avec vos aspirations Rôle Play/PVP.</p>
-          <p>Que vous soyez un fier Chevalier d'Athéna, un intrépide Spectre d'Hadès ou un Général marinas de Poseidon,
-            votre destin vous attend!</p>
-          <p>N'hésitez pas à interagir avec vos compagnons de faction et commencer à tisser des liens au sein de cet
-            univers. Nous sommes impatients de partager cette aventure épique avec vous, et nous espérons que votre
-            aventure parmi nous sur Saint Seiya Online sera empli de moments mémorables.</p>
-          <p>Bon jeu à tous jeunes Guerriers, enflammez votre cosmos!!!</p>
-          <p>Que votre histoire dans le monde de Saint Seiya Online Rôle Play commence maintenant!</p>
+          <p>Nouveaux Chevaliers, Bienvenue !</p>
+          <p>Nous sommes enchantés de vous accueillir dans l'univers captivant de Saint Seiya Online, où les légendaires
+            Chevaliers du Zodiaque prennent vie.</p>
+          <p>Préparez-vous à plonger dans une aventure épique où chaque choix façonne votre destin. Sélectionnez le rôle
+            qui incarne le mieux votre esprit et rejoignez la faction qui résonne avec vos aspirations de Rôle Play ou
+            de PVP.</p>
+          <p>Serez-vous un vaillant Chevalier d'Athéna, un redoutable Spectre d'Hadès ou un puissant Général Marinas de
+            Poséidon ? Le sort de l'univers repose entre vos mains !</p>
+          <p>N'hésitez pas à interagir avec vos compagnons de faction, à tisser des alliances solides et à vous immerger
+            dans ce monde extraordinaire. Ensemble, nous écrirons des pages mémorables de bravoure et de camaraderie.
+          </p>
+          <p> Nous sommes impatients de partager cette aventure épique avec vous. Que votre périple à travers Saint
+            Seiya
+            Online soit rempli de combats héroïques, de découvertes passionnantes et de souvenirs impérissables.
+            À vous de jouer, jeunes Guerriers. Faites brûler votre cosmos !</p>
+          <p>Laissez votre histoire dans le monde de Saint Seiya Online Rôle Play commencer maintenant !</p>
         </div>
       </article>
     </section>

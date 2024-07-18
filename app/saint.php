@@ -19,11 +19,10 @@ include 'includes/_functions.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chevaliers d'Athéna</title>
     <link rel="icon" href="img/logo.ico">
-    <!-- <link rel="stylesheet" href="css/styles.css"> -->
-    <script type="module" src="http://localhost:5173/@vite/client"></script>
-    <script type="module" src="http://localhost:5173/js/scripts.js"></script>
+  <!-- <link rel="stylesheet" href="css/styles.css"> -->
+  <script type="module" src="http://localhost:5173/@vite/client"></script>
+  <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
-
 <body>
     <?php include 'header.php'; ?>
     <main>

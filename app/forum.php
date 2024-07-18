@@ -9,17 +9,22 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Generate CSRF token
-generateToken();
+// Mettre à jour l'activité de l'utilisateur
+updateUserActivity($_SESSION['user_id'], $dbCo);
 
+// Générer un token CSRF
+generateToken();
 
 // Récupérer les catégories
 $stmt = $dbCo->query('SELECT * FROM categories');
 $categories = $stmt->fetchAll();
 
-// catégories en sections
+// Catégories en sections
 $supportCategories = array_slice($categories, 0, 3); // Support et discussions générales
 $factionCategories = array_slice($categories, 3, 3); // Salon par faction
+
+// Récupérer les utilisateurs connectés
+$onlineUsers = getOnlineUsers($dbCo);
 ?>
 
 <!DOCTYPE html>
@@ -30,10 +35,8 @@ $factionCategories = array_slice($categories, 3, 3); // Salon par faction
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Forum Saint Seiya Online</title>
-  <meta name="keywords"
-    content="Page d'accueil avec presentation du site web Saint Seiya Online rôle play ou pvp et choix de factions" />
-  <meta name="description"
-    content="Jeu de rôle/PVP sur le jeu en ligne (MMO) Saint Seiya Online. Rejoignez nous dans l'aventure et devenez Chevalier d'Athéna, Marinas de Poseidon ou Spectre d'Hades !" />
+  <meta name="keywords" content="Page d'accueil avec presentation du site web Saint Seiya Online rôle play ou pvp et choix de factions" />
+  <meta name="description" content="Jeu de rôle/PVP sur le jeu en ligne (MMO) Saint Seiya Online. Rejoignez nous dans l'aventure et devenez Chevalier d'Athéna, Marinas de Poseidon ou Spectre d'Hades !" />
   <link rel="icon" href="img/logo.ico">
   <!-- <link rel="stylesheet" href="css/styles.css"> -->
   <script type="module" src="http://localhost:5173/@vite/client"></script>
@@ -63,7 +66,14 @@ $factionCategories = array_slice($categories, 3, 3); // Salon par faction
 
       <div class="forum-section-title">Qui est en ligne?</div>
       <div class="online-users">
-        <p>Johny, Billy, Antoinette</p>
+          <?php
+          if (!empty($onlineUsers)) {
+              $usernames = array_column($onlineUsers, 'login');
+              echo implode(', ', array_map('htmlspecialchars', $usernames));
+          } else {
+              echo 'Aucun utilisateur en ligne';
+          }
+          ?>
       </div>
     </div>
   </main>
