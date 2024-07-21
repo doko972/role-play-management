@@ -59,7 +59,7 @@ generateToken();
     <form action="" method="post">
       <div class="form-group">
         <label class="title-color" for="title">Titre du sujet</label>
-        <input type="text" id="title" name="title" required>
+        <input class="title-color__bck"type="text" id="title" name="title" required>
       </div>
       <input type="hidden" name="token"
         value="<?php echo htmlspecialchars($_SESSION['token'], ENT_QUOTES, 'UTF-8'); ?>">

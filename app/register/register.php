@@ -23,10 +23,10 @@
       <article class="article-form">
         <h1>Inscription</h1>
         <?php if (isset($error_message)): ?>
-          <p class="error-message"><?php echo $error_message; ?></p>
+          <p class="error-message"><?= $error_message; ?></p>
         <?php endif; ?>
         <form class="login_cont" action="registerScript.php" method="post">
-          <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
+          <input type="hidden" name="token" value="<?= $_SESSION['token']; ?>"> <!--< ? = au lieu de echo -->
           <div class="input_signup active">
             <label for="user_name" class="sr-only">Nom d’utilisateur</label>
             <input class="input input_form" id="user_name" type="text" name="login" aria-label="Nom d’utilisateur" placeholder="Nom d’utilisateur/Username" required>

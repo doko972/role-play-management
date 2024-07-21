@@ -45,6 +45,11 @@
     background-color: #555;
   }
 
+  .forum-img{
+    max-width: 400px;
+    width: 100%;
+  }
+
   .online-users {
     background-color: #0066cc;
     padding: 10px;
@@ -71,6 +76,9 @@
     background-color: #333;
     border-radius: 8px;
     color: var(--white);
+    // border-color: var(--white);
+    border: 3px solid var(--white);
+    margin-bottom: .5rem;
   }
 
   .new-post textarea {
@@ -88,6 +96,7 @@
     border-radius: 8px;
     color: white;
     cursor: pointer;
+    width: 10rem;
   }
 
   .form-group {
@@ -99,12 +108,13 @@
     margin-bottom: 5px;
   }
 
-  .form-group input, .form-group textarea {
+  .form-group input, 
+  .form-group textarea {
     width: 100%;
     padding: 10px;
     border: none;
     border-radius: 8px;
-    color: var(--white);
+    color: var(--black);
   }
 
   .form-group button {
@@ -122,3 +132,7 @@
     margin: 0 .5rem;
     text-align: center;
   }
+  .title-color__bck{
+    color:var(--black);
+  }
+

@@ -2,7 +2,8 @@
 
 try {
     $dbCo = new PDO(
-        'mysql:host=db;dbname=roleplay;charset=utf8',
+        'mysql:host=db;
+        dbname=roleplay;charset=utf8',
         'tama',
         'tekmate'
     );

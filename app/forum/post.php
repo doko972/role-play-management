@@ -40,13 +40,12 @@ $posts = $stmt->fetchAll();
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?php echo $topic['title']; ?> - Forum Saint Seiya Online</title>
+    <title><?php echo htmlspecialchars($topic['title']); ?> - Forum Saint Seiya Online</title>
     <meta name="keywords" content="Page d'accueil avec presentation du site web Saint Seiya Online rôle play ou pvp et choix de factions" />
     <meta name="description" content="Jeu de rôle/PVP sur le jeu en ligne (MMO) Saint Seiya Online. Rejoignez nous dans l'aventure et devenez Chevalier d'Athéna, Marinas de Poseidon ou Spectre d'Hades !" />
     <link rel="icon" href="../img/logo.ico">
-  <!-- <link rel="stylesheet" href="../css/styles.css"> -->
-  <script type="module" src="http://localhost:5173/@vite/client"></script>
-  <script type="module" src="http://localhost:5173/js/scripts.js"></script>
+    <script type="module" src="http://localhost:5173/@vite/client"></script>
+    <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
 
 <body>
@@ -57,17 +56,24 @@ $posts = $stmt->fetchAll();
         </section>
         <section>
             <h1>Forum Saint Seiya Online</h1>
-            <h2 class="title-post"><?php echo $topic['title']; ?></h2>
+            <h2 class="title-post"><?php echo htmlspecialchars($topic['title']); ?></h2>
         </section>
         <section class="forum-container">
             <?php foreach ($posts as $post): ?>
-                <div class="post">
-                    <p><?php echo $post['content']; ?></p>
+                <div class="new-post">
+                    <p><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
                     <?php if ($post['file']): ?>
-                        <p><img src="<?php echo $post['file']; ?>" alt="Post image"></p>
+                        <p><img class="forum-img" src="<?php echo htmlspecialchars($post['file']); ?>" alt="Post image"></p>
                     <?php endif; ?>
-                    <p class="post-time"><?php echo $post['created_at']; ?></p>
-                    <p class="post-user">Posté par : <?php echo $post['login']; ?></p>
+                    <p class="post-time"><?php echo htmlspecialchars($post['created_at']); ?></p>
+                    <p class="post-user">Posté par : <?php echo htmlspecialchars($post['login']); ?></p>
+                    <!-- Formulaire de suppression du post -->
+                    <form action="delete_post.php" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce post ?');">
+                        <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+                        <input type="hidden" name="topic_id" value="<?php echo $topic_id; ?>">
+                        <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION['token'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <button type="submit">Supprimer le Post</button>
+                    </form>
                 </div>
             <?php endforeach; ?>
             <div class="new-post">

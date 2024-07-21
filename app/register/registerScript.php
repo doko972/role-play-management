@@ -22,6 +22,8 @@ try {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  
   $login = sanitizeInput($_POST['login']); //
   $truename = sanitizeInput($_POST['truename']);
   $email = sanitizeInput($_POST['email']);
