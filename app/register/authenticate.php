@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($user && password_verify($passwd, $user['passwd'])) {
             $_SESSION['user_id'] = $user['id_user'];
             $_SESSION['login'] = $user['login'];
+            $_SESSION['role'] = $user['role'];
             $_SESSION['is_online'] = 1;
 
             $updateStmt = $dbCo->prepare("UPDATE users SET is_online = 1 WHERE id_user = :id_user");
@@ -26,8 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $updateStmt->execute();
 
             $selected_card_id = $user['selected_card'];
-            $cardStmt = $dbCo->prepare("SELECT name FROM img 
-            WHERE id_img = :selected_card_id");
+            $cardStmt = $dbCo->prepare("SELECT name FROM img WHERE id_img = :selected_card_id");
             $cardStmt->bindParam(':selected_card_id', $selected_card_id);
             $cardStmt->execute();
             $card = $cardStmt->fetch();

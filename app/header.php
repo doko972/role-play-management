@@ -19,6 +19,11 @@
                     <li><a class="btn-add-event--register--nav" href="login.php">Connexion</a></li>
                 <?php else: ?>
                     <li><a class="btn-add-event--register--nav" href="logout.php">Déconnexion</a></li>
+
+                    <!--condition pour afficher le lien vers le tableau de bord uniquement pour les administrateurs-->
+                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                        <li><a class="btn-add-event--register--nav" href="dashboard.php">Tableau de Bord</a></li>
+                    <?php endif; ?>
                 <?php endif; ?>
             </ul>
         </div>
