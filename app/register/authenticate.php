@@ -11,7 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $token = sanitizeInput($_POST['token']);
 
     if (validateToken($token)) {
-        $stmt = $dbCo->prepare("SELECT * FROM users WHERE login = :login");
+        $stmt = $dbCo->prepare("SELECT * FROM users 
+        WHERE login = :login");
         $stmt->bindParam(':login', $login);
         $stmt->execute();
         $user = $stmt->fetch();
@@ -22,12 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['role'] = $user['role'];
             $_SESSION['is_online'] = 1;
 
-            $updateStmt = $dbCo->prepare("UPDATE users SET is_online = 1 WHERE id_user = :id_user");
+            $updateStmt = $dbCo->prepare("UPDATE users SET is_online = 1 
+            WHERE id_user = :id_user");
             $updateStmt->bindParam(':id_user', $user['id_user']);
             $updateStmt->execute();
 
             $selected_card_id = $user['selected_card'];
-            $cardStmt = $dbCo->prepare("SELECT name FROM img WHERE id_img = :selected_card_id");
+            $cardStmt = $dbCo->prepare("SELECT name FROM img 
+            WHERE id_img = :selected_card_id");
             $cardStmt->bindParam(':selected_card_id', $selected_card_id);
             $cardStmt->execute();
             $card = $cardStmt->fetch();

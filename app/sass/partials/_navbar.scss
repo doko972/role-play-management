@@ -101,8 +101,8 @@
 .submenu {
   display: none;
   position: absolute;
-  top: 100%;
-  left: 25%;
+  top: 70%;
+  left: 15%;
   background-color: var(--black-semi);
   padding: 2rem;
   z-index: 100;
@@ -126,7 +126,7 @@
   font-size: 2.3rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .navbar {
     opacity: 0.95;
   }
@@ -237,5 +237,9 @@
     top: 0;
     height: 100%;
     position: relative;
+  }
+  .submenu {
+    top: 35%;
+    left: 15%;
   }
 }

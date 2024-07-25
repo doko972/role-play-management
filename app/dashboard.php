@@ -26,40 +26,39 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de Bord</title>
     <link rel="icon" href="img/logo.ico">
-    <link rel="stylesheet" href="css/styles.css">
+    <!-- <link rel="stylesheet" href="css/styles.css"> -->
+    <script type="module" src="http://localhost:5173/@vite/client"></script>
+    <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
 <body>
     <?php include 'header.php'; ?>
+    <div class="head-card" role="img" aria-label="Image de tête de carte"></div>
     <main>
-        <section>
+        <section class="table_container">
             <h1>Gestion des Utilisateurs</h1>
             <table>
-                <thead>
+                <thead class="table-array-dsb">
                     <tr>
-                        <th>ID</th>
-                        <th>Nom d'utilisateur</th>
-                        <th>Nom Réel</th>
-                        <th>Email</th>
-                        <th>Rôle</th>
-                        <th>Actions</th>
+                        <th class="table-array-dsb__border">ID</th>
+                        <th class="table-array-dsb__border">Nom d'utilisateur</th>
+                        <th class="table-array-dsb__border">Rôle</th>
+                        <th class="table-array-dsb__border">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($users as $user): ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($user['id_user']); ?></td>
-                        <td><?php echo htmlspecialchars($user['login']); ?></td>
-                        <td><?php echo htmlspecialchars($user['truename']); ?></td>
-                        <td><?php echo htmlspecialchars($user['email']); ?></td>
-                        <td><?php echo htmlspecialchars($user['role']); ?></td>
-                        <td>
+                        <td class="table-array-dsb__border"><?php echo htmlspecialchars($user['id_user']); ?></td>
+                        <td class="table-array-dsb__border"><?php echo htmlspecialchars($user['login']); ?></td>
+                        <td class="table-array-dsb__border"><?php echo htmlspecialchars($user['role']); ?></td>
+                        <td class="table-array-dsb__border">
                             <form action="update_role.php" method="post">
                                 <input type="hidden" name="id_user" value="<?php echo $user['id_user']; ?>">
-                                <select name="role">
+                                <select class="button button__register" name="role">
                                     <option value="user" <?php echo $user['role'] === 'user' ? 'selected' : ''; ?>>Utilisateur</option>
                                     <option value="admin" <?php echo $user['role'] === 'admin' ? 'selected' : ''; ?>>Administrateur</option>
                                 </select>
-                                <input type="submit" value="Mettre à jour">
+                                <input class="button button__register" type="submit" value="Mettre à jour">
                             </form>
                         </td>
                     </tr>
