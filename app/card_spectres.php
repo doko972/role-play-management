@@ -59,6 +59,11 @@ try {
     }
   }
 
+  // Vérifier si la card est déjà prise
+  if ($card && $card['taken_by_user_id'] !== null && $card['taken_by_user_id'] != $user_id) {
+    $error_message = "Cette carte est déjà prise par un autre utilisateur.";
+  }
+
 } catch (PDOException $e) {
   $error_message = 'Erreur : ' . $e->getMessage();
   $card = null;
@@ -90,7 +95,7 @@ if (isset($_SESSION['error_message'])) {
   <?php include 'header.php'; ?>
   <main class="container">
     <div class="card-detail">
-    <?php
+      <?php
       if ($card) {
         echo '<form action="spectres.php" method="get">';
         echo '<button type="submit" class="button__register" aria-label="Retour à l\'index">Retour à l\'index</button>';
@@ -100,8 +105,8 @@ if (isset($_SESSION['error_message'])) {
           echo '<p class="error-message">' . $error_message . '</p>';
         }
 
-        echo '<img src="' . $card['file'] . '" alt="' 
-        . $card['alternatif_txt'] . '">'
+        echo '<img src="' . $card['file'] . '" alt="'
+          . $card['alternatif_txt'] . '">'
           . '<div>'
           . '<p>' . $card['class'] . '</p>'
           . '<p>' . $card['name'] . '</p>';
@@ -140,6 +145,8 @@ if (isset($_SESSION['error_message'])) {
             . '</form>';
         } elseif ($selected_card_id !== null) { // nom de la carte déjà sélectionnée par l'user
           echo '<p>Vous avez déjà choisi le rôle de : ' . htmlspecialchars($selected_card_name, ENT_QUOTES, 'UTF-8') . '</p>';
+        } elseif ($card['taken_by_user_id'] !== null) { // carte déjà prise par un autre utilisateur
+          echo '<p>Cette carte est déjà prise par un autre utilisateur.</p>';
         } else {
           echo '<form method="POST" action="select_card_spectres.php">'
             . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8') . '">'
@@ -156,4 +163,5 @@ if (isset($_SESSION['error_message'])) {
   <script src="js/toggleEdit.js"></script>
   <?php include 'footer.php'; ?>
 </body>
+
 </html>

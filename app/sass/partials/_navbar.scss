@@ -102,9 +102,9 @@
   display: none;
   position: absolute;
   top: 70%;
-  left: 15%;
+  left: 33%;
   background-color: var(--black-semi);
-  padding: 2rem;
+  padding: 1rem;
   z-index: 100;
 }
 
@@ -239,7 +239,8 @@
     position: relative;
   }
   .submenu {
-    top: 35%;
+    top: 47%;
     left: 15%;
+    padding-top: 0;
   }
 }

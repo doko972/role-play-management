@@ -11,7 +11,10 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 
 // Récupérer les utilisateurs
 try {
-    $stmt = $dbCo->prepare("SELECT id_user, login, truename, email, role FROM users");
+    $stmt = $dbCo->prepare("SELECT id_user, login, name, truename, email, role 
+    FROM users
+    JOIN characters USING (id_user)
+    ");
     $stmt->execute();
     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -40,6 +43,7 @@ try {
                 <thead class="table-array-dsb">
                     <tr>
                         <th class="table-array-dsb__border">ID</th>
+                        <th class="table-array-dsb__border">Nom RP</th>
                         <th class="table-array-dsb__border">Nom d'utilisateur</th>
                         <th class="table-array-dsb__border">Rôle</th>
                         <th class="table-array-dsb__border">Actions</th>
@@ -49,6 +53,7 @@ try {
                     <?php foreach ($users as $user): ?>
                     <tr>
                         <td class="table-array-dsb__border"><?php echo htmlspecialchars($user['id_user']); ?></td>
+                        <td class="table-array-dsb__border"><?php echo htmlspecialchars($user['name']); ?></td>
                         <td class="table-array-dsb__border"><?php echo htmlspecialchars($user['login']); ?></td>
                         <td class="table-array-dsb__border"><?php echo htmlspecialchars($user['role']); ?></td>
                         <td class="table-array-dsb__border">

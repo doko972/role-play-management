@@ -16,7 +16,7 @@
                     <ul class="submenu">
                         <li><a class="btn-add-event--register--nav" href="saint.php">Chevaliers</a></li>
                         <li><a class="btn-add-event--register--nav" href="marinas.php">Marinas</a></li>
-                        <li><a class="btn-add-event--register--nav" href="spectres">Spectres</a></li>
+                        <li><a class="btn-add-event--register--nav" href="spectres.php">Spectres</a></li>
                     </ul>
                 </li>
 

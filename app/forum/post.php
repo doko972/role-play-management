@@ -67,6 +67,7 @@ $posts = $stmt->fetchAll();
                     <?php endif; ?>
                     <p class="post-time"><?php echo htmlspecialchars($post['created_at']); ?></p>
                     <p class="post-user">Posté par : <?php echo htmlspecialchars($post['login']); ?></p>
+                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
                     <!-- Formulaire de suppression du post -->
                     <form action="delete_post.php" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce post ?');">
                         <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
@@ -74,6 +75,7 @@ $posts = $stmt->fetchAll();
                         <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION['token'], ENT_QUOTES, 'UTF-8'); ?>">
                         <button type="submit">Supprimer le Post</button>
                     </form>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
             <div class="new-post">
