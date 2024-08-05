@@ -32,8 +32,8 @@
             <input class="input input_form" id="user_name" type="text" name="login" aria-label="Nom d’utilisateur" placeholder="Nom d’utilisateur/Username" required>
             <div class="hint">Nom d’utilisateur</div>
 
-            <label for="user_truename" class="sr-only">Nom Réel</label>
-            <input class="input input_form" id="user_truename" type="text" name="truename" aria-label="Nom Réel" placeholder="Nom Réel" required>
+            <label for="user_truename" class="sr-only">Nom Jeu de rôle</label>
+            <input class="input input_form" id="user_truename" type="text" name="truename" aria-label="Nom de personnage Jeu de rôle" placeholder="Nom de personnage Jeu de rôle" required>
             <div class="hint">Nom Réel</div>
 
             <label for="faction" class="sr-only">Choix de Faction</label>

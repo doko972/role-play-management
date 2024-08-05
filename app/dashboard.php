@@ -41,12 +41,11 @@ try {
     <main>
         <section class="table_container">
             <h1>Gestion des Utilisateurs</h1>
-            <table>
+            <table class="table-array_container">
                 <thead class="table-array-dsb">
                     <tr>
                         <th class="table-array-dsb__border">ID</th>
                         <th class="table-array-dsb__border">Nom RP</th>
-                        <th class="table-array-dsb__border">Nom d'utilisateur</th>
                         <th class="table-array-dsb__border">Faction</th>
                         <th class="table-array-dsb__border">En Ligne</th>
                         <th class="table-array-dsb__border">Actions</th>
@@ -56,8 +55,7 @@ try {
                     <?php foreach ($users as $user): ?>
                         <tr>
                             <td class="table-array-dsb__border"><?php echo htmlspecialchars($user['id_user']); ?></td>
-                            <td class="table-array-dsb__border"><?php echo htmlspecialchars($user['name']); ?></td>
-                            <td class="table-array-dsb__border"><?php echo htmlspecialchars($user['login']); ?></td>
+                            <td class="table-array-dsb__border"><?php echo htmlspecialchars($user['truename']); ?></td>
                             <td class="table-array-dsb__border">
                                 <?php
                                 if ($user['faction_id'] === 1) {
