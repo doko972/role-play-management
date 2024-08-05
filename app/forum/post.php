@@ -59,32 +59,34 @@ $posts = $stmt->fetchAll();
             <h2 class="title-post"><?php echo htmlspecialchars($topic['title']); ?></h2>
         </section>
         <section class="forum-container">
-            <?php foreach ($posts as $post): ?>
-                <div class="new-post">
-                    <p><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
-                    <?php if ($post['file']): ?>
-                        <p><img class="forum-img" src="<?php echo htmlspecialchars($post['file']); ?>" alt="Post image"></p>
-                    <?php endif; ?>
-                    <p class="post-time"><?php echo htmlspecialchars($post['created_at']); ?></p>
-                    <p class="post-user">Posté par : <?php echo htmlspecialchars($post['login']); ?></p>
-                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                    <!-- Formulaire de suppression du post -->
-                    <form action="delete_post.php" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce post ?');">
-                        <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
-                        <input type="hidden" name="topic_id" value="<?php echo $topic_id; ?>">
-                        <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION['token'], ENT_QUOTES, 'UTF-8'); ?>">
-                        <button type="submit">Supprimer le Post</button>
-                    </form>
-                    <?php endif; ?>
-                </div>
-            <?php endforeach; ?>
+        <?php foreach ($posts as $post): ?>
+    <div class="new-post">
+        <p><?php echo nl2br(htmlspecialchars_decode($post['content'])); ?></p> <!--nl2br — Insère un retour à la ligne HTML à chaque nouvelle ligne-->
+        <?php if ($post['file']): ?>
+            <p><img class="forum-img" src="<?php echo htmlspecialchars($post['file']); ?>" alt="Post image"></p>
+        <?php endif; ?>
+        <p class="post-time"><?php echo htmlspecialchars($post['created_at']); ?></p>
+        <p class="post-user">Posté par : <?php echo htmlspecialchars($post['login']); ?></p>
+        
+        <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+        <!-- DELETE POST -->
+        <form action="delete_post.php" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce post ?');">
+            <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+            <input type="hidden" name="topic_id" value="<?php echo $topic_id; ?>">
+            <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION['token'], ENT_QUOTES, 'UTF-8'); ?>">
+            <button type="submit">Supprimer le Post</button>
+        </form>
+        <?php endif; ?>
+    </div>
+<?php endforeach; ?>
             <div class="new-post">
+                <!-- CREATE POST -->
                 <form action="create_post.php" method="post" enctype="multipart/form-data">
                     <textarea name="content" rows="4" required></textarea>
                     <input type="hidden" name="topic_id" value="<?php echo htmlspecialchars($topic['id'], ENT_QUOTES, 'UTF-8'); ?>">
                     <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION['token'], ENT_QUOTES, 'UTF-8'); ?>">
                     <label for="image">Télécharger une image :</label>
-                    <input type="file" name="image" id="image" accept="image/*">
+                    <input type="file" name="image" id="image" accept="image/*" multiple>
                     <button type="submit">Ajouter un post</button>
                 </form>
             </div>

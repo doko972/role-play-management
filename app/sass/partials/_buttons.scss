@@ -70,3 +70,14 @@
     border-radius: 2rem;
   }
     
+  .edit-button{
+    display: block;
+    background-image: url('img/svg/edit.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px 24px;
+    width: 40px; /* Ajustez la taille selon vos besoins */
+    height: 40px; /* Ajustez la taille selon vos besoins */
+    border: none;
+    cursor: pointer;
+  }
