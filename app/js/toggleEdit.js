@@ -1,7 +1,7 @@
 function toggleEdit() {
-    var editForm = document.getElementById('editForm');
-    var displayArea = document.getElementById('displayArea');
-    var editButton = document.getElementById('editButton');
+    const editForm = document.getElementById('editForm');
+    const displayArea = document.getElementById('displayArea');
+    const editButton = document.getElementById('editButton');
     if (editForm.style.display === 'none' || editForm.style.display === '') {
       editForm.style.display = 'block';
       displayArea.style.display = 'none';

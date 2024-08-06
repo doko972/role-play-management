@@ -13,7 +13,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 try {
     $stmt = $dbCo->prepare("SELECT id_user, login, name, is_online, truename, faction_id, email, role 
     FROM users
-    JOIN characters USING (id_user)
+    LEFT JOIN characters USING (id_user)
     ");
     $stmt->execute();
     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -58,18 +58,18 @@ try {
                             <td class="table-array-dsb__border"><?php echo htmlspecialchars($user['truename']); ?></td>
                             <td class="table-array-dsb__border">
                                 <?php
-                                if ($user['faction_id'] === 1) {
+                                if ($user['faction_id'] == 1) {
                                     echo 'Athéna';
-                                } else if ($user['faction_id'] === 2) {
+                                } else if ($user['faction_id'] == 2) {
                                     echo 'Poséïdon';
-                                } else if ($user['faction_id'] === 3) {
+                                } else if ($user['faction_id'] == 3) {
                                     echo 'Hadès';
                                 }
                                 ?>
                             </td>
                             <td class="table-array-dsb__border">
                                 <?php
-                                if ($user['is_online'] !== 1) {
+                                if ($user['is_online'] != 1) {
                                     echo ' <p><span class="taken"></span></p>';
                                 } else {
                                     echo ' <p><span class="taken_free"></span></p>';

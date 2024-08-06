@@ -19,10 +19,6 @@
                         <li><a class="btn-add-event--register--nav" href="spectres.php">Spectres</a></li>
                     </ul>
                 </li>
-
-                <!-- <li><a class="btn-add-event--register--nav" href="saint.php">Chevaliers</a></li>
-                <li><a class="btn-add-event--register--nav" href="marinas.php">Marinas</a></li>
-                <li><a class="btn-add-event--register--nav" href="spectres.php">Spectres</a></li> -->
                 <li><a class="btn-add-event--register--nav" href="forum.php">Forum</a></li>
                 <li><a class="btn-add-event--register--nav" href="useringame/account.php">Jouer en ligne</a></li>
                 <?php if (!isset($_SESSION['user_id'])): ?>
@@ -30,7 +26,7 @@
                 <?php else: ?>
                     <li><a class="btn-add-event--register--nav" href="logout.php">Déconnexion</a></li>
 
-                    <!--condition pour afficher le lien vers le tableau de bord uniquement pour les administrateurs-->
+                    <!--Afficher le lien vers le tableau de bord uniquement pour les admin-->
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
                         <li><a class="btn-add-event--register--nav" href="dashboard.php">Tableau de Bord</a></li>
                     <?php endif; ?>
