@@ -12,6 +12,8 @@
     content="Jeu de rôle/PVP sur le jeu en ligne (MMO) Saint Seiya Online. Rejoignez nous dans l'aventure et devenez Chevalier d'Athéna, Marinas de Poseidon ou Spectre d'Hades !" />
   <link rel="icon" href="../img/logo.ico">
   <link rel="stylesheet" href="../css/styles.css" />
+  <script type="module" src="http://localhost:5173/@vite/client"></script>
+  <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
 
 <body>
