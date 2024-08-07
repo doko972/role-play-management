@@ -1,5 +1,6 @@
 import './../sass/styles.scss';
 import '/js/toggleEdit.js';
+import '/js/toggleEditForm.js';
 "use strict";
 
 window.addEventListener("DOMContentLoaded", (event) => {

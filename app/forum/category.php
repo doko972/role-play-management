@@ -21,6 +21,14 @@ $category = $stmt->fetch();
 $stmt = $dbCo->prepare('SELECT * FROM topics WHERE category_id = ?');
 $stmt->execute([$category_id]);
 $topics = $stmt->fetchAll();
+
+// Récupérer les sujets récents
+$recentTopicsStmt = $dbCo->prepare('SELECT id, title, created_at FROM topics WHERE category_id = ? AND created_at >= NOW() - INTERVAL 1 DAY');
+$recentTopicsStmt->execute([$category_id]);
+$recentTopics = $recentTopicsStmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Créer un tableau pour les sujets récents
+$recentTopicIds = array_column($recentTopics, 'id');
 ?>
 
 <!DOCTYPE html>
@@ -36,9 +44,9 @@ $topics = $stmt->fetchAll();
     <meta name="description"
         content="Jeu de rôle/PVP sur le jeu en ligne (MMO) Saint Seiya Online. Rejoignez nous dans l'aventure et devenez Chevalier d'Athéna, Marinas de Poseidon ou Spectre d'Hades !" />
     <link rel="icon" href="../img/logo.ico">
-  <!-- <link rel="stylesheet" href="../css/styles.css"> -->
-  <script type="module" src="http://localhost:5173/@vite/client"></script>
-  <script type="module" src="http://localhost:5173/js/scripts.js"></script>
+    <!-- <link rel="stylesheet" href="../css/styles.css"> -->
+    <script type="module" src="http://localhost:5173/@vite/client"></script>
+    <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
 
 <body>
@@ -50,12 +58,19 @@ $topics = $stmt->fetchAll();
     <div class="forum-container">
         <div class="forum-category">
             <?php foreach ($topics as $topic): ?>
-                <a
-                    href="post.php?id=<?php echo htmlspecialchars($topic['id'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($topic['title'], ENT_QUOTES, 'UTF-8'); ?></a>
+                <div>
+                    <a href="post.php?id=<?php echo htmlspecialchars($topic['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <?php echo htmlspecialchars($topic['title'], ENT_QUOTES, 'UTF-8'); ?>
+
+                        <?php if (in_array($topic['id'], $recentTopicIds)): ?>
+                            <span class="new-badge">Nouveau</span>
+                        <?php endif; ?>
+                    </a>
+                </div>
             <?php endforeach; ?>
             <a
-                href="create_topic.php?category_id=<?php echo htmlspecialchars($category['id'], ENT_QUOTES, 'UTF-8'); ?>">Créer
-                un nouveau sujet</a>
+                href="create_topic.php?category_id=<?php echo htmlspecialchars($category['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                Créer un nouveau sujet</a>
         </div>
     </div>
     <?php include 'footer.php'; ?>
