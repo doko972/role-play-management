@@ -14,12 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_POST['token']) || $_POST['token'] !== $_SESSION['token']) {
         die('Invalid CSRF token');
     }
-    
+
     // Protection XSS
     $content = sanitizeInput($_POST['content']);
-    $topic_id = (int)$_POST['topic_id'];
+    $topic_id = (int) $_POST['topic_id'];
     $user_id = $_SESSION['user_id'];
-    
+
     // Gestion de l'image
     $imagePath = null;
     $image_id = null;
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Insérer le post dans la base de données
     $stmt = $dbCo->prepare('INSERT INTO posts (content, topic_id, user_id, image_id) VALUES (?, ?, ?, ?)');
     $stmt->execute([$content, $topic_id, $user_id, $image_id]);
-    
+
     header('Location: post.php?id=' . $topic_id);
     exit();
 }
