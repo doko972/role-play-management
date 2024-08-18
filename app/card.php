@@ -1,9 +1,8 @@
 <?php
 session_start();
-
 include 'includes/_database.php';
+include 'includes/_config.php';
 
-// Vérification de la connexion
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -18,7 +17,6 @@ $min_id = 1;
 $max_id = 29;
 
 try {
-    // Vérification de la card
     $stmt = $dbCo->prepare("SELECT * FROM img WHERE id_img = :id AND id_img BETWEEN :min_id AND :max_id");
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->bindParam(':min_id', $min_id, PDO::PARAM_INT);
@@ -26,13 +24,11 @@ try {
     $stmt->execute();
     $card = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Récupérer toutes les histoires
     $stmt = $dbCo->prepare("SELECT story, story_date, id_user, name, image FROM characters WHERE id_characters = :id");
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
     $stories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Carte sélectionnée par l'utilisateur
     $stmt = $dbCo->prepare("SELECT selected_card FROM users WHERE id_user = :user_id");
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->execute();
@@ -41,7 +37,6 @@ try {
         $selected_card_id = $user['selected_card'];
     }
 
-    // Nom de la carte sélectionnée
     $selected_card_name = '';
     if ($selected_card_id !== null) {
         $stmt = $dbCo->prepare("SELECT name FROM img WHERE id_img = :selected_card_id");
@@ -53,7 +48,6 @@ try {
         }
     }
 
-    // Vérification de l'histoire existante pour cette carte
     foreach ($stories as $s) {
         if ($s['id_user'] == $user_id) {
             $story = $s;
@@ -61,18 +55,16 @@ try {
         }
     }
 
-    // Vérifier si la card est déjà prise
     if ($card && $card['taken_by_user_id'] !== null && $card['taken_by_user_id'] != $user_id) {
-        $error_message = "Cette carte est déjà prise par un autre utilisateur.";
+        $error_message = $errors['card_no_free'];
     }
 
 } catch (PDOException $e) {
-    $error_message = 'Erreur : ' . $e->getMessage();
+    $error_message = $errors['update_ko'];
     $card = null;
     $stories = [];
 }
 
-// Gestion des erreurs de session
 if (isset($_SESSION['error_message'])) {
     $error_message = $_SESSION['error_message'];
     unset($_SESSION['error_message']);
@@ -99,7 +91,7 @@ if (isset($_SESSION['error_message'])) {
     <div class="card-detail">
     <?php
       if ($card) {
-        echo '<form action="saint.php" method="get">';
+        echo '<form action="saint.php" method="GET">';
         echo '<button type="submit" class="button__register" aria-label="Retour à l\'index">Retour à l\'index</button>';
         echo '</form>';
 
@@ -125,14 +117,14 @@ if (isset($_SESSION['error_message'])) {
             echo '</div>';
           }
         } else {
-          echo '<p>Aucune histoire trouvée pour cette carte.</p>';
+          echo '<p>' . $errors['no_story'] . '</p>';
         }
 
         echo '</div>';
 
         if ($selected_card_id == $id) {
           echo '<p>Vous avez choisi : </p>' .
-            '<p>' . htmlspecialchars($card['name'], ENT_QUOTES, 'UTF-8') . '</p>';
+            '<p>' . $card['name'] . '</p>';
 
           echo '<button id="editButton" onclick="toggleEdit()">Modifier</button>';
 
@@ -146,18 +138,19 @@ if (isset($_SESSION['error_message'])) {
             . '<br>'
             . '<button type="submit" class="btn-add-event--register">Valider</button>'
             . '</form>';
-        } elseif ($selected_card_id !== null) { // nom de la carte déjà sélectionnée par l'utilisateur
-          echo '<p>Vous avez déjà choisi le rôle de : ' . htmlspecialchars($selected_card_name, ENT_QUOTES, 'UTF-8') . '</p>';
-        } elseif ($card['taken_by_user_id'] !== null) { // carte déjà prise par un autre utilisateur
-          echo '<p>Cette carte est déjà prise par un autre utilisateur.</p>';
+
+        } elseif ($selected_card_id !== null) { // Nom de la carte déjà sélectionnée par l'utilisateur
+          echo '<p>Vous avez déjà choisi le rôle de : ' . $selected_card_name . '</p>';
+        } elseif ($card['taken_by_user_id'] !== null) { // Carte déjà prise par un autre utilisateur
+          echo '<p>' . $errors['card_no_free'] . '</p>';
         } else {
           echo '<form method="POST" action="select_card.php">'
-            . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8') . '">'
+            . '<input type="hidden" name="card_id" value="' . $card['id_img'] . '">'
             . '<button type="submit" class="btn-add-event--register">Choisir cette carte</button>'
             . '</form>';
         }
       } else {
-        echo '<p>Carte non trouvée.</p>';
+        echo '<p>' . $errors['card_not_find'] . '</p>';
       }
       ?>
     </div>

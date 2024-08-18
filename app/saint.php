@@ -8,6 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 
 include 'includes/_database.php';
 include 'includes/_functions.php';
+include 'includes/_config.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -55,10 +56,10 @@ include 'includes/_functions.php';
                         echo '</div>';
                     }
                 } else {
-                    echo '<p>Aucune carte trouvée.</p>';
+                     echo '<p>' . $errors['no_action'] . '</p>';
                 }
             } catch (PDOException $e) {
-                echo 'Erreur : ' . $e->getMessage();
+                echo '<p>' . $errors['update_ko'] . '</p>';
             }
             ?>
         </div>

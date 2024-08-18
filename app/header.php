@@ -20,13 +20,13 @@
                     </ul>
                 </li>
                 <li><a class="btn-add-event--register--nav" href="forum.php">Forum</a></li>
-                <li><a class="btn-add-event--register--nav" href="useringame/account.php">Jouer en ligne</a></li>
+                <!-- <li><a class="btn-add-event--register--nav" href="useringame/account.php">Jouer en ligne</a></li> -->
                 <?php if (!isset($_SESSION['user_id'])): ?>
                     <li><a class="btn-add-event--register--nav" href="login.php">Connexion</a></li>
                 <?php else: ?>
                     <li><a class="btn-add-event--register--nav" href="logout.php">Déconnexion</a></li>
 
-                    <!--Afficher le lien vers le tableau de bord uniquement pour les admin-->
+                    <!--Tableau de bord admin-->
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
                         <li><a class="btn-add-event--register--nav" href="dashboard.php">Tableau de Bord</a></li>
                     <?php endif; ?>

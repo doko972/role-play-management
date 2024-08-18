@@ -2,8 +2,10 @@
 ob_start();
 session_start();
 include '../includes/_database.php';
+include '../includes/_config.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset($_POST['card_id']) && isset($_POST['story'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) 
+&& isset($_POST['card_id']) && isset($_POST['story'])) {
     $user_id = $_SESSION['user_id'];
     $card_id = intval($_POST['card_id']);
     $story = htmlspecialchars($_POST['story'], ENT_QUOTES, 'UTF-8');
@@ -27,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
         if ($card) {
             $card_name = $card['name'];
         } else {
-            $_SESSION['error_message'] = 'Nom de la carte introuvable.';
+            $_SESSION['error_message'] = $errors['card_not_find'];
             header('Location: ../card.php?id=' . $card_id);
             exit();
         }
@@ -54,12 +56,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
                 if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
                     $image_path = $target_file;
                 } else {
-                    $_SESSION['error_message'] = "Erreur lors du téléchargement de l'image.";
+                    $_SESSION['error_message'] = $errors['upload_fail'];
                     header('Location: ../card.php?id=' . $card_id);
                     exit();
                 }
             } else {
-                $_SESSION['error_message'] = "Fichier non valide. Seuls les fichiers JPG, JPEG, PNG & GIF sont autorisés.";
+                $_SESSION['error_message'] = $errors['error_img_format'];
                 header('Location: ../card.php?id=' . $card_id);
                 exit();
             }
@@ -93,19 +95,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
         }
 
         if ($stmt->execute()) {
-            $_SESSION['success_message'] = 'Votre histoire a été soumise avec succès.';
+            $_SESSION['success_message'] = $messages['success_message'];
         } else {
-            $_SESSION['error_message'] = 'Erreur lors de la soumission de votre histoire.';
+            $_SESSION['error_message'] = $messages['error_message'];
         }
     } catch (PDOException $e) {
-        $_SESSION['error_message'] = 'Erreur SQL: ' . $e->getMessage();
+        $_SESSION['error_message'] = $messages['error_SQL'] . ': ' . $e->getMessage();
     }
 
     header('Location: ../card.php?id=' . $card_id);
     exit();
 } else {
-    $_SESSION['error_message'] = 'Données POST non reçues correctement.';
+    $_SESSION['error_message'] = $messages['error_POST'];
     header('Location: ../card.php?id=' . intval($_POST['card_id']));
     exit();
 }
-// ob_end_flush();

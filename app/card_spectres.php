@@ -136,7 +136,8 @@ if (isset($_SESSION['error_message'])) {
 
           echo '<form id="editForm" method="POST" action="story/story_spectres.php" enctype="multipart/form-data" style="display:none;">'
             . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8') . '">'
-            . '<textarea name="story" placeholder="Raconter, ou corrigez votre histoire..." required>' . htmlspecialchars(isset($story['story']) ? $story['story'] : '', ENT_QUOTES, 'UTF-8') . '</textarea>'
+            . '<textarea name="story" placeholder="Raconter, ou corrigez votre histoire..." required>' 
+            . htmlspecialchars(isset($story['story']) ? $story['story'] : '', ENT_QUOTES, 'UTF-8') . '</textarea>'
             . '<br>'
             . '<label for="image">Téléchargez une image:</label>'
             . '<input type="file" id="image" name="image">'

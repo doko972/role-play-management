@@ -8,6 +8,7 @@ if (isset($_SESSION['user_id'])) {
 
 include '../includes/_database.php';
 include '../includes/_functions.php';
+include '../includes/_config.php';
 
 generateToken();
 
@@ -36,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (count($date_parts) == 3 && checkdate($date_parts[1], $date_parts[0], $date_parts[2])) {
     $formatted_birthday = $date_parts[2] . '-' . $date_parts[1] . '-' . $date_parts[0];
   } else {
-    $error_message = "Format de date invalide. Utilisez Jour/Mois/Année (JJ/MM/AAAA).";
+    $error_message = $errors['invalid_date_format'];
   }
 
   if (!isset($error_message) && validateToken($token)) {
@@ -54,19 +55,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':faction', $faction);
 
         if ($stmt->execute()) {
-          header("Location: ../login.php");
-          exit();
-        } else {
-          $error_message = "Erreur lors de l'enregistrement!";
+            header("Location: ../login.php");
+            exit();
+          } else {
+            $error_message = $errors['registration_failed'];
+          }
+        } catch (PDOException $e) {
+          $error_message = $errors['registration_failed'] . ': ' . $e->getMessage();
         }
-      } catch (PDOException $e) {
-        $error_message = 'Erreur : ' . $e->getMessage();
+      } else {
+        $error_message = $errors['password_mismatch'];
       }
+  
     } else {
-      $error_message = "Les mots de passe ne correspondent pas!";
+      $error_message = $errors['invalid_input'];
     }
-  } else {
-    $error_message = "Mauvaise saisie";
   }
-}
-?>
+  if (isset($error_message)) {
+    echo '<div class="error-message">' . $error_message . '</div>';
+  }
+  ?>
