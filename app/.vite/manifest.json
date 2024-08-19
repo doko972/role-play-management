@@ -56,12 +56,12 @@
     "src": "img/saint.webp"
   },
   "js/scripts.js": {
-    "file": "assets/scripts-jEddOu6C.js",
+    "file": "assets/scripts-B7dzIcFY.js",
     "name": "scripts",
     "src": "js/scripts.js",
     "isEntry": true,
     "css": [
-      "assets/scripts-DDVr9TE7.css"
+      "assets/scripts-BK5Gd1Dp.css"
     ],
     "assets": [
       "assets/body-B8fi0EDL.webp",

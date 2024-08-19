@@ -23,8 +23,6 @@ try {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-
   $login = sanitizeInput($_POST['login']); //
   $truename = sanitizeInput($_POST['truename']);
   $email = sanitizeInput($_POST['email']);
@@ -57,23 +55,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':faction', $faction);
 
         if ($stmt->execute()) {
-          header("Location: ../login.php");
-          exit();
-        } else {
-          $error_message = $errors['registration_failed'];
+            header("Location: registration_success.php");
+            exit();
+          } else {
+            $error_message = $errors['registration_failed'];
+          }
+        } catch (PDOException $e) {
+          $error_message = $errors['registration_failed'] . ': ' . $e->getMessage();
         }
-      } catch (PDOException $e) {
-        $error_message = $errors['registration_failed'] . ': ' . $e->getMessage();
+      } else {
+        $error_message = $errors['password_mismatch'];
       }
+  
     } else {
-      $error_message = $errors['password_mismatch'];
+      $error_message = $errors['invalid_input'];
     }
-
-  } else {
-    $error_message = $errors['invalid_input'];
   }
-}
-if (isset($error_message)) {
-  echo '<div class="error-message">' . $error_message . '</div>';
-}
-?>
+  if (isset($error_message)) {
+    echo '<div class="error-message">' . $error_message . '</div>';
+  }
+  ?>
