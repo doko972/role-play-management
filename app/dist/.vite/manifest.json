@@ -1,0 +1,83 @@
+{
+  "img/athena.webp": {
+    "file": "assets/athena-CjBO0SHP.webp",
+    "src": "img/athena.webp"
+  },
+  "img/backathena.webp": {
+    "file": "assets/backathena-CWiNcYTl.webp",
+    "src": "img/backathena.webp"
+  },
+  "img/baniere.webp": {
+    "file": "assets/baniere-CZ7BioOY.webp",
+    "src": "img/baniere.webp"
+  },
+  "img/body.webp": {
+    "file": "assets/body-B8fi0EDL.webp",
+    "src": "img/body.webp"
+  },
+  "img/chooseA.webp": {
+    "file": "assets/chooseA-DHNbxQal.webp",
+    "src": "img/chooseA.webp"
+  },
+  "img/fond.webp": {
+    "file": "assets/fond-CZPRmDiH.webp",
+    "src": "img/fond.webp"
+  },
+  "img/hades.webp": {
+    "file": "assets/hades-ulZO8E6s.webp",
+    "src": "img/hades.webp"
+  },
+  "img/hadesmin.webp": {
+    "file": "assets/hadesmin-CZBA-B9l.webp",
+    "src": "img/hadesmin.webp"
+  },
+  "img/header_img.webp": {
+    "file": "assets/header_img-BM2ibAWV.webp",
+    "src": "img/header_img.webp"
+  },
+  "img/lesenfers.webp": {
+    "file": "assets/lesenfers-WFuNcsCm.webp",
+    "src": "img/lesenfers.webp"
+  },
+  "img/poseidon.webp": {
+    "file": "assets/poseidon-CKf9a8V8.webp",
+    "src": "img/poseidon.webp"
+  },
+  "img/poseidon437.webp": {
+    "file": "assets/poseidon437-D-ZQSgt4.webp",
+    "src": "img/poseidon437.webp"
+  },
+  "img/poseidon_royaume.webp": {
+    "file": "assets/poseidon_royaume-Ba07kkvz.webp",
+    "src": "img/poseidon_royaume.webp"
+  },
+  "img/saint.webp": {
+    "file": "assets/saint--xGS671f.webp",
+    "src": "img/saint.webp"
+  },
+  "js/scripts.js": {
+    "file": "assets/scripts-B7dzIcFY.js",
+    "name": "scripts",
+    "src": "js/scripts.js",
+    "isEntry": true,
+    "css": [
+      "assets/scripts-BK5Gd1Dp.css"
+    ],
+    "assets": [
+      "assets/body-B8fi0EDL.webp",
+      "assets/backathena-CWiNcYTl.webp",
+      "assets/athena-CjBO0SHP.webp",
+      "assets/poseidon-CKf9a8V8.webp",
+      "assets/hades-ulZO8E6s.webp",
+      "assets/chooseA-DHNbxQal.webp",
+      "assets/poseidon_royaume-Ba07kkvz.webp",
+      "assets/poseidon437-D-ZQSgt4.webp",
+      "assets/lesenfers-WFuNcsCm.webp",
+      "assets/hadesmin-CZBA-B9l.webp",
+      "assets/fond-CZPRmDiH.webp",
+      "assets/header_img-BM2ibAWV.webp",
+      "assets/saint--xGS671f.webp",
+      "assets/baniere-CZ7BioOY.webp"
+    ]
+  }
+}

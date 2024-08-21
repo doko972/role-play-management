@@ -1,11 +1,16 @@
 <?php
+$DB_HOST = 'db'; // your address ip - here is db = docker container
+$DB_NAME = 'roleplay'; // the database name
+$DB_USER = 'user'; // user name
+$DB_PWD = 'password'; // password
 
 try {
     $dbCo = new PDO(
-        'mysql:host=db;
-        dbname=roleplay;charset=utf8',
-        'tama',
-        'tekmate'
+        'mysql:host=' . $DB_HOST 
+        . ';dbname=' . $DB_NAME 
+        . ';charset=utf8',
+        $DB_USER,
+        $DB_PWD
     );
     $dbCo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch (Exception $e) {

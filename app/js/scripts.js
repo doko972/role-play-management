@@ -1,11 +1,11 @@
 import './../sass/styles.scss';
 import '/js/toggleEdit.js';
 import '/js/toggleEditForm.js';
+
 "use strict";
 
-window.addEventListener("DOMContentLoaded", (event) => {
+window.addEventListener("DOMContentLoaded", () => {
     animate_text();
-    
 });
 
 function animate_text() {
@@ -14,19 +14,17 @@ function animate_text() {
         contents,
         letters;
 
-    document.querySelectorAll(".animate-text").forEach(function (elem) {
+    document.querySelectorAll(".animate-text").forEach((elem) => {
         contents = elem.textContent.trim();
         elem.textContent = "";
         letters = contents.split("");
         elem.style.visibility = 'visible';
 
-        letters.forEach(function (letter, index_1) {
-            setTimeout(function () {
+        letters.forEach((letter, index) => {
+            setTimeout(() => {
                 elem.textContent += letter;
-            }, delay_start + delay * index_1);
+            }, delay_start + delay * index);
         });
         delay_start += delay * letters.length;
     });
-
-
 }
