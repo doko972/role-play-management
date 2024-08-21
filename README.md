@@ -175,11 +175,8 @@ Voici une vue d'ensemble de l'organisation des fichiers dans ce projet :
 
 ## Configuration de la Base de Données
 
-1. Assurez-vous que le fichier `roleplay.sql` est placé dans le dossier `database` à la racine du projet.
-2. Le conteneur Docker pour MySQL sera automatiquement configuré pour utiliser cette base de données. 
-Aucune action supplémentaire n'est requise si vous utilisez Docker Compose comme décrit ci-dessous.
-
-Creez un nouvel utilisateur, et modifier les champs pour vous connecter dans "includes/_database.php" : 
+Creez un nouvel utilisateur, et modifier les champs pour vous connecter dans "includes/_database.php",
+puis importez le fichier "roleplay.sql" se trouvant dans la racine du projet : 
 
 - $DB_HOST = 'db'; // your address ip - db = docker container
 - $DB_NAME = 'roleplay'; // the database name
@@ -188,7 +185,8 @@ Creez un nouvel utilisateur, et modifier les champs pour vous connecter dans "in
 
 ## Contribuer
 
-Les contributions sont les bienvenues ! Veuillez suivre ces étapes pour contribuer :
+Les contributions sont les bienvenues ! 
+Veuillez suivre ces étapes pour contribuer :
 
 1. Forkez le projet
 2. Créez une nouvelle branche (`git checkout -b feature/nom-de-votre-fonctionnalité`)
