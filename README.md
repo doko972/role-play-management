@@ -169,7 +169,11 @@ Voici une vue d'ensemble de l'organisation des fichiers dans ce projet :
    ```bash
     npm install
 
-4. Construisez les fichiers CSS et JS avec Vite :
+5. Pour lancer vite et le sass :
+   ```bash
+    npm run dev
+
+6. Construisez les fichiers CSS et JS avec Vite :
    ```bash
     npm run build
 
