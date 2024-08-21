@@ -34,7 +34,7 @@ docker-compose up -d
 
     Le service 'PHP' est exposé sur le port 8000.
     Le service 'MySQL' est accessible sur le port 3306 avec les identifiants définis dans le fichier docker-compose.yml.
-    
+
 ## Docker Compose
 # fichier docker-compose.yml :
 services:
@@ -164,15 +164,15 @@ CARD-SYSTEM-PHP/
 2. Accédez au répertoire du projet :
    ```bash
 cd app
-
+    ```
 3. Installez les dépendances Node.js pour Vite :
    ```bash
 npm install
-
+    ```
 4. Construisez les fichiers CSS et JS avec Vite :
    ```bash
 npm run build
-
+    ```
 ### Configuration de la Base de Données
 ## Configuration de la Base de Données
 
