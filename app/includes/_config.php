@@ -1,4 +1,5 @@
 <?php
+define('BASE_URL', '../');
 
 $globalUrl = 'http://localhost:8080';
 

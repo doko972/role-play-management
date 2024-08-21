@@ -25,7 +25,7 @@ include 'includes/_functions.php';
 </head>
 
 <body>
-  <?php include 'header.php'; ?>
+  <?php include 'includes/header.php'; ?>
   <main>
     <div class="head-card" role="img" aria-label="Image de tête de carte"></div>
     <h1 class="texte-position">Choissisez:</h1>
@@ -66,7 +66,7 @@ include 'includes/_functions.php';
       ?>
     </div>
   </main>
-  <?php include 'footer.php'; ?>
+  <?php include 'includes/footer.php'; ?>
 </body>
 
 </html>

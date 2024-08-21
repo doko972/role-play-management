@@ -98,7 +98,7 @@ if (isset($_SESSION['error_message'])) {
 </head>
 
 <body>
-  <?php include 'header.php'; ?>
+  <?php include 'includes/header.php'; ?>
   <main class="container">
     <div class="card-detail">
       <?php
@@ -169,7 +169,7 @@ if (isset($_SESSION['error_message'])) {
   </main>
   <script src="js/scripts.js"></script>
   <script src="js/toggleEdit.js"></script>
-  <?php include 'footer.php'; ?>
+  <?php include 'includes/footer.php'; ?>
 </body>
 
 </html>

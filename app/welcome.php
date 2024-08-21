@@ -26,7 +26,7 @@ $welcome_message = isset($_SESSION['welcome_message']) ? $_SESSION['welcome_mess
   <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
 <body>
-  <?php include 'header.php'; ?>
+  <?php include 'includes/header.php'; ?>
   <main>
   <div class="head-card" role="empty" aria-label="Champs vide">
   </div>
@@ -49,7 +49,7 @@ $welcome_message = isset($_SESSION['welcome_message']) ? $_SESSION['welcome_mess
       </article>
     </section>
   </main>
-  <?php include 'footer.php'; ?>
+  <?php include 'includes/footer.php'; ?>
   <script src="js/script.js"></script>
 </body>
 </html>

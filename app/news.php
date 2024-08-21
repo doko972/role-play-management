@@ -22,7 +22,7 @@ if (!isset($_SESSION['user_id'])) {
   <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'includes/header.php'; ?>
     <main>
         <section>
             <div class="navbar-container__news" role="img" aria-label="Image de fond de la barre de navigation"></div>
@@ -51,7 +51,7 @@ if (!isset($_SESSION['user_id'])) {
             </section>
         </div>
     </main>
-    <?php include 'footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>
 </body>
 
 </html>

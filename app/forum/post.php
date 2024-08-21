@@ -58,7 +58,7 @@ $posts = $stmt->fetchAll();
 </head>
 
 <body>
-    <?php include 'headerForum.php'; ?>
+<?php include '../includes/header.php'; ?>
     <main>
         <section>
             <div class="navbar-container__back" role="img" aria-label="Image de fond de la barre de navigation"></div>
@@ -121,7 +121,7 @@ $posts = $stmt->fetchAll();
             </div>
         </section>
     </main>
-    <?php include 'footer.php'; ?>
+    <?php include '../includes/footer.php'; ?>
 </body>
 
 </html>

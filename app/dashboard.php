@@ -36,7 +36,7 @@ try {
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'includes/header.php'; ?>
     <div class="head-card" role="img" aria-label="Image de tête de carte"></div>
     <main>
         <section class="table_container">
@@ -94,7 +94,7 @@ try {
             </table>
         </section>
     </main>
-    <?php include 'footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>
 </body>
 
 </html>

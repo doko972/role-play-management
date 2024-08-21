@@ -8,7 +8,6 @@ if (!isset($_SESSION['user_id'])) {
 
 include 'includes/_database.php';
 include 'includes/_functions.php';
-include 'includes/_config.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -23,7 +22,7 @@ include 'includes/_config.php';
     <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'includes/header.php'; ?>
     <main>
         <div class="head-card" role="empty" aria-label="Champs vide"></div>
         <h1 class="texte-position">Choisissez:</h1>
@@ -64,6 +63,6 @@ include 'includes/_config.php';
             ?>
         </div>
     </main>
-    <?php include 'footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>
 </body>
 </html>

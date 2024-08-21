@@ -26,7 +26,7 @@ generateToken();
 </head>
 
 <body>
-  <?php include 'header.php'; ?>
+  <?php include 'includes/header.php'; ?>
   <main>
     <div class="head-card" role="empty" aria-label="Champs vide">
     </div>
@@ -64,7 +64,7 @@ generateToken();
     </section>
 
   </main>
-  <?php include 'footer.php'; ?>
+  <?php include 'includes/footer.php'; ?>
   <script src="js/script.js"></script>
 </body>
 

@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <?php include 'header.php'; ?>
+  <?php include '../includes/header.php'; ?>
   <main>
     <section>
       <div class="navbar-container__back" role="img" aria-label="Image de fond de la barre de navigation"></div>
@@ -70,7 +70,7 @@
       </article>
     </section>
   </main>
-  <?php include 'footer.php'; ?>
+  <?php include '../includes/footer.php'; ?>
   <!-- <script src="js/script.js"></script> -->
 </body>
 

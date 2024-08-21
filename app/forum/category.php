@@ -56,7 +56,7 @@ $recentTopicIds = array_column($recentTopics, 'id');
 </head>
 
 <body>
-    <?php include 'headerForum.php'; ?>
+<?php include '../includes/header.php'; ?>
     <header>
         <div class="navbar-container__back" role="img" aria-label="Image de fond de la barre de navigation"></div>
         <h1><?php echo $category['name']; ?> - Forum Saint Seiya Online</h1>
@@ -79,7 +79,7 @@ $recentTopicIds = array_column($recentTopics, 'id');
                 Créer un nouveau sujet</a>
         </div>
     </div>
-    <?php include 'footer.php'; ?>
+    <?php include '../includes/footer.php'; ?>
 </body>
 
 </html>

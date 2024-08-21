@@ -60,7 +60,7 @@ foreach ($recentTopics as $topic) {
 </head>
 
 <body>
-  <?php include 'forum/headerForum.php'; ?>
+<?php include 'includes/header.php'; ?>
   <main>
     <section>
       <div class="navbar-container__back" role="img" aria-label="Image de fond de la barre de navigation"></div>
@@ -103,7 +103,7 @@ foreach ($recentTopics as $topic) {
       </div>
     </div>
   </main>
-  <?php include 'footer.php'; ?>
+  <?php include 'includes/footer.php'; ?>
   <script src="js/script.js"></script>
 </body>
 

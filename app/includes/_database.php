@@ -1,8 +1,8 @@
 <?php
 $DB_HOST = 'db'; // your address ip - here is db = docker container
 $DB_NAME = 'roleplay'; // the database name
-$DB_USER = 'user'; // user name
-$DB_PWD = 'password'; // password
+$DB_USER = 'tama'; // user name
+$DB_PWD = 'tekmate'; // password
 
 try {
     $dbCo = new PDO(

@@ -31,7 +31,7 @@ $categories = $stmt->fetchAll();
 </head>
 
 <body>
-  <?php include 'header.php'; ?>
+  <?php include 'includes/header.php'; ?>
   <main>
     <section>
       <div class="navbar-container__back" role="img" aria-label="Image de fond de la barre de navigation"></div>
@@ -106,7 +106,7 @@ $categories = $stmt->fetchAll();
   </main>
   <script src="js/animate.js"></script>
   <script src="servertime.js"></script>
-  <?php include 'footer.php'; ?>
+  <?php include 'includes/footer.php'; ?>
 </body>
 
 </html>
