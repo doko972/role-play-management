@@ -183,7 +183,7 @@ a:hover::after {
 }
 
 .btn-add-event--register {
-  margin-top: auto; /* Push the button to the bottom if needed */
+  margin-top: auto;
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
@@ -254,6 +254,18 @@ a:hover::after {
   border-radius: 2rem;
 }
 
+.edit-button {
+  display: block;
+  background-image: url("img/svg/edit.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px 24px;
+  width: 40px; /* Ajustez la taille selon vos besoins */
+  height: 40px; /* Ajustez la taille selon vos besoins */
+  border: none;
+  cursor: pointer;
+}
+
 .card {
   background-color: var(--white);
   border: 1px solid var(--white);
@@ -262,6 +274,7 @@ a:hover::after {
   padding: 10px;
   text-align: center;
   width: 200px;
+  height: 300px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
 }
@@ -346,9 +359,6 @@ a:hover::after {
   }
 }
 @media (max-width: 480px) and (max-width: 361px) {
-  .card {
-    flex: 1 1 calc(50% - 2rem);
-  }
   .card-detail h1 {
     font-size: 1.5rem;
   }
@@ -599,16 +609,6 @@ form button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.submenu {
-  display: none;
-  position: absolute;
-  top: 70%;
-  left: 33%;
-  background-color: var(--black-semi);
-  padding: 1rem;
-  z-index: 100;
-}
-
 .menu-items li:hover .submenu {
   display: block;
 }
@@ -723,10 +723,39 @@ form button:hover {
     height: 100%;
     position: relative;
   }
-  .submenu {
+}
+/* Conteneur du sous-menu */
+.menu-items li ul.submenu {
+  position: absolute;
+  top: 80%;
+  background-color: rgba(0, 0, 0, 0.7);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: none;
+  z-index: 1000;
+}
+
+.menu-items li:hover ul.submenu {
+  display: block;
+}
+
+.menu-items li ul.submenu li {
+  padding: 5px 20px;
+}
+
+.menu-items li ul.submenu a {
+  color: var(--aqua);
+}
+
+.menu-items li ul.submenu a:hover {
+  color: var(--goldenstrong);
+}
+
+@media screen and (max-width: 768px) {
+  .menu-items li ul.submenu {
     top: 47%;
-    left: 15%;
-    padding-top: 0;
+    left: 20%;
   }
 }
 .faction {
@@ -760,10 +789,6 @@ form button:hover {
   background-image: url("../img/athena.webp");
   background-size: 100%;
   background-position: bottom;
-}
-
-.athena:hover {
-  color: var(--goldenstrong);
 }
 
 .faction__pos {
@@ -1911,7 +1936,7 @@ iframe {
   max-width: 800px;
   margin: 20px auto;
   padding: 10px;
-  background-color: #282846;
+  background-color: var(--black);
   border-radius: 8px;
 }
 
@@ -1923,7 +1948,7 @@ iframe {
   background-size: 100%;
   background-position: bottom;
   padding: 10px;
-  font-size: 18px;
+  font-size: 2rem;
   margin: 20px 0;
   border-radius: 8px;
   height: 100px;
@@ -1938,7 +1963,7 @@ iframe {
 .forum-category a {
   display: block;
   padding: 10px;
-  background-color: #444;
+  background-color: var(--backgr-blue);
   margin-bottom: 10px;
   border-radius: 8px;
   color: white;
@@ -1947,7 +1972,7 @@ iframe {
 }
 
 .forum-category a:hover {
-  background-color: #555;
+  background-color: var(--purple);
 }
 
 .forum-img {
@@ -1956,17 +1981,18 @@ iframe {
 }
 
 .online-users {
-  background-color: #0066cc;
-  padding: 10px;
-  margin-top: 20px;
-  border-radius: 8px;
+  background-color: var(--backgr-blue);
+  color: var(--white);
+  padding: 0.625rem;
+  margin-top: 1.25rem;
+  border-radius: 0.5rem;
 }
 
 .post {
-  padding: 10px;
-  background-color: #333;
-  margin-bottom: 10px;
-  border-radius: 8px;
+  padding: 0.625rem;
+  background-color: var(--backgr-blue);
+  margin-bottom: 0.625rem;
+  border-radius: 0.5rem;
 }
 
 .post-time {
@@ -1977,12 +2003,19 @@ iframe {
 .new-post {
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  background-color: #333;
-  border-radius: 8px;
+  padding: 0.625rem;
+  background-color: var(--backgr-blue);
+  border-radius: 0.5rem;
   color: var(--white);
   border: 3px solid var(--white);
-  margin-bottom: 0.5rem;
+  margin: 1rem;
+}
+
+.new-post:hover {
+  background-image: url("../img/lesenfers.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 5%;
 }
 
 .new-post textarea {
@@ -2001,6 +2034,13 @@ iframe {
   color: white;
   cursor: pointer;
   width: 10rem;
+}
+
+.new-post button:hover,
+.new-post button:focus {
+  background-color: var(--purple);
+  border-color: var(--goldenstrong);
+  color: var(--aqua);
 }
 
 .form-group {
@@ -2043,6 +2083,30 @@ iframe {
   color: var(--black);
 }
 
+.editForm {
+  display: none;
+}
+
+.editForm_alg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.editForm_alg-mg {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.new-badge {
+  background-color: var(--red);
+  color: var(--white);
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
 .table_container {
   display: flex;
   flex-direction: column;
@@ -2061,7 +2125,6 @@ iframe {
 
 .table-array-dsb__border {
   border: 2px solid white;
-  height: 50px;
   padding: 1rem;
   text-align: center;
 }
@@ -2076,7 +2139,7 @@ iframe {
     font-size: 1rem;
   }
   .table-array-dsb__border {
-    padding: 0.7rem;
+    padding: 0;
   }
 }
 @media screen and (max-width: 480px) {
@@ -2084,7 +2147,7 @@ iframe {
     font-size: 0.8rem;
   }
   .table-array-dsb__border {
-    padding: 0.5rem;
+    padding: 0;
   }
 }
 @media screen and (max-width: 480px) and (max-width: 400px) {
@@ -2092,6 +2155,34 @@ iframe {
     font-size: 0.5rem;
   }
   .table-array-dsb__border {
-    padding: 0.2rem;
+    padding: 0;
   }
+  .table-array_container {
+    font-size: 0.5rem;
+  }
+}
+.taken,
+.taken_free {
+  display: inline-block;
+  border-radius: 2rem;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.taken {
+  background-color: red;
+  border: 3px solid black;
+}
+
+.taken_free {
+  background-color: green;
+  border: 3px solid black;
+}
+
+.taken-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
 }/*# sourceMappingURL=styles.css.map */
