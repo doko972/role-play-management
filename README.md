@@ -37,10 +37,9 @@ docker-compose up -d
 
 # Docker Compose
 ## fichier docker-compose.yml :
-
+     ```bash
 services:
   ## Service PHP with Apache
-     ```bash
   php-apache:
     build:
       context: .
@@ -58,7 +57,7 @@ services:
       APACHE_LOCK_DIR: /var/lock/apache2
       PHP_ROOT_DIR: /var/www/html
     working_dir: /var/www/html
-       ```bash
+
  ## Service MySQL
   db:
     image: mysql:8.0
@@ -71,7 +70,7 @@ services:
       MYSQL_DATABASE: database
       MYSQL_USER: db_user
       MYSQL_PASSWORD: db_password
-   ```bash
+
   ## Service PHPMyAdmin
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -88,7 +87,7 @@ volumes:
   db_data: {}
 
 -------------
-
+   ```bash
 ## Arborescence du Projet
 
 Voici une vue d'ensemble de l'organisation des fichiers dans ce projet :
