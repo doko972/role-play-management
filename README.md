@@ -157,7 +157,7 @@ Voici une vue d'ensemble de l'organisation des fichiers dans ce projet :
 
 ## Installation
 
-1. Clonez ce dépôt sur votre machine locale :
+1. Après avoir "Forké" le projet, Clonez ce dépôt sur votre machine locale :
    ```bash
    git clone https://github.com/'yourusername'/card-system-php.git
 
