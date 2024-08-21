@@ -90,70 +90,70 @@ volumes:
 
 Voici une vue d'ensemble de l'organisation des fichiers dans ce projet :
 
-CARD-SYSTEM-PHP/
-├── database/
-│ └── roleplay.sql
-├── src/
-│ ├── card_marinas.php
-│ ├── card_spectres.php
-│ ├── card.php
-│ ├── dashboard.php
-│ ├── footer.php
-│ ├── forum.php
-│ ├── header.php
-│ ├── index.php
-│ ├── login.php
-│ ├── logout.php
-│ ├── marinas.php
-│ ├── news.php
-│ ├── saint.php
-│ ├── select_card_marinas.php
-│ ├── select_card_spectres.php
-│ ├── select_card.php
-│ ├── spectres.php
-│ ├── update_role.php
-│ ├── welcome.php
-│ ├── js/
-│ │ └── scripts.js
-│ │ └── toggleEdit.js
-│ │ └── toggleEditForm.js
-│ └── css/
-│ └── style.css
-├── event/
-│ ├── event_1.php
-│ ├── footer.php
-│ ├── header.php
-├── forum/
-│ ├── category.php
-│ ├── create_post.php
-│ ├── create_topic.php
-│ ├── delete_post.php
-│ ├── edit_post.php
-│ ├── footer.php
-│ ├── headerForum.php
-│ ├── post.php
-├── img/
-├── includes/
-│ ├── _config.php
-│ ├── _database.php
-│ ├── _functions.php
-│ ├── _registerAdd.php
-├── register/
-│ ├── authenticate.php
-│ ├── footer.php
-│ ├── header.php
-│ ├── register_process.php
-│ ├── register.php
-│ ├── registerScript.php
-│ ├── registration_success.php
-├── story/
-│ ├── story_marinas.php
-│ ├── story_spectres.php
-│ ├── submit_story.php
-├── uploads/
-├── docker-compose.yml
-├── Dockerfile
-└── README.md
+- CARD-SYSTEM-PHP/
+- ├── database/
+- │ └── roleplay.sql
+- ├── src/
+- │ ├── card_marinas.php
+- │ ├── card_spectres.php
+- │ ├── card.php
+- │ ├── dashboard.php
+- │ ├── footer.php
+- │ ├── forum.php
+- │ ├── header.php
+- │ ├── index.php
+- │ ├── login.php
+- │ ├── logout.php
+- │ ├── marinas.php
+- │ ├── news.php
+- │ ├── saint.php
+- │ ├── select_card_marinas.php
+- │ ├── select_card_spectres.php
+- │ ├── select_card.php
+- │ ├── spectres.php
+- │ ├── update_role.php
+- │ ├── welcome.php
+- │ ├── js/
+- │ │ └── scripts.js
+- │ │ └── toggleEdit.js
+- │ │ └── toggleEditForm.js
+- │ └── css/
+- │ └── style.css
+- ├── event/
+- │ ├── event_1.php
+- │ ├── footer.php
+- │ ├── header.php
+- ├── forum/
+- │ ├── category.php
+- │ ├── create_post.php
+- │ ├── create_topic.php
+- │ ├── delete_post.php
+- │ ├── edit_post.php
+- │ ├── footer.php
+- │ ├── headerForum.php
+- │ ├── post.php
+- ├── img/
+- ├── includes/
+- │ ├── _config.php
+- │ ├── _database.php
+- │ ├── _functions.php
+- │ ├── _registerAdd.php
+- ├── register/
+- │ ├── authenticate.php
+- │ ├── footer.php
+- │ ├── header.php
+- │ ├── register_process.php
+- │ ├── register.php
+- │ ├── registerScript.php
+- │ ├── registration_success.php
+- ├── story/
+- │ ├── story_marinas.php
+- │ ├── story_spectres.php
+- │ ├── submit_story.php
+- ├── uploads/
+- ├── docker-compose.yml
+- ├── Dockerfile
+- └── README.md
 
 ## Installation
 
