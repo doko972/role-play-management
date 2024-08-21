@@ -1,4 +1,4 @@
-# Mon Projet Fils rouge dans le cadre de ma formation Développeur Web et Web mobile
+# Projet Fils rouge dans le cadre de ma formation Développeur Web et Web mobile
 
 Ce projet est une application web développée en PHP, utilisant Vite pour la gestion des ressources JavaScript et Sass pour le CSS. 
 L'application utilise une base de données SQL (nommée `roleplay.sql` que vous trouverez à la racine du projet) 
