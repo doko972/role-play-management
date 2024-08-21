@@ -35,10 +35,10 @@ docker-compose up -d
     Le service 'PHP' est exposé sur le port 8000.
     Le service 'MySQL' est accessible sur le port 3306 avec les identifiants définis dans le fichier docker-compose.yml.
 
-## Docker Compose
-# fichier docker-compose.yml :
+# Docker Compose
+## fichier docker-compose.yml :
 services:
-  # Service PHP with Apache
+  ## Service PHP with Apache
   php-apache:
     build:
       context: .
@@ -56,7 +56,7 @@ services:
       APACHE_LOCK_DIR: /var/lock/apache2
       PHP_ROOT_DIR: /var/www/html
     working_dir: /var/www/html
- # Service MySQL
+ ## Service MySQL
   db:
     image: mysql:8.0
     command: --default-authentication-plugin=mysql_native_password
@@ -69,7 +69,7 @@ services:
       MYSQL_USER: db_user
       MYSQL_PASSWORD: db_password
 
-  # Service PHPMyAdmin
+  ## Service PHPMyAdmin
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     restart: always
@@ -173,7 +173,6 @@ CARD-SYSTEM-PHP/
    ```bash
     npm run build
 
-### Configuration de la Base de Données
 ## Configuration de la Base de Données
 
 1. Assurez-vous que le fichier `roleplay.sql` est placé dans le dossier `database` à la racine du projet.
@@ -182,10 +181,10 @@ Aucune action supplémentaire n'est requise si vous utilisez Docker Compose comm
 
 Creez un nouvel utilisateur, et modifier les champs pour vous connecter dans "includes/_database.php" : 
 
-$DB_HOST = 'db'; // your address ip - db = docker container
-$DB_NAME = 'roleplay'; // the database name
-$DB_USER = 'user'; // user name
-$DB_PWD = 'password'; // password
+- $DB_HOST = 'db'; // your address ip - db = docker container
+- $DB_NAME = 'roleplay'; // the database name
+- $DB_USER = 'user'; // user name
+- $DB_PWD = 'password'; // password
 
 ## Contribuer
 
