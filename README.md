@@ -163,16 +163,16 @@ CARD-SYSTEM-PHP/
 
 2. Accédez au répertoire du projet :
    ```bash
-cd app
-    ```
+    cd app
+    
 3. Installez les dépendances Node.js pour Vite :
    ```bash
-npm install
-    ```
+    npm install
+
 4. Construisez les fichiers CSS et JS avec Vite :
    ```bash
-npm run build
-    ```
+    npm run build
+
 ### Configuration de la Base de Données
 ## Configuration de la Base de Données
 
