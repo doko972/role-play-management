@@ -37,7 +37,6 @@ docker-compose up -d
 
 # Docker Compose
 ## fichier docker-compose.yml :
-     ```bash
 services:
   ## Service PHP with Apache
   php-apache:
@@ -87,11 +86,10 @@ volumes:
   db_data: {}
 
 -------------
-   ```bash
 ## Arborescence du Projet
 
 Voici une vue d'ensemble de l'organisation des fichiers dans ce projet :
-
+   ```bash
 - CARD-SYSTEM-PHP/
 - ├── database/
 - │ └── roleplay.sql
