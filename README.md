@@ -29,13 +29,14 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
 docker-compose up -d
 ```
 
-  
 3. L'application sera accessible via http://localhost:8000.
 
     Le service 'PHP' est exposé sur le port 8000.
     Le service 'MySQL' est accessible sur le port 3306 avec les identifiants définis dans le fichier docker-compose.yml.
 
+
 # Docker Compose
+```sh
 ## fichier docker-compose.yml :
 services:
   ## Service PHP with Apache
@@ -84,12 +85,11 @@ services:
 
 volumes:
   db_data: {}
-
+```
 -------------
 ## Arborescence du Projet
 
 Voici une vue d'ensemble de l'organisation des fichiers dans ce projet :
-   ```bash
 - CARD-SYSTEM-PHP/
 - ├── database/
 - │ └── roleplay.sql
