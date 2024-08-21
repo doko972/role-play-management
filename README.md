@@ -159,7 +159,7 @@ Voici une vue d'ensemble de l'organisation des fichiers dans ce projet :
 
 1. Clonez ce dépôt sur votre machine locale :
    ```bash
-   git clone https://github.com/'your-user-name'/https://github.com/doko972/card-system-php.git
+   git clone https://github.com/'yourusername'/card-system-php.git
 
 2. Accédez au répertoire du projet :
    ```bash
