@@ -31,7 +31,10 @@ $errors = [
     'story_empty' => 'Aucune histoire trouvée pour cette carte',
     'invalid' => 'Lien de validation invalide ou expiré',
     'incorrect_password' => 'Nom d\'utilisateur ou mot de passe incorrect !',
-    'not_allowed' => 'Méthode de requête non autorisée !'
+    'not_allowed' => 'Méthode de requête non autorisée !',
+    'date_format_invalid' => 'Format de date invalide',
+    'register_error' => 'Erreur lors de l\'enregistrement!',
+    'password_no_match' => 'Les mots de passe ne correspondent pas'
 ];
 
 $messages = [
@@ -48,7 +51,8 @@ $messages = [
     'error_img_format' => 'Fichier non valide. Seuls les fichiers JPG, JPEG, PNG & GIF sont autorisés.',
     'update_role' => 'Rôle mis à jour avec succès',
     'not_find_card' => 'Aucune carte trouvée',
-    'not_user_in_line' => 'Aucun utilisateur en ligne'
+    'not_user_in_line' => 'Aucun utilisateur en ligne',
+    'create_success' => 'Création du compte avec succès...'
 ];
 $text = [
     'faction_1' => 'Athéna',

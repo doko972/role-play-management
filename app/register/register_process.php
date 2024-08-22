@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (validateToken($token)) {
         echo "Token validaté...<br>";
         if ($passwd === $repasswd) {
-            echo "Passwords Correspondent...<br>";
+            echo "Les mots de passe Correspondent...<br>";
             $hashedPassword = password_hash($passwd, PASSWORD_BCRYPT);
 
             $stmt = $dbCo->prepare("INSERT INTO users (login, passwd, truename, email, birthday, creatime, is_online) 
@@ -30,21 +30,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(':birthday', $birthday);
 
             if ($stmt->execute()) {
-                echo "Création du compte avec succès...<br>";
+                echo $messages['create_success'] . '<br>';
                 ob_flush();
                 header("Location: registration_success.php");
                 exit();
             } else {
-                echo "Erreur lors de l'enregistrement!<br>";
+                echo $errors['register_error'] . '<br>';
             }
         } else {
-            echo "Les mots de passe ne correspondent pas!<br>";
+            echo $errors['password_no_match'] . '<br>';
         }
     } else {
-        echo "Token CSRF invalide!<br>";
+        echo $errors['csrf'] . '<br>';
     }
 } else {
-    echo "Méthode de requête non autorisée!<br>";
+    echo $errors['not_allowed'] . '<br>';
 }
 ob_end_flush();
 ?>

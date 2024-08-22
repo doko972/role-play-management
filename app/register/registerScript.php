@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (count($date_parts) == 3 && checkdate($date_parts[1], $date_parts[0], $date_parts[2])) {
         $formatted_birthday = $date_parts[2] . '-' . $date_parts[1] . '-' . $date_parts[0];
     } else {
-        $error_message = "Format de date invalide.";
+        $error_message = $errors['date_format_invalid'];
     }
 
     // Génération du token de validation

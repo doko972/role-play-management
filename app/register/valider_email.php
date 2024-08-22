@@ -18,7 +18,7 @@ if (isset($_GET['token'])) {
         $stmt->bindParam(':id_user', $user['id_user']);
         $stmt->execute();
 
-        header("Location: ../registration_success.php");
+        header("Location: ../register/registration_success.php");
         exit();
     } else {
         echo $errors['invalid'];
