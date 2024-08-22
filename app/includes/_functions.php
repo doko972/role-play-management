@@ -12,6 +12,14 @@ function generateToken() {
         $_SESSION['tokenExpire'] = time() + 60 * 15;
     }
 }
+/**
+ * Generate Token to email validation
+ * @return string
+ */
+function generateTokenEmail() {
+    return bin2hex(random_bytes(16)); // Génère un token aléatoire
+}
+
 
 /**
  * Checks if the referrer is correct
