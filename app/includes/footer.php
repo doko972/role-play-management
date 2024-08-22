@@ -10,6 +10,6 @@
             <img class="footer-reseaux__ico" src="img/reseaux/instagram.svg" alt="Instagram">
         </a>
     </div>
-    <p>&copy; - Saint Seiya Online RP/PVP</p>
+    <p>&copy; - Saint Seiya Jeu de Rôle / PVP</p>
     <p>Doko972</p>
 </footer>

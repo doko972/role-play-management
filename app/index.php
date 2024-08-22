@@ -37,6 +37,32 @@ $categories = $stmt->fetchAll();
       <div class="navbar-container__back" role="img" aria-label="Image de fond de la barre de navigation"></div>
     </section>
     <section>
+      <article>
+        <div class="texte-position textebackground">
+          <h1>Saint Seiya Online <br>Rôle Play</h1>
+          <p>Nouveaux Chevaliers, Bienvenue !</p>
+          <p>Nous sommes enchantés de vous accueillir dans l'univers captivant de Saint Seiya, où les
+            légendaires Chevaliers du Zodiaque prennent vie.</p>
+          <p>Préparez-vous à plonger dans une aventure épique où chaque choix façonne votre destin. Sélectionnez le
+            rôle
+            qui incarne le mieux votre esprit et rejoignez la faction qui résonne avec vos aspirations de jeu de rôle.</p>
+          <p>Serez-vous un vaillant Chevalier d'Athéna, un redoutable Spectre d'Hadès ou un puissant Général Marinas
+            de
+            Poséidon ? Le sort de l'univers repose entre vos mains !</p>
+          <p>N'hésitez pas à interagir avec vos compagnons de faction, à tisser des alliances solides et à vous
+            immerger
+            dans ce monde extraordinaire. Ensemble, nous écrirons des pages mémorables de bravoure et de camaraderie.
+          </p>
+          <p> Nous sommes impatients de partager cette aventure épique avec vous. Que votre périple à travers Saint
+            Seiya soit rempli de combats héroïques en rejoignant le serveur Saint seiya Online avec vos frères et soeurs d'armes, 
+            de découvertes passionnantes et de souvenirs impérissables.</p>
+            <p>À vous de jouer, jeunes Guerriers.</p>
+            <p>Faites brûler votre cosmos !</p>
+          <p>Laissez votre histoire dans le monde de Saint Seiya commencer maintenant !</p>
+        </div>
+      </article>
+    </section>
+    <section>
       <section>
         <article>
           <div>
@@ -63,46 +89,24 @@ $categories = $stmt->fetchAll();
           </div>
         </article>
       </section>
-      <article>
-        <div class="texte-position textebackground">
-          <h1>Saint Seiya Online <br>Rôle Play</h1>
-          <p>Nouveaux Chevaliers, Bienvenue !</p>
-          <p>Nous sommes enchantés de vous accueillir dans l'univers captivant de Saint Seiya Online, où les légendaires
-            Chevaliers du Zodiaque prennent vie.</p>
-          <p>Préparez-vous à plonger dans une aventure épique où chaque choix façonne votre destin. Sélectionnez le rôle
-            qui incarne le mieux votre esprit et rejoignez la faction qui résonne avec vos aspirations de Rôle Play ou
-            de PVP.</p>
-          <p>Serez-vous un vaillant Chevalier d'Athéna, un redoutable Spectre d'Hadès ou un puissant Général Marinas de
-            Poséidon ? Le sort de l'univers repose entre vos mains !</p>
-          <p>N'hésitez pas à interagir avec vos compagnons de faction, à tisser des alliances solides et à vous immerger
-            dans ce monde extraordinaire. Ensemble, nous écrirons des pages mémorables de bravoure et de camaraderie.
-          </p>
-          <p> Nous sommes impatients de partager cette aventure épique avec vous. Que votre périple à travers Saint
-            Seiya
-            Online soit rempli de combats héroïques, de découvertes passionnantes et de souvenirs impérissables.
-            À vous de jouer, jeunes Guerriers. Faites brûler votre cosmos !</p>
-          <p>Laissez votre histoire dans le monde de Saint Seiya Online Rôle Play commencer maintenant !</p>
-        </div>
-      </article>
-    </section>
-    <section>
-      <article>
-        <h2 class="texte-position">Événements à venir</h2>
-        <ul class="event-list">
-          <a href="news.php">
-            <li class="event-card">
-              <div class="">
-                <p>Tournois Galactique pour la reprise du serveur !</p>
-                <p> Ne le manquez pas !</p>
-              </div>
-              <h3 class="texte-position">Tournoi RP/PvP</h3>
-              <p>Date : Samedi 31 août 2024 de 20h00 à 22h00</p>
-              <p>Description : Montrez vos compétences de combat et gagnez des récompenses.</p>
-            </li>
-          </a>
-        </ul>
-      </article>
-    </section>
+      <section>
+        <article>
+          <h2 class="texte-position">Événements à venir</h2>
+          <ul class="event-list">
+            <a href="news.php">
+              <li class="event-card">
+                <div class="">
+                  <p>Tournois Galactique pour la reprise du serveur !</p>
+                  <p> Ne le manquez pas !</p>
+                </div>
+                <h3 class="texte-position">Tournoi RP/PvP</h3>
+                <p>Date : Samedi 31 août 2024 de 20h00 à 22h00</p>
+                <p>Description : Montrez vos compétences de combat et gagnez des récompenses.</p>
+              </li>
+            </a>
+          </ul>
+        </article>
+      </section>
   </main>
   <script src="js/animate.js"></script>
   <script src="servertime.js"></script>
