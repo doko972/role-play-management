@@ -35,7 +35,7 @@ generateToken();
         <h1>Connexion</h1>
         <?php
           if (isset($_SESSION['error_message'])) {
-              echo '<p class="error-message">' . htmlspecialchars($_SESSION['error_message'], ENT_QUOTES, 'UTF-8') . '</p>';
+              echo '<p class="error-message">' . $_SESSION['error_message'] . '</p>';
               unset($_SESSION['error_message']);
           }
         ?>

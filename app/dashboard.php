@@ -54,16 +54,16 @@ try {
                 <tbody>
                     <?php foreach ($users as $user): ?>
                         <tr>
-                            <td class="table-array-dsb__border"><?php echo htmlspecialchars($user['id_user']); ?></td>
-                            <td class="table-array-dsb__border"><?php echo htmlspecialchars($user['truename']); ?></td>
+                            <td class="table-array-dsb__border"><?php echo $user['id_user']; ?></td>
+                            <td class="table-array-dsb__border"><?php echo $user['truename']; ?></td>
                             <td class="table-array-dsb__border">
                                 <?php
                                 if ($user['faction_id'] == 1) {
-                                    echo 'Athéna';
+                                    echo $text['faction_1'];
                                 } else if ($user['faction_id'] == 2) {
-                                    echo 'Poséïdon';
+                                    echo $text['faction_2'];
                                 } else if ($user['faction_id'] == 3) {
-                                    echo 'Hadès';
+                                    echo $text['faction_3'];
                                 }
                                 ?>
                             </td>

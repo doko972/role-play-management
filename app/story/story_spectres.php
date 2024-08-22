@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
             $file_name = uniqid() . '_' . basename($_FILES["image"]["name"]); // Utilisation d'un nom de fichier unique
             $target_file = $target_dir . $file_name;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-            $allowed_extensions = array("jpg", "jpeg", "png", "gif");
+            $allowed_extensions = array("jpg", "jpeg", "png", "gif", "webp");
 
             // Vérification de l'image
             $check = getimagesize($_FILES["image"]["tmp_name"]);

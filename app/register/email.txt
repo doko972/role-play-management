@@ -1,0 +1,32 @@
+1. Ajout d'un champ pour le token de validation:
+
+ALTER TABLE `users`
+ADD COLUMN `validation_token` VARCHAR(255) NULL,
+ADD COLUMN `is_verified` TINYINT(1) NOT NULL DEFAULT 0;
+
+2. Génération du token et envoi de l'email de validation
+
+/**
+ * Generate Token to email validation
+ * @return string
+ */
+function generateTokenEmail() {
+    return bin2hex(random_bytes(16)); // Génère un token aléatoire
+}
+
+$validation_token = generateTokenEmail();
+$email = $_POST['email']; // Adresse email saisie par l'utilisateur
+
+// Insertion de l'utilisateur dans la base de données avec le token
+$stmt = $pdo->prepare("INSERT INTO users (login, passwd, truename, email, birthday, creatime, faction_id, validation_token) VALUES (?, ?, ?, ?, ?, NOW(), ?, ?)");
+$stmt->execute([$login, $hashed_password, $truename, $email, $birthday, $faction_id, $validation_token]);
+
+// Envoi de l'email de validation
+$validation_link = "http://localhost:8080/valider_email.php?token=" . $validation_token;
+mail($email, "Validez votre email", "Cliquez sur ce lien pour valider votre email : $validation_link");
+
+3. Page de validation du compte
+
+
+
+

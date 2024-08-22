@@ -58,10 +58,10 @@ include 'includes/_functions.php';
           }
 
         } else {
-          echo '<p>Aucune carte trouvée.</p>';
+          echo '<p>' . $errors['not_find_card'] . '</p>';
         }
       } catch (PDOException $e) {
-        echo 'Erreur : ' . $e->getMessage();
+        echo '<p>' . $errors['update_ko'] . '</p>';
       }
       ?>
     </div>

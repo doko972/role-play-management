@@ -94,10 +94,13 @@ foreach ($recentTopics as $topic) {
       <div class="online-users">
           <?php
           if (!empty($onlineUsers)) {
+            //extrait toutes les valeurs de la colonne 'login' dans le tableau $onlineUsers.
               $usernames = array_column($onlineUsers, 'login');
+              //implode(', ', ...) transforme le tableau $usernames en une chaîne de caractères, 
+              //où chaque nom d'utilisateur est séparé par une virgule et un espace
               echo implode(', ', array_map('htmlspecialchars', $usernames));
           } else {
-              echo 'Aucun utilisateur en ligne';
+              echo $message['not_user_in_line'];
           }
           ?>
       </div>

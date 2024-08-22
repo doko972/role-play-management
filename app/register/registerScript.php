@@ -59,34 +59,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->bindParam(':validation_token', $validation_token);
 
                 if ($stmt->execute()) {
-                    // Envoi de l'email de validation
-                    $validation_link = "http://localhost:8080/valider_email.php?token=" . $validation_token;
-                    $subject = "Validez votre email";
-                    $message = "Cliquez sur ce lien pour valider votre email : " . $validation_link;
-                    $headers = 'From: no-reply@saintseiyajeuderole.online' . "\r\n" .
-                               'Reply-To: support@saintseiyajeuderole.online' . "\r\n" .
-                               'X-Mailer: PHP/' . phpversion();
-
-                    mail($email, $subject, $message, $headers);
-
-                    // Redirection vers une page informant l'utilisateur de vérifier son email
-                    header("Location: check_email.php");
+                    header("Location: registration_success.php");
                     exit();
                 } else {
-                    $error_message = "L'inscription a échoué, veuillez réessayer.";
+                    $error_message = $errors['registration_failed'];
                 }
             } catch (PDOException $e) {
-                $error_message = "L'inscription a échoué : " . $e->getMessage();
+                $error_message = $errors['registration_failed'] . ': ' . $e->getMessage();
             }
         } else {
-            $error_message = "Les mots de passe ne correspondent pas.";
+            $error_message = $errors['password_mismatch'];
         }
-    } else {
-        $error_message = "Une erreur s'est produite. Veuillez vérifier les informations saisies.";
-    }
 
-    if (isset($error_message)) {
-        echo '<div class="error-message">' . $error_message . '</div>';
+    } else {
+        $error_message = $errors['invalid_input'];
     }
+}
+if (isset($error_message)) {
+    echo '<div class="error-message">' . $error_message . '</div>';
 }
 ?>

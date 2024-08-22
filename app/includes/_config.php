@@ -5,6 +5,8 @@ $globalUrl = 'http://localhost:8080';
 
 $errors = [
     'csrf' => 'Votre session est invalide.',
+    'not_token' => 'Token non fourni',
+    'invalid_token' => 'Token CSRF invalide !',
     'referer' => 'D\'où venez vous ?',
     'insert_ko' => 'Erreur lors de la sauvegarde de l\'utilisateur.',
     'update_ko' => 'Erreur lors de la modification de l\'utilisateur.',
@@ -19,7 +21,17 @@ $errors = [
     'invalid_date_format' => 'Format de date invalide. Utilisez Jour/Mois/Année (JJ/MM/AAAA).',
     'password_mismatch' => 'Les mots de passe ne correspondent pas.',
     'registration_failed' => 'Erreur lors de l\'enregistrement de l\'utilisateur.',
-    'invalid_input' => 'Mauvaise saisie.'
+    'invalid_input' => 'Mauvaise saisie.',
+    'invalid_role' => 'Rôle invalide.',
+    'error' => 'Erreur : ',
+    'error_role' => 'Erreur lors de la mise à jour du rôle',
+    'error_select_role' => 'Erreur lors de la sélection du rôle',
+    'error_taken_role' => 'Ce rôle a déjà été choisi par un autre joueur.',
+    'data_error' => 'Données non reçues.',
+    'story_empty' => 'Aucune histoire trouvée pour cette carte',
+    'invalid' => 'Lien de validation invalide ou expiré',
+    'incorrect_password' => 'Nom d\'utilisateur ou mot de passe incorrect !',
+    'not_allowed' => 'Méthode de requête non autorisée !'
 ];
 
 $messages = [
@@ -34,5 +46,13 @@ $messages = [
     'error_POST' => 'Données POST non reçues correctement',
     'upload_fail' => 'Erreur lors du téléchargement de l\'image',
     'error_img_format' => 'Fichier non valide. Seuls les fichiers JPG, JPEG, PNG & GIF sont autorisés.',
+    'update_role' => 'Rôle mis à jour avec succès',
+    'not_find_card' => 'Aucune carte trouvée',
+    'not_user_in_line' => 'Aucun utilisateur en ligne'
 ];
+$text = [
+    'faction_1' => 'Athéna',
+    'faction_2' => 'Poséïdon',
+    'faction_3' => 'Hadès'
+]
 ?>

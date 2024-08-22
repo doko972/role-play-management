@@ -55,7 +55,7 @@ include 'includes/_functions.php';
                         echo '</div>';
                     }
                 } else {
-                     echo '<p>' . $errors['no_action'] . '</p>';
+                     echo '<p>' . $errors['not_find_card'] . '</p>';
                 }
             } catch (PDOException $e) {
                 echo '<p>' . $errors['update_ko'] . '</p>';

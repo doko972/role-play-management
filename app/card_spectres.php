@@ -123,7 +123,7 @@ if (isset($_SESSION['error_message'])) {
             echo '</div>';
           }
         } else {
-          echo '<p>Aucune histoire trouvée pour cette carte.</p>';
+          echo '<p>' . $errors['story_empty'] . '</p>';
         }
 
         echo '</div>';
@@ -155,7 +155,7 @@ if (isset($_SESSION['error_message'])) {
             . '</form>';
         }
       } else {
-        echo '<p>Carte non trouvée.</p>';
+        echo '<p>' . $errors['card_not_find'] . '</p>';
       }
       ?>
     </div>

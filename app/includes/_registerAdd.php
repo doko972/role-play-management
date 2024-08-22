@@ -8,7 +8,6 @@ if (isset($_SESSION['user_id'])) {
 
 include '../includes/_database.php';
 include '../includes/_functions.php';
-// include '../includes/_config.php';
 
 generateToken();
 

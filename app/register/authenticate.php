@@ -37,22 +37,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $selected_card_name = $card ? $card['name'] : 'inconnu';
 
-            $_SESSION['welcome_message'] = 'Bienvenue ' . htmlspecialchars_decode($selected_card_name, ENT_QUOTES);
+            $_SESSION['welcome_message'] = 'Bienvenue ' . $selected_card_name;
 
             header("Location: ../welcome.php");
             exit();
         } else {
-            $_SESSION['error_message'] = "Nom d'utilisateur ou mot de passe incorrect !";
+            $_SESSION['error_message'] = $errors['incorrect_password'];
             header("Location: ../login.php");
             exit();
         }
     } else {
-        $_SESSION['error_message'] = "Token CSRF invalide !";
+        $_SESSION['error_message'] = $errors['invalid_token'];
         header("Location: ../login.php");
         exit();
     }
 } else {
-    $_SESSION['error_message'] = "Méthode de requête non autorisée !";
+    $_SESSION['error_message'] = $errors['not_allowed'];
     header("Location: ../login.php");
     exit();
 }

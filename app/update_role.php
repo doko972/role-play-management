@@ -20,15 +20,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(':role', $role);
             $stmt->bindParam(':id_user', $id_user);
             if ($stmt->execute()) {
-                $_SESSION['success_message'] = "Rôle mis à jour avec succès.";
+                $_SESSION['success_message'] = $messages['update_role'];
             } else {
-                $_SESSION['error_message'] = "Erreur lors de la mise à jour du rôle.";
+                $_SESSION['error_message'] = $errors['error_role'];
             }
         } catch (PDOException $e) {
-            $_SESSION['error_message'] = 'Erreur : ' . $e->getMessage();
+            $_SESSION['error_message'] = $errors['error'] . $e->getMessage();
         }
     } else {
-        $_SESSION['error_message'] = "Rôle invalide.";
+        $_SESSION['error_message'] = $errors['invalid_role'];
     }
 
     header("Location: dashboard.php");

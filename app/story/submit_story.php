@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])
             $target_dir = "../uploads/";
             $target_file = $target_dir . basename($_FILES["image"]["name"]);
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-            $allowed_extensions = array("jpg", "jpeg", "png", "gif");
+            $allowed_extensions = array("jpg", "jpeg", "png", "gif", "webp");
 
             // image est valide ?
             $check = getimagesize($_FILES["image"]["tmp_name"]);

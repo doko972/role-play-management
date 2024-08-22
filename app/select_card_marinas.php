@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])
         $card = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($card && $card['taken_by_user_id'] !== null && $card['taken_by_user_id'] != $user_id) {
-            $_SESSION['error_message'] = 'Ce rôle a déjà été choisi par un autre joueur.';
+            $_SESSION['error_message'] = $errors['error_taken_role'];
             header('Location: card_marinas.php?id=' . $card_id);
             exit();
         } else {
@@ -34,18 +34,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])
                 header('Location: card_marinas.php?id=' . $card_id);
                 exit();
             } else {
-                $_SESSION['error_message'] = 'Erreur lors de la sélection du rôle.';
+                $_SESSION['error_message'] = $errors['error_select_role'];
                 header('Location: card_marinas.php?id=' . $card_id);
                 exit();
             }
         }
     } catch (PDOException $e) {
-        $_SESSION['error_message'] = 'Erreur : ' . $e->getMessage();
+        $_SESSION['error_message'] = $errors['error'] . $e->getMessage();
         header('Location: card_marinas.php?id=' . $card_id);
         exit();
     }
 } else {
-    echo "Données non reçues.";
+    echo $errors['data_error'];
 }
 
 ob_end_flush();
