@@ -2,7 +2,8 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-  redirectTo("../index.php");
+  header("Location: login.php");
+  exit();
 }
 
 include 'includes/_database.php';
