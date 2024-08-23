@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'includes/_database.php';
+include 'includes/_config.php';
 
 // connecté ?
 if (!isset($_SESSION['user_id'])) {
@@ -17,7 +18,10 @@ $min_id = 50;
 $max_id = 70;
 
 try {
-  $stmt = $dbCo->prepare("SELECT * FROM img WHERE id_img = :id AND id_img BETWEEN :min_id AND :max_id");
+    // carte sélectionnée par l'utilisateur
+  $stmt = $dbCo->prepare("SELECT * 
+  FROM img 
+  WHERE id_img = :id AND id_img BETWEEN :min_id AND :max_id");
   $stmt->bindParam(':id', $id, PDO::PARAM_INT);
   $stmt->bindParam(':min_id', $min_id, PDO::PARAM_INT);
   $stmt->bindParam(':max_id', $max_id, PDO::PARAM_INT);
@@ -25,13 +29,17 @@ try {
   $card = $stmt->fetch(PDO::FETCH_ASSOC);
 
   // histoires pour la carte
-  $stmt = $dbCo->prepare("SELECT story, story_date, id_user, name, image FROM characters WHERE id_characters = :id");
+  $stmt = $dbCo->prepare("SELECT story, story_date, id_user, name, image 
+  FROM characters 
+  WHERE id_characters = :id");
   $stmt->bindParam(':id', $id, PDO::PARAM_INT);
   $stmt->execute();
   $stories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   // carte sélectionnée par l'user
-  $stmt = $dbCo->prepare("SELECT selected_card FROM users WHERE id_user = :user_id");
+  $stmt = $dbCo->prepare("SELECT selected_card 
+  FROM users 
+  WHERE id_user = :user_id");
   $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
   $stmt->execute();
   $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -42,7 +50,9 @@ try {
   // nom de la carte sélectionnée
   $selected_card_name = '';
   if ($selected_card_id !== null) {
-    $stmt = $dbCo->prepare("SELECT name FROM img WHERE id_img = :selected_card_id");
+    $stmt = $dbCo->prepare("SELECT name 
+    FROM img 
+    WHERE id_img = :selected_card_id");
     $stmt->bindParam(':selected_card_id', $selected_card_id, PDO::PARAM_INT);
     $stmt->execute();
     $selected_card = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -61,13 +71,13 @@ try {
 
   // Vérifier si la card est déjà prise
   if ($card && $card['taken_by_user_id'] !== null && $card['taken_by_user_id'] != $user_id) {
-    $error_message = "Cette carte est déjà prise par un autre utilisateur.";
+    $error_message = $errors['card_no_free'];
   }
 
 } catch (PDOException $e) {
-  $error_message = 'Erreur : ' . $e->getMessage();
+  $error_message = $errors['update_ko'];
   $card = null;
-  $stories = array();
+  $stories = [];
 }
 
 // erreur de session
@@ -136,7 +146,7 @@ if (isset($_SESSION['error_message'])) {
 
           echo '<form id="editForm" method="POST" action="story/story_spectres.php" enctype="multipart/form-data" style="display:none;">'
             . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8') . '">'
-            . '<textarea name="story" placeholder="Raconter, ou corrigez votre histoire..." required>' 
+            . '<textarea name="story" placeholder="Raconter, ou corrigez votre histoire..." required>'
             . htmlspecialchars(isset($story['story']) ? $story['story'] : '', ENT_QUOTES, 'UTF-8') . '</textarea>'
             . '<br>'
             . '<label for="image">Téléchargez une image:</label>'

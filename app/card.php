@@ -3,9 +3,10 @@ session_start();
 include 'includes/_database.php';
 include 'includes/_config.php';
 
+// connecté ?
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
+  header("Location: login.php");
+  exit();
 }
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 1;
@@ -17,59 +18,74 @@ $min_id = 1;
 $max_id = 29;
 
 try {
-    $stmt = $dbCo->prepare("SELECT * FROM img WHERE id_img = :id AND id_img BETWEEN :min_id AND :max_id");
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    $stmt->bindParam(':min_id', $min_id, PDO::PARAM_INT);
-    $stmt->bindParam(':max_id', $max_id, PDO::PARAM_INT);
+    // carte sélectionnée par l'utilisateur
+  $stmt = $dbCo->prepare("SELECT * 
+  FROM img 
+    WHERE id_img = :id AND id_img BETWEEN :min_id AND :max_id");
+  $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+  $stmt->bindParam(':min_id', $min_id, PDO::PARAM_INT);
+  $stmt->bindParam(':max_id', $max_id, PDO::PARAM_INT);
+  $stmt->execute();
+  $card = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  // histoires pour la carte
+  $stmt = $dbCo->prepare("SELECT story, story_date, id_user, name, image 
+    FROM characters 
+    WHERE id_characters = :id");
+  $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+  $stmt->execute();
+  $stories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  // carte sélectionnée par l'user
+  $stmt = $dbCo->prepare("SELECT selected_card 
+    FROM users 
+    WHERE id_user = :user_id");
+  $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+  $stmt->execute();
+  $user = $stmt->fetch(PDO::FETCH_ASSOC);
+  if ($user) {
+    $selected_card_id = $user['selected_card'];
+  }
+
+  // nom de la carte sélectionnée
+  $selected_card_name = '';
+  if ($selected_card_id !== null) {
+    $stmt = $dbCo->prepare("SELECT name 
+    FROM img 
+    WHERE id_img = :selected_card_id");
+    $stmt->bindParam(':selected_card_id', $selected_card_id, PDO::PARAM_INT);
     $stmt->execute();
-    $card = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    $stmt = $dbCo->prepare("SELECT story, story_date, id_user, name, image FROM characters WHERE id_characters = :id");
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    $stmt->execute();
-    $stories = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    $stmt = $dbCo->prepare("SELECT selected_card FROM users WHERE id_user = :user_id");
-    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-    $stmt->execute();
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($user) {
-        $selected_card_id = $user['selected_card'];
+    $selected_card = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($selected_card) {
+      $selected_card_name = $selected_card['name'];
     }
+  }
 
-    $selected_card_name = '';
-    if ($selected_card_id !== null) {
-        $stmt = $dbCo->prepare("SELECT name FROM img WHERE id_img = :selected_card_id");
-        $stmt->bindParam(':selected_card_id', $selected_card_id, PDO::PARAM_INT);
-        $stmt->execute();
-        $selected_card = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($selected_card) {
-            $selected_card_name = $selected_card['name'];
-        }
+  // si histoire existe pour cette carte et l'user ?
+  foreach ($stories as $s) {
+    if ($s['id_user'] == $user_id) {
+      $story = $s;
+      break;
     }
+  }
 
-    foreach ($stories as $s) {
-        if ($s['id_user'] == $user_id) {
-            $story = $s;
-            break;
-        }
-    }
-
-    if ($card && $card['taken_by_user_id'] !== null && $card['taken_by_user_id'] != $user_id) {
-        $error_message = $errors['card_no_free'];
-    }
+  // Vérifier si la card est déjà prise
+  if ($card && $card['taken_by_user_id'] !== null && $card['taken_by_user_id'] != $user_id) {
+    $error_message = $errors['card_no_free'];
+  }
 
 } catch (PDOException $e) {
-    $error_message = $errors['update_ko'];
-    $card = null;
-    $stories = [];
+  $error_message = $errors['update_ko'];
+  $card = null;
+  $stories = [];
 }
 
+// erreur de session
 if (isset($_SESSION['error_message'])) {
-    $error_message = $_SESSION['error_message'];
-    unset($_SESSION['error_message']);
+  $error_message = $_SESSION['error_message'];
+  unset($_SESSION['error_message']);
 } else {
-    $error_message = '';
+  $error_message = '';
 }
 ?>
 <!DOCTYPE html>
@@ -89,7 +105,7 @@ if (isset($_SESSION['error_message'])) {
   <?php include 'includes/header.php'; ?>
   <main class="container">
     <div class="card-detail">
-    <?php
+      <?php
       if ($card) {
         echo '<form action="saint.php" method="GET">';
         echo '<button type="submit" class="button__register" aria-label="Retour à l\'index">Retour à l\'index</button>';
@@ -99,8 +115,8 @@ if (isset($_SESSION['error_message'])) {
           echo '<p class="error-message">' . $error_message . '</p>';
         }
 
-        echo '<img src="' . $card['file'] . '" alt="' 
-        . $card['alternatif_txt'] . '">'
+        echo '<img src="' . $card['file'] . '" alt="'
+          . $card['alternatif_txt'] . '">'
           . '<div>'
           . '<p>' . $card['class'] . '</p>'
           . '<p>' . $card['name'] . '</p>';
@@ -130,7 +146,7 @@ if (isset($_SESSION['error_message'])) {
 
           echo '<form id="editForm" method="POST" action="story/submit_story.php" enctype="multipart/form-data" style="display:none;">'
             . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8') . '">'
-            . '<textarea name="story" placeholder="Raconter, ou corrigez votre histoire..." required>' 
+            . '<textarea name="story" placeholder="Raconter, ou corrigez votre histoire..." required>'
             . htmlspecialchars(isset($story['story']) ? $story['story'] : '', ENT_QUOTES, 'UTF-8') . '</textarea>'
             . '<br>'
             . '<label for="image">Téléchargez une image:</label>'
@@ -159,4 +175,5 @@ if (isset($_SESSION['error_message'])) {
   <script src="js/toggleEdit.js"></script>
   <?php include 'includes/footer.php'; ?>
 </body>
+
 </html>
