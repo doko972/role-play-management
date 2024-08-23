@@ -22,6 +22,7 @@ try {
     echo 'Erreur : ' . $e->getMessage();
 }
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = sanitizeInput($_POST['login']);
     $truename = sanitizeInput($_POST['truename']);
