@@ -23,7 +23,7 @@ $categories = $stmt->fetchAll();
 $supportCategories = array_slice($categories, 0, 3); // Support et discussions générales
 $factionCategories = array_slice($categories, 3, 3); // Salon par faction
 
-// Récupérer les utilisateurs connectés
+// Récupérer les utilisateurs connectés avec la fonction getOnlineUsers();
 $onlineUsers = getOnlineUsers($dbCo);
 
 
@@ -82,7 +82,7 @@ foreach ($recentTopics as $topic) {
       <div class="forum-category">
         <?php foreach ($factionCategories as $category): ?>
           <a href="forum/category.php?id=<?php echo $category['id']; ?>">
-            <?php echo htmlspecialchars($category['name']); ?>
+            <?php echo $category['name']; ?>
             <?php if (isset($recentTopicsByCategory[$category['id']])): ?>
               <span class="new-badge">Nouveau</span>
             <?php endif; ?>

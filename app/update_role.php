@@ -5,8 +5,7 @@ include 'includes/_functions.php';
 
 // Vérifier si l'utilisateur est connecté et est un administrateur
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: login.php");
-    exit();
+    redirectTo("../index.php");
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

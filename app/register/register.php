@@ -51,7 +51,7 @@
             <div class="hint">Adresse e-mail</div>
 
             <label for="user_birthday" class="sr-only">Date de Naissance (JJ/MM/AAAA)</label>
-            <input class="input input_form" id="user_birthday" type="text" name="birthday" aria-label="Date de Naissance" placeholder="JJ/MM/AAAA" required>
+            <input class="input input_form" id="user_birthday" type="date" name="birthday" aria-label="Date de Naissance" placeholder="JJ/MM/AAAA" required>
             <div class="hint">Date de Naissance (JJ/MM/AAAA)</div>
 
             <label for="password" class="sr-only">Mot de passe</label>

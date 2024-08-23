@@ -2,14 +2,14 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-    header("Location: ../index.php");
-    exit();
+    redirectTo("../index.php");
 }
 
 include '../includes/_database.php';
 include '../includes/_functions.php';
 
 generateToken();
+preventCSRF('register.php');
 generateTokenEmail();
 
 // Récupérer les factions
@@ -33,12 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $token = sanitizeInput($_POST['token']);
 
     // Formatage de la date de naissance
-    $date_parts = explode('/', $birthday);
-    if (count($date_parts) == 3 && checkdate($date_parts[1], $date_parts[0], $date_parts[2])) {
-        $formatted_birthday = $date_parts[2] . '-' . $date_parts[1] . '-' . $date_parts[0];
-    } else {
-        $error_message = $errors['date_format_invalid'];
-    }
+    $formatted_birthday = date('Y-m-d', strtotime($birthday));
 
     // Génération du token de validation
     $validation_token = bin2hex(random_bytes(16));
@@ -59,8 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->bindParam(':validation_token', $validation_token);
 
                 if ($stmt->execute()) {
-                    header("Location: registration_success.php");
-                    exit();
+                    redirectTo('registration_success.php');
                 } else {
                     $error_message = $errors['registration_failed'];
                 }
@@ -70,11 +64,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $error_message = $errors['password_mismatch'];
         }
-
     } else {
         $error_message = $errors['invalid_input'];
     }
 }
+
 if (isset($error_message)) {
     echo '<div class="error-message">' . $error_message . '</div>';
 }
