@@ -70,7 +70,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+// Redirection en cas d'erreur
 if (isset($error_message)) {
-    echo '<div class="error-message">' . $error_message . '</div>';
+    header('Location: register.php?error=' . urlencode($error_message));
+    exit();
 }
 ?>
