@@ -44,7 +44,7 @@ $welcome_message = isset($_SESSION['welcome_message']) ? $_SESSION['welcome_mess
             <script>
               setTimeout(function () {
                 window.location.href = 'index.php';
-              }, 4000);
+              }, 40000);
             </script>
           </div>
         </div>
