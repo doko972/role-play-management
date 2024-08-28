@@ -69,11 +69,21 @@ try {
                             </td>
                             <td class="table-array-dsb__border">
                                 <?php
-                                if ($user['is_online'] != 1) {
-                                    echo ' <p><span class="taken"></span></p>';
+                                if ($user['is_online'] !== 1) {
+                                    echo '<div class="taken-container">'
+                                    . ' <p class="taken"></p>'
+                                    . ' <p class="taken-font">Déconnecté</p>'
+                                    .  '</div>';
+        
+        
                                 } else {
-                                    echo ' <p><span class="taken_free"></span></p>';
+                                    echo '<div class="taken-container">'
+                                    . ' <p class="taken_free"></p>'
+                                    . ' <p class="taken-font">Connecté</p>'
+                                    .  '</div>';
                                 }
+
+
                                 ?>
                             </td>
                             <td class="table-array-dsb__border">

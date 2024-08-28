@@ -1,3 +1,8 @@
+.taken-container {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+}
 .taken,
 .taken_free {
     display: inline-block;
@@ -6,6 +11,7 @@
     height: 1rem;
     margin-right: .5rem;
     vertical-align: middle;
+    font-size: 1rem;
 }
 
 .taken {
@@ -18,8 +24,6 @@
     border: 3px solid black;
 }
 
-.taken-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1em;
+.taken-font{
+    font-size: 1rem;
 }

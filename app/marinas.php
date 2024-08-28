@@ -49,10 +49,20 @@ include 'includes/_functions.php';
               . '<a href="card_marinas.php?id=' . $card['id_img'] . '">'
               . '<img src="' . $card['file'] . '" alt="' . $card['alternatif_txt'] . '">';
 
-            if ($card['taken_by_user_id'] !== null) {
-              echo ' <p><span class="taken"></span>' . $card['name'] . '</p>';
+              if ($card['taken_by_user_id'] !== null) {
+                echo '<div class="taken-container">'
+                . ' <p class="taken"></p>'
+                . ' <p>Pris</p>'
+                .  '</div>'
+                . ' <p>' . $card['name'] . '</p>';
+
+
             } else {
-              echo ' <p><span class="taken_free"></span>' . $card['name'] . '</p>';
+                echo '<div class="taken-container">'
+                . ' <p class="taken_free"></p>'
+                . ' <p>Libre</p>'
+                .  '</div>'
+                . ' <p>' . $card['name'] . '</p>';
             }
             echo '</div>';
           }
