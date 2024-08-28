@@ -18,7 +18,7 @@ $min_id = 50;
 $max_id = 70;
 
 try {
-    // carte sélectionnée par l'utilisateur
+    // user selected card
   $stmt = $dbCo->prepare("SELECT * 
   FROM img 
   WHERE id_img = :id AND id_img BETWEEN :min_id AND :max_id");
@@ -28,7 +28,7 @@ try {
   $stmt->execute();
   $card = $stmt->fetch(PDO::FETCH_ASSOC);
 
-  // histoires pour la carte
+  // stories for the card
   $stmt = $dbCo->prepare("SELECT story, story_date, id_user, name, image 
   FROM characters 
   WHERE id_characters = :id");
@@ -36,7 +36,7 @@ try {
   $stmt->execute();
   $stories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-  // carte sélectionnée par l'user
+  // user selected card
   $stmt = $dbCo->prepare("SELECT selected_card 
   FROM users 
   WHERE id_user = :user_id");
@@ -47,7 +47,7 @@ try {
     $selected_card_id = $user['selected_card'];
   }
 
-  // nom de la carte sélectionnée
+  // name of the selected card
   $selected_card_name = '';
   if ($selected_card_id !== null) {
     $stmt = $dbCo->prepare("SELECT name 
@@ -61,7 +61,7 @@ try {
     }
   }
 
-  // si histoire existe pour cette carte et l'user ?
+  // if there is a story for this card and its user?
   foreach ($stories as $s) {
     if ($s['id_user'] == $user_id) {
       $story = $s;
@@ -69,7 +69,7 @@ try {
     }
   }
 
-  // Vérifier si la card est déjà prise
+  // Check if the card is already taken
   if ($card && $card['taken_by_user_id'] !== null && $card['taken_by_user_id'] != $user_id) {
     $error_message = $errors['card_no_free'];
   }
@@ -80,7 +80,7 @@ try {
   $stories = [];
 }
 
-// erreur de session
+// session error
 if (isset($_SESSION['error_message'])) {
   $error_message = $_SESSION['error_message'];
   unset($_SESSION['error_message']);
@@ -118,8 +118,8 @@ if (isset($_SESSION['error_message'])) {
         echo '<img src="' . $card['file'] . '" alt="'
           . $card['alternatif_txt'] . '">'
           . '<div>'
-          . '<p>' . $card['class'] . '</p>'
-          . '<p>' . $card['name'] . '</p>';
+          . '<p>' . $card['name'] . '</p>'
+          . '<p>' . $card['class'] . '</p>';
 
         if (!empty($stories)) {
           foreach ($stories as $s) {
@@ -140,9 +140,9 @@ if (isset($_SESSION['error_message'])) {
 
         if ($selected_card_id == $id) {
           echo '<p>Vous avez choisi : </p>' .
-            '<p>' . htmlspecialchars($card['name'], ENT_QUOTES, 'UTF-8') . '</p>';
+            '<p>' . $card['name'] . '</p>';
 
-          echo '<button id="editButton" onclick="toggleEdit()">Modifier</button>';
+          echo '<button class="button__register" id="editButton" onclick="toggleEdit()">Modifier</button>';
 
           echo '<form id="editForm" method="POST" action="story/story_spectres.php" enctype="multipart/form-data" style="display:none;">'
             . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8') . '">'
@@ -154,13 +154,13 @@ if (isset($_SESSION['error_message'])) {
             . '<br>'
             . '<button type="submit" class="btn-add-event--register">Valider</button>'
             . '</form>';
-        } elseif ($selected_card_id !== null) { // nom de la carte déjà sélectionnée par l'user
-          echo '<p>Vous avez déjà choisi le rôle de : ' . htmlspecialchars($selected_card_name, ENT_QUOTES, 'UTF-8') . '</p>';
-        } elseif ($card['taken_by_user_id'] !== null) { // carte déjà prise par un autre utilisateur
+        } elseif ($selected_card_id !== null) {
+          echo '<p>Vous avez déjà choisi le rôle de : ' . $selected_card_name . '</p>';
+        } elseif ($card['taken_by_user_id'] !== null) {
           echo '<p>Cette carte est déjà prise par un autre utilisateur.</p>';
         } else {
           echo '<form method="POST" action="select_card_spectres.php">'
-            . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8') . '">'
+            . '<input type="hidden" name="card_id" value="' . $card['id_img'] . '">'
             . '<button type="submit" class="btn-add-event--register">Choisir cette carte</button>'
             . '</form>';
         }

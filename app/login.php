@@ -30,7 +30,7 @@ generateToken();
       <article class="article-form">
         <h1>Connexion</h1>
         <?php
-          // Afficher les messages stockés (erreurs et succès)
+          // display error message
           displayStoredMessages();
         ?>
         <form class="login_cont" action="register/authenticate.php" method="post">

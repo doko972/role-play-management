@@ -1,12 +1,15 @@
 <?php
 session_start();
 
+include 'includes/_functions.php';
+include 'includes/_database.php';
+
 if (!isset($_SESSION['user_id'])) {
   header("Location: login.php");
   exit();
 }
 
-include 'includes/_functions.php';
+$welcome_message = isset($_SESSION['welcome_message']) ? $_SESSION['welcome_message'] : 'Bienvenue sur le serveur Rôle Play de Saint Seiya Online!';
 
 // Récupérer les catégories
 $stmt = $dbCo->query('SELECT * FROM categories');
@@ -38,6 +41,7 @@ $categories = $stmt->fetchAll();
     </section>
     <section>
       <article>
+        <h1><?php echo $welcome_message; ?></h1>
         <div class="texte-position textebackground">
           <h1>Saint Seiya Online <br>Rôle Play</h1>
           <p>Nouveaux Chevaliers, Bienvenue !</p>
@@ -45,7 +49,8 @@ $categories = $stmt->fetchAll();
             légendaires Chevaliers du Zodiaque prennent vie.</p>
           <p>Préparez-vous à plonger dans une aventure épique où chaque choix façonne votre destin. Sélectionnez le
             rôle
-            qui incarne le mieux votre esprit et rejoignez la faction qui résonne avec vos aspirations de jeu de rôle.</p>
+            qui incarne le mieux votre esprit et rejoignez la faction qui résonne avec vos aspirations de jeu de rôle.
+          </p>
           <p>Serez-vous un vaillant Chevalier d'Athéna, un redoutable Spectre d'Hadès ou un puissant Général Marinas
             de
             Poséidon ? Le sort de l'univers repose entre vos mains !</p>
@@ -54,10 +59,11 @@ $categories = $stmt->fetchAll();
             dans ce monde extraordinaire. Ensemble, nous écrirons des pages mémorables de bravoure et de camaraderie.
           </p>
           <p> Nous sommes impatients de partager cette aventure épique avec vous. Que votre périple à travers Saint
-            Seiya soit rempli de combats héroïques en rejoignant le serveur Saint seiya Online avec vos frères et soeurs d'armes, 
+            Seiya soit rempli de combats héroïques en rejoignant le serveur Saint seiya Online avec vos frères et soeurs
+            d'armes,
             de découvertes passionnantes et de souvenirs impérissables.</p>
-            <p>À vous de jouer, jeunes Guerriers.</p>
-            <p>Faites brûler votre cosmos !</p>
+          <p>À vous de jouer, jeunes Guerriers.</p>
+          <p>Faites brûler votre cosmos !</p>
           <p>Laissez votre histoire dans le monde de Saint Seiya commencer maintenant !</p>
         </div>
       </article>
