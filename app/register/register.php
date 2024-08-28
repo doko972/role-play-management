@@ -1,7 +1,9 @@
-<?php include '../includes/_registerAdd.php'; ?>
+<?php 
+include '../includes/_registerAdd.php';
+// include '../includes/_functions.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +14,6 @@
   <script type="module" src="http://localhost:5173/@vite/client"></script>
   <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
-
 <body>
   <?php include '../includes/header.php'; ?>
   <main>
@@ -22,48 +23,40 @@
     <section>
       <article class="article-form">
         <h1>Inscription</h1>
-        <?php if (isset($error_message)): ?>
-          <p class="error-message"><?= $error_message; ?></p>
-        <?php endif; ?>
-        <form class="login_cont" action="registerScript.php" method="post">
+        <?php displayStoredMessages(); ?>
+        <form class="login_cont" action="registerScript.php" method="post" onsubmit="return validateForm()">
           <input type="hidden" name="token" value="<?= $_SESSION['token']; ?>">
           <div class="input_signup active">
-            <label for="user_name" class="sr-only">Nom d’utilisateur</label>
-            <input class="input input_form" id="user_name" type="text" name="login" aria-label="Nom d’utilisateur" placeholder="Nom d’utilisateur/Username" required>
-            <div class="hint">Nom d’utilisateur</div>
-
-            <label for="user_truename" class="sr-only">Nom Jeu de rôle</label>
-            <input class="input input_form" id="user_truename" type="text" name="truename" aria-label="Nom de personnage Jeu de rôle" placeholder="Nom de personnage Jeu de rôle" required>
-            <div class="hint">Nom Réel</div>
-
-            <label for="faction" class="sr-only">Choix de Faction</label>
-            <select class="input input_form" id="faction" name="faction" aria-label="Faction" required>
+            <label for="user_name">Nom d'utilisateur</label>
+            <input class="input input_form" id="user_name" type="text" name="login" required>
+            
+            <label for="user_truename">Nom Jeu de rôle</label>
+            <input class="input input_form" id="user_truename" type="text" name="truename" required>
+            
+            <label for="faction">Choix de Faction</label>
+            <select class="input input_form" id="faction" name="faction" required>
+              <option value="">Sélectionnez une faction</option>
               <?php foreach ($factions as $faction): ?>
-                <option value="<?php echo $faction['id_faction']; ?>">
-                  <?php echo $faction['faction_name']; ?>
+                <option value="<?= htmlspecialchars($faction['id_faction']); ?>">
+                  <?= htmlspecialchars($faction['faction_name']); ?>
                 </option>
               <?php endforeach; ?>
             </select>
-            <div class="hint">Sélectionner une faction</div>
-
-            <label for="user_email" class="sr-only">Adresse e-mail</label>
-            <input class="input input_form" id="user_email" type="email" name="email" aria-label="Adresse e-mail" placeholder="Email" required>
-            <div class="hint">Adresse e-mail</div>
-
-            <label for="user_birthday" class="sr-only">Date de Naissance (JJ/MM/AAAA)</label>
-            <input class="input input_form" id="user_birthday" type="text" name="birthday" aria-label="Date de Naissance" placeholder="JJ/MM/AAAA" required>
-            <div class="hint">Date de Naissance (JJ/MM/AAAA)</div>
-
-            <label for="password" class="sr-only">Mot de passe</label>
-            <input class="input input_form" id="password" type="password" name="passwd" aria-label="Mot de passe" placeholder="Mdp/Password" required>
-            <div class="hint">Mot de passe</div>
-
-            <label for="repassword" class="sr-only">Confirmer le mot de passe</label>
-            <input class="input input_form" id="repassword" type="password" name="repasswd" aria-label="Confirmer le mot de passe" placeholder="Mdp/Password" required>
-            <div class="hint">Saisir à nouveau votre mot de passe</div>
-
+            
+            <label for="user_email">Adresse e-mail</label>
+            <input class="input input_form" id="user_email" type="email" name="email" required>
+            
+            <label for="user_birthday">Date de Naissance</label>
+            <input class="input input_form" id="user_birthday" type="date" name="birthday" required>
+            
+            <label for="password">Mot de passe</label>
+            <input class="input input_form" id="password" type="password" name="passwd" required>
+            
+            <label for="repassword">Confirmer le mot de passe</label>
+            <input class="input input_form" id="repassword" type="password" name="repasswd" required>
+            
             <div class="content">
-              <input type="submit" id="submit" class="button button__register" name="button" value="S’inscrire">
+              <input type="submit" id="submit" class="button button__register" name="button" value="S'inscrire">
             </div>
           </div>
         </form>
@@ -71,7 +64,30 @@
     </section>
   </main>
   <?php include '../includes/footer.php'; ?>
-  <!-- <script src="js/script.js"></script> -->
-</body>
+  <script>
+    function validateForm() {
+      var password = document.getElementById("password").value;
+      var repassword = document.getElementById("repassword").value;
+      var birthday = new Date(document.getElementById("user_birthday").value);
+      var today = new Date();
+      var age = today.getFullYear() - birthday.getFullYear();
+      var m = today.getMonth() - birthday.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthday.getDate())) {
+        age--;
+      }
 
+      if (password !== repassword) {
+        alert("Les mots de passe ne correspondent pas.");
+        return false;
+      }
+
+      if (age < 13) {
+        alert("Vous devez avoir au moins 13 ans pour vous inscrire.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</body>
 </html>

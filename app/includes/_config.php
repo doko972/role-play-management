@@ -52,7 +52,7 @@ $messages = [
     'update_role' => 'Rôle mis à jour avec succès',
     'not_find_card' => 'Aucune carte trouvée',
     'not_user_in_line' => 'Aucun utilisateur en ligne',
-    'create_success' => 'Création du compte avec succès...'
+    'create_success' => 'Votre compte a été créé avec succès. Vous pouvez maintenant vous connecter.'
 ];
 $text = [
     'faction_1' => 'Athéna',

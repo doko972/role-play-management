@@ -1,29 +1,14 @@
 <?php
 session_start();
-
 if (isset($_SESSION['user_id'])) {
   header("Location: ../index.php");
   exit();
 }
-
 include '../includes/_database.php';
 include '../includes/_functions.php';
-// include '../includes/_config.php';
-
-generateToken();
-
-// Récupérer les factions
-$factions = [];
-try {
-  $stmt = $dbCo->prepare("SELECT * FROM faction");
-  $stmt->execute();
-  $factions = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-  echo 'Erreur : ' . $e->getMessage();
-}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $login = sanitizeInput($_POST['login']); //
+  $login = sanitizeInput($_POST['login']);
   $truename = sanitizeInput($_POST['truename']);
   $email = sanitizeInput($_POST['email']);
   $birthday = sanitizeInput($_POST['birthday']);
@@ -32,50 +17,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $faction = intval($_POST['faction']);
   $token = sanitizeInput($_POST['token']);
 
-  // birthday format
-  $date_parts = explode('/', $birthday);
-  if (count($date_parts) == 3 && checkdate($date_parts[1], $date_parts[0], $date_parts[2])) {
-    $formatted_birthday = $date_parts[2] . '-' . $date_parts[1] . '-' . $date_parts[0];
+  $isValid = true;
+
+  // Validation de la date
+  if (!empty($birthday)) {
+    $birthDate = DateTime::createFromFormat('Y-m-d', $birthday);
+    if ($birthDate && $birthDate->format('Y-m-d') === $birthday) {
+      // La date est valide, vérifiez l'âge
+      $today = new DateTime();
+      $age = $today->diff($birthDate)->y;
+      if ($age < 13) {
+        addError('invalid_age');
+        $isValid = false;
+      }
+    } else {
+      addError('invalid_date_format');
+      $isValid = false;
+    }
   } else {
-    $error_message = $errors['invalid_date_format'];
+    addError('invalid_date_format');
+    $isValid = false;
   }
 
-  if (!isset($error_message) && validateToken($token)) {
-    if ($passwd === $repasswd) {
-      $hashedPassword = password_hash($passwd, PASSWORD_BCRYPT);
+  // Vérification du mot de passe
+  if ($passwd !== $repasswd) {
+    addError('password_mismatch');
+    $isValid = false;
+  }
 
-      try {
-        $stmt = $dbCo->prepare("INSERT INTO users (login, passwd, truename, email, birthday, creatime, is_online, faction_id) 
-        VALUES (:login, :passwd, :truename, :email, :birthday, NOW(), 0, :faction)");
-        $stmt->bindParam(':login', $login);
-        $stmt->bindParam(':passwd', $hashedPassword);
-        $stmt->bindParam(':truename', $truename);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':birthday', $formatted_birthday);
-        $stmt->bindParam(':faction', $faction);
+  // Vérification du token CSRF
+  if (!validateToken($token)) {
+    addError('csrf');
+    $isValid = false;
+  }
 
-        if ($stmt->execute()) {
-            header("Location: registration_success.php");
-            exit();
-          } else {
-            $error_message = $errors['registration_failed'];
-          }
-        } catch (PDOException $e) {
-          $error_message = $errors['registration_failed'] . ': ' . $e->getMessage();
-        }
+  if ($isValid) {
+    $hashedPassword = password_hash($passwd, PASSWORD_BCRYPT);
+    try {
+      $stmt = $dbCo->prepare("INSERT INTO users (login, passwd, truename, email, birthday, creatime, is_online, faction_id)
+          VALUES (:login, :passwd, :truename, :email, :birthday, NOW(), 0, :faction)");
+      $stmt->bindParam(':login', $login);
+      $stmt->bindParam(':passwd', $hashedPassword);
+      $stmt->bindParam(':truename', $truename);
+      $stmt->bindParam(':email', $email);
+      $stmt->bindParam(':birthday', $birthday);
+      $stmt->bindParam(':faction', $faction);
+      if ($stmt->execute()) {
+        addMessage('create_success');
+        header("Location: ../login.php");
+        exit();
       } else {
-        $error_message = $errors['password_mismatch'];
+        addError('registration_failed');
       }
-  
-    } else {
-      $error_message = $errors['invalid_input'];
+    } catch (PDOException $e) {
+      addError('registration_failed');
+      error_log('Registration failed: ' . $e->getMessage());
     }
   }
-//   if (isset($error_message)) {
-//     echo '<div class="error-message">' . $error_message . '</div>';
-//   }
-  if (isset($error_message)) {
-    echo '<div class="error-message">' . $error_message . '</div>';
-    echo '<meta http-equiv="refresh" content="5;url=register.php">';
 }
-  ?>
+
+// Redirection vers la page d'inscription avec les messages d'erreur
+header("Location: register.php");
+exit();
+?>

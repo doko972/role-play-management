@@ -38,7 +38,7 @@ $welcome_message = isset($_SESSION['welcome_message']) ? $_SESSION['welcome_mess
         </div>
         <div class="texte-position__center">
           <div class="texte-position__heigth textebackground">
-            <h1><?php echo htmlspecialchars($welcome_message, ENT_QUOTES, 'UTF-8'); ?></h1>
+            <h1><?php echo $welcome_message; ?></h1>
             <p>Vous allez être redirigé vers la page d'accueil...</p>
             <p>Si vous n'avez pas de rôle pensez à en choisir un ! </p>
             <script>
