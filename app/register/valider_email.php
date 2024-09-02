@@ -1,34 +1,29 @@
 <?php
 include '../includes/_database.php';
-include '../includes/_config.php';
-
+include '../includes/_functions.php';
 
 if (isset($_GET['token'])) {
-    $token = $_GET['token'];
+    $token = sanitizeInput($_GET['token']);
 
-    $stmt = $dbCo->prepare("SELECT * FROM users 
-    WHERE validation_token = :token");
-    $stmt->bindParam(':token', $token);
-    $stmt->execute();
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    try {
+        $stmt = $dbCo->prepare("UPDATE users SET is_verified = 1, validation_token = NULL WHERE validation_token = :token");
+        $stmt->bindParam(':token', $token);
 
-    if ($user) {
-        $stmt = $dbCo->prepare("UPDATE users SET is_verified = 1, validation_token = NULL 
-        WHERE id_user = :id_user");
-        $stmt->bindParam(':id_user', $user['id_user']);
-        $stmt->execute();
-
-        header("Location: ../register/registration_success.php");
-        exit();
-    } else {
-        echo $errors['invalid'];
-        // Redirection vers la page d'accueil après affichage du message d'erreur
-        header("Refresh: 5; url=../index.php");
-        exit();
+        if ($stmt->execute() && $stmt->rowCount() > 0) {
+            addMessage('email_verified');
+            header("Location: ../login.php");
+            exit();
+        } else {
+            addError('invalid_token');
+        }
+    } catch (PDOException $e) {
+        addError('verification_failed');
+        error_log('Email verification failed: ' . $e->getMessage());
     }
 } else {
-    echo $errors['not_token'];
-    // Redirection vers la page d'accueil après affichage du message d'erreur
-    header("Refresh: 5; url=../index.php");
-    exit();
+    addError('missing_token');
 }
+
+header("Location: ../login.php");
+exit();
+?>

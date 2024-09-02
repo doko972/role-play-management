@@ -7,7 +7,7 @@ form {
 form label {
     font-weight: bold;
     font-size: 1em;
-
+    margin: 1rem;
 }
 
 form textarea {
@@ -16,7 +16,7 @@ form textarea {
     height: 100%;
     padding: 10px;
     margin-top: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--white);
     border-radius: 5px;
     resize: vertical;
 }
@@ -28,8 +28,8 @@ form input[type="file"] {
 form button {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    background-color: var(--back-ocean);
+    color: var(--white);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -37,13 +37,17 @@ form button {
 }
 
 form button:hover {
-    background-color: #0056b3;
+    background-color: var(--back-ocean);
 }
 
-.article-form{
+.article-form {
     margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-.sr-only{
-    margin:1rem;
+.sr-only {
+    margin: 1rem;
 }

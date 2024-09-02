@@ -1,9 +1,10 @@
-<?php 
+<?php
 include '../includes/_registerAdd.php';
 // include '../includes/_functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,11 +29,13 @@ include '../includes/_registerAdd.php';
           <input type="hidden" name="token" value="<?= $_SESSION['token']; ?>">
           <div class="input_signup active">
             <label for="user_name">Nom d'utilisateur</label>
-            <input class="input input_form" id="user_name" type="text" name="login" required>
-            
+            <input class="input input_form" id="user_name" type="text" placeholder="Nom de connexion" name="login"
+              required>
+
             <label for="user_truename">Nom Jeu de rôle</label>
-            <input class="input input_form" id="user_truename" type="text" name="truename" required>
-            
+            <input class="input input_form" id="user_truename" type="text" placeholder="Nom en jeu" name="truename"
+              required>
+
             <label for="faction">Choix de Faction</label>
             <select class="input input_form" id="faction" name="faction" required>
               <option value="">Sélectionnez une faction</option>
@@ -42,19 +45,23 @@ include '../includes/_registerAdd.php';
                 </option>
               <?php endforeach; ?>
             </select>
-            
+
             <label for="user_email">Adresse e-mail</label>
-            <input class="input input_form" id="user_email" type="email" name="email" required>
-            
+            <input class="input input_form" id="user_email" type="email" placeholder="Adresse mail" name="email"
+              required>
+
             <label for="user_birthday">Date de Naissance</label>
-            <input class="input input_form" id="user_birthday" type="date" name="birthday" required>
-            
+            <input class="input input_form" id="user_birthday" type="date" placeholder="Date de naissance"
+              name="birthday" required>
+
             <label for="password">Mot de passe</label>
-            <input class="input input_form" id="password" type="password" name="passwd" required>
-            
+            <input class="input input_form" id="password" type="password" placeholder="Mot de passe" name="passwd"
+              required>
+
             <label for="repassword">Confirmer le mot de passe</label>
-            <input class="input input_form" id="repassword" type="password" name="repasswd" required>
-            
+            <input class="input input_form" id="repassword" type="password" placeholder="confirmez mot de passe"
+              name="repasswd" required>
+
             <div class="content">
               <input type="submit" id="submit" class="button button__register" name="button" value="S'inscrire">
             </div>
@@ -64,30 +71,6 @@ include '../includes/_registerAdd.php';
     </section>
   </main>
   <?php include '../includes/footer.php'; ?>
-  <script>
-    function validateForm() {
-      var password = document.getElementById("password").value;
-      var repassword = document.getElementById("repassword").value;
-      var birthday = new Date(document.getElementById("user_birthday").value);
-      var today = new Date();
-      var age = today.getFullYear() - birthday.getFullYear();
-      var m = today.getMonth() - birthday.getMonth();
-      if (m < 0 || (m === 0 && today.getDate() < birthday.getDate())) {
-        age--;
-      }
-
-      if (password !== repassword) {
-        alert("Les mots de passe ne correspondent pas.");
-        return false;
-      }
-
-      if (age < 13) {
-        alert("Vous devez avoir au moins 13 ans pour vous inscrire.");
-        return false;
-      }
-
-      return true;
-    }
-  </script>
 </body>
+
 </html>

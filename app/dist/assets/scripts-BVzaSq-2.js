@@ -1,1 +1,0 @@
-window.addEventListener("DOMContentLoaded",()=>{s()});function s(){let n=10,i=0,o,e;document.querySelectorAll(".animate-text").forEach(t=>{o=t.textContent.trim(),t.textContent="",e=o.split(""),t.style.visibility="visible",e.forEach((a,l)=>{setTimeout(()=>{t.textContent+=a},i+n*l)}),i+=n*e.length})}
