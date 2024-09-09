@@ -5,11 +5,11 @@ import '/js/toggleEditForm.js';
 "use strict";
 
 window.addEventListener("DOMContentLoaded", () => {
-    animate_text();
+    animateText();
     setupFormValidation();
 });
 
-function animate_text() {
+function animateText() {
     let delay = 10,
         delay_start = 0,
         contents,

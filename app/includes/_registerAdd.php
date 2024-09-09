@@ -19,7 +19,6 @@ try {
     $factions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     addError('error_SQL');
-    error_log('Erreur lors de la récupération des factions : ' . $e->getMessage());
 }
 
 // Si des erreurs sont présentes dans la session, les afficher et les supprimer
