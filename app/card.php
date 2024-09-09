@@ -19,7 +19,7 @@ $max_id = 29;
 
 try {
     // user selected card
-  $stmt = $dbCo->prepare("SELECT * 
+  $stmt = $dbCo->prepare("SELECT id_img, file, name, class, id_faction, alternatif_txt, taken_by_user_id 
   FROM img 
     WHERE id_img = :id AND id_img BETWEEN :min_id AND :max_id");
   $stmt->bindParam(':id', $id, PDO::PARAM_INT);

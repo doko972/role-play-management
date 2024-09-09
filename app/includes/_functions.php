@@ -118,7 +118,8 @@ function sanitizeInput($data) {
  * @return array
  */
 function getOnlineUsers($dbCo) {
-    $stmt = $dbCo->prepare('SELECT login FROM users
+    $stmt = $dbCo->prepare('SELECT login 
+    FROM users
     WHERE last_activity > DATE_SUB(NOW(), INTERVAL 15 MINUTE) AND is_online = 1');
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -131,7 +132,9 @@ function getOnlineUsers($dbCo) {
  * @return void
  */
 function updateUserActivity($userId, $dbCo) {
-    $stmt = $dbCo->prepare('UPDATE users SET last_activity = NOW(), is_online = 1 WHERE id_user = :user_id');
+    $stmt = $dbCo->prepare('UPDATE users 
+    SET last_activity = NOW(), is_online = 1 
+    WHERE id_user = :user_id');
     $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
     $stmt->execute();
 }

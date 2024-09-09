@@ -31,13 +31,15 @@ include 'includes/_functions.php';
         <div class="container">
             <?php
             try {
-                $stmt = $dbCo->prepare("SELECT * FROM img WHERE id_img BETWEEN 1 AND 29");
+                $stmt = $dbCo->prepare("SELECT id_img, file, name, class, id_faction, alternatif_txt, taken_by_user_id 
+                FROM img WHERE id_img BETWEEN 1 AND 29");
                 $stmt->execute();
                 $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 if ($cards) {
                     foreach ($cards as $card) {
-                        $stmt2 = $dbCo->prepare("SELECT story FROM characters 
+                        $stmt2 = $dbCo->prepare("SELECT story 
+                        FROM characters 
                         JOIN users USING (id_user)
                         WHERE id_characters = :id");
                         $stmt2->bindParam(':id', $card['id_img']);

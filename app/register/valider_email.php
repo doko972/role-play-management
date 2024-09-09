@@ -6,7 +6,9 @@ if (isset($_GET['token'])) {
     $token = sanitizeInput($_GET['token']);
 
     try {
-        $stmt = $dbCo->prepare("UPDATE users SET is_verified = 1, validation_token = NULL WHERE validation_token = :token");
+        $stmt = $dbCo->prepare("UPDATE users 
+        SET is_verified = 1, validation_token = NULL 
+        WHERE validation_token = :token");
         $stmt->bindParam(':token', $token);
 
         if ($stmt->execute() && $stmt->rowCount() > 0) {

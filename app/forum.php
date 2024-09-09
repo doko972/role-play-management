@@ -16,7 +16,8 @@ updateUserActivity($_SESSION['user_id'], $dbCo);
 generateToken();
 
 // Récupérer les catégories
-$stmt = $dbCo->query('SELECT * FROM categories');
+$stmt = $dbCo->query('SELECT id, name
+FROM categories');
 $categories = $stmt->fetchAll();
 
 // Catégories en sections

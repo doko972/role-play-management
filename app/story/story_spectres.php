@@ -16,7 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
         $max_id = 70;
 
         // Nom de la carte
-        $stmt = $dbCo->prepare("SELECT name FROM img WHERE id_img = :card_id AND id_img BETWEEN :min_id AND :max_id");
+        $stmt = $dbCo->prepare("SELECT name 
+        FROM img 
+        WHERE id_img = :card_id AND id_img BETWEEN :min_id AND :max_id");
         $stmt->bindParam(':card_id', $card_id, PDO::PARAM_INT);
         $stmt->bindParam(':min_id', $min_id, PDO::PARAM_INT);
         $stmt->bindParam(':max_id', $max_id, PDO::PARAM_INT);
@@ -32,7 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
         }
 
         // Vérification de l'existence du personnage
-        $stmt = $dbCo->prepare("SELECT COUNT(*) FROM characters WHERE id_characters = :card_id AND id_user = :user_id");
+        $stmt = $dbCo->prepare("SELECT COUNT(*) 
+        FROM characters 
+        WHERE id_characters = :card_id AND id_user = :user_id");
         $stmt->bindParam(':card_id', $card_id, PDO::PARAM_INT);
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $stmt->execute();
@@ -43,10 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
         if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
             $target_dir = "../uploads/";
             if (!file_exists($target_dir)) {
-                mkdir($target_dir, 0775, true); // Création du répertoire s'il n'existe pas
+                // Création du répertoire s'il n'existe pas
+                mkdir($target_dir, 0775, true); 
                 echo "Répertoire 'uploads' créé.\n";
             }
-            $file_name = uniqid() . '_' . basename($_FILES["image"]["name"]); // Utilisation d'un nom de fichier unique
+            // Utilisation d'un nom de fichier unique
+            $file_name = uniqid() . '_' . basename($_FILES["image"]["name"]); 
             $target_file = $target_dir . $file_name;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             $allowed_extensions = array("jpg", "jpeg", "png", "gif", "webp");
@@ -78,11 +84,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
         if ($count > 0) {
             // Mise à jour de l'histoire existante
             if ($image_path) {
-                $stmt = $dbCo->prepare("UPDATE characters SET story = :story, story_date = :story_date, image = :image 
+                $stmt = $dbCo->prepare("UPDATE characters 
+                SET story = :story, story_date = :story_date, image = :image 
                 WHERE id_characters = :card_id AND id_user = :user_id");
                 $stmt->bindParam(':image', $image_path, PDO::PARAM_STR);
             } else {
-                $stmt = $dbCo->prepare("UPDATE characters SET story = :story, story_date = :story_date 
+                $stmt = $dbCo->prepare("UPDATE characters 
+                SET story = :story, story_date = :story_date 
                 WHERE id_characters = :card_id AND id_user = :user_id");
             }
             $stmt->bindParam(':story', $story, PDO::PARAM_STR);

@@ -10,7 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])
 
     try {
         // Vérifier si la card est déjà prise par un autre utilisateur
-        $stmt = $dbCo->prepare("SELECT taken_by_user_id FROM img 
+        $stmt = $dbCo->prepare("SELECT taken_by_user_id 
+        FROM img 
         WHERE id_img = :card_id");
         $stmt->bindParam(':card_id', $card_id, PDO::PARAM_INT);
         $stmt->execute();
@@ -22,14 +23,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])
             exit();
         } else {
             // Mettre à jour la table `img` pour indiquer que la card est prise par l'utilisateur
-            $stmt = $dbCo->prepare("UPDATE img SET taken_by_user_id = :user_id 
+            $stmt = $dbCo->prepare("UPDATE img 
+            SET taken_by_user_id = :user_id 
             WHERE id_img = :card_id");
             $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
             $stmt->bindParam(':card_id', $card_id, PDO::PARAM_INT);
             $stmt->execute();
 
             // Mettre à jour la table `users` pour indiquer la carte sélectionnée
-            $stmt = $dbCo->prepare("UPDATE users SET selected_card = :card_id 
+            $stmt = $dbCo->prepare("UPDATE users 
+            SET selected_card = :card_id 
             WHERE id_user = :user_id");
             $stmt->bindParam(':card_id', $card_id, PDO::PARAM_INT);
             $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);

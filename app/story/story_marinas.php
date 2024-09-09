@@ -16,7 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
         $max_id = 40;
 
         // Nom de la carte
-        $stmt = $dbCo->prepare("SELECT name FROM img 
+        $stmt = $dbCo->prepare("SELECT name 
+        FROM img 
         WHERE id_img = :card_id AND id_img BETWEEN :min_id AND :max_id");
         $stmt->bindParam(':card_id', $card_id, PDO::PARAM_INT);
         $stmt->bindParam(':min_id', $min_id, PDO::PARAM_INT);
@@ -33,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
         }
 
         // Vérification de l'existence du personnage
-        $stmt = $dbCo->prepare("SELECT COUNT(*) FROM characters 
+        $stmt = $dbCo->prepare("SELECT COUNT(*) 
+        FROM characters 
         WHERE id_characters = :card_id AND id_user = :user_id");
         $stmt->bindParam(':card_id', $card_id, PDO::PARAM_INT);
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
@@ -78,11 +80,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
         if ($count > 0) {
             // Mise à jour de l'histoire existante
             if ($image_path) {
-                $stmt = $dbCo->prepare("UPDATE characters SET story = :story, story_date = :story_date, image = :image 
+                $stmt = $dbCo->prepare("UPDATE characters 
+                SET story = :story, story_date = :story_date, image = :image 
                 WHERE id_characters = :card_id AND id_user = :user_id");
                 $stmt->bindParam(':image', $image_path, PDO::PARAM_STR);
             } else {
-                $stmt = $dbCo->prepare("UPDATE characters SET story = :story, story_date = :story_date 
+                $stmt = $dbCo->prepare("UPDATE characters 
+                SET story = :story, story_date = :story_date 
                 WHERE id_characters = :card_id AND id_user = :user_id");
             }
             $stmt->bindParam(':story', $story, PDO::PARAM_STR);

@@ -12,7 +12,8 @@ if (!isset($_SESSION['user_id'])) {
 $welcome_message = isset($_SESSION['welcome_message']) ? $_SESSION['welcome_message'] : 'Bienvenue sur le serveur Rôle Play de Saint Seiya Online!';
 
 // Récupérer les catégories
-$stmt = $dbCo->query('SELECT * FROM categories');
+$stmt = $dbCo->query('SELECT id, name 
+FROM categories');
 $categories = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>

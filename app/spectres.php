@@ -31,7 +31,9 @@ include 'includes/_functions.php';
     <div class="container">
       <?php
       try {
-        $stmt = $dbCo->prepare("SELECT id_img FROM img WHERE id_img BETWEEN 50 AND 63");
+        $stmt = $dbCo->prepare("SELECT id_img, file, name, class, id_faction, alternatif_txt, taken_by_user_id 
+        FROM img 
+        WHERE id_img BETWEEN 50 AND 63");
         $stmt->execute();
         $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

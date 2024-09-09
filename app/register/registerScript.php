@@ -54,14 +54,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if ($isValid) {
     $hashedPassword = password_hash($passwd, PASSWORD_BCRYPT);
     try {
-      $stmt = $dbCo->prepare("INSERT INTO users (login, passwd, truename, email, birthday, creatime, is_online, faction_id)
-          VALUES (:login, :passwd, :truename, :email, :birthday, NOW(), 0, :faction)");
+      $stmt = $dbCo->prepare("INSERT INTO users (login, passwd, truename, email, birthday, creatime, is_online, faction_id, validation_token, is_verified)
+      VALUES (:login, :passwd, :truename, :email, :birthday, NOW(), 0, :faction, :validation_token, 0)");
       $stmt->bindParam(':login', $login);
       $stmt->bindParam(':passwd', $hashedPassword);
       $stmt->bindParam(':truename', $truename);
       $stmt->bindParam(':email', $email);
       $stmt->bindParam(':birthday', $birthday);
       $stmt->bindParam(':faction', $faction);
+      $stmt->bindParam(':validation_token', $validation_token);
       if ($stmt->execute()) {
         addMessage('create_success');
         header("Location: ../login.php");

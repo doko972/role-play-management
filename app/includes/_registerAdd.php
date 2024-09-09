@@ -13,7 +13,8 @@ generateToken();
 // Récupérer les factions
 $factions = [];
 try {
-    $stmt = $dbCo->prepare("SELECT * FROM faction");
+    $stmt = $dbCo->prepare("SELECT id_faction, faction_name
+    FROM faction");
     $stmt->execute();
     $factions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {

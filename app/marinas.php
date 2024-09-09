@@ -32,14 +32,16 @@ include 'includes/_functions.php';
     <div class="container">
       <?php
       try {
-        $stmt = $dbCo->prepare("SELECT * FROM img 
+        $stmt = $dbCo->prepare("SELECT id_img, file, name, class, id_faction, alternatif_txt, taken_by_user_id 
+        FROM img 
         WHERE id_img BETWEEN 30 AND 40");
         $stmt->execute();
         $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if ($cards) {
           foreach ($cards as $card) {
-            $stmt2 = $dbCo->prepare("SELECT story FROM characters 
+            $stmt2 = $dbCo->prepare("SELECT story 
+            FROM characters 
             WHERE id_characters = :id");
             $stmt2->bindParam(':id', $card['id_img']);
             $stmt2->execute();
