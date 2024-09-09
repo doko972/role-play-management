@@ -31,14 +31,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (move_uploaded_file($imageTmpPath, $imagePath)) {
             // Insérer l'image dans la table img
-            $stmt = $dbCo->prepare('INSERT INTO img (file, name, class, alternatif_txt, id_faction) VALUES (?, ?, ?, ?, ?)');
+            $stmt = $dbCo->prepare('INSERT INTO img (file, name, class, alternatif_txt, id_faction) 
+            VALUES (?, ?, ?, ?, ?)');
             $stmt->execute([$imagePath, $imageName, '', '', 1]); // 1 est l'id_faction par défaut
             $image_id = $dbCo->lastInsertId();
         }
     }
 
     // Insérer le post dans la base de données
-    $stmt = $dbCo->prepare('INSERT INTO posts (content, topic_id, user_id, image_id) VALUES (?, ?, ?, ?)');
+    $stmt = $dbCo->prepare('INSERT INTO posts (content, topic_id, user_id, image_id) 
+    VALUES (?, ?, ?, ?)');
     $stmt->execute([$content, $topic_id, $user_id, $image_id]);
 
     header('Location: post.php?id=' . $topic_id);

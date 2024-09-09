@@ -13,14 +13,14 @@ if (!isset($_SESSION['user_id'])) {
 $category_id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
 // Récupérer les informations de la catégorie
-$stmt = $dbCo->prepare('SELECT * 
+$stmt = $dbCo->prepare('SELECT id, name
 FROM categories 
 WHERE id = ?');
 $stmt->execute([$category_id]);
 $category = $stmt->fetch();
 
 // Récupérer les sujets de la catégorie
-$stmt = $dbCo->prepare('SELECT * 
+$stmt = $dbCo->prepare('SELECT id, title, category_id, created_at
 FROM topics 
 WHERE category_id = ?');
 $stmt->execute([$category_id]);

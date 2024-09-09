@@ -21,7 +21,9 @@ $topic_id = isset($_POST['topic_id']) ? (int) $_POST['topic_id'] : 0;
 $content = isset($_POST['content']) ? trim($_POST['content']) : '';
 
 // Vérifier si l'utilisateur est autorisé à modifier ce post
-$stmt = $dbCo->prepare('SELECT user_id FROM posts WHERE id = ?');
+$stmt = $dbCo->prepare('SELECT user_id 
+FROM posts 
+WHERE id = ?');
 $stmt->execute([$post_id]);
 $post = $stmt->fetch();
 
@@ -30,7 +32,9 @@ if (!$post || ($post['user_id'] != $_SESSION['user_id'] && $_SESSION['role'] !==
 }
 
 // Mettre à jour le contenu du post
-$stmt = $dbCo->prepare('UPDATE posts SET content = ? WHERE id = ?');
+$stmt = $dbCo->prepare('UPDATE posts 
+SET content = ? 
+WHERE id = ?');
 $stmt->execute([$content, $post_id]);
 
 header("Location: post.php?id=$topic_id");

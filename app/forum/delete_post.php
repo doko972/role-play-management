@@ -27,7 +27,8 @@ $post_id = isset($_POST['post_id']) ? (int) $_POST['post_id'] : 0;
 $topic_id = isset($_POST['topic_id']) ? (int) $_POST['topic_id'] : 0;
 
 // Supprimer le post de la base de données
-$stmt = $dbCo->prepare('DELETE FROM posts WHERE id = ?');
+$stmt = $dbCo->prepare('DELETE FROM posts 
+WHERE id = ?');
 $stmt->execute([$post_id]);
 
 header("Location: post.php?id=" . $topic_id);

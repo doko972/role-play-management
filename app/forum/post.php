@@ -16,13 +16,14 @@ generateToken();
 $topic_id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
 // Récupérer les informations du sujet
-$stmt = $dbCo->prepare('SELECT * FROM topics WHERE id = ?');
+$stmt = $dbCo->prepare('SELECT id, title, category_id, created_at 
+FROM topics 
+WHERE id = ?');
 $stmt->execute([$topic_id]);
 $topic = $stmt->fetch();
 
 // Récupérer les posts du sujet avec les informations de l'utilisateur et de l'image
-$stmt = $dbCo->prepare('
-    SELECT posts.*, users.login, img.file 
+$stmt = $dbCo->prepare('SELECT posts.*, users.login, img.file 
     FROM posts 
     JOIN users ON posts.user_id = users.id_user 
     LEFT JOIN img ON posts.image_id = img.id_img 

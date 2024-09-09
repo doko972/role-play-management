@@ -22,7 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $title = sanitizeInput($_POST['title']);
 
   // Insérer le sujet dans la base de données
-  $stmt = $dbCo->prepare('INSERT INTO topics (title, category_id) VALUES (?, ?)');
+  $stmt = $dbCo->prepare('INSERT INTO topics (title, category_id) 
+  VALUES (?, ?)');
   $stmt->execute([$title, $category_id]);
 
   header('Location: category.php?id=' . $category_id);

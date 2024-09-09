@@ -15,7 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérifier si le rôle est valide
     if ($role === 'user' || $role === 'admin') {
         try {
-            $stmt = $dbCo->prepare("UPDATE users SET role = :role WHERE id_user = :id_user");
+            $stmt = $dbCo->prepare("UPDATE users 
+            SET role = :role 
+            WHERE id_user = :id_user");
             $stmt->bindParam(':role', $role);
             $stmt->bindParam(':id_user', $id_user);
             if ($stmt->execute()) {
