@@ -11,6 +11,7 @@
   --golden: #F0E34D;
   --goldenstrong: #EFD053;
   --backgr-blue: #253661;
+  --back-ocean: #0056b3;
   --purple: #9C1CF7;
   --bluesea: #0F88EB;
   --black: #000000;
@@ -23,6 +24,7 @@
   --grey-inter: #878895;
   --colorgreen: #1dc091;
   --colorredligth: #EA5A70;
+  --ligth-pink: #ffe6e6;
   --font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 16px;
 }
@@ -274,7 +276,8 @@ a:hover::after {
   padding: 10px;
   text-align: center;
   width: 200px;
-  height: 300px;
+  min-height: 340px;
+  height: auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
 }
@@ -311,7 +314,7 @@ a:hover::after {
 }
 
 .card-detail img {
-  max-width: 100%;
+  max-width: 80%;
   border-radius: 5px;
   margin-bottom: 1.25rem;
 }
@@ -428,6 +431,7 @@ form {
 form label {
   font-weight: bold;
   font-size: 1em;
+  margin: 1rem;
 }
 
 form textarea {
@@ -436,7 +440,7 @@ form textarea {
   height: 100%;
   padding: 10px;
   margin-top: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--white);
   border-radius: 5px;
   resize: vertical;
 }
@@ -448,8 +452,8 @@ form input[type=file] {
 form button {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
+  background-color: var(--back-ocean);
+  color: var(--white);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -457,11 +461,15 @@ form button {
 }
 
 form button:hover {
-  background-color: #0056b3;
+  background-color: var(--back-ocean);
 }
 
 .article-form {
   margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .sr-only {
@@ -1255,7 +1263,7 @@ iframe {
   font-weight: 300;
   line-height: 2.5rem;
   width: 20rem;
-  border-radius: 2rem;
+  border-radius: 0.5rem;
   border: none;
   padding: 0.5rem;
 }
@@ -1320,6 +1328,12 @@ iframe {
 
 .pictures-prev {
   left: 1rem;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
 .pictures-next {
@@ -2161,6 +2175,12 @@ iframe {
     font-size: 0.5rem;
   }
 }
+.taken-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
 .taken,
 .taken_free {
   display: inline-block;
@@ -2169,6 +2189,7 @@ iframe {
   height: 1rem;
   margin-right: 0.5rem;
   vertical-align: middle;
+  font-size: 1rem;
 }
 
 .taken {
@@ -2181,8 +2202,27 @@ iframe {
   border: 3px solid black;
 }
 
-.taken-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1em;
+.taken-font {
+  font-size: 1rem;
+}
+
+.error-message {
+  color: var(--red);
+  background-color: var(--ligth-pink);
+  border: 1px solid var(--red);
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.success-message {
+  color: #fff;
+  background-color: var(--golden);
+  border: 1px solid var(--white);
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  width: 60%;
 }/*# sourceMappingURL=styles.css.map */
