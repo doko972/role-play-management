@@ -3,30 +3,30 @@ session_start();
 include '../includes/_functions.php';
 include '../includes/_database.php';
 
-// Vérifier si l'utilisateur est connecté
+// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../index.php");
     exit();
 }
 
-// Vérifier le token CSRF
+// Verify CSRF token
 if (!isset($_POST['token']) || !isTokenOk($_POST)) {
     addError('csrf');
     header("Location: post.php?id=" . $_POST['topic_id']);
     exit();
 }
 
-// Vérifier si l'utilisateur est un administrateur
+// Check if user is an administrator
 if ($_SESSION['role'] !== 'admin') {
     header("Location: post.php?id=" . $_POST['topic_id']);
     exit();
 }
 
-// Récupérer l'ID du post depuis le formulaire
+// Retrieve post ID from form
 $post_id = isset($_POST['post_id']) ? (int) $_POST['post_id'] : 0;
 $topic_id = isset($_POST['topic_id']) ? (int) $_POST['topic_id'] : 0;
 
-// Supprimer le post de la base de données
+// Delete post from database
 $stmt = $dbCo->prepare('DELETE FROM posts 
 WHERE id = ?');
 $stmt->execute([$post_id]);

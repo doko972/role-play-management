@@ -2,7 +2,7 @@
 session_start();
 include '../includes/_database.php';
 include '../includes/_functions.php';
-// eviter l'envoi prématuré des headers
+// avoid premature sending of headers
 ob_start();  
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

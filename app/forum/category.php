@@ -3,37 +3,37 @@ session_start();
 include '../includes/_functions.php';
 include '../includes/_database.php';
 
-// Vérifier si l'utilisateur est connecté
+// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../index.php");
     exit();
 }
 
-// Récupérer l'ID de la catégorie depuis l'URL
+// Retrieve Category ID from URL
 $category_id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
-// Récupérer les informations de la catégorie
+// Retrieve category information
 $stmt = $dbCo->prepare('SELECT id, name
 FROM categories 
 WHERE id = ?');
 $stmt->execute([$category_id]);
 $category = $stmt->fetch();
 
-// Récupérer les sujets de la catégorie
+// Retrieve topics from the category
 $stmt = $dbCo->prepare('SELECT id, title, category_id, created_at
 FROM topics 
 WHERE category_id = ?');
 $stmt->execute([$category_id]);
 $topics = $stmt->fetchAll();
 
-// Récupérer les sujets récents
+// Retrieve recent topics
 $recentTopicsStmt = $dbCo->prepare('SELECT id, title, created_at 
 FROM topics 
 WHERE category_id = ? AND created_at >= NOW() - INTERVAL 1 DAY');
 $recentTopicsStmt->execute([$category_id]);
 $recentTopics = $recentTopicsStmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Créer un tableau pour les sujets récents
+// Create an array for recent topics
 $recentTopicIds = array_column($recentTopics, 'id');
 ?>
 

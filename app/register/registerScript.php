@@ -19,11 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $isValid = true;
 
-  // Validation de la date
+  // Validation of the date
   if (!empty($birthday)) {
     $birthDate = DateTime::createFromFormat('Y-m-d', $birthday);
     if ($birthDate && $birthDate->format('Y-m-d') === $birthday) {
-      // La date est valide, vérifiez l'âge
+      // Date is valid, check age
       $today = new DateTime();
       $age = $today->diff($birthDate)->y;
       if ($age < 13) {
@@ -39,13 +39,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $isValid = false;
   }
 
-  // Vérification du mot de passe
+  // Password verification
   if ($passwd !== $repasswd) {
     addError('password_mismatch');
     $isValid = false;
   }
 
-  // Vérification du token CSRF
   if (!validateToken($token)) {
     addError('csrf');
     $isValid = false;
@@ -76,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 }
 
-// Redirection vers la page d'inscription avec les messages d'erreur
+// Redirect to registration page with error messages
 header("Location: register.php");
 exit();
 ?>

@@ -3,25 +3,25 @@ session_start();
 include '../includes/_functions.php';
 include '../includes/_database.php';
 
-// Vérifier si l'utilisateur est connecté
+// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
   header("Location: ../index.php");
   exit();
 }
 
-// Récupérer l'ID de la catégorie depuis l'URL
+// Retrieve Category ID from URL
 $category_id = isset($_GET['category_id']) ? (int) $_GET['category_id'] : 0;
 
-// Vérification du token CSRF
+// CSRF Token Verification
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (!isset($_POST['token']) || $_POST['token'] !== $_SESSION['token']) {
     die('Invalid CSRF token');
   }
 
-  // Protection XSS
+  // XSS Protection
   $title = sanitizeInput($_POST['title']);
 
-  // Insérer le sujet dans la base de données
+  // Insert the subject into the database
   $stmt = $dbCo->prepare('INSERT INTO topics (title, category_id) 
   VALUES (?, ?)');
   $stmt->execute([$title, $category_id]);
@@ -30,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   exit();
 }
 
-// Generate CSRF token
 generateToken();
 ?>
 

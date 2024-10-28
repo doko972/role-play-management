@@ -3,7 +3,7 @@ session_start();
 include 'includes/_database.php';
 include 'includes/_functions.php';
 
-// Vérifier si l'utilisateur est connecté et est un administrateur
+// Check if user is logged in and is an administrator
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     redirectTo("../index.php");
 }
@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_user = intval($_POST['id_user']);
     $role = sanitizeInput($_POST['role']);
 
-    // Vérifier si le rôle est valide
+    // Check if the role is valid
     if ($role === 'user' || $role === 'admin') {
         try {
             $stmt = $dbCo->prepare("UPDATE users 

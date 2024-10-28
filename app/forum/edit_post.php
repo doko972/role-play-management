@@ -3,24 +3,24 @@ session_start();
 include '../includes/_functions.php';
 include '../includes/_database.php';
 
-// Vérifier si l'utilisateur est connecté
+// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();
 }
 
-// Vérification du token CSRF
+// CSRF Token Verification
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_POST['token']) || $_POST['token'] !== $_SESSION['token']) {
       die('Invalid CSRF token');
     }
 
-// Récupérer les données du formulaire
+// Retrieve form data
 $post_id = isset($_POST['post_id']) ? (int) $_POST['post_id'] : 0;
 $topic_id = isset($_POST['topic_id']) ? (int) $_POST['topic_id'] : 0;
 $content = isset($_POST['content']) ? trim($_POST['content']) : '';
 
-// Vérifier si l'utilisateur est autorisé à modifier ce post
+// Check if the user is allowed to edit this post
 $stmt = $dbCo->prepare('SELECT user_id 
 FROM posts 
 WHERE id = ?');
@@ -31,7 +31,7 @@ if (!$post || ($post['user_id'] != $_SESSION['user_id'] && $_SESSION['role'] !==
     die('Vous n\'êtes pas autorisé à modifier ce post.');
 }
 
-// Mettre à jour le contenu du post
+// Update post content
 $stmt = $dbCo->prepare('UPDATE posts 
 SET content = ? 
 WHERE id = ?');

@@ -10,7 +10,7 @@ include '../includes/_functions.php';
 
 generateToken();
 
-// Récupérer les factions
+// Recover Factions
 $factions = [];
 try {
     $stmt = $dbCo->prepare("SELECT id_faction, faction_name
@@ -21,7 +21,7 @@ try {
     addError('error_SQL');
 }
 
-// Si des erreurs sont présentes dans la session, les afficher et les supprimer
+// If there are errors in the session, display and delete them
 if (isset($_SESSION['error_keys'])) {
     foreach ($_SESSION['error_keys'] as $errorKey) {
         addError($errorKey);
@@ -29,7 +29,7 @@ if (isset($_SESSION['error_keys'])) {
     unset($_SESSION['error_keys']);
 }
 
-// Si des messages de succès sont présents dans la session, les afficher et les supprimer
+// If there are any success messages in the session, display and delete them
 if (isset($_SESSION['message_keys'])) {
     foreach ($_SESSION['message_keys'] as $messageKey) {
         addMessage($messageKey);

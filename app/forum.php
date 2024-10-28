@@ -3,39 +3,38 @@ session_start();
 include 'includes/_functions.php';
 include 'includes/_database.php';
 
-// Vérifier si l'utilisateur est connecté
+// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
   header("Location: index.php");
   exit();
 }
 
-// Mettre à jour l'activité de l'utilisateur
+// Update user activity
 updateUserActivity($_SESSION['user_id'], $dbCo);
 
-// Générer un token CSRF
 generateToken();
 
-// Récupérer les catégories
+// Retrieve categories
 $stmt = $dbCo->query('SELECT id, name
 FROM categories');
 $categories = $stmt->fetchAll();
 
-// Catégories en sections
-$supportCategories = array_slice($categories, 0, 3); // Support et discussions générales
-$factionCategories = array_slice($categories, 3, 3); // Salon par faction
+// Categories in sections
+$supportCategories = array_slice($categories, 0, 3); // Support and general discussions
+$factionCategories = array_slice($categories, 3, 3); // Lounge by faction
 
-// Récupérer les utilisateurs connectés avec la fonction getOnlineUsers();
+// Retrieve logged in users with the getOnlineUsers() function;
 $onlineUsers = getOnlineUsers($dbCo);
 
 
-// Récupérer les sujets récents
+// Retrieve recent topics
 $recentTopicsStmt = $dbCo->prepare('SELECT id, category_id, title, created_at 
 FROM topics 
 WHERE created_at >= NOW() - INTERVAL 1 DAY');
 $recentTopicsStmt->execute();
 $recentTopics = $recentTopicsStmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Créer un tableau pour les catégories récentes
+// Create a table for recent categories
 $recentTopicsByCategory = [];
 foreach ($recentTopics as $topic) {
   $recentTopicsByCategory[$topic['category_id']][] = $topic;
@@ -95,10 +94,10 @@ foreach ($recentTopics as $topic) {
       <div class="online-users">
           <?php
           if (!empty($onlineUsers)) {
-            //extrait toutes les valeurs de la colonne 'login' dans le tableau $onlineUsers.
+            //extracts all values ​​from the 'login' column into the $onlineUsers table.
               $usernames = array_column($onlineUsers, 'login');
-              //implode(', ', ...) transforme le tableau $usernames en une chaîne de caractères, 
-              //où chaque nom d'utilisateur est séparé par une virgule et un espace
+              // implode(', ', ...) transforms the $usernames array into a string, 
+              // where each username is separated by a comma and a space
               echo implode(', ', array_map('htmlspecialchars', $usernames));
           } else {
               echo $message['not_user_in_line'];

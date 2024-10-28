@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
         $min_id = 50;
         $max_id = 70;
 
-        // Nom de la carte
+        // card name
         $stmt = $dbCo->prepare("SELECT name 
         FROM img 
         WHERE id_img = :card_id AND id_img BETWEEN :min_id AND :max_id");
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
             exit();
         }
 
-        // Vérification de l'existence du personnage
+        // Verifying the existence of the character
         $stmt = $dbCo->prepare("SELECT COUNT(*) 
         FROM characters 
         WHERE id_characters = :card_id AND id_user = :user_id");
@@ -42,22 +42,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
         $stmt->execute();
         $count = $stmt->fetchColumn();
 
-        // Téléchargement de l'image
+        // Image download
         $image_path = null;
         if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
             $target_dir = "../uploads/";
             if (!file_exists($target_dir)) {
-                // Création du répertoire s'il n'existe pas
+                // Create directory if it does not exist
                 mkdir($target_dir, 0775, true); 
                 echo "Répertoire 'uploads' créé.\n";
             }
-            // Utilisation d'un nom de fichier unique
+            // Using a unique file name
             $file_name = uniqid() . '_' . basename($_FILES["image"]["name"]); 
             $target_file = $target_dir . $file_name;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             $allowed_extensions = array("jpg", "jpeg", "png", "gif", "webp");
 
-            // Vérification de l'image
+            // Image verification
             $check = getimagesize($_FILES["image"]["tmp_name"]);
             if ($check !== false && in_array($imageFileType, $allowed_extensions)) {
                 if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
@@ -74,15 +74,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
                 exit();
             }
         } elseif (isset($_FILES['image']) && $_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
-            // Gestion des autres erreurs de téléchargement
+            // Other download errors
             $_SESSION['error_message'] = "Erreur lors du téléchargement de l'image. Code d'erreur : " . $_FILES['image']['error'];
             header('Location: ../card_spectres.php?id=' . $card_id);
             exit();
         }
 
-        // Mise à jour ou insertion des données
+        // Updating or inserting data
         if ($count > 0) {
-            // Mise à jour de l'histoire existante
+            // Update of existing story
             if ($image_path) {
                 $stmt = $dbCo->prepare("UPDATE characters 
                 SET story = :story, story_date = :story_date, image = :image 
@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && isset
             $stmt->bindParam(':card_id', $card_id, PDO::PARAM_INT);
             $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         } else {
-            // Insertion d'une nouvelle histoire
+            // Inserting a new story
             $stmt = $dbCo->prepare("INSERT INTO characters (id_characters, name, story, story_date, main_charc, id_faction, id_user, image) 
                                     VALUES (:card_id, :name, :story, :story_date, 1, :id_faction, :user_id, :image)");
             $stmt->bindParam(':card_id', $card_id, PDO::PARAM_INT);

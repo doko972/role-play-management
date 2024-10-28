@@ -3,7 +3,10 @@ session_start();
 include 'includes/_database.php';
 include 'includes/_functions.php';
 
-// Vérifier si l'utilisateur est connecté et est un administrateur
+// Check if user is logged in and is an administrator
+// isset - session variable
+// If this variable is not set (indicating that the user is not logged in), the condition returns true
+// If the user is logged in, but his role is not "admin", this condition will also be true
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: login.php");
     exit();

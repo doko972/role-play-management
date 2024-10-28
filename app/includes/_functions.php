@@ -14,15 +14,17 @@ function generateToken() {
 }
 
 /**
- * Generate Token to email validation
+ * Generates a random Token to email validation
  * @return string
  */
 function generateTokenEmail() {
-    return bin2hex(random_bytes(16)); // Génère un token aléatoire
+    return bin2hex(random_bytes(16));
 }
 
 /**
- * Checks if the referrer is correct
+ * Checks if the referrer is correct () / needle in haystack
+ * checks if the page that made the current request (the "referrer") matches a specific domain or URL, 
+ * defined in a global variable $globalUrl.
  * @return bool
  */
 function isRefererOk(): bool {

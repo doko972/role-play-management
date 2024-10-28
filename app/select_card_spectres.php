@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])
     $card_id = intval($_POST['card_id']);
 
     try {
-        // Vérifier si la card est déjà prise par un autre utilisateur
+        // Check if the card is already taken by another user
         $stmt = $dbCo->prepare("SELECT taken_by_user_id 
         FROM img 
         WHERE id_img = :card_id");
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])
             header('Location: card_spectres.php?id=' . $card_id);
             exit();
         } else {
-            // Mettre à jour la table `img` pour indiquer que la card est prise par l'utilisateur
+            // Update the `img` table to indicate that the card is taken by the user
             $stmt = $dbCo->prepare("UPDATE img 
             SET taken_by_user_id = :user_id 
             WHERE id_img = :card_id");
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])
             $stmt->bindParam(':card_id', $card_id, PDO::PARAM_INT);
             $stmt->execute();
 
-            // Mettre à jour la table `users` pour indiquer la carte sélectionnée
+            // Update the `users` table to indicate the selected card
             $stmt = $dbCo->prepare("UPDATE users 
             SET selected_card = :card_id 
             WHERE id_user = :user_id");

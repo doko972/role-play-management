@@ -31,7 +31,7 @@ include_once __DIR__ . '/_config.php';
                 <?php else: ?>
                     <li><a class="btn-add-event--register--nav" href="<?php echo BASE_URL; ?>logout.php">Déconnexion</a></li>
 
-                    <!--Tableau de bord admin-->
+                    <!--admin dashboard-->
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
                         <li><a class="btn-add-event--register--nav" href="<?php echo BASE_URL; ?>dashboard.php">Tableau de Bord</a></li>
                     <?php endif; ?>

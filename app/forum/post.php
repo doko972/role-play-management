@@ -3,26 +3,25 @@ session_start();
 include '../includes/_functions.php';
 include '../includes/_database.php';
 
-// Vérifier si l'utilisateur est connecté
+// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();
 }
 
-// Generate CSRF token
 generateToken();
 
-// Récupérer l'ID du sujet depuis l'URL
+// Retrieve topic ID from URL
 $topic_id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
-// Récupérer les informations du sujet
+// Retrieve subject information
 $stmt = $dbCo->prepare('SELECT id, title, category_id, created_at 
 FROM topics 
 WHERE id = ?');
 $stmt->execute([$topic_id]);
 $topic = $stmt->fetch();
 
-// Récupérer les posts du sujet avec les informations de l'utilisateur et de l'image
+// Retrieve posts from topic with user and image information
 $stmt = $dbCo->prepare('SELECT posts.*, users.login, img.file 
     FROM posts 
     JOIN users ON posts.user_id = users.id_user 
@@ -72,7 +71,7 @@ $posts = $stmt->fetchAll();
             <?php foreach ($posts as $post): ?>
                 <div class="new-post">
                     <p><?php echo nl2br(htmlspecialchars_decode($post['content'])); ?></p>
-                    <!--nl2br — Insère un retour à la ligne HTML à chaque nouvelle ligne-->
+                    <!--nl2br — Inserts an HTML line break on each new line-->
                     <?php if ($post['file']): ?>
                         <p><img class="forum-img" src="<?php echo htmlspecialchars($post['file']); ?>" alt="Image posté"></p>
                     <?php endif; ?>

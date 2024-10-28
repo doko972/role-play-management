@@ -1,6 +1,5 @@
 <?php
 include '../includes/_registerAdd.php';
-// include '../includes/_functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
