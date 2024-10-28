@@ -10,53 +10,65 @@
 .table-array-dsb {
     color: var(--white);
     font-size: 1rem;
-    border: 3px solid white;
+    // border: 3px solid white;
     border-radius: 1rem;
     text-align: center;
 }
 
 .table-array-dsb__border {
-    border: 2px solid white;
+    border: 1px solid white;
     // height: 50px;
     padding: 1rem;
     text-align: center;
 }
 
+.table-array-dsb__border--alg {
+    display: flex;
+}
+.table-array-dsb__border--col{
+    background-color: var(--back-ocean);
+    border:2px solid var(--white);
+}
+.button__register {
+    font-size: 1rem;
+    padding: 1rem;
+}
+
 @media screen and (max-width: 1000px) {
     .button__register {
         font-size: 1rem;
+        padding: 1rem;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .button__register {
-        font-size: 1rem;
-    }
-
     .table-array-dsb__border {
         padding: 0;
+    }
+
+    .button__register {
+        font-size: .75rem;
+        padding: .75rem;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .button__register {
-        font-size: 0.8rem;
-    }
-
     .table-array-dsb__border {
         padding: 0;
     }
 
-    @media screen and (max-width: 400px) {
-        .button__register {
-            font-size: 0.5rem;
-        }
+}
 
-        .table-array-dsb__border {
-            padding: 0;
-        }
-        .table-array_container{
-           font-size: .5rem;
-        }
+@media screen and (max-width: 400px) {
+    .table-array-dsb__border {
+        padding: 0;
+    }
+
+    .table-array_container {
+        font-size: .5rem;
+    }
+    .button__register {
+        font-size: .5rem;
+        padding: .5rem;
     }
 }

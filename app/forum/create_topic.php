@@ -64,7 +64,7 @@ generateToken();
         <input class="title-color__bck"type="text" id="title" name="title" required>
       </div>
       <input type="hidden" name="token"
-        value="<?php echo htmlspecialchars($_SESSION['token'], ENT_QUOTES, 'UTF-8'); ?>">
+        value="<?php echo$_SESSION['token'], ENT_QUOTES, 'UTF-8'; ?>">
       <div class="form-group">
         <button type="submit">Créer</button>
       </div>

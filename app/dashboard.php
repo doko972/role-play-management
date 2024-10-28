@@ -23,6 +23,7 @@ try {
 } catch (PDOException $e) {
     echo 'Erreur : ' . $e->getMessage();
 }
+generateToken();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -44,67 +45,91 @@ try {
     <main>
         <section class="table_container">
             <h1>Gestion des Utilisateurs</h1>
+            <?// Code d'affichage des messages
+            if (isset($_SESSION['success_message'])) {
+                echo '<p class="success">' . $_SESSION['success_message'] . '</p>';
+                unset($_SESSION['success_message']);
+            }
+
+            if (isset($_SESSION['error_message'])) {
+                echo '<p class="error">' . $_SESSION['error_message'] . '</p>';
+                unset($_SESSION['error_message']);
+            }
+            ?>
             <table class="table-array_container">
-                <thead class="table-array-dsb">
-                    <tr>
-                        <th class="table-array-dsb__border">ID</th>
-                        <th class="table-array-dsb__border">Nom RP</th>
-                        <th class="table-array-dsb__border">Faction</th>
-                        <th class="table-array-dsb__border">En Ligne</th>
-                        <th class="table-array-dsb__border">Actions</th>
-                    </tr>
-                </thead>
                 <tbody>
                     <?php foreach ($users as $user): ?>
                         <tr>
-                            <td class="table-array-dsb__border"><?php echo $user['id_user']; ?></td>
-                            <td class="table-array-dsb__border"><?php echo $user['truename']; ?></td>
+                            <th class="table-array-dsb__border--col">ID</th>
+                            <th class="table-array-dsb__border--col">Nom RP</th>
+                            <th class="table-array-dsb__border--col">Faction</th>
+                        </tr>
+                        <!-- Ligne principale : ID, Nom RP, Faction -->
+                        <tr>
+                            <td class="table-array-dsb__border"><?php echo htmlspecialchars($user['id_user']); ?></td>
+                            <td class="table-array-dsb__border"><?php echo htmlspecialchars($user['truename']); ?></td>
                             <td class="table-array-dsb__border">
                                 <?php
+                                // Affiche la faction selon l'ID
                                 if ($user['faction_id'] == 1) {
-                                    echo $text['faction_1'];
-                                } else if ($user['faction_id'] == 2) {
-                                    echo $text['faction_2'];
-                                } else if ($user['faction_id'] == 3) {
-                                    echo $text['faction_3'];
+                                    echo htmlspecialchars($text['faction_1']);
+                                } elseif ($user['faction_id'] == 2) {
+                                    echo htmlspecialchars($text['faction_2']);
+                                } elseif ($user['faction_id'] == 3) {
+                                    echo htmlspecialchars($text['faction_3']);
                                 }
                                 ?>
                             </td>
-                            <td class="table-array-dsb__border">
-                                <?php
-                                if ($user['is_online'] !== 1) {
-                                    echo '<div class="taken-container">'
-                                    . ' <p class="taken"></p>'
-                                    . ' <p class="taken-font">Déconnecté</p>'
-                                    .  '</div>';
-        
-        
-                                } else {
-                                    echo '<div class="taken-container">'
-                                    . ' <p class="taken_free"></p>'
-                                    . ' <p class="taken-font">Connecté</p>'
-                                    .  '</div>';
-                                }
+                        </tr>
 
+                        <!-- Ligne supplémentaire : En ligne et actions -->
+                        <tr>
+                            <td colspan="3" class="table-array-dsb__border">
+                                <div class="table-array-dsb__border--alg">
+                                    <strong>En ligne : </strong>
+                                    <?php if ($user['is_online'] === 1): ?>
+                                        <span class="taken-container">
+                                            <p class="taken_free"></p>
+                                            <span class="taken-font">Connecté</span>
+                                        </span>
+                                    <?php else: ?>
+                                        <span class="taken-container">
+                                            <p class="taken"></p>
+                                            <span class="taken-font">Déconnecté</span>
+                                        </span>
+                                    <?php endif; ?>
+                                </div>
 
-                                ?>
-                            </td>
-                            <td class="table-array-dsb__border">
-                                <form action="update_role.php" method="post">
-                                    <input type="hidden" name="id_user" value="<?php echo $user['id_user']; ?>">
-                                    <select class="button button__register" name="role">
-                                        <option value="user" <?php echo $user['role'] === 'user' ? 'selected' : ''; ?>>
-                                            Utilisateur</option>
-                                        <option value="admin" <?php echo $user['role'] === 'admin' ? 'selected' : ''; ?>>
-                                            Administrateur</option>
-                                    </select>
-                                    <input class="button button__register" type="submit" value="Mettre à jour">
-                                </form>
+                                <div class="table-array-dsb__border--alg">
+                                    <strong>Rôle :</strong>
+                                    <form action="update_role.php" method="post"
+                                        style="display:inline-block; margin-left:10px;">
+                                        <input type="hidden" name="id_user"
+                                            value="<?php echo htmlspecialchars($user['id_user']); ?>">
+                                        <input type="hidden" name="token"
+                                            value="<?= htmlspecialchars($_SESSION['token']); ?>">
+
+                                        <select class="button button__register" name="role" id="role">
+                                            <option value="user" <?php echo $user['role'] === 'user' ? 'selected' : ''; ?>>
+                                                Utilisateur</option>
+                                            <option value="admin" <?php echo $user['role'] === 'admin' ? 'selected' : ''; ?>>
+                                                Administrateur</option>
+                                        </select>
+                                        <button type="submit" name="update_role" class="button button__register">Mettre à
+                                            jour</button>
+
+                                        <button type="submit" name="delete_user" class="button button__register"
+                                            onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">
+                                            Supprimer
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
+
         </section>
     </main>
     <?php include 'includes/footer.php'; ?>

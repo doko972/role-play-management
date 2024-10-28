@@ -1,5 +1,7 @@
 <?php
-define('BASE_URL', '../');
+if (!defined('BASE_URL')){
+    define('BASE_URL', '../');
+}
 
 $globalUrl = 'http://localhost:8080';
 
@@ -34,7 +36,8 @@ $errors = [
     'not_allowed' => 'Méthode de requête non autorisée !',
     'date_format_invalid' => 'Format de date invalide',
     'register_error' => 'Erreur lors de l\'enregistrement!',
-    'password_no_match' => 'Les mots de passe ne correspondent pas'
+    'password_no_match' => 'Les mots de passe ne correspondent pas',
+    'error_delete' => 'Erreur lors de la suppression de l\'utilisateur.'
 ];
 
 $messages = [
@@ -52,11 +55,12 @@ $messages = [
     'update_role' => 'Rôle mis à jour avec succès',
     'not_find_card' => 'Aucune carte trouvée',
     'not_user_in_line' => 'Aucun utilisateur en ligne',
-    'create_success' => 'Votre compte a été créé avec succès. Vous pouvez maintenant vous connecter.'
+    'create_success' => 'Votre compte a été créé avec succès. Vous pouvez maintenant vous connecter.',
+    'delete_user' => 'Utilisateur supprimé avec succès.',
 ];
 $text = [
     'faction_1' => 'Athéna',
     'faction_2' => 'Poséïdon',
     'faction_3' => 'Hadès'
 ]
-?>
+    ?>

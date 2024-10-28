@@ -1,7 +1,13 @@
 .taken-container {
     display: flex;
-    justify-content: center;
+align-items: center;
     gap: .5rem;
+}
+.table-array-dsb__border--alg {
+    display: flex;
+    align-items: center;
+    
+    gap: 10px;
 }
 .taken,
 .taken_free {
@@ -9,9 +15,6 @@
     border-radius: 2rem;
     width: 1rem;
     height: 1rem;
-    margin-right: .5rem;
-    vertical-align: middle;
-    font-size: 1rem;
 }
 
 .taken {
