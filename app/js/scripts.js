@@ -1,6 +1,6 @@
-import './../sass/styles.scss';
-import '/js/toggleEdit.js';
-import '/js/toggleEditForm.js';
+import '../sass/styles.scss';
+// import 'toggleEdit.js';
+// import 'toggleEditForm.js';
 
 "use strict";
 
@@ -70,4 +70,28 @@ function validateForm() {
     }
 
     return true;
+}
+
+function toggleEdit() {
+    const editForm = document.getElementById('editForm');
+    const displayArea = document.getElementById('displayArea');
+    const editButton = document.getElementById('editButton');
+    if (editForm.style.display === 'none' || editForm.style.display === '') {
+      editForm.style.display = 'block';
+      displayArea.style.display = 'none';
+      editButton.style.display = 'none';
+    } else {
+      editForm.style.display = 'none';
+      displayArea.style.display = 'block';
+      editButton.style.display = 'block';
+    }
+  }
+
+  function toggleEditForm(postId) {
+    const form = document.getElementById(`editForm-${postId}`);
+    if (form.classList.contains('editForm')) {
+        form.classList.remove('editForm');
+    } else {
+        form.classList.add('editForm');
+    }
 }

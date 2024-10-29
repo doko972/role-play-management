@@ -56,7 +56,7 @@ generateToken();
     </section>
   </main>
   <?php include 'includes/footer.php'; ?>
-  <script src="js/scripts.js"></script>
+  <!-- <script src="js/scripts.js"></script> -->
 </body>
 
 </html>

@@ -18,7 +18,7 @@ $min_id = 50;
 $max_id = 70;
 
 try {
-    // user selected card
+  // user selected card
   $stmt = $dbCo->prepare("SELECT id_img, file, name, class, id_faction, alternatif_txt, taken_by_user_id 
   FROM img 
   WHERE id_img = :id AND id_img BETWEEN :min_id AND :max_id");
@@ -87,18 +87,28 @@ if (isset($_SESSION['error_message'])) {
 } else {
   $error_message = '';
 }
+
+// Fonction pour gérer les scripts Vite
+function vite($entry)
+{
+  $manifestPath = __DIR__ . '/dist/manifest.json';
+  if (file_exists($manifestPath)) {
+    $manifest = json_decode(file_get_contents($manifestPath), true);
+    return "/dist/" . $manifest[$entry]['file'];
+  }
+  return "http://localhost:5173/" . $entry;
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chevalier d'Hadès</title>
   <link rel="icon" href="img/logo.ico">
-  <!-- <link rel="stylesheet" href="css/styles.css"> -->
-  <script type="module" src="http://localhost:5173/@vite/client"></script>
-  <script type="module" src="http://localhost:5173/js/scripts.js"></script>
+  <script type="module" src="<?php echo vite('@vite/client'); ?>"></script>
+  <script type="module" src="<?php echo vite('js/scripts.js'); ?>"></script>
 </head>
 
 <body>
@@ -115,21 +125,19 @@ if (isset($_SESSION['error_message'])) {
           echo '<p class="error-message">' . $error_message . '</p>';
         }
 
-        echo '<img src="' . $card['file'] . '" alt="'
-          . $card['alternatif_txt'] . '">'
-          . '<div>'
-          . '<p>' . $card['name'] . '</p>'
-          . '<p>' . $card['class'] . '</p>';
+        echo '<img src="' . $card['file'] . '" alt="' . $card['alternatif_txt'] . '">';
+        echo '<div><p>' . $card['name'] . '</p><p>' . $card['class'] . '</p>';
+        echo '<p>Vous avez choisi d\'incarner : </p><p>' . $card['name'] . '</p>';
 
         if (!empty($stories)) {
           foreach ($stories as $s) {
-            echo '<div class="story" id="displayArea">'
-              . '<p>Date de création de l\'histoire: ' . date('d-m-Y', strtotime($s['story_date'])) . '</p>'
-              . '<p>Histoire:</p>'
-              . '<p class="animate-text">' . $s['story'] . '</p>';
+            echo '<div class="story" id="displayArea">';
+            echo '<p>Date de création de l\'histoire: ' . date('d-m-Y', strtotime($s['story_date'])) . '</p>';
             if (!empty($s['image'])) {
               echo '<img src="' . $s['image'] . '" alt="Image de personnage">';
             }
+            echo '<p>Histoire:</p>';
+            echo '<p class="animate-text">' . html_entity_decode($s['story']) . '</p>';
             echo '</div>';
           }
         } else {
@@ -139,30 +147,24 @@ if (isset($_SESSION['error_message'])) {
         echo '</div>';
 
         if ($selected_card_id == $id) {
-          echo '<p>Vous avez choisi : </p>' .
-            '<p>' . $card['name'] . '</p>';
-
           echo '<button class="button__register" id="editButton" onclick="toggleEdit()">Modifier</button>';
 
-          echo '<form id="editForm" method="POST" action="story/story_spectres.php" enctype="multipart/form-data" style="display:none;">'
-            . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8') . '">'
-            . '<textarea name="story" placeholder="Raconter, ou corrigez votre histoire..." required>'
-            . htmlspecialchars(isset($story['story']) ? $story['story'] : '', ENT_QUOTES, 'UTF-8') . '</textarea>'
-            . '<br>'
-            . '<label for="image">Téléchargez une image:</label>'
-            . '<input type="file" id="image" name="image">'
-            . '<br>'
-            . '<button type="submit" class="btn-add-event--register">Valider</button>'
-            . '</form>';
+          echo '<form id="editForm" method="POST" action="story/story_spectres.php" enctype="multipart/form-data" style="display:none;">';
+          echo '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8') . '">';
+          echo '<textarea name="story" placeholder="Raconter, ou corrigez votre histoire..." required>';
+          echo htmlspecialchars(isset($story['story']) ? $story['story'] : '', ENT_QUOTES, 'UTF-8') . '</textarea>';
+          echo '<br><label for="image">Téléchargez une image:</label><input type="file" id="image" name="image"><br>';
+          echo '<button type="submit" class="btn-add-event--register">Valider</button>';
+          echo '</form>';
         } elseif ($selected_card_id !== null) {
           echo '<p>Vous avez déjà choisi le rôle de : ' . $selected_card_name . '</p>';
         } elseif ($card['taken_by_user_id'] !== null) {
           echo '<p>Cette carte est déjà prise par un autre utilisateur.</p>';
         } else {
-          echo '<form method="POST" action="select_card_spectres.php">'
-            . '<input type="hidden" name="card_id" value="' . $card['id_img'] . '">'
-            . '<button type="submit" class="btn-add-event--register">Choisir cette carte</button>'
-            . '</form>';
+          echo '<form method="POST" action="select_card_spectres.php">';
+          echo '<input type="hidden" name="card_id" value="' . $card['id_img'] . '">';
+          echo '<button type="submit" class="btn-add-event--register">Choisir cette carte</button>';
+          echo '</form>';
         }
       } else {
         echo '<p>' . $errors['card_not_find'] . '</p>';
@@ -170,9 +172,6 @@ if (isset($_SESSION['error_message'])) {
       ?>
     </div>
   </main>
-  <script src="js/scripts.js"></script>
-  <script src="js/toggleEdit.js"></script>
   <?php include 'includes/footer.php'; ?>
 </body>
-
 </html>
