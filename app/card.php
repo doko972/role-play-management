@@ -3,13 +3,13 @@ session_start();
 include 'includes/_database.php';
 include 'includes/_config.php';
 
-// online ?
+// connecté ?
 if (!isset($_SESSION['user_id'])) {
   header("Location: login.php");
   exit();
 }
 
-$id = isset($_GET['id']) ? intval($_GET['id']) : 1;
+$id = isset($_GET['id']) ? intval($_GET['id']) : 50;
 $user_id = $_SESSION['user_id'];
 $selected_card_id = null;
 $story = null;
@@ -18,10 +18,10 @@ $min_id = 1;
 $max_id = 29;
 
 try {
-    // user selected card
+  // user selected card
   $stmt = $dbCo->prepare("SELECT id_img, file, name, class, id_faction, alternatif_txt, taken_by_user_id 
   FROM img 
-    WHERE id_img = :id AND id_img BETWEEN :min_id AND :max_id");
+  WHERE id_img = :id AND id_img BETWEEN :min_id AND :max_id");
   $stmt->bindParam(':id', $id, PDO::PARAM_INT);
   $stmt->bindParam(':min_id', $min_id, PDO::PARAM_INT);
   $stmt->bindParam(':max_id', $max_id, PDO::PARAM_INT);
@@ -30,16 +30,16 @@ try {
 
   // stories for the card
   $stmt = $dbCo->prepare("SELECT story, story_date, id_user, name, image 
-    FROM characters 
-    WHERE id_characters = :id");
+  FROM characters 
+  WHERE id_characters = :id");
   $stmt->bindParam(':id', $id, PDO::PARAM_INT);
   $stmt->execute();
   $stories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   // user selected card
   $stmt = $dbCo->prepare("SELECT selected_card 
-    FROM users 
-    WHERE id_user = :user_id");
+  FROM users 
+  WHERE id_user = :user_id");
   $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
   $stmt->execute();
   $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -87,18 +87,27 @@ if (isset($_SESSION['error_message'])) {
 } else {
   $error_message = '';
 }
+
+function vite($entry)
+{
+  $manifestPath = __DIR__ . '/dist/manifest.json';
+  if (file_exists($manifestPath)) {
+    $manifest = json_decode(file_get_contents($manifestPath), true);
+    return "/dist/" . $manifest[$entry]['file'];
+  }
+  return "http://localhost:5173/" . $entry;
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chevalier d'Athena</title>
+  <title>Chevalier d'Hadès</title>
   <link rel="icon" href="img/logo.ico">
-  <!-- <link rel="stylesheet" href="css/styles.css"> -->
-  <script type="module" src="http://localhost:5173/@vite/client"></script>
-  <script type="module" src="http://localhost:5173/js/scripts.js"></script>
+  <script type="module" src="<?php echo vite('@vite/client'); ?>"></script>
+  <script type="module" src="<?php echo vite('js/scripts.js'); ?>"></script>
 </head>
 
 <body>
@@ -107,7 +116,7 @@ if (isset($_SESSION['error_message'])) {
     <div class="card-detail">
       <?php
       if ($card) {
-        echo '<form action="saint.php" method="GET">';
+        echo '<form action="saint.php" method="get">';
         echo '<button type="submit" class="button__register" aria-label="Retour à l\'index">Retour à l\'index</button>';
         echo '</form>';
 
@@ -115,55 +124,45 @@ if (isset($_SESSION['error_message'])) {
           echo '<p class="error-message">' . $error_message . '</p>';
         }
 
-        echo '<img src="' . $card['file'] . '" alt="'
-          . $card['alternatif_txt'] . '">'
-          . '<div>'
-          . '<p>' . $card['name'] . '</p>'
-          . '<p>' . $card['class'] . '</p>';
+        echo '<img src="' . $card['file'] . '" alt="' . $card['alternatif_txt'] . '">';
+        echo '<div><p>' . $card['name'] . '</p><p>' . $card['class'] . '</p>';
 
         if (!empty($stories)) {
           foreach ($stories as $s) {
-            echo '<div class="story" id="displayArea">'
-              . '<p>Date de création de l\'histoire: ' . date('d-m-Y', strtotime($s['story_date'])) . '</p>'
-              . '<p>Histoire:</p>'
-              . '<p class="animate-text">' . $s['story'] . '</p>';
+            echo '<div class="story" id="displayArea">';
+            echo '<p>Date de création de l\'histoire: ' . date('d-m-Y', strtotime($s['story_date'])) . '</p>';
             if (!empty($s['image'])) {
               echo '<img src="' . $s['image'] . '" alt="Image de personnage">';
             }
+            echo '<p>Histoire:</p>';
+            echo '<p class="animate-text">' . html_entity_decode($s['story']) . '</p>';
             echo '</div>';
           }
         } else {
-          echo '<p>' . $errors['no_story'] . '</p>';
+          echo '<p>' . $errors['story_empty'] . '</p>';
         }
 
         echo '</div>';
 
         if ($selected_card_id == $id) {
-          echo '<p>Vous avez choisi : </p>' .
-            '<p>' . $card['name'] . '</p>';
-
           echo '<button class="button__register" id="editButton" onclick="toggleEdit()">Modifier</button>';
 
-          echo '<form id="editForm" method="POST" action="story/submit_story.php" enctype="multipart/form-data" style="display:none;">'
-            . '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8') . '">'
-            . '<textarea name="story" placeholder="Raconter, ou corrigez votre histoire..." required>'
-            . htmlspecialchars(isset($story['story']) ? $story['story'] : '', ENT_QUOTES, 'UTF-8') . '</textarea>'
-            . '<br>'
-            . '<label for="image">Téléchargez une image:</label>'
-            . '<input type="file" id="image" name="image">'
-            . '<br>'
-            . '<button type="submit" class="btn-add-event--register">Valider</button>'
-            . '</form>';
-
+          echo '<form id="editForm" method="POST" action="story/submit_story.php" enctype="multipart/form-data" style="display:none;">';
+          echo '<input type="hidden" name="card_id" value="' . htmlspecialchars($card['id_img'], ENT_QUOTES, 'UTF-8') . '">';
+          echo '<textarea name="story" placeholder="Raconter, ou corrigez votre histoire..." required>';
+          echo htmlspecialchars(isset($story['story']) ? $story['story'] : '', ENT_QUOTES, 'UTF-8') . '</textarea>';
+          echo '<br><label for="image">Téléchargez une image:</label><input type="file" id="image" name="image"><br>';
+          echo '<button type="submit" class="btn-add-event--register">Valider</button>';
+          echo '</form>';
         } elseif ($selected_card_id !== null) {
-          echo '<p>Vous avez déjà choisi le rôle de : ' . $selected_card_name . '</p>';
+          echo '<p>Vous êtes : ' . $selected_card_name . '</p>';
         } elseif ($card['taken_by_user_id'] !== null) {
-          echo '<p>' . $errors['card_no_free'] . '</p>';
+          echo '<p>Cette carte est déjà prise par un autre utilisateur.</p>';
         } else {
-          echo '<form method="POST" action="select_card.php">'
-            . '<input type="hidden" name="card_id" value="' . $card['id_img'] . '">'
-            . '<button type="submit" class="btn-add-event--register">Choisir cette carte</button>'
-            . '</form>';
+          echo '<form method="POST" action="select_card.php">';
+          echo '<input type="hidden" name="card_id" value="' . $card['id_img'] . '">';
+          echo '<button type="submit" class="btn-add-event--register">Choisir cette carte</button>';
+          echo '</form>';
         }
       } else {
         echo '<p>' . $errors['card_not_find'] . '</p>';
@@ -171,9 +170,6 @@ if (isset($_SESSION['error_message'])) {
       ?>
     </div>
   </main>
-  <script src="js/scripts.js"></script>
-  <script src="js/toggleEdit.js"></script>
   <?php include 'includes/footer.php'; ?>
 </body>
-
 </html>

@@ -88,7 +88,6 @@ if (isset($_SESSION['error_message'])) {
   $error_message = '';
 }
 
-// Fonction pour gérer les scripts Vite
 function vite($entry)
 {
   $manifestPath = __DIR__ . '/dist/manifest.json';
@@ -127,7 +126,6 @@ function vite($entry)
 
         echo '<img src="' . $card['file'] . '" alt="' . $card['alternatif_txt'] . '">';
         echo '<div><p>' . $card['name'] . '</p><p>' . $card['class'] . '</p>';
-        echo '<p>Vous avez choisi d\'incarner : </p><p>' . $card['name'] . '</p>';
 
         if (!empty($stories)) {
           foreach ($stories as $s) {
@@ -157,7 +155,7 @@ function vite($entry)
           echo '<button type="submit" class="btn-add-event--register">Valider</button>';
           echo '</form>';
         } elseif ($selected_card_id !== null) {
-          echo '<p>Vous avez déjà choisi le rôle de : ' . $selected_card_name . '</p>';
+          echo '<p>Vous êtes : ' . $selected_card_name . '</p>';
         } elseif ($card['taken_by_user_id'] !== null) {
           echo '<p>Cette carte est déjà prise par un autre utilisateur.</p>';
         } else {
