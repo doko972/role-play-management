@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
   exit();
 }
 
-$id = isset($_GET['id']) ? intval($_GET['id']) : 50;
+$id = isset($_GET['id']) ? intval($_GET['id']) : 1;
 $user_id = $_SESSION['user_id'];
 $selected_card_id = null;
 $story = null;
@@ -120,9 +120,9 @@ function vite($entry)
         echo '<button type="submit" class="button__register" aria-label="Retour à l\'index">Retour à l\'index</button>';
         echo '</form>';
 
-        if ($error_message) {
-          echo '<p class="error-message">' . $error_message . '</p>';
-        }
+        // if ($error_message) {
+        //   echo '<p class="error-message">' . $error_message . '</p>';
+        // }
 
         echo '<img src="' . $card['file'] . '" alt="' . $card['alternatif_txt'] . '">';
         echo '<div><p>' . $card['name'] . '</p><p>' . $card['class'] . '</p>';

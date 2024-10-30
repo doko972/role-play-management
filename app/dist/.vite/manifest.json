@@ -51,17 +51,13 @@
     "file": "assets/poseidon_royaume-Ba07kkvz.webp",
     "src": "img/poseidon_royaume.webp"
   },
-  "img/saint.webp": {
-    "file": "assets/saint--xGS671f.webp",
-    "src": "img/saint.webp"
-  },
   "js/scripts.js": {
-    "file": "assets/scripts-DhwaGQAw.js",
+    "file": "assets/scripts-DTrsol2k.js",
     "name": "scripts",
     "src": "js/scripts.js",
     "isEntry": true,
     "css": [
-      "assets/scripts-CFdsUX4o.css"
+      "assets/scripts-CIcppq6b.css"
     ],
     "assets": [
       "assets/body-B8fi0EDL.webp",
@@ -76,7 +72,6 @@
       "assets/hadesmin-CZBA-B9l.webp",
       "assets/fond-CZPRmDiH.webp",
       "assets/header_img-BM2ibAWV.webp",
-      "assets/saint--xGS671f.webp",
       "assets/baniere-CZ7BioOY.webp"
     ]
   }
