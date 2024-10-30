@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,11 +15,12 @@
   <script type="module" src="http://localhost:5173/@vite/client"></script>
   <script type="module" src="http://localhost:5173/js/scripts.js"></script>
 </head>
+
 <body>
-  <?php include 'includes/header.php'; ?>
+  <?php include '../includes/header.php'; ?>
   <main>
-  <div class="head-card" role="empty" aria-label="Champs vide">
-  </div>
+    <div class="head-card" role="empty" aria-label="Champs vide">
+    </div>
     <section>
       <article>
         <div class="title__margin--register">
@@ -26,13 +28,34 @@
         <div class="texte-position__center">
           <div class="texte-position__heigth textebackground">
             <h1>Vérifiez votre email</h1>
-            <p>Un email de validation vous a été envoyé. Veuillez vérifier votre boîte de réception et cliquer sur le lien pour activer votre compte.</p>
+            <p>Un email de validation vous a été envoyé. Veuillez vérifier votre boîte de réception et cliquer sur le
+              lien pour activer votre compte.</p>
+            <p id="countdown">Redirection dans <span id="timer">4</span> secondes...</p>
+
+            <!-- <script>
+              setTimeout(function () {
+                window.location.href = 'login.php';
+              }, 4000);
+            </script> -->
+            <script>
+              let countdown = 4;
+              function updateCountdown() {
+                document.getElementById("timer").textContent = countdown;
+                countdown--;
+
+                if (countdown <= 0) {
+                  window.location.href = '../login.php';
+                }
+              }
+              setInterval(updateCountdown, 1000);
+            </script>
           </div>
         </div>
       </article>
     </section>
   </main>
-  <?php include 'includes/footer.php'; ?>
-  <script src="js/script.js"></script>
+  <?php include '../includes/footer.php'; ?>
+  <script src="../js/script.js"></script>
 </body>
+
 </html>

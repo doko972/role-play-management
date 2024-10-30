@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])
             $stmt->bindParam(':card_id', $card_id, PDO::PARAM_INT);
             $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
             if ($stmt->execute()) {
-                header('Location: card.php?id=' . $card_id);
+                header('Location: card_spectres.php?id=' . $card_id);
                 exit();
             } else {
                 $_SESSION['error_message'] = $errors['error_select_role'];

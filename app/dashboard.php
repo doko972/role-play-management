@@ -99,9 +99,10 @@ generateToken();
                                         </span>
                                     <?php endif; ?>
                                 </div>
-
                                 <div class="table-array-dsb__border--alg">
-                                    <strong>Rôle :</strong>
+                                <strong>Statut :</strong>
+                                </div>
+                                <div class="table-array-dsb__border--alg">
                                     <form action="update_role.php" method="post"
                                         style="display:inline-block; margin-left:10px;">
                                         <input type="hidden" name="id_user"
@@ -115,12 +116,11 @@ generateToken();
                                             <option value="admin" <?php echo $user['role'] === 'admin' ? 'selected' : ''; ?>>
                                                 Administrateur</option>
                                         </select>
-                                        <button type="submit" name="update_role" class="button button__register">Mettre à
-                                            jour</button>
+                                        <button type="submit" name="update_role" class="button button__register">MaJ Statut</button>
 
                                         <button type="submit" name="delete_user" class="button button__register"
                                             onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">
-                                            Supprimer
+                                            Supprimer le compte
                                         </button>
                                     </form>
                                 </div>

@@ -101,6 +101,7 @@ function vite($entry)
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -120,9 +121,9 @@ function vite($entry)
         echo '<button type="submit" class="button__register" aria-label="Retour à l\'index">Retour à l\'index</button>';
         echo '</form>';
 
-        // if ($error_message) {
-        //   echo '<p class="error-message">' . $error_message . '</p>';
-        // }
+        if ($error_message) {
+          echo '<p class="error-message">' . $error_message . '</p>';
+        }
 
         echo '<img src="' . $card['file'] . '" alt="' . $card['alternatif_txt'] . '">';
         echo '<div><p>' . $card['name'] . '</p><p>' . $card['class'] . '</p>';
@@ -164,12 +165,14 @@ function vite($entry)
           echo '<button type="submit" class="btn-add-event--register">Choisir cette carte</button>';
           echo '</form>';
         }
-      } else {
-        echo '<p>' . $errors['card_not_find'] . '</p>';
       }
+      // else {
+      //   echo '<p>' . $errors['card_not_find'] . '</p>';
+      // }
       ?>
     </div>
   </main>
   <?php include 'includes/footer.php'; ?>
 </body>
+
 </html>
