@@ -87,4 +87,135 @@ volumes:
   db_data: {}
 ```
 -------------
-Create a roleplay database and import "roleplay.sql" (show in app folder).
+## Arborescence du Projet
+
+Voici une vue d'ensemble de l'organisation des fichiers dans ce projet :
+- CARD-SYSTEM-PHP/
+- ├── database/
+- │ └── roleplay.sql
+- ├── src/
+- │ ├── card_marinas.php
+- │ ├── card_spectres.php
+- │ ├── card.php
+- │ ├── dashboard.php
+- │ ├── footer.php
+- │ ├── forum.php
+- │ ├── header.php
+- │ ├── index.php
+- │ ├── login.php
+- │ ├── logout.php
+- │ ├── marinas.php
+- │ ├── news.php
+- │ ├── saint.php
+- │ ├── select_card_marinas.php
+- │ ├── select_card_spectres.php
+- │ ├── select_card.php
+- │ ├── spectres.php
+- │ ├── update_role.php
+- │ ├── welcome.php
+- │ ├── js/
+- │ │ └── scripts.js
+- │ │ └── toggleEdit.js
+- │ │ └── toggleEditForm.js
+- │ └── css/
+- │ └── style.css
+- ├── event/
+- │ ├── event_1.php
+- │ ├── footer.php
+- │ ├── header.php
+- ├── forum/
+- │ ├── category.php
+- │ ├── create_post.php
+- │ ├── create_topic.php
+- │ ├── delete_post.php
+- │ ├── edit_post.php
+- │ ├── footer.php
+- │ ├── headerForum.php
+- │ ├── post.php
+- ├── img/
+- ├── includes/
+- │ ├── _config.php
+- │ ├── _database.php
+- │ ├── _functions.php
+- │ ├── _registerAdd.php
+- ├── register/
+- │ ├── authenticate.php
+- │ ├── footer.php
+- │ ├── header.php
+- │ ├── register_process.php
+- │ ├── register.php
+- │ ├── registerScript.php
+- │ ├── registration_success.php
+- ├── story/
+- │ ├── story_marinas.php
+- │ ├── story_spectres.php
+- │ ├── submit_story.php
+- ├── uploads/
+- ├── docker-compose.yml
+- ├── Dockerfile
+- └── README.md
+
+## Installation
+
+1. Après avoir "Forké" le projet, Clonez ce dépôt sur votre machine locale :
+   ```bash
+   git clone https://github.com/'yourusername'/card-system-php.git
+
+2. Accédez au répertoire du projet :
+   ```bash
+    cd app
+    
+3. Installez les dépendances Node.js pour Vite :
+   ```bash
+    npm install
+
+5. Pour lancer vite et le sass :
+   ```bash
+    npm run dev
+
+6. Construisez les fichiers CSS et JS avec Vite :
+   ```bash
+    npm run build
+
+## Configuration de la Base de Données
+
+Creez un nouvel utilisateur, et modifier les champs pour vous connecter dans "includes/_database.php",
+puis importez le fichier "roleplay.sql" se trouvant dans la racine du projet : 
+
+- $DB_HOST = 'db'; // your address ip - db = docker container
+- $DB_NAME = 'roleplay'; // the database name
+- $DB_USER = 'user'; // user name
+- $DB_PWD = 'password'; // password
+
+## Contribuer
+
+Les contributions sont les bienvenues ! 
+Veuillez suivre ces étapes pour contribuer :
+
+1. Forkez le projet
+2. Créez une nouvelle branche (`git checkout -b feature/nom-de-votre-fonctionnalité`)
+3. Effectuez vos modifications
+4. Envoyez vos changements (`git push origin feature/nom-de-votre-fonctionnalité`)
+5. Créez une Pull Request
+
+## Remerciements
+
+Merci à Créative Formation de m'avoir apporté toutes ses nouvelles connaissances,
+principalement à Guillaume et ses précieux cours !
+
+## Quelques captures :
+### Le forum : 
+![Capture d'écran 2024-11-04 153821](https://github.com/user-attachments/assets/399b12e2-1459-4c38-9394-92e6350f6a41)
+
+### Affichage des cards :
+![Capture d'écran 2024-11-04 153802](https://github.com/user-attachments/assets/18fc2277-76fc-4a1d-9e68-57190ef0e27d)
+
+### Page de connection :
+![Capture d'écran 2024-11-04 154022](https://github.com/user-attachments/assets/813bc9bd-2152-4742-8e72-8f706d2de2ce)
+
+### Page d'inscription :
+![Capture d'écran 2024-11-04 154110](https://github.com/user-attachments/assets/3c70a994-ea5f-4bd4-aa32-2253513e649d)
+
+### Edition du profil en accord avec le rôle :
+![Capture d'écran 2024-11-04 154317](https://github.com/user-attachments/assets/29331e80-1a5d-44dc-8b45-c18dc613308d)
+
