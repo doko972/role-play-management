@@ -203,15 +203,19 @@ Veuillez suivre ces étapes pour contribuer :
 Merci à Créative Formation de m'avoir apporté toutes ses nouvelles connaissances,
 principalement à Guillaume et ses précieux cours !
 
-Quelques captures :
-
+## Quelques captures :
+### Le forum : 
 ![Capture d'écran 2024-11-04 153821](https://github.com/user-attachments/assets/399b12e2-1459-4c38-9394-92e6350f6a41)
 
+### Affichage des cards
 ![Capture d'écran 2024-11-04 153802](https://github.com/user-attachments/assets/18fc2277-76fc-4a1d-9e68-57190ef0e27d)
 
+### Page de connection
 ![Capture d'écran 2024-11-04 154022](https://github.com/user-attachments/assets/813bc9bd-2152-4742-8e72-8f706d2de2ce)
 
+### Page d'inscription
 ![Capture d'écran 2024-11-04 154110](https://github.com/user-attachments/assets/3c70a994-ea5f-4bd4-aa32-2253513e649d)
 
+### Edition du profil en accord avec le rôle
 ![Capture d'écran 2024-11-04 154317](https://github.com/user-attachments/assets/29331e80-1a5d-44dc-8b45-c18dc613308d)
 
