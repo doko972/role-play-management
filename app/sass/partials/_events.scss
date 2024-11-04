@@ -20,7 +20,6 @@
 }
 
 .notification-bar {
-  // background-color: var(--white);
   color: var(--black);
   padding: 1rem;
   text-align: center;
@@ -29,7 +28,6 @@
   width: 100%;
 }
 
-/* Section des événements */
 .events-section {
   background-color: var(--black-semi);
   padding: 2rem;
@@ -54,7 +52,6 @@
 }
 
 .event-card:hover {
-  // background-color: var(--purple);
   background-image: url("../img/baniere.webp");
   background-size: cover;
   background-repeat: no-repeat;
@@ -89,7 +86,6 @@
 
   .event-card {
     padding: 1rem;
-    // margin: 0.5rem 0;
   }
 
   .events-section {
@@ -131,7 +127,6 @@
   }
 }
 
-/* Section de l'article d'événement */
 .event-article-section {
   background-color: var(--black-semi);
   padding: 2rem;
@@ -169,7 +164,6 @@
   line-height: 1.5rem;
 }
 
-/* Section des récompenses */
 .rewards-section {
   margin-top: 2rem;
 }

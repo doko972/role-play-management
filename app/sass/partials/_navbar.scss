@@ -99,16 +99,6 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-// .submenu {
-//   display: none;
-//   position: relative;
-//   top: 0;
-//   left: 0;
-//   background-color: var(--black-semi);
-//   padding: 1rem;
-//   z-index: 100;
-// }
-
 .menu-items li:hover .submenu {
   display: block;
 }
@@ -241,11 +231,9 @@
   }
 }
 
-/* Conteneur du sous-menu */
 .menu-items li ul.submenu {
   position: absolute;
   top: 80%;
-  // left: 20%;
   background-color: rgba(0, 0, 0, 0.7);
   list-style: none;
   margin: 0;
